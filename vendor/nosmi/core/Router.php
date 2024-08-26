@@ -32,7 +32,6 @@ class Router
                 $action = self::lowerCamelCase(self::$route['action']) . "Action";
                 if (method_exists($controllerObject, $action)) {
                     $controllerObject->$action();
-                    $controllerObject->getView();
                 } else {
                     throw new \Exception("Action: $controller::$action not found", 404);
                 }
@@ -48,7 +47,7 @@ class Router
     private static function routeExists($url)
     {
         foreach (self::$routes as $regexp => $route){
-            if (preg_match("/{$regexp}/", $url, $matches)){
+            if (preg_match("#{$regexp}#", $url, $matches)){
                 foreach($matches as $k => $v) {
                     if (is_string($k)){
                         $route[$k] = $v;

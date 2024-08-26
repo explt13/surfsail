@@ -3,15 +3,15 @@ namespace nosmi;
 
 class App
 {
-    public static Registry $app;
+    public static Registry $registry;
 
     public function __construct()
     {
-        $query = trim($_SERVER["QUERY_STRING"], '/');
+        $query = $_SERVER["QUERY_STRING"];
         session_start();
-        self::$app = Registry::getInstance(); // Registry::$instance => new Registry
+        self::$registry = Registry::getInstance(); // Registry::$instance => new Registry
         $this->setParams();
-        new ErrorHandler();
+        ErrorHandler::getInstance();
         Router::dispatch($query);
     }
 
@@ -20,7 +20,7 @@ class App
         $params = require_once CONF . "/params.php";
         if (!empty($params)){
             foreach($params as $k => $v){
-                self::$app->setProperty($k, $v);
+                self::$registry->setProperty($k, $v);
             }
         }
     }

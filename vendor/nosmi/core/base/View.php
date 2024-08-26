@@ -1,6 +1,8 @@
 <?php
 namespace nosmi\base;
 
+use Exception;
+
 class View
 {
     public array $route;
@@ -38,14 +40,13 @@ class View
         if (is_file($viewFile)) {
             ob_start();
             require_once $viewFile;
-            $content = ob_get_clean();
+            $view = ob_get_clean();
         } else {
             throw new \Exception("View not found: {$this->view}", 500);
         }
         if ($this->layout !== false) {
             $layoutFile = APP . "/views/layouts/" . $this->layout . '.php';
             if (is_file($layoutFile)) {
-                $meta = $this->getMeta();
                 require_once $layoutFile;
             }
         } else {
@@ -53,14 +54,13 @@ class View
         }
     }
     
-    public function getMeta()
+    private function getMeta()
     {
-        $metaFile = APP . '/views/layouts/meta.php';
+        $metaFile = APP . '/views/layouts/_meta.php';
         if (is_file($metaFile)) {
-            ob_start();
             require_once $metaFile;
-            $meta = ob_get_clean();
-            return $meta;
+        } else {
+            throw new \Exception("No meta $metaFile file found", 404);
         }
     }
 }

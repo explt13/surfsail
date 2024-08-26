@@ -6,7 +6,7 @@ abstract class Controller
     public array $route;
     private string $controller;
     private string $model;
-    private string $view;
+    protected string $view;
     private $layout;
     private string $prefix;
     private array $data = [];
