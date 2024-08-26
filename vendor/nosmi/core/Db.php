@@ -1,7 +1,6 @@
 <?php
 namespace nosmi;
 
-use RedBeanPHP\R;
 
 class Db{
     use SingletonTrait;
@@ -9,16 +8,14 @@ class Db{
     protected function __construct()
     {
         $db = require_once CONF . '/db_connection.php';
-       
-        R::setup($db['dsn'], $db['user'], $db['password']);
-        if (!R::testConnection()) {
+        class_alias("RedBeanPHP\R", "\R");
+        \R::setup($db['dsn'], $db['user'], $db['password']);
+        if (!\R::testConnection()) {
             throw new \Exception("Can not connect to the database", 500);
-        } else {
-            echo "Connection established";
         }
-        R::freeze(true);
+        \R::freeze(true);
         if (DEBUG) {
-            R::debug(true, 1);
+            \R::debug(true, 1);
         }
     }
 }

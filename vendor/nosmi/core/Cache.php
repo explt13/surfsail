@@ -3,21 +3,22 @@ namespace nosmi;
 
 class Cache
 {
-    use SingletonTrait;
-
-    public function set($key, $data, $seconds = 3600)
+    public static function set($key, $data, $seconds = 3600)
     {
-        if ($seconds) {
+        if ($seconds > 0) {
             $content['data'] = $data;
             $content['exp'] = time() + $seconds;
             if (file_put_contents(CACHE . "/" . md5($key) . '.txt', serialize($content))) {
                 return true;
             }
+            $err_handler = ErrorHandler::getInstance();
+            $err_handler->logError("Cannot set cache $key");
             return false;
         }
+        throw new \Exception("Cannot set cache $key with $seconds seconds");
     }
     
-    public function get($key)
+    public static function get($key)
     {
         $fileName = CACHE . '/' . md5($key) . '.txt';
         if (file_exists($fileName)) {
@@ -27,11 +28,10 @@ class Cache
                 return false;
             }
             return $content['data'];
-
         }
     }
 
-    public function delete($key)
+    public static function delete($key)
     {
         $fileName = CACHE . '/' . md5($key) . '.txt';
         if (file_exists($fileName)) {

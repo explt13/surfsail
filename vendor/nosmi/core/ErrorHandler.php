@@ -3,7 +3,9 @@ namespace nosmi;
 
 class ErrorHandler
 {
-    public function __construct()
+    use SingletonTrait;
+
+    private function __construct()
     {
         if (DEBUG) {
             error_reporting(-1);
@@ -15,11 +17,11 @@ class ErrorHandler
 
     public function exceptionHandler(\Error | \Exception $e)
     {
-        $this->logErrors($e->getMessage(), $e->getFile(), $e->getLine());
+        $this->logError($e->getMessage(), $e->getFile(), $e->getLine());
         $this->displayError($e::class, $e->getMessage(), $e->getFile(), $e->getLine(), $e->getCode());
     }
 
-    private function logErrors(string $message = '', $file = '', $line = '')
+    public function logError(string $message = '', $file = '', $line = '')
     {
         error_log("[" . date("Y-m-d H:i:s") . "] Error: {$message} | File: {$file} | Line: {$line}\n--------------------------------------\n",
     3, ROOT . '/tmp/errors.log');
