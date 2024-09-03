@@ -31,8 +31,8 @@ class ProductController extends AppController
         }
 
         $related_products = \R::getAll("SELECT p.* FROM product_related pr INNER JOIN product p ON pr.related_id = p.id WHERE pr.product_id = ?", [$product['id']]);
-
-        $this->setData(compact('product', 'currency', 'gallery_images', 'product_brand', 'related_products', 'reviews'));
+        $mods = \R::getAll("SELECT pm.* FROM product_mods pm WHERE pm.id = ?", [$product['id']]);
+        $this->setData(compact('product', 'currency', 'gallery_images', 'product_brand', 'related_products', 'reviews', 'mods'));
         $this->setMeta($product['title'], $product['meta_desc'], $product['meta_kwords']);
         $this->getView();
     }
