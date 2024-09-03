@@ -3,7 +3,9 @@ namespace nosmi;
 
 class Cache
 {
-    public static function set($key, $data, $seconds = 3600)
+    use SingletonTrait;
+
+    public function set($key, $data, $seconds = 3600)
     {
         if ($seconds > 0) {
             $content['data'] = $data;
@@ -18,7 +20,7 @@ class Cache
         throw new \Exception("Cannot set cache $key with $seconds seconds");
     }
     
-    public static function get($key)
+    public function get($key)
     {
         $fileName = CACHE . '/' . md5($key) . '.txt';
         if (file_exists($fileName)) {
@@ -31,7 +33,7 @@ class Cache
         }
     }
 
-    public static function delete($key)
+    public function delete($key)
     {
         $fileName = CACHE . '/' . md5($key) . '.txt';
         if (file_exists($fileName)) {

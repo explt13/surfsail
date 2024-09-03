@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <?= $this->getMeta() ?>
+    <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.min.css?_v=20240719131907"/>
-    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.min.css?_v=20240719131907"/>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
 </head>
 
@@ -37,7 +38,7 @@
             </div>
             <div class="header__row header__row_body body-header">
                 <div class="body-header__container container">
-                    <a href="./index.html" class="body-header__logo _icon-logo"></a>
+                    <a href="/" class="body-header__logo _icon-logo"></a>
                     <div data-da=".catalog-header__container, 479.98" class="body-header__search search-header">
                         <form action="#" class="search-header__form">
                             <button type="submit" class="search-header__button _icon-search"></button>
@@ -71,52 +72,7 @@
                     </div>
                 </div>
             </div>
-            <?php if ($categories): ?>
-                <div class="header__row header__row_catalog catalog-header">
-                    <div class="catalog-header__container container">
-                        <nav class="catalog-header__menu menu-catalog">
-                            <button class="menu-catalog__back back-menu _icon-back">Back</button>
-                            <ul class="menu-catalog__list">
-                                <?php foreach($categories as $category): ?>
-                                    <li class="menu-catalog__item"><button data-parent="<?= htmlspecialchars($category['id'], ENT_QUOTES, 'UTF-8')?>" class="menu-catalog__link"><?= htmlspecialchars($category["title"], ENT_QUOTES, 'UTF-8')?></button></li>
-                                <?php endforeach;?>
-                            </ul>
-                            <div class="menu-catalog__sub-menu sub-menu-catalog">
-                                <button class="sub-menu-catalog__back back-menu _icon-back">Back</button>
-                                <div class="sub-menu-catalog__container container">
-                                    <?php foreach($categories as $category):?>
-                                        <?php if ($category["sub_categories"]): ?>
-                                            <div hidden data-submenu="<?= htmlspecialchars($category['id'], ENT_QUOTES, 'UTF-8')?>" class="sub-menu-catalog__block">
-                                                <?php foreach($category["sub_categories"] as $sub_category): ?>
-                                                    <div class="sub-menu-catalog__category">
-                                                        <a href="./catalog.html" class="sub-menu-catalog__link-category"><?= htmlspecialchars($sub_category["title"], ENT_QUOTES, 'UTF-8')?></a>
-                                                    </div>
-                                                <?php endforeach;?>
-                                                <?php foreach($category["sub_categories"] as $sub_category): ?>
-                                                    <?php if ($sub_category['sub_categories']): ?>
-                                                        <ul class="sub-menu-catalog__list">
-                                                            <?php foreach($sub_category["sub_categories"] as $sub_sub_category): ?>
-                                                                <li class="sub-menu-catalog__item"><a href="./catalog.html" class="sub-menu-catalog__link-item"><?= htmlspecialchars($sub_sub_category['title'], ENT_QUOTES, 'UTF-8')?></a></li>
-                                                            <?php endforeach;?>
-                                                        </ul>
-                                                    <?php endif;?>
-                                                <?php endforeach;?>
-                                                <?php foreach($category["sub_categories"] as $sub_category): ?>
-                                                    <?php if ($sub_category["subcategories_count"] > $subcategories_to_show): ?>
-                                                        <div class="sub-menu-catalog__footer">
-                                                            <a href="./catalog.html" class="sub-menu-catalog__all">More</a>
-                                                        </div>
-                                                    <?php endif;?>
-                                                <?php endforeach;?>
-                                            </div>
-                                        <?php endif;?>
-                                    <?php endforeach;?>
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            <?php endif;?>
+            <?php new \app\widgets\menu\Menu();?>
         </header>
         <?= $view ?>
         <footer class="footer">
@@ -293,7 +249,7 @@
             </div>
         </footer>
     </div>
-    <script src="http://surfsail/js/app.min.js?_v=20240719131907"></script>
-    <script src="/js/script.js"></script>
+    <script src="js/app.min.js?_v=20240719131907"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
