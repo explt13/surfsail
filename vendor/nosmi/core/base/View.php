@@ -1,8 +1,6 @@
 <?php
 namespace nosmi\base;
 
-use Exception;
-
 class View
 {
     public array $route;

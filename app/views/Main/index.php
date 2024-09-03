@@ -51,14 +51,14 @@
                     <div class="main-screen__media media-main-block">
                         <div class="media-main-block__image">
                             <picture>
-                                <source srcset="/img/home/surfboard01.webp" type="image/webp">
-                                <source srcset="/img/home/surfboard01.jpg" type="image/jpeg">
-                                <img class="media-main-block__img media-main-block__img_1" src="/img/home/surfboard01.png" alt="surfboard-image">
+                                <source srcset="img/home/surfboard01.webp" type="image/webp">
+                                <source srcset="img/home/surfboard01.jpg" type="image/jpeg">
+                                <img class="media-main-block__img media-main-block__img_1" src="img/home/surfboard01.png" alt="surfboard-image">
                             </picture>
                             <picture>
-                                <source srcset="/img/home/surfboard02.webp" type="image/webp">
-                                <source srcset="/img/home/surfboard02.jpg" type="image/jpeg">
-                                <img class="media-main-block__img media-main-block__img_2" src="/img/home/surfboard02.png" alt="surfboard-image">
+                                <source srcset="img/home/surfboard02.webp" type="image/webp">
+                                <source srcset="img/home/surfboard02.jpg" type="image/jpeg">
+                                <img class="media-main-block__img media-main-block__img_2" src="img/home/surfboard02.png" alt="surfboard-image">
                             </picture>
                         </div>
                         <div class="media-main-block__tips">
@@ -77,7 +77,7 @@
             <div class="advantages-main">
                 <div class="advantages-main__item">
                     <div class="advantages-main__icon">
-                        <img src="/img/home/garantee.svg" alt="garantee-icon">
+                        <img src="img/home/garantee.svg" alt="garantee-icon">
                     </div>
                     <div class="advantages-main__text">
                         100% Money-Back Guarantee
@@ -85,7 +85,7 @@
                 </div>
                 <div class="advantages-main__item">
                     <div class="advantages-main__icon">
-                        <img src="/img/home/truck.svg" alt="truck-icon">
+                        <img src="img/home/truck.svg" alt="truck-icon">
                     </div>
                     <div class="advantages-main__text">
                         Delivery across the US
@@ -93,7 +93,7 @@
                 </div>
                 <div class="advantages-main__item">
                     <div class="advantages-main__icon">
-                        <img src="/img/home/list.svg" alt="list-icon">
+                        <img src="img/home/list.svg" alt="list-icon">
                     </div>
                     <div class="advantages-main__text">
                         Option to place an order without registration
@@ -101,7 +101,7 @@
                 </div>
                 <div class="advantages-main__item">
                     <div class="advantages-main__icon">
-                        <img src="/img/home/percentages.svg" alt="percentages-icon">
+                        <img src="img/home/percentages.svg" alt="percentages-icon">
                     </div>
                     <div class="advantages-main__text">
                         Discounts for regular customers
@@ -119,9 +119,9 @@
                 <?php foreach($brands as $brand): ?>
                     <a href="catalog.html" class="cards-brand__item">
                         <picture>
-                            <source srcset="/img/brands/<?=htmlspecialchars($brand->image, ENT_QUOTES, 'UTF-8');?>.webp" type="image/webp">
-                            <source srcset="/img/brands/<?=htmlspecialchars($brand->image, ENT_QUOTES, 'UTF-8');?>.jpg" type="image/jpeg">
-                            <img src="/img/brands/<?=htmlspecialchars($brand->image, ENT_QUOTES, 'UTF-8');?>.png" alt="brand-<?=htmlspecialchars($brand->alias, ENT_QUOTES, 'UTF-8');?>-image">
+                            <source srcset="img/brands/<?=htmlspecialchars($brand['image'], ENT_QUOTES, 'UTF-8');?>.webp" type="image/webp">
+                            <source srcset="img/brands/<?=htmlspecialchars($brand['image'], ENT_QUOTES, 'UTF-8');?>.jpg" type="image/jpeg">
+                            <img src="img/brands/<?=htmlspecialchars($brand['image'], ENT_QUOTES, 'UTF-8');?>.png" alt="brand-<?=htmlspecialchars($brand['alias'], ENT_QUOTES, 'UTF-8');?>-image">
                         </picture>
                     </a>
                 <?php endforeach;?>
@@ -153,9 +153,9 @@
                         </div>
                         <div class="item-category__image item-category__image_<?= htmlspecialchars($category["id"], ENT_QUOTES, 'UTF-8')?>">
                             <picture>
-                                <source srcset="/img/categories/<?= htmlspecialchars($category['image'], ENT_QUOTES, 'UTF-8');?>.webp" type="image/webp">
-                                <source srcset="/img/categories/<?= htmlspecialchars($category['image'], ENT_QUOTES, 'UTF-8');?>.jpg" type="image/jpeg">
-                                <img src="/img/categories/<?= htmlspecialchars($category['image'], ENT_QUOTES, 'UTF-8');?>.png" alt="category-<?= htmlspecialchars($category['alias'], ENT_QUOTES, 'UTF-8');?>-image">
+                                <source srcset="img/categories/<?= htmlspecialchars($category['image'], ENT_QUOTES, 'UTF-8');?>.webp" type="image/webp">
+                                <source srcset="img/categories/<?= htmlspecialchars($category['image'], ENT_QUOTES, 'UTF-8');?>.jpg" type="image/jpeg">
+                                <img src="img/categories/<?= htmlspecialchars($category['image'], ENT_QUOTES, 'UTF-8');?>.png" alt="category-<?= htmlspecialchars($category['alias'], ENT_QUOTES, 'UTF-8');?>-image">
                             </picture>
                         </div>
                     </a>
@@ -178,9 +178,9 @@
         <div class="new-products__container container">
             <div class="new-products__decorbg">
                 <picture>
-                    <source srcset="/img/home/new_bg_small.webp" type="image/webp">
-                    <source srcset="/img/home/new_bg_small.jpg" type="image/jpeg">
-                    <img src="/img/home/new_bg_small.png" alt="bg-new-products-small">
+                    <source srcset="img/home/new_bg_small.webp" type="image/webp">
+                    <source srcset="img/home/new_bg_small.jpg" type="image/jpeg">
+                    <img src="img/home/new_bg_small.png" alt="bg-new-products-small">
                 </picture>
             </div>
             <div class="new-products__body">
@@ -229,9 +229,9 @@
                         </div>
                         <div class="card-recommend__image card-recommend__image_first">
                             <picture>
-                                <source srcset="/img/products/<?= htmlspecialchars($product['category_alias'].'/'.$product['image'], ENT_QUOTES,'UTF-8')?>.webp" type="image/webp">
-                                <source srcset="/img/products/<?= htmlspecialchars($product['category_alias'].'/'.$product['image'], ENT_QUOTES,'UTF-8')?>.jpg" type="image/jpeg">
-                                <img src="/img/products/<?= htmlspecialchars($product['category_alias'].'/'.$product['image'], ENT_QUOTES,'UTF-8')?>.png" alt="recommend-product-<?= htmlspecialchars($product['alias'], ENT_QUOTES,'UTF-8')?>">
+                                <source srcset="img/products/<?= htmlspecialchars($product['category_alias'].'/'.$product['image'], ENT_QUOTES,'UTF-8')?>.webp" type="image/webp">
+                                <source srcset="img/products/<?= htmlspecialchars($product['category_alias'].'/'.$product['image'], ENT_QUOTES,'UTF-8')?>.jpg" type="image/jpeg">
+                                <img src="img/products/<?= htmlspecialchars($product['category_alias'].'/'.$product['image'], ENT_QUOTES,'UTF-8')?>.png" alt="recommend-product-<?= htmlspecialchars($product['alias'], ENT_QUOTES,'UTF-8')?>">
                             </picture>
                         </div>
                     </div>
@@ -257,9 +257,9 @@
                     <article class="cards-articles__card card-article">
                         <a href="" class="card-article__image">
                             <picture>
-                                <source srcset="/img/articles/<?= htmlspecialchars($article['image'], ENT_QUOTES, 'UTF-8')?>.webp" type="image/webp">
-                                <source srcset="/img/articles/<?= htmlspecialchars($article['image'], ENT_QUOTES, 'UTF-8')?>.jpg" type="image/jpeg">
-                                <img src="/img/articles/<?= htmlspecialchars($article['image'], ENT_QUOTES, 'UTF-8')?>.png" alt="article-image">
+                                <source srcset="img/articles/<?= htmlspecialchars($article['image'], ENT_QUOTES, 'UTF-8')?>.webp" type="image/webp">
+                                <source srcset="img/articles/<?= htmlspecialchars($article['image'], ENT_QUOTES, 'UTF-8')?>.jpg" type="image/jpeg">
+                                <img src="img/articles/<?= htmlspecialchars($article['image'], ENT_QUOTES, 'UTF-8')?>.png" alt="article-image">
                             </picture>
                         </a>
                         <div class="card-article__body">

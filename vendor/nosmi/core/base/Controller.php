@@ -32,7 +32,7 @@ abstract class Controller
         $this->data = $data;
     }
     
-    public function setMeta(string $title, string $description, string $keywords)
+    public function setMeta(?string $title, ?string $description, ?string $keywords)
     {
         $this->meta['title'] = $title;
         $this->meta['description'] = $description;

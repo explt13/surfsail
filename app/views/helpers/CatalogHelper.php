@@ -4,8 +4,11 @@ namespace app\views\helpers;
 use nosmi\App;
 
 class CatalogHelper {
+    
     private function __construct(){}
+    
     private function __clone(){}
+
     public static function renderCard(array $product) {
         ?>
         <div class="slider-products__slide slide-product-card swiper-slide">
@@ -15,7 +18,7 @@ class CatalogHelper {
                 <?php elseif ($product['new']): ?>
                     <div class="product-card__band product-card__band_new"><span>new</span></div>                                                
                 <?php endif;?>
-                <a href="./product.html" class="product-card__image-container"> <!-- CHANGE PATH -->
+                <a href="product/<?= htmlspecialchars($product['alias'], ENT_QUOTES, 'UTF-8');?>" class="product-card__image-container"> <!-- CHANGE PATH -->
                     <div class="product-card__image">
                         <picture>
                             <source srcset="img/products/<?= htmlspecialchars($product['category_alias'].'/'.$product['image'], ENT_QUOTES, 'UTF-8');?>.webp" type="image/webp">
@@ -25,7 +28,7 @@ class CatalogHelper {
                     </div>
                 </a>
                 <div class="product-card__information information-product-card">
-                    <h3 class="information-product-card__title"><?= htmlspecialchars($product['title'], ENT_QUOTES, 'UTF-8');?></h3>
+                    <a href="product/<?= htmlspecialchars($product['alias'], ENT_QUOTES, 'UTF-8');?>" class="information-product-card__title"><?= htmlspecialchars($product['title'], ENT_QUOTES, 'UTF-8');?></a>
                     <div class="information-product-card__review review-information">
                         <div class="review-information__rating rating">
                             <div class="rating__body">
@@ -73,14 +76,17 @@ class CatalogHelper {
         </div>
         <?php
     }
-    public static function renderCatalog(array $products, string $section_title, ?string $mod = null) {
+
+    public static function renderCatalog(array $products, string $section_title, ?string $mod = null, bool $more = true) {
         if ($products): ?>
             <section class="products <?= $mod ? 'products_' . htmlspecialchars($mod, ENT_QUOTES, 'UTF-8') : '';?>">
                 <div class="products__container container">
                     <div class="products__block block-products">
                         <div class="block-products__top-row section-row-top">
                             <h2 class="block-products__title section-title"><?= htmlspecialchars($section_title, ENT_QUOTES, 'UTF-8');?></h2>
-                            <a href="./catalog.html" class="block-products__more _icon-arrow_sh_r" data-All catalog>All catalog</a>
+                            <?php if ($more): ?>
+                                <a href="./catalog.html" class="block-products__more _icon-arrow_sh_r">All catalog</a>
+                            <?php endif;?>
                         </div>
                         <div class="block-products__body body-products">
                             <div class="body-products__slider swiper slider-products">

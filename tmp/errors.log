@@ -1064,3 +1064,191 @@
 --------------------------------------
 [2024-08-25 22:58:43] Error: Cannot use object of type stdClass as array | File: E:\OpenServer\domains\surfsail\app\controllers\CurrencyController.php | Line: 25
 --------------------------------------
+[2024-08-26 12:55:47] Error: Call to private nosmi\Cache::__construct() from scope app\widgets\currency\Currency | File: E:\OpenServer\domains\surfsail\app\widgets\currency\Currency.php | Line: 23
+--------------------------------------
+[2024-08-26 15:23:37] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sc.sub_category_id' in 'field list' | File: E:\OpenServer\domains\surfsail\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Line: 206
+--------------------------------------
+[2024-08-26 15:24:13] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sc.sub_category_id' in 'field list' | File: E:\OpenServer\domains\surfsail\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Line: 206
+--------------------------------------
+[2024-08-26 15:24:14] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sc.sub_category_id' in 'field list' | File: E:\OpenServer\domains\surfsail\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Line: 206
+--------------------------------------
+[2024-08-26 17:49:33] Error: Call to private nosmi\Cache::__construct() from scope app\widgets\menu\Menu | File: E:\OpenServer\domains\surfsail\app\widgets\menu\Menu.php | Line: 36
+--------------------------------------
+[2024-08-26 17:49:55] Error: Cannot assign null to property app\widgets\menu\Menu::$categories of type array | File: E:\OpenServer\domains\surfsail\app\widgets\menu\Menu.php | Line: 37
+--------------------------------------
+[2024-08-26 18:22:23] Error: Class "app\controllers\SomeController" does not exist | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 29
+--------------------------------------
+[2024-08-26 19:44:30] Error: Cannot assign null to property app\widgets\menu\Menu::$menuHtml of type string | File: E:\OpenServer\domains\surfsail\app\widgets\menu\Menu.php | Line: 38
+--------------------------------------
+[2024-08-26 19:45:45] Error: Cannot assign null to property app\widgets\menu\Menu::$menuHtml of type string | File: E:\OpenServer\domains\surfsail\app\widgets\menu\Menu.php | Line: 38
+--------------------------------------
+[2024-08-26 19:45:45] Error: Cannot assign null to property app\widgets\menu\Menu::$menuHtml of type string | File: E:\OpenServer\domains\surfsail\app\widgets\menu\Menu.php | Line: 38
+--------------------------------------
+[2024-08-26 19:45:46] Error: Cannot assign null to property app\widgets\menu\Menu::$menuHtml of type string | File: E:\OpenServer\domains\surfsail\app\widgets\menu\Menu.php | Line: 38
+--------------------------------------
+[2024-08-27 16:03:25] Error: Class "app\controllers\PController" does not exist | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 29
+--------------------------------------
+[2024-08-27 16:03:37] Error: Class "app\controllers\AController" does not exist | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 29
+--------------------------------------
+[2024-08-27 16:03:52] Error: Class "app\controllers\ProductController" does not exist | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 29
+--------------------------------------
+[2024-08-27 16:10:16] Error: Class "app\controllers\ProductController" does not exist | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 29
+--------------------------------------
+[2024-08-27 16:10:45] Error: Action: app\controllers\ProductController::oceanicBreezeAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-08-27 16:14:38] Error: Action: app\controllers\ProductController::oceanicBreezeAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 37
+--------------------------------------
+[2024-08-27 16:16:43] Error: Action: app\controllers\ProductController::oceanicBreezeAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 37
+--------------------------------------
+[2024-08-27 16:17:44] Error: Action: app\controllers\ProductController::oceanicBreezeAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-08-27 16:18:03] Error: Action: app\controllers\ProductController::oceanicBreezeAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-08-27 16:18:06] Error: Action: app\controllers\ProductController::oceanicAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-08-27 16:18:10] Error: Action: app\controllers\ProductController::oceanicBreezeAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-08-27 16:18:26] Error: Action: app\controllers\ProductController::oceanicBreezeAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-08-27 16:18:38] Error: Action: app\controllers\ProductController::oceanicBreezeAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-08-27 16:19:00] Error: Action: app\controllers\ProductController::oceanicBreezeAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-08-27 16:19:12] Error: Action: app\controllers\ProductController::oceanicBreezeAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-08-27 16:23:21] Error: Action: app\controllers\ProductController::oceanicBreezeAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-08-27 16:24:04] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-27 16:24:05] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-27 17:33:08] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-27 18:44:03] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-27 18:44:04] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-27 18:44:05] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-27 19:38:18] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:38:32] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:38:33] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:38:34] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:38:42] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:38:43] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:39:03] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:39:26] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:39:28] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:39:29] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:39:33] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:39:57] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:40:23] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:40:31] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:40:32] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:40:40] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:40:48] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:41:00] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:54:01] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:57:15] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:59:10] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 19:59:57] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 20:00:53] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 20:25:48] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 20:25:51] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 20:46:35] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-27 20:46:44] Error: nosmi\base\Controller::setMeta(): Argument #2 ($description) must be of type string, null given, called in E:\OpenServer\domains\surfsail\app\controllers\ProductController.php on line 18 | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\base\Controller.php | Line: 35
+--------------------------------------
+[2024-08-27 20:46:46] Error: nosmi\base\Controller::setMeta(): Argument #2 ($description) must be of type string, null given, called in E:\OpenServer\domains\surfsail\app\controllers\ProductController.php on line 18 | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\base\Controller.php | Line: 35
+--------------------------------------
+[2024-08-29 08:41:57] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-29 08:42:05] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-29 08:43:32] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-29 08:43:39] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-29 08:44:08] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-29 08:45:32] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-29 08:46:47] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-29 08:46:54] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-29 08:49:50] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-29 08:50:14] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-29 11:23:49] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-29 11:23:53] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-29 12:50:48] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '4' at line 1 | File: E:\OpenServer\domains\surfsail\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Line: 206
+--------------------------------------
+[2024-08-29 12:57:37] Error: htmlspecialchars(): Argument #1 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\views\Product\view.php | Line: 106
+--------------------------------------
+[2024-08-29 12:57:39] Error: htmlspecialchars(): Argument #1 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\views\Product\view.php | Line: 106
+--------------------------------------
+[2024-08-29 12:57:42] Error: htmlspecialchars(): Argument #1 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\views\Product\view.php | Line: 106
+--------------------------------------
+[2024-08-29 12:57:42] Error: htmlspecialchars(): Argument #1 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\views\Product\view.php | Line: 106
+--------------------------------------
+[2024-08-29 12:57:44] Error: htmlspecialchars(): Argument #1 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\views\Product\view.php | Line: 106
+--------------------------------------
+[2024-08-29 14:07:37] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-29 14:08:10] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-29 14:08:11] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-30 11:15:38] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-30 11:15:56] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-08-30 18:13:10] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-08-30 18:13:13] Error: Product not found | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 15
+--------------------------------------
+[2024-09-01 22:45:52] Error: Class "app\controllers\CartController" does not exist | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 29
+--------------------------------------
+[2024-09-01 22:48:12] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-09-01 22:53:32] Error: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif" | File: E:\OpenServer\domains\surfsail\app\views\Product\view.php | Line: 531
+--------------------------------------
+[2024-09-01 22:54:09] Error: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif" | File: E:\OpenServer\domains\surfsail\app\views\Product\view.php | Line: 535
+--------------------------------------
+[2024-09-01 23:13:32] Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'surfsail.product_review' doesn't exist | File: E:\OpenServer\domains\surfsail\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Line: 206
+--------------------------------------
+[2024-09-01 23:20:08] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-09-02 00:08:26] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM product_related pr INNER JOIN product p ON pr.related_id = p.id WHERE pr.pr' at line 1 | File: E:\OpenServer\domains\surfsail\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Line: 206
+--------------------------------------
+[2024-09-02 00:21:27] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'u.first_name, u.last_name, u.profile_pic FROM review r INNER JOIN user u ON r.us' at line 1 | File: E:\OpenServer\domains\surfsail\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Line: 206
+--------------------------------------

@@ -20,7 +20,8 @@ class Currency
 
     public static function getCurrencies()
     {
-        if ($currencies = Cache::get('currencies')) {
+        $cache = Cache::getInstance();
+        if ($currencies = $cache->get('currencies')) {
             return $currencies;
         }
         else {
@@ -29,7 +30,7 @@ class Currency
             foreach ($currencies as $k => $v) {
                 $curs[$v['code']] = $v;
             }
-            Cache::set('currencies', $curs);
+            $cache->set('currencies', $curs);
         }
         return $curs;
         
