@@ -129,16 +129,19 @@
                             <?php endif;?>
                         </div>
                         <div class="body-product__options options-product">
-                            <div class="options-product__label">Board Material</div>
+                            <?php foreach ($modificators as $mod): ?>
+                            <div class="options-product__label"><?= htmlspecialchars($mod['title'], ENT_QUOTES 'UTF-8');?></div>
                             <div class="options-product__value">
                                 <select name="material" class="product">
-                                    <option disabled selected>Select material</option>
-                                    <option value="fiberglass">Fiberglass</option>
-                                    <option value="carbon">Carbon</option>
-                                    <option value="foam">Foam</option>
-                                    <option value="wood">Wood</option>
+                                    <option default selected>Select material</option>
+                                    <?php foreach($mod['opts'] as $opt): ?>
+                                     <option value="<?= htmlspecialchars($opt['value'], ENT_QUOTES, 'UTF-8');?>">
+                                        <?= htmlspecialchars($opt['title'], ENT_QUOTES, 'UTF-8');?>
+                                      </option>
+                                    <?php endforeach;?>
                                 </select>
                             </div>
+                            <?php endforeach;?>
                             <div class="options-product__label">Color</div>
                             <div class="options-product__value">
                                 <select name="color" class="product">
