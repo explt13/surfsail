@@ -130,7 +130,7 @@
                         </div>
                         <div class="body-product__options options-product">
                             <?php foreach ($modificators as $mod): ?>
-                            <div class="options-product__label"><?= htmlspecialchars($mod['title'], ENT_QUOTES 'UTF-8');?></div>
+                            <div class="options-product__label"><?= htmlspecialchars($mod['title'], ENT_QUOTES, 'UTF-8');?></div>
                             <div class="options-product__value">
                                 <select name="material" class="product">
                                     <option default selected>Select material</option>
@@ -142,16 +142,6 @@
                                 </select>
                             </div>
                             <?php endforeach;?>
-                            <div class="options-product__label">Color</div>
-                            <div class="options-product__value">
-                                <select name="color" class="product">
-                                    <option disabled selected>Select color</option>
-                                    <option value="blue">Blue</option>
-                                    <option value="red">Red</option>
-                                    <option value="yellow">Yellow</option>
-                                    <option value="green">Green</option>
-                                </select>
-                            </div>
                             <div class="options-product__label">Deck Surface</div>
                             <div class="options-product__value">
                                 <select name="front" class="product">
