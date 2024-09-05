@@ -1252,3 +1252,15 @@
 --------------------------------------
 [2024-09-02 00:21:27] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'u.first_name, u.last_name, u.profile_pic FROM review r INNER JOIN user u ON r.us' at line 1 | File: E:\OpenServer\domains\surfsail\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Line: 206
 --------------------------------------
+[2024-09-04 08:31:10] Error: Can not connect to the database | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Db.php | Line: 14
+--------------------------------------
+[2024-09-04 08:31:43] Error: Can not connect to the database | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Db.php | Line: 14
+--------------------------------------
+[2024-09-04 08:31:44] Error: Can not connect to the database | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Db.php | Line: 14
+--------------------------------------
+[2024-09-04 08:31:46] Error: Can not connect to the database | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Db.php | Line: 14
+--------------------------------------
+[2024-09-04 08:31:54] Error: Can not connect to the database | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Db.php | Line: 14
+--------------------------------------
+[2024-09-05 13:23:18] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
