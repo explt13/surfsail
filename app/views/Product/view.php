@@ -22,7 +22,7 @@
     <?php
     use app\views\helpers\CatalogHelper;
     if ($product): ?>
-        <div class="product">
+        <div class="product" data-id="<?= htmlspecialchars($product['id'], ENT_QUOTES, 'UTF-8');?>">
             <div class="product__container container">
                 <div class="product__main main-product">
                     <div class="main-product__images images-product">
@@ -76,10 +76,15 @@
                     <div class="main-product__body body-product">
                         <div class="body-product__header header-product">
                             <div class="header-product__line">
-                                <h1 class="header-product__title">AquaRide Shortboard</h1>
-                                <?php if($product['new']): ?>
-                                    <span class="header-product__new">new</span>
-                                <?php endif;?>
+                                <h1 class="header-product__title"><?= htmlspecialchars($product['title'], ENT_QUOTES, 'UTF-8');?></h1>
+                                <div class="header-product__mods">
+                                    <?php if($product['new']): ?>
+                                        <span class="header-product__new">new</span>
+                                    <?php endif;?>
+                                    <?php if($product['discount_percentage']): ?>
+                                        <span class="header-product__discount"><?= htmlspecialchars('-'.$product['discount_percentage'].'%', ENT_QUOTES, 'UTF-8')?></span>
+                                    <?php endif;?>
+                                </div>
                                 <div class="header-product-card__actions product-card-actions">
                                     <span class="_icon-comp product-card-actions__comp"></span>
                                     <span class="_icon-fav product-card-actions__like"></span>
@@ -128,39 +133,23 @@
                                 <div class="table-product__value"><?= htmlspecialchars($product['weight'], ENT_QUOTES, 'UTF-8');?> kg</div>
                             <?php endif;?>
                         </div>
+                        <?php if ($mods): ?>
                         <div class="body-product__options options-product">
-                            <?php foreach ($modificators as $mod): ?>
-                            <div class="options-product__label"><?= htmlspecialchars($mod['title'], ENT_QUOTES, 'UTF-8');?></div>
+                            <?php foreach ($mods as $mod): ?>
+                            <div class="options-product__label"><?= htmlspecialchars($mod['name'], ENT_QUOTES, 'UTF-8');?></div>
                             <div class="options-product__value">
                                 <select name="material" class="product">
-                                    <option default selected>Select material</option>
-                                    <?php foreach($mod['opts'] as $opt): ?>
-                                     <option value="<?= htmlspecialchars($opt['value'], ENT_QUOTES, 'UTF-8');?>">
-                                        <?= htmlspecialchars($opt['title'], ENT_QUOTES, 'UTF-8');?>
-                                      </option>
+                                    <option default selected>Select <?= htmlspecialchars(strtolower($mod['name']), ENT_QUOTES, 'UTF-8');?></option>
+                                    <?php foreach($mod['options'] as $opt): ?>
+                                    <option value="<?= htmlspecialchars($opt['value'], ENT_QUOTES, 'UTF-8');?>">
+                                        <?= htmlspecialchars($opt['name'], ENT_QUOTES, 'UTF-8');?>
+                                    </option>
                                     <?php endforeach;?>
                                 </select>
                             </div>
                             <?php endforeach;?>
-                            <div class="options-product__label">Deck Surface</div>
-                            <div class="options-product__value">
-                                <select name="front" class="product">
-                                    <option disabled selected>Select surface</option>
-                                    <option value="slick">Slick</option>
-                                    <option value="matte">Matte</option>
-                                    <option value="glossy">Glossy</option>
-                                </select>
-                            </div>
-                            <div class="options-product__label">Reaction System</div>
-                            <div class="options-product__value">
-                                <select name="reaction" class="product">
-                                    <option disabled selected>Select system</option>
-                                    <option value="fcs">FCS</option>
-                                    <option value="future">Future</option>
-                                    <option value="glasson">Glass-on</option>
-                                </select>
-                            </div>
                         </div>
+                        <?php endif;?>
                         <div class="body-product__actions actions-product">
                             <div class="actions-product__price product-price product-price_big-card">
                                 <?php
@@ -189,8 +178,8 @@
                                     <button class="quantity__button quantity__button_plus" type="button"></button>
                                 </div>
                                 <div class="actions-product__buttons">
-                                    <a href="/cart/add?id=<?= htmlspecialchars($product['id'], ENT_QUOTES, 'UTF-8')?>" class="actions-product__cart button"><span class="_icon-cart"></span>To cart</a>
-                                    <a href="" class="actions-product__buy button button_black">Buy now</a>
+                                    <button class="actions-product__cart cart-button button _icon-cart">To cart</button>
+                                    <button class="actions-product__buy button button_black">Buy now</button>
                                 </div>
                             </div>
                         </div>

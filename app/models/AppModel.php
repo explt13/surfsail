@@ -5,5 +5,4 @@ use nosmi\base\Model;
 
 class AppModel extends Model
 {
-
 }

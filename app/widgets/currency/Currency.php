@@ -1,6 +1,7 @@
 <?php
 namespace app\widgets\currency;
 
+use app\models\CurrencyModel;
 use nosmi\App;
 use nosmi\Cache;
 
@@ -20,12 +21,13 @@ class Currency
 
     public static function getCurrencies()
     {
+        $currency_model = new CurrencyModel();
         $cache = Cache::getInstance();
         if ($currencies = $cache->get('currencies')) {
             return $currencies;
         }
         else {
-            $currencies = \R::getAll('SELECT code, c.* FROM currency c ORDER BY c.base DESC');
+            $currencies = $currency_model->getCurrencies();
             $curs = [];
             foreach ($currencies as $k => $v) {
                 $curs[$v['code']] = $v;

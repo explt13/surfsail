@@ -1264,3 +1264,260 @@
 --------------------------------------
 [2024-09-05 13:23:18] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
 --------------------------------------
+[2024-09-05 13:52:21] Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'surfsail.product_mods' doesn't exist | File: E:\OpenServer\domains\surfsail\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Line: 206
+--------------------------------------
+[2024-09-05 21:22:52] Error: Class "app\controllers\AquaglideController" does not exist | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 29
+--------------------------------------
+[2024-09-05 21:45:07] Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'surfsail.product_mods' doesn't exist | File: E:\OpenServer\domains\surfsail\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Line: 206
+--------------------------------------
+[2024-09-05 21:46:44] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mod m ON pm.mod_id = m.id WHERE pm.product_id = 6' at line 1 | File: E:\OpenServer\domains\surfsail\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Line: 206
+--------------------------------------
+[2024-09-05 21:48:05] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mod m ON pm.mod_id = m.id' at line 1 | File: E:\OpenServer\domains\surfsail\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Line: 206
+--------------------------------------
+[2024-09-05 21:54:09] Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'surfsail.product_mod' doesn't exist | File: E:\OpenServer\domains\surfsail\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Line: 206
+--------------------------------------
+[2024-09-06 09:47:43] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-09-06 09:47:45] Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'surfsail.product_modificator' doesn't exist | File: E:\OpenServer\domains\surfsail\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Line: 206
+--------------------------------------
+[2024-09-06 10:04:14] Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'surfsail.product_modificator' doesn't exist | File: E:\OpenServer\domains\surfsail\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Line: 206
+--------------------------------------
+[2024-09-06 13:03:06] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-09-06 13:03:08] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-09-06 13:40:52] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM product_modifier pm
+        INNER JOIN modifier_option mo ON pm.modifier_o' at line 7 | File: E:\OpenServer\domains\surfsail\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Line: 206
+--------------------------------------
+[2024-09-06 13:43:40] Error: syntax error, unexpected token ";", expecting "->" or "?->" or "{" or "[" | File: E:\OpenServer\domains\surfsail\app\controllers\ProductController.php | Line: 51
+--------------------------------------
+[2024-09-06 14:19:26] Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'surfsail.modifier_name' doesn't exist | File: E:\OpenServer\domains\surfsail\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Line: 206
+--------------------------------------
+[2024-09-07 13:23:57] Error: Class "app\controllers\CatalogController" does not exist | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 29
+--------------------------------------
+[2024-09-07 13:24:01] Error: Class "app\controllers\CatalogController" does not exist | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 29
+--------------------------------------
+[2024-09-07 13:55:32] Error: Class "app\controllers\CatalogController" does not exist | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 29
+--------------------------------------
+[2024-09-08 16:51:07] Error: sadas | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 15
+--------------------------------------
+[2024-09-08 16:51:08] Error: sadas | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 15
+--------------------------------------
+[2024-09-08 16:51:08] Error: sadas | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 15
+--------------------------------------
+[2024-09-08 16:51:08] Error: sadas | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 15
+--------------------------------------
+[2024-09-08 16:51:08] Error: sadas | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 15
+--------------------------------------
+[2024-09-08 16:51:34] Error: Action: app\controllers\CartController::addsdsAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-08 22:57:05] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-09-13 22:06:09] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-09-13 22:06:21] Error: Action: app\controllers\CartController::viewAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-13 22:08:25] Error:  | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 13
+--------------------------------------
+[2024-09-13 22:50:10] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 16:21:56] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 16:22:03] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 16:22:22] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 16:22:28] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 16:24:50] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 16:24:54] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 16:25:01] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 16:25:07] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 16:26:30] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 16:26:51] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 16:29:12] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 17:38:53] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 19:24:08] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 19:29:40] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 19:31:30] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 19:33:55] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 20:12:55] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 21:04:18] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 21:58:30] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 21:58:32] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 21:58:51] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 21:58:52] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 22:00:06] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-14 22:00:54] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-15 15:04:21] Error: Action: app\controllers\CartController::testAction not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 36
+--------------------------------------
+[2024-09-15 15:39:52] Error: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: YES) | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Db.php | Line: 11
+--------------------------------------
+[2024-09-15 15:40:14] Error: Class "R" not found | File: E:\OpenServer\domains\surfsail\app\controllers\MainController.php | Line: 11
+--------------------------------------
+[2024-09-15 15:56:42] Error: Cannot assign nosmi\Db to property nosmi\base\Model::$pdo of type PDO | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\base\Model.php | Line: 14
+--------------------------------------
+[2024-09-15 16:45:58] Error: Class "R" not found | File: E:\OpenServer\domains\surfsail\app\widgets\currency\Currency.php | Line: 28
+--------------------------------------
+[2024-09-15 16:48:53] Error: Cannot assign nosmi\Db to property nosmi\base\Model::$pdo of type PDO | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\base\Model.php | Line: 14
+--------------------------------------
+[2024-09-15 16:57:54] Error: Class "R" not found | File: E:\OpenServer\domains\surfsail\app\widgets\currency\Currency.php | Line: 28
+--------------------------------------
+[2024-09-15 17:00:15] Error: Class "R" not found | File: E:\OpenServer\domains\surfsail\app\widgets\currency\Currency.php | Line: 28
+--------------------------------------
+[2024-09-15 17:00:16] Error: Class "R" not found | File: E:\OpenServer\domains\surfsail\app\widgets\currency\Currency.php | Line: 28
+--------------------------------------
+[2024-09-15 17:00:18] Error: Cannot assign nosmi\Db to property nosmi\base\Model::$pdo of type PDO | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\base\Model.php | Line: 15
+--------------------------------------
+[2024-09-15 17:35:31] Error: Class "R" not found | File: E:\OpenServer\domains\surfsail\app\widgets\currency\Currency.php | Line: 28
+--------------------------------------
+[2024-09-15 18:41:09] Error: Class "app\models\CurrenyModel" not found | File: E:\OpenServer\domains\surfsail\app\widgets\currency\Currency.php | Line: 24
+--------------------------------------
+[2024-09-15 18:41:31] Error: Class "app\models\CurrenyModel" not found | File: E:\OpenServer\domains\surfsail\app\widgets\currency\Currency.php | Line: 24
+--------------------------------------
+[2024-09-15 18:41:32] Error: Class "app\models\CurrenyModel" not found | File: E:\OpenServer\domains\surfsail\app\widgets\currency\Currency.php | Line: 24
+--------------------------------------
+[2024-09-15 18:41:50] Error: Class "app\models\CurrenyModel" not found | File: E:\OpenServer\domains\surfsail\app\widgets\currency\Currency.php | Line: 24
+--------------------------------------
+[2024-09-15 18:41:51] Error: Class "app\models\CurrenyModel" not found | File: E:\OpenServer\domains\surfsail\app\widgets\currency\Currency.php | Line: 24
+--------------------------------------
+[2024-09-15 18:41:51] Error: Class "app\models\CurrenyModel" not found | File: E:\OpenServer\domains\surfsail\app\widgets\currency\Currency.php | Line: 24
+--------------------------------------
+[2024-09-15 18:41:51] Error: Class "app\models\CurrenyModel" not found | File: E:\OpenServer\domains\surfsail\app\widgets\currency\Currency.php | Line: 24
+--------------------------------------
+[2024-09-15 18:42:39] Error: Class "app\models\CurrencyModel" not found | File: E:\OpenServer\domains\surfsail\app\widgets\currency\Currency.php | Line: 24
+--------------------------------------
+[2024-09-15 18:42:44] Error: SQLSTATE[42S02]: Base table or view not found: 1051 Unknown table 'b' | File: E:\OpenServer\domains\surfsail\app\models\ArticleModel.php | Line: 13
+--------------------------------------
+[2024-09-15 18:46:10] Error: SQLSTATE[42S02]: Base table or view not found: 1051 Unknown table 'b' | File: E:\OpenServer\domains\surfsail\app\models\ArticleModel.php | Line: 13
+--------------------------------------
+[2024-09-15 18:46:41] Error: SQLSTATE[42S02]: Base table or view not found: 1051 Unknown table 'b' | File: E:\OpenServer\domains\surfsail\app\models\ArticleModel.php | Line: 13
+--------------------------------------
+[2024-09-15 18:46:51] Error: SQLSTATE[42S02]: Base table or view not found: 1051 Unknown table 'b' | File: E:\OpenServer\domains\surfsail\app\models\ArticleModel.php | Line: 13
+--------------------------------------
+[2024-09-15 18:48:22] Error: SQLSTATE[42S02]: Base table or view not found: 1051 Unknown table 'b' | File: E:\OpenServer\domains\surfsail\app\models\ArticleModel.php | Line: 13
+--------------------------------------
+[2024-09-15 18:49:32] Error: SQLSTATE[42S02]: Base table or view not found: 1051 Unknown table 'b' | File: E:\OpenServer\domains\surfsail\app\models\ArticleModel.php | Line: 13
+--------------------------------------
+[2024-09-15 18:50:56] Error: SQLSTATE[42S02]: Base table or view not found: 1051 Unknown table 'b' | File: E:\OpenServer\domains\surfsail\app\models\ArticleModel.php | Line: 13
+--------------------------------------
+[2024-09-15 18:50:56] Error: SQLSTATE[42S02]: Base table or view not found: 1051 Unknown table 'b' | File: E:\OpenServer\domains\surfsail\app\models\ArticleModel.php | Line: 13
+--------------------------------------
+[2024-09-15 18:51:40] Error: SQLSTATE[42S02]: Base table or view not found: 1051 Unknown table 'b' | File: E:\OpenServer\domains\surfsail\app\models\ArticleModel.php | Line: 13
+--------------------------------------
+[2024-09-15 18:51:51] Error: SQLSTATE[42S02]: Base table or view not found: 1051 Unknown table 'b' | File: E:\OpenServer\domains\surfsail\app\models\ArticleModel.php | Line: 13
+--------------------------------------
+[2024-09-15 18:51:55] Error: SQLSTATE[42S02]: Base table or view not found: 1051 Unknown table 'b' | File: E:\OpenServer\domains\surfsail\app\models\ArticleModel.php | Line: 13
+--------------------------------------
+[2024-09-15 18:52:22] Error: SQLSTATE[42S02]: Base table or view not found: 1051 Unknown table 'b' | File: E:\OpenServer\domains\surfsail\app\models\ArticleModel.php | Line: 13
+--------------------------------------
+[2024-09-15 18:52:31] Error: SQLSTATE[42S02]: Base table or view not found: 1051 Unknown table 'b' | File: E:\OpenServer\domains\surfsail\app\models\ArticleModel.php | Line: 13
+--------------------------------------
+[2024-09-15 18:53:29] Error: SQLSTATE[42S02]: Base table or view not found: 1051 Unknown table 'b' | File: E:\OpenServer\domains\surfsail\app\models\ArticleModel.php | Line: 13
+--------------------------------------
+[2024-09-16 11:47:44] Error: explode(): Argument #2 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 21
+--------------------------------------
+[2024-09-16 12:59:59] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-09-16 13:00:09] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-09-16 13:00:15] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-09-16 13:00:19] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-09-16 13:02:06] Error: explode(): Argument #2 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 21
+--------------------------------------
+[2024-09-16 13:02:21] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-09-16 13:02:30] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-09-16 18:46:15] Error: explode(): Argument #2 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 21
+--------------------------------------
+[2024-09-16 18:47:17] Error: explode(): Argument #2 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 21
+--------------------------------------
+[2024-09-17 08:31:49] Error: explode(): Argument #2 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 21
+--------------------------------------
+[2024-09-17 08:32:35] Error: explode(): Argument #2 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 21
+--------------------------------------
+[2024-09-17 08:32:52] Error: explode(): Argument #2 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 21
+--------------------------------------
+[2024-09-17 08:33:20] Error: explode(): Argument #2 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 21
+--------------------------------------
+[2024-09-17 08:33:21] Error: explode(): Argument #2 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 21
+--------------------------------------
+[2024-09-17 08:33:22] Error: explode(): Argument #2 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 21
+--------------------------------------
+[2024-09-17 08:33:22] Error: explode(): Argument #2 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 21
+--------------------------------------
+[2024-09-17 08:33:34] Error: explode(): Argument #2 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 21
+--------------------------------------
+[2024-09-17 08:34:34] Error: explode(): Argument #2 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 21
+--------------------------------------
+[2024-09-17 08:52:44] Error: explode(): Argument #2 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 22
+--------------------------------------
+[2024-09-17 08:53:16] Error: in_array(): Argument #2 ($haystack) must be of type array, string given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 22
+--------------------------------------
+[2024-09-17 08:54:13] Error: in_array(): Argument #2 ($haystack) must be of type array, string given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 22
+--------------------------------------
+[2024-09-17 08:54:21] Error: in_array(): Argument #2 ($haystack) must be of type array, string given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 22
+--------------------------------------
+[2024-09-17 08:54:39] Error: in_array(): Argument #2 ($haystack) must be of type array, string given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 23
+--------------------------------------
+[2024-09-17 09:06:15] Error: in_array(): Argument #2 ($haystack) must be of type array, string given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 24
+--------------------------------------
+[2024-09-17 09:06:17] Error: in_array(): Argument #2 ($haystack) must be of type array, string given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 24
+--------------------------------------
+[2024-09-17 09:06:19] Error: in_array(): Argument #2 ($haystack) must be of type array, string given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 24
+--------------------------------------
+[2024-09-17 09:07:10] Error: in_array(): Argument #2 ($haystack) must be of type array, string given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 24
+--------------------------------------
+[2024-09-17 09:07:20] Error: in_array(): Argument #2 ($haystack) must be of type array, string given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 25
+--------------------------------------
+[2024-09-17 09:07:38] Error: in_array(): Argument #2 ($haystack) must be of type array, string given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 25
+--------------------------------------
+[2024-09-17 09:11:14] Error: in_array(): Argument #2 ($haystack) must be of type array, string given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 25
+--------------------------------------
+[2024-09-17 09:11:55] Error: in_array(): Argument #2 ($haystack) must be of type array, string given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 24
+--------------------------------------
+[2024-09-17 09:12:24] Error: in_array(): Argument #2 ($haystack) must be of type array, string given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 24
+--------------------------------------
+[2024-09-17 10:23:35] Error: in_array(): Argument #2 ($haystack) must be of type array, null given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 24
+--------------------------------------
+[2024-09-17 11:39:37] Error: key(): Argument #1 ($array) must be of type array, string given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 25
+--------------------------------------
+[2024-09-17 11:39:40] Error: key(): Argument #1 ($array) must be of type array, string given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 25
+--------------------------------------
+[2024-09-17 11:39:55] Error: key(): Argument #1 ($array) must be of type array, string given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 25
+--------------------------------------
+[2024-09-17 12:50:56] Error: in_array(): Argument #2 ($haystack) must be of type array, stdClass given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 21
+--------------------------------------
+[2024-09-17 12:51:22] Error: in_array(): Argument #2 ($haystack) must be of type array, stdClass given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 21
+--------------------------------------
+[2024-09-17 12:52:01] Error: in_array(): Argument #2 ($haystack) must be of type array, stdClass given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 22
+--------------------------------------
+[2024-09-17 12:53:27] Error: in_array(): Argument #2 ($haystack) must be of type array, string given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 22
+--------------------------------------
+[2024-09-17 12:56:22] Error: in_array(): Argument #2 ($haystack) must be of type array, stdClass given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 24
+--------------------------------------
+[2024-09-17 12:56:59] Error: in_array(): Argument #2 ($haystack) must be of type array, stdClass given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 25
+--------------------------------------

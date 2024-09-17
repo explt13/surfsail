@@ -27,9 +27,11 @@ class ErrorHandler
     3, ROOT . '/tmp/errors.log');
     }
     
-    private function displayError($errno, $err_message, $err_file, $err_line, int $err_response = 404)
+    private function displayError($errno, $err_message, $err_file, $err_line, $err_response = 404)
     {
-        http_response_code($err_response);
+        if (!($errno === 'PDOException')){
+            http_response_code($err_response);
+        }
         if ($err_response === 404 && !DEBUG) {
             require WWW . "/errors/404.php";
             die;
