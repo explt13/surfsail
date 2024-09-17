@@ -12,11 +12,11 @@ class CatalogHelper {
     public static function renderCard(array $product) {
         ?>
         <div class="slider-products__slide slide-product-card swiper-slide">
-            <article class="product-card">
+            <article class="product-card" data-id="<?= htmlspecialchars($product['id'], ENT_QUOTES, 'UTF-8')?>">
                 <?php if ($product['discount_price']): ?>
                     <div class="product-card__band product-card__band_discount"><span>- <?= htmlspecialchars($product['discount_percentage'], ENT_QUOTES, 'UTF-8');?>%</span></div>
                 <?php elseif ($product['new']): ?>
-                    <div class="product-card__band product-card__band_new"><span>new</span></div>                                                
+                    <div class="product-card__band product-card__band_new"><span>new</span></div>
                 <?php endif;?>
                 <a href="product/<?= htmlspecialchars($product['alias'], ENT_QUOTES, 'UTF-8');?>" class="product-card__image-container"> <!-- CHANGE PATH -->
                     <div class="product-card__image">
@@ -71,7 +71,7 @@ class CatalogHelper {
                         </div>
                     </div>
                 </div>
-                <a href="./product.html" class="product-card__button button">To cart<span class="_icon-cart"></span></a>
+                <button class="product-card__button cart-button button _icon-cart">To cart</button>
             </article>
         </div>
         <?php

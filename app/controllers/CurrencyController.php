@@ -8,7 +8,7 @@ class CurrencyController extends AppController
 {
     public function getAction()
     {
-        header('Content-type: application/json');
+        header('Content-Type: application/json');
         $currency = App::$registry->getProperty('currencies')[$_COOKIE['currency'] ?? 'USD'];
         if ($currency) {
             http_response_code(200);
@@ -21,7 +21,7 @@ class CurrencyController extends AppController
     }
     public function changeAction()
     {
-        header('Content-type: application/json');
+        header('Content-Type: application/json');
         $data = json_decode(file_get_contents("php://input"), true);
         $currency = App::$registry->getProperty('currencies')[$data['currency']] ?? null;
         if ($currency) {

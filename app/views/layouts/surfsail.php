@@ -49,9 +49,9 @@
                         <div class="information__details">
                             <div class="information__city _icon-geo">Los Angeles</div>
                             <div data-da=".top-header__container, 991.98, first"class="information__number number">
-                                <div data-spollers class="number__numbers">
+                                <div data-spoilers class="number__numbers">
                                     <a class="number__num" href="tel:11234567890">+1 (123) 456-7890</a>
-                                    <span class="arrow_num _icon-arrow_sh_d" data-spoller></span>
+                                    <span class="arrow_num _icon-arrow_sh_d" data-spoiler></span>
                                     <ul class="number__list">
                                         <li><a href="tel:11234567891">+1 (123) 456-7891</a></li>
                                         <li><a href="tel:11234567892">+1 (123) 456-7892</a></li>
@@ -62,13 +62,13 @@
                             </div>
                         </div>
                         <a data-da=".top-header__container, 991.98, 2" href="#" class="information__fav _icon-fav"></a>
-                        <a data-da=".top-header__container, 991.98, 2" href="" class="information__shop shop">
-                            <div href="#" class="shop__cart _icon-cart"></div>
+                        <div data-da=".top-header__container, 991.98, 2" class="information__shop shop">
+                            <a href="/cart/index" class="shop__cart _icon-cart" data-qty="0"></a>
                             <div class="shop__details">
                                 <div class="shop__sum">0 $</div>
                                 <div href="#" class="shop__order">Place an order</div>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -91,11 +91,11 @@
                 </div>
             </div>
             <div class="footer__body body-footer">
-                <div data-spollers="600" class="body-footer__container container">
+                <div data-spoilers="600" class="body-footer__container container">
                     <div  class="body-footer__row footer-body-row footer-body-row_top">
                         <div class="footer-body-row__column column-item">
-                            <div class="column-item__spoller spoller-item-footer">
-                                <button class="column-item__title" data-spoller>INFORMATION</button>
+                            <div class="column-item__spoiler spoiler-item-footer">
+                                <button class="column-item__title" data-spoiler>INFORMATION</button>
                                 <nav class="column-item__body">
                                     <ul class="column-item__list">
                                         <li class="column-item__list-item">
@@ -118,8 +118,8 @@
                             </div>
                         </div>    
                         <div class="footer-body-row__column column-item">
-                            <div class="column-item__spoller spoller-item-footer">
-                                <button class="column-item__title" data-spoller>SUPPORT</button>
+                            <div class="column-item__spoiler spoiler-item-footer">
+                                <button class="column-item__title" data-spoiler>SUPPORT</button>
                                 <nav class="column-item__body">
                                     <ul class="column-item__list">
                                         <li class="column-item__list-item">
@@ -136,8 +136,8 @@
                             </div>  
                         </div>
                         <div class="footer-body-row__column column-item">
-                            <div class="column-item__spoller spoller-item-footer">
-                                <button class="column-item__title" data-spoller>ADDITIONAL</button>
+                            <div class="column-item__spoiler spoiler-item-footer">
+                                <button class="column-item__title" data-spoiler>ADDITIONAL</button>
                                 <nav class="column-item__body">
                                     <ul class="column-item__list">
                                         <li class="column-item__list-item">
@@ -154,8 +154,8 @@
                             </div>
                         </div>
                         <div class="footer-body-row__column column-item">
-                            <div class="column-item__spoller spoller-item-footer">
-                                <button class="column-item__title" data-spoller>MY ACCOUNT</button>
+                            <div class="column-item__spoiler spoiler-item-footer">
+                                <button class="column-item__title" data-spoiler>MY ACCOUNT</button>
                                 <nav class="column-item__body">
                                     <ul class="column-item__list">
                                         <li class="column-item__list-item">
@@ -177,8 +177,8 @@
                     </div>
                     <div class="body-footer__row footer-body-row">
                         <div class="footer-body-row__column column-item">
-                            <div class="column-item__spoller spoller-item-footer">
-                                <button class="column-item__title" data-spoller>CONTACTS</button>
+                            <div class="column-item__spoiler spoiler-item-footer">
+                                <button class="column-item__title" data-spoiler>CONTACTS</button>
                                 <nav class="column-item__body">
                                     <ul class="column-item__list">
                                         <li class="column-item__list-item">
@@ -198,8 +198,8 @@
                             </div>
                         </div>
                         <div class="footer-body-row__column column-item">
-                            <div class="column-item__spoller spoller-item-footer">
-                                <button class="column-item__title" data-spoller>USEFUL LINKS</button>
+                            <div class="column-item__spoiler spoiler-item-footer">
+                                <button class="column-item__title" data-spoiler>USEFUL LINKS</button>
                                 <nav class="column-item__body">
                                     <ul class="column-item__list">
                                         <li class="column-item__list-item">
@@ -210,8 +210,8 @@
                             </div>
                         </div>
                         <div class="footer-body-row__column column-item">
-                            <div class="column-item__spoller spoller-item-footer">
-                                <button class="column-item__title item-guarantee" data-spoller>OUR GUARANTEE</button>
+                            <div class="column-item__spoiler spoiler-item-footer">
+                                <button class="column-item__title item-guarantee" data-spoiler>OUR GUARANTEE</button>
                                 <nav class="column-item__body">
                                     <ul class="column-item__list">
                                         <li class="column-item__list-item">
@@ -226,7 +226,7 @@
                             </div>
                         </div>
                         <div class="footer-body-row__column column-item column-item_mailing">
-                            <button class="column-item__title _not-spoller">NEWSLETTER</button>
+                            <button class="column-item__title _not-spoiler">NEWSLETTER</button>
                             <form action="#" class="column-item__form form-mailing">
                                 <label for="form-mailing__input" class="form-mailing__label">Subscribe</label>
                                 <div class="form-mailing__input-container">
@@ -248,6 +248,10 @@
                 </div>
             </div>
         </footer>
+    </div>
+    <div class="notification">
+        <div class="notification__container">
+        </div>
     </div>
     <script src="js/app.min.js?_v=20240719131907"></script>
     <script src="js/script.js"></script>

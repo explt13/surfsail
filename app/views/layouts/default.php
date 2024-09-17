@@ -9,10 +9,5 @@
 <body>
     <h1>Default layout</h1>
     <?= $view ?>
-
-    <?php
-    $logs = \R::getDatabaseAdapter()->getDatabase()->getLogger();
-    debug( $logs->grep( 'SELECT' ) );
-    ?>
 </body>
 </html>

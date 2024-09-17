@@ -115,21 +115,22 @@
     <section class="brands">
         <div class="brands__container container">
             <div class="brands__title section-title">Brands</div>
-            <div class="brands__cards cards-brand">
+            <div class="brands__cards">
                 <?php foreach($brands as $brand): ?>
-                    <a href="catalog.html" class="cards-brand__item">
+                <a href="catalog.html" class="brands__item item-brand">
+                    <div class="item-brand__image">
                         <picture>
-                            <source srcset="img/brands/<?=htmlspecialchars($brand['image'], ENT_QUOTES, 'UTF-8');?>.webp" type="image/webp">
-                            <source srcset="img/brands/<?=htmlspecialchars($brand['image'], ENT_QUOTES, 'UTF-8');?>.jpg" type="image/jpeg">
-                            <img src="img/brands/<?=htmlspecialchars($brand['image'], ENT_QUOTES, 'UTF-8');?>.png" alt="brand-<?=htmlspecialchars($brand['alias'], ENT_QUOTES, 'UTF-8');?>-image">
+                            <source srcset="img/brands/<?= htmlspecialchars($brand['image'], ENT_QUOTES, 'UTF-8')?>.webp" type="image/webp">
+                            <source srcset="img/brands/<?= htmlspecialchars($brand['image'], ENT_QUOTES, 'UTF-8')?>.jpg" type="image/jpeg">
+                            <img src="img/brands/<?= htmlspecialchars($brand['image'], ENT_QUOTES, 'UTF-8')?>.png" alt="brands-image-<?= htmlspecialchars($brand['title'], ENT_QUOTES, 'UTF-8')?>">
                         </picture>
-                    </a>
+                    </div>
+                    <div class="item-brand__text _icon-arrow_sh_r"><?= htmlspecialchars($brand['title'], ENT_QUOTES, 'UTF-8')?></div>
+                </a>
                 <?php endforeach;?>
-                <?php if (count($brands) > 5): ?>
-                    <a href="catalog.html" class="cards-brand__item cards-brand__item_more _icon-arrow_sh_r">
-                        MORE
-                    </a>
-                <?php endif;?>
+                <a href="catalog.html" class="brands__more _icon-arrow_sh_r">
+                    MORE
+                </a>
             </div>
         </div>
     </section>
