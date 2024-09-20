@@ -1,4 +1,3 @@
-
 function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -74,9 +73,11 @@ function handleAddAction() {
     const cartButtons = document.querySelectorAll('.cart-button');    
     const inCartArray = decodeURIComponent(getCookie('cart') ?? "[]");
     const buttonEventHandlers = new Map();
+    const cartQty = document.querySelector('.shop__cart');
     
     cartButtons.forEach(button => {
         const product = button.closest('[data-id]');
+        const qtyInput = product.querySelector('.quantity__input input');
         if (inCartArray.includes(product.dataset.id)) {
             setButton(button);
         }
@@ -87,7 +88,8 @@ function handleAddAction() {
                     "Content-Type": 'application/json',
                 },
                 body: JSON.stringify({
-                    product_id:(product.dataset.id),
+                    product_id: (product.dataset.id),
+                    qty: qtyInput ? qtyInput.value : 1
                 })
             })
             if (!response.ok) {
@@ -96,8 +98,10 @@ function handleAddAction() {
             const data = await response.json();
             handleNotification(response.status, data.message);
             if (data.action === 'add') {
+                cartQty.dataset.qty++;
                 setButton(this);
             } else if (data.action === 'remove') {
+                cartQty.dataset.qty--;
                 unsetButton(this);
             }
         })
@@ -105,14 +109,13 @@ function handleAddAction() {
 
     function setButton(button) {
         button.textContent = 'In cart';
-        button.style.backgroundColor = '#228b22';
-        button.style.transition = 'background-color 0.2s ease-in-out';
+        button.classList.add('_in-cart');
         const onMouseEnter = function() {
-            this.style.backgroundColor = '#e7401b';
+            button.classList.add('_remove');
             this.textContent = 'Remove from cart';
         };
         const onMouseLeave = function() {
-            this.style.backgroundColor = '#228b22';
+            button.classList.remove('_remove');
             this.textContent = 'In cart';
         };
         buttonEventHandlers.set(button, { onMouseEnter, onMouseLeave });
@@ -122,7 +125,12 @@ function handleAddAction() {
         
     }
     function unsetButton(button) {
-        button.style.backgroundColor = 'var(--mainColor)';
+        if (button.classList.contains('_in-cart')) {
+            button.classList.remove('_in-cart');
+        }
+        if (button.classList.contains('_remove')) {
+            button.classList.remove('_remove');
+        }
         button.textContent = 'Add to cart';
         const handlers = buttonEventHandlers.get(button);
         if (handlers) {

@@ -10,6 +10,25 @@ class ProductModel extends AppModel
         $result = $stmt->fetch();
         return $result;
     }
+
+    public function getProductsByIds(array $ids)
+    {
+        if (!empty($ids)) {
+            $placeholders = implode(',', array_fill(0, count($ids), '?'));
+            $stmt = $this->pdo->prepare("SELECT p.* FROM product p WHERE p.id IN ($placeholders)");
+            $stmt->execute(array_keys($ids));
+            $result = $stmt->fetchAll();
+            $products = [];
+            foreach ($result as $product) {
+                $products[$product["id"]] = $product;
+            }
+            foreach ($ids as $id => $qty) {
+                $products[$id]['qty'] = $qty;
+            }
+            return $products;
+        }
+        return false;
+    }
     
     public function getProductGalleryImages(int $product_id)
     {

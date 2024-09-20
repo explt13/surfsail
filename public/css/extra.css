@@ -1,0 +1,42 @@
+.cart-button{
+    flex-direction:row-reverse;
+}
+button{
+    font-size: inherit;
+    cursor: pointer;
+}
+.cart-button{
+    transition: background-color 0.2s ease-in-out;
+}
+.cart-button._in-cart{
+    background-color: #228b22;
+}
+.cart-button.cart-button._in-cart._remove{
+    background-color: #e7401b;
+}
+.cart-item__title{
+    margin: 0 0 0.5rem 0;
+}
+.cart-item__price{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+.cart-item__image{
+    position: relative;
+    display: flex;
+}
+.cart-item__image::after{
+    content: "";
+    display: block;
+    width: 0.0625rem;
+    height: 100%;
+    background-color: #ababab;
+    z-index: 5;
+    position: absolute;
+    right: 0;
+}
+.cart-item__quantity {
+    align-self: flex-end;
+}

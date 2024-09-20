@@ -5,6 +5,7 @@
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/extra.css"/>
     <link rel="stylesheet" href="css/style.min.css?_v=20240719131907"/>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
@@ -62,13 +63,7 @@
                             </div>
                         </div>
                         <a data-da=".top-header__container, 991.98, 2" href="#" class="information__fav _icon-fav"></a>
-                        <div data-da=".top-header__container, 991.98, 2" class="information__shop shop">
-                            <a href="/cart/index" class="shop__cart _icon-cart" data-qty="0"></a>
-                            <div class="shop__details">
-                                <div class="shop__sum">0 $</div>
-                                <div href="#" class="shop__order">Place an order</div>
-                            </div>
-                        </div>
+                        <?php new app\widgets\cart\Cart();?>
                     </div>
                 </div>
             </div>
