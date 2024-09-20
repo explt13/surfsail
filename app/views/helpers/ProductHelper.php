@@ -3,13 +3,40 @@ namespace app\views\helpers;
 
 use nosmi\App;
 
-class CatalogHelper {
+class ProductHelper {
     
     private function __construct(){}
     
     private function __clone(){}
 
-    public static function renderCard(array $product) {
+    public static function renderPrice(array $product)
+    {
+        ?>
+        <div class="product-price">
+        <?php
+            $currency = App::$registry->getProperty('currency');
+            if ($product['discount_price']): ?>
+                <span class="product-price__current">
+                    <span class="product-price__symbol"><?= htmlspecialchars($currency['symbol'], ENT_QUOTES, 'UTF-8');?></span>
+                    <span class="product-price__value"> <?= htmlspecialchars(number_format($product['discount_price'] * $currency['value'], 2, ',', ' '), ENT_QUOTES, 'UTF-8');?></span>
+                </span>
+                <span class="product-price__old">
+                    <span class="product-price__symbol"><?= htmlspecialchars($currency['symbol'], ENT_QUOTES, 'UTF-8');?></span>
+                    <span class="product-price__value"> <?= htmlspecialchars(number_format($product['price'] * $currency['value'], 2, ',', ' '), ENT_QUOTES, 'UTF-8');?></span>
+                </span>
+            <?php else: ?>
+                <span class="product-price__current">
+                    <span class="product-price__symbol"><?= htmlspecialchars($currency['symbol'], ENT_QUOTES, 'UTF-8');?></span>
+                    <span class="product-price__value"><?= htmlspecialchars(number_format($product['price'] * $currency['value'], 2, ',', ' '), ENT_QUOTES, 'UTF-8');?></span>
+                </span>
+            <?php endif;
+        ?>
+        </div>
+        <?php
+    }
+
+    public static function renderCard(array $product)
+    {
         ?>
         <div class="slider-products__slide slide-product-card swiper-slide">
             <article class="product-card" data-id="<?= htmlspecialchars($product['id'], ENT_QUOTES, 'UTF-8')?>">
@@ -46,25 +73,7 @@ class CatalogHelper {
                         <div class="review-information__review _addit-info _addit-info_light">(115)</div>
                     </div>
                     <div class="information-product-card__price">
-                        <div class="product-price">
-                            <?php
-                            $currency = App::$registry->getProperty('currency');
-                            if ($product['discount_price']): ?>
-                                <span class="product-price__current">
-                                    <span class="product-price__symbol"><?= htmlspecialchars($currency['symbol'], ENT_QUOTES, 'UTF-8');?></span>
-                                    <span class="product-price__value"> <?= htmlspecialchars(number_format($product['discount_price'] * $currency['value'], 2, ',', ' '), ENT_QUOTES, 'UTF-8');?></span>
-                                </span>
-                                <span class="product-price__old">
-                                    <span class="product-price__symbol"><?= htmlspecialchars($currency['symbol'], ENT_QUOTES, 'UTF-8');?></span>
-                                    <span class="product-price__value"> <?= htmlspecialchars(number_format($product['price'] * $currency['value'], 2, ',', ' '), ENT_QUOTES, 'UTF-8');?></span>
-                                </span>
-                            <?php else: ?>
-                                <span class="product-price__current">
-                                    <span class="product-price__symbol"><?= htmlspecialchars($currency['symbol'], ENT_QUOTES, 'UTF-8');?></span>
-                                    <span class="product-price__value"><?= htmlspecialchars(number_format($product['price'] * $currency['value'], 2, ',', ' '), ENT_QUOTES, 'UTF-8');?></span>
-                                </span>
-                            <?php endif;?>
-                        </div>
+                        <?php self::renderPrice($product) ?>
                         <div class="information-product-card__actions product-card-actions">
                             <span class="_icon-comp product-card-actions__comp"></span>
                             <span class="_icon-fav product-card-actions__like"></span>
@@ -77,7 +86,8 @@ class CatalogHelper {
         <?php
     }
 
-    public static function renderCatalog(array $products, string $section_title, ?string $mod = null, bool $more = true) {
+    public static function renderCatalog(array $products, string $section_title, ?string $mod = null, bool $more = true)
+    {
         if ($products): ?>
             <section class="products <?= $mod ? 'products_' . htmlspecialchars($mod, ENT_QUOTES, 'UTF-8') : '';?>">
                 <div class="products__container container">

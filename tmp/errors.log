@@ -1521,3 +1521,115 @@
 --------------------------------------
 [2024-09-17 12:56:59] Error: in_array(): Argument #2 ($haystack) must be of type array, stdClass given | File: E:\OpenServer\domains\surfsail\app\controllers\CartController.php | Line: 25
 --------------------------------------
+[2024-09-17 16:58:07] Error: app\models\ProductModel::getProductsByIds(): Argument #1 ($ids) must be of type array, string given, called in E:\OpenServer\domains\surfsail\app\controllers\CartController.php on line 16 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 14
+--------------------------------------
+[2024-09-17 16:58:30] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM product p WHERE p in ?' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 16
+--------------------------------------
+[2024-09-17 16:59:35] Error: app\models\ProductModel::getProductsByIds(): Argument #1 ($ids) must be of type array, string given, called in E:\OpenServer\domains\surfsail\app\controllers\CartController.php on line 17 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 14
+--------------------------------------
+[2024-09-17 16:59:42] Error: app\models\ProductModel::getProductsByIds(): Argument #1 ($ids) must be of type array, string given, called in E:\OpenServer\domains\surfsail\app\controllers\CartController.php on line 17 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 14
+--------------------------------------
+[2024-09-17 16:59:57] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM product p WHERE p in ?' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 16
+--------------------------------------
+[2024-09-17 17:00:34] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM product p WHERE p in ?' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 16
+--------------------------------------
+[2024-09-17 17:01:04] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM product p WHERE p in ?' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 16
+--------------------------------------
+[2024-09-17 17:01:11] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM product p WHERE p in ?' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 16
+--------------------------------------
+[2024-09-17 17:01:55] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM product p WHERE p in ?' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 16
+--------------------------------------
+[2024-09-17 17:02:15] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM product p WHERE p in ?' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 16
+--------------------------------------
+[2024-09-17 17:03:35] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM product p WHERE p in ?' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 16
+--------------------------------------
+[2024-09-17 17:03:36] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM product p WHERE p in ?' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 16
+--------------------------------------
+[2024-09-17 17:04:01] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM product p WHERE p IN (7,5)' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 18
+--------------------------------------
+[2024-09-17 17:04:18] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM product p WHERE p.id IN (7,5)' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 18
+--------------------------------------
+[2024-09-17 17:04:40] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 19
+--------------------------------------
+[2024-09-17 17:06:14] Error: app\models\ProductModel::getProductsByIds(): Argument #1 ($ids) must be of type array, null given, called in E:\OpenServer\domains\surfsail\app\controllers\CartController.php on line 16 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 14
+--------------------------------------
+[2024-09-17 17:06:36] Error: app\models\ProductModel::getProductsByIds(): Argument #1 ($ids) must be of type array, null given, called in E:\OpenServer\domains\surfsail\app\controllers\CartController.php on line 17 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 14
+--------------------------------------
+[2024-09-17 17:07:08] Error: app\models\ProductModel::getProductsByIds(): Argument #1 ($ids) must be of type array, null given, called in E:\OpenServer\domains\surfsail\app\controllers\CartController.php on line 17 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 14
+--------------------------------------
+[2024-09-17 17:07:21] Error: app\models\ProductModel::getProductsByIds(): Argument #1 ($ids) must be of type array, null given, called in E:\OpenServer\domains\surfsail\app\controllers\CartController.php on line 17 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 14
+--------------------------------------
+[2024-09-17 17:07:35] Error: app\models\ProductModel::getProductsByIds(): Argument #1 ($ids) must be of type array, null given, called in E:\OpenServer\domains\surfsail\app\controllers\CartController.php on line 17 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 14
+--------------------------------------
+[2024-09-17 17:08:04] Error: app\models\ProductModel::getProductsByIds(): Argument #1 ($ids) must be of type array, null given, called in E:\OpenServer\domains\surfsail\app\controllers\CartController.php on line 17 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 14
+--------------------------------------
+[2024-09-17 17:10:38] Error: app\models\ProductModel::getProductsByIds(): Argument #1 ($ids) must be of type array, null given, called in E:\OpenServer\domains\surfsail\app\controllers\CartController.php on line 17 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 14
+--------------------------------------
+[2024-09-17 17:10:40] Error: app\models\ProductModel::getProductsByIds(): Argument #1 ($ids) must be of type array, null given, called in E:\OpenServer\domains\surfsail\app\controllers\CartController.php on line 17 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 14
+--------------------------------------
+[2024-09-17 17:10:48] Error: app\models\ProductModel::getProductsByIds(): Argument #1 ($ids) must be of type array, null given, called in E:\OpenServer\domains\surfsail\app\controllers\CartController.php on line 17 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 14
+--------------------------------------
+[2024-09-17 17:10:49] Error: app\models\ProductModel::getProductsByIds(): Argument #1 ($ids) must be of type array, null given, called in E:\OpenServer\domains\surfsail\app\controllers\CartController.php on line 17 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 14
+--------------------------------------
+[2024-09-17 17:10:57] Error: app\models\ProductModel::getProductsByIds(): Argument #1 ($ids) must be of type array, null given, called in E:\OpenServer\domains\surfsail\app\controllers\CartController.php on line 17 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 14
+--------------------------------------
+[2024-09-17 17:11:28] Error: app\models\ProductModel::getProductsByIds(): Argument #1 ($ids) must be of type array, null given, called in E:\OpenServer\domains\surfsail\app\controllers\CartController.php on line 17 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 14
+--------------------------------------
+[2024-09-17 17:11:43] Error: app\models\ProductModel::getProductsByIds(): Argument #1 ($ids) must be of type array, null given, called in E:\OpenServer\domains\surfsail\app\controllers\CartController.php on line 18 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 14
+--------------------------------------
+[2024-09-17 17:11:44] Error: app\models\ProductModel::getProductsByIds(): Argument #1 ($ids) must be of type array, null given, called in E:\OpenServer\domains\surfsail\app\controllers\CartController.php on line 18 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 14
+--------------------------------------
+[2024-09-17 17:11:57] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 17
+--------------------------------------
+[2024-09-17 17:11:59] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 17
+--------------------------------------
+[2024-09-17 18:11:50] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-09-17 18:12:05] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-09-17 18:25:28] Error: Class "app\views\helpers\CatalogHelper" not found | File: E:\OpenServer\domains\surfsail\app\views\Main\index.php | Line: 171
+--------------------------------------
+[2024-09-17 18:47:34] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 19
+--------------------------------------
+[2024-09-17 18:47:36] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 19
+--------------------------------------
+[2024-09-17 18:47:47] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 20
+--------------------------------------
+[2024-09-17 18:48:05] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 20
+--------------------------------------
+[2024-09-17 18:48:07] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 19
+--------------------------------------
+[2024-09-17 18:48:18] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 20
+--------------------------------------
+[2024-09-17 19:34:07] Error: syntax error, unexpected token ";" | File: E:\OpenServer\domains\surfsail\app\widgets\cart\tpl\cart_tpl.php | Line: 4
+--------------------------------------
+[2024-09-20 12:46:00] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 19
+--------------------------------------
+[2024-09-20 12:49:12] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 19
+--------------------------------------
+[2024-09-20 12:54:13] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 20
+--------------------------------------
+[2024-09-20 12:54:14] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 20
+--------------------------------------
+[2024-09-20 12:54:14] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 20
+--------------------------------------
+[2024-09-20 13:07:39] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 20
+--------------------------------------
+[2024-09-20 13:07:41] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 20
+--------------------------------------
+[2024-09-20 13:08:11] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 19
+--------------------------------------
+[2024-09-20 13:08:16] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 19
+--------------------------------------
+[2024-09-20 13:10:10] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 20
+--------------------------------------
+[2024-09-20 13:12:17] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 20
+--------------------------------------
+[2024-09-20 13:12:36] Error: PDOStatement::execute(): Argument #1 ($params) must be of type ?array, int given | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 20
+--------------------------------------
+[2024-09-20 13:15:53] Error: SQLSTATE[HY093]: Invalid parameter number | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 26
+--------------------------------------
+[2024-09-20 14:17:39] Error: count(): Argument #1 ($value) must be of type Countable|array, bool given | File: E:\OpenServer\domains\surfsail\app\views\Cart\index.php | Line: 43
+--------------------------------------
+[2024-09-20 14:19:06] Error: count(): Argument #1 ($value) must be of type Countable|array, bool given | File: E:\OpenServer\domains\surfsail\app\views\Cart\index.php | Line: 43
+--------------------------------------

@@ -4,7 +4,6 @@ namespace app\controllers;
 use app\models\ArticleModel;
 use app\models\BrandModel;
 use app\models\ProductModel;
-use nosmi\Cache;
 use nosmi\App;
 
 class MainController extends AppController
@@ -20,7 +19,7 @@ class MainController extends AppController
         $longboard_products = $product_model->getProductsBySubCategory('Longboards', 7);
         $new_products = $product_model->getNewProducts(10);
         $discount_products = $product_model->getDiscountProducts(10);
-        $recommend_products = $product_model->getProductsBySubCategory("Vests and Suits", 2);
+        $recommend_products = $product_model->getProductsBySubCategory("Bags and Vests", 2);
         $gear_products = $product_model->getProductsByCategoryAlias('protective-gear', 6);
         $articles =  $article_model->getArticles(4);
         $categories = App::$registry->getProperty('categories');

@@ -20,7 +20,7 @@
         </div>
     </div>
     <?php
-    use app\views\helpers\CatalogHelper;
+    use app\views\helpers\ProductHelper;
     if ($product): ?>
         <div class="product" data-id="<?= htmlspecialchars($product['id'], ENT_QUOTES, 'UTF-8');?>">
             <div class="product__container container">
@@ -254,7 +254,7 @@
                     </section>
                 <?php endif;?>
                 <?php if ($related_products) {
-                    CatalogHelper::renderCatalog($related_products, 'You might like', 'related', false);
+                    ProductHelper::renderCatalog($related_products, 'You might like', 'related', false);
                 }
                 ?>
             </div>

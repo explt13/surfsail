@@ -166,12 +166,12 @@
     </section>
     <?php endif;?>
     <?php
-    use app\views\helpers\CatalogHelper;
+    use app\views\helpers\ProductHelper;
     if ($shortboard_products) {
-        CatalogHelper::renderCatalog($shortboard_products, "Shortboards");
+        ProductHelper::renderCatalog($shortboard_products, "Shortboards");
     }
     if ($longboard_products) {
-        CatalogHelper::renderCatalog($longboard_products, "Longboards", 'big-gap');
+        ProductHelper::renderCatalog($longboard_products, "Longboards", 'big-gap');
     }
     ?>
     <?php if ($new_products): ?>
@@ -198,7 +198,7 @@
                     <div class="slider-new-products swiper new-products__slider">
                         <div class="swiper-wrapper">
                             <?php foreach($new_products as $product){
-                                CatalogHelper::renderCard($product);
+                                ProductHelper::renderCard($product);
                             }
                             ?>
                         </div>
@@ -213,7 +213,7 @@
     <?php endif;?>
     <?php
     if ($discount_products){
-        CatalogHelper::renderCatalog($discount_products, "Sale");
+        ProductHelper::renderCatalog($discount_products, "Sale");
     }
     ?>
     <?php if ($recommend_products):?>
@@ -243,7 +243,7 @@
     </section>
     <?php endif;?>
     <?php if ($gear_products){
-        CatalogHelper::renderCatalog($gear_products, "Gear");
+        ProductHelper::renderCatalog($gear_products, "Gear");
     }
     ?>
     <?php if($articles): ?>
