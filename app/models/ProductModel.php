@@ -11,6 +11,13 @@ class ProductModel extends AppModel
         return $result;
     }
 
+    public function getProductById(int $product_id)
+    {
+        $stmt = $this->pdo->prepare('SELECT * FROM product p WHERE p.id = :id');
+        $stmt->execute(["id" => $product_id]);
+        return $stmt->fetch();
+    }
+
     public function getProductsByIds(array $ids)
     {
         if (!empty($ids)) {

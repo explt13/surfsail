@@ -15,7 +15,7 @@ class CurrencyController extends AppController
             echo json_encode(['success' => true, 'currency' => $currency]);
         } else {
             http_response_code(400);
-            echo json_encode(['success' => false]);
+            echo json_encode(['success' => false, "message" => "No such currency exists"]);
         }
 
     }
@@ -30,7 +30,7 @@ class CurrencyController extends AppController
             echo json_encode(['success' => true, 'message' => 'Currency successfully changed', 'currency' => $currency]);
         } else {
             http_response_code(400);
-            echo json_encode(['success' => false]);
+            echo json_encode(['success' => false, "message" => "No such currency exists"]);
         }
     }
 }

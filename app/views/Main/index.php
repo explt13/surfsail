@@ -265,8 +265,7 @@
                         </a>
                         <div class="card-article__body">
                             <a href="" class="card-article__title"><?= htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8')?></a>
-                            <div class="card-article__date _addit-info _addit-info_light">
-                                <?php
+                            <div class="card-article__date _addit-info _addit-info_light"><?php
                                 $date = new DateTime($article['upload_date']);
                                 echo htmlspecialchars($date->format('m-d-Y'), ENT_QUOTES, 'UTF-8')
                                 ?>

@@ -19,10 +19,12 @@ class BrandModel extends AppModel
         
         return $stmt->fetchAll();
     }
-    public function getProductBrand(int $brand_id)
+    public function getProductBrand(?int $brand_id)
     {
-        $stmt = $this->pdo->prepare('SELECT title, alias FROM brand WHERE id = :id');
-        $stmt->execute(['id' => $brand_id]);
-        return $stmt->fetch();
+        if ($brand_id) {
+            $stmt = $this->pdo->prepare('SELECT title, alias FROM brand WHERE id = :id');
+            $stmt->execute(['id' => $brand_id]);
+            return $stmt->fetch();
+        }
     }
 }

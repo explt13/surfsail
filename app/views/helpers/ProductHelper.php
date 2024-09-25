@@ -18,11 +18,11 @@ class ProductHelper {
             if ($product['discount_price']): ?>
                 <span class="product-price__current">
                     <span class="product-price__symbol"><?= htmlspecialchars($currency['symbol'], ENT_QUOTES, 'UTF-8');?></span>
-                    <span class="product-price__value"> <?= htmlspecialchars(number_format($product['discount_price'] * $currency['value'], 2, ',', ' '), ENT_QUOTES, 'UTF-8');?></span>
+                    <span class="product-price__value"><?= htmlspecialchars(number_format($product['discount_price'] * $currency['value'], 2, ',', ' '), ENT_QUOTES, 'UTF-8');?></span>
                 </span>
                 <span class="product-price__old">
                     <span class="product-price__symbol"><?= htmlspecialchars($currency['symbol'], ENT_QUOTES, 'UTF-8');?></span>
-                    <span class="product-price__value"> <?= htmlspecialchars(number_format($product['price'] * $currency['value'], 2, ',', ' '), ENT_QUOTES, 'UTF-8');?></span>
+                    <span class="product-price__value"><?= htmlspecialchars(number_format($product['price'] * $currency['value'], 2, ',', ' '), ENT_QUOTES, 'UTF-8');?></span>
                 </span>
             <?php else: ?>
                 <span class="product-price__current">
@@ -75,7 +75,6 @@ class ProductHelper {
                     <div class="information-product-card__price">
                         <?php self::renderPrice($product) ?>
                         <div class="information-product-card__actions product-card-actions">
-                            <span class="_icon-comp product-card-actions__comp"></span>
                             <span class="_icon-fav product-card-actions__like"></span>
                         </div>
                     </div>
