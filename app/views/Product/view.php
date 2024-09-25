@@ -22,7 +22,7 @@
     <?php
     use app\views\helpers\ProductHelper;
     if ($product): ?>
-        <div class="product" data-id="<?= htmlspecialchars($product['id'], ENT_QUOTES, 'UTF-8');?>">
+        <div class="product" data-qty="<?= htmlspecialchars($product["qty"]);?>" data-id="<?= htmlspecialchars($product['id'], ENT_QUOTES, 'UTF-8');?>">
             <div class="product__container container">
                 <div class="product__main main-product">
                     <div class="main-product__images images-product">
@@ -38,8 +38,8 @@
                                     <?php foreach ($gallery_images as $image):?>
                                         <div class="show-image__slide swiper-slide">
                                             <picture>
-                                                <source srcset="img/products/<?= htmlspecialchars($product['category_alias'].'/'.$product['image'], ENT_QUOTES, 'UTF-8')?>.webp" type="image/webp">
-                                                <img src="img/products/<?= htmlspecialchars($product['category_alias'].'/'.$product['image'], ENT_QUOTES, 'UTF-8')?>.jpg" data-zoom="img/products/<?= htmlspecialchars($product['category_alias'].'/'.$product['image'], ENT_QUOTES, 'UTF-8')?>.webp" alt="product-image">
+                                                <source srcset="img/products/<?= htmlspecialchars($product['category_alias'].'/'.$image['img'], ENT_QUOTES, 'UTF-8')?>.webp" type="image/webp">
+                                                <img src="img/products/<?= htmlspecialchars($product['category_alias'].'/'.$image['img'], ENT_QUOTES, 'UTF-8')?>.jpg" data-zoom="img/products/<?= htmlspecialchars($product['category_alias'].'/'.$image['img'], ENT_QUOTES, 'UTF-8')?>.webp" alt="product-image">
                                             </picture>
                                         </div>
                                     <?php endforeach;?>
@@ -58,8 +58,8 @@
                                     <?php foreach($gallery_images as $image):?>
                                         <div class="swiper-slide thumbs-images__slide">
                                             <picture>
-                                                <source srcset="img/products/<?= htmlspecialchars($product['category_alias'].'/'.$product['image'], ENT_QUOTES, 'UTF-8')?>.webp" type="image/webp">
-                                                <img src="img/products/<?= htmlspecialchars($product['category_alias'].'/'.$product['image'], ENT_QUOTES, 'UTF-8')?>.jpg" data-zoom="img/products/<?= htmlspecialchars($product['category_alias'].'/'.$product['image'], ENT_QUOTES, 'UTF-8')?>.webp" alt="product-image">
+                                                <source srcset="img/products/<?= htmlspecialchars($product['category_alias'].'/'.$image['img'], ENT_QUOTES, 'UTF-8')?>.webp" type="image/webp">
+                                                <img src="img/products/<?= htmlspecialchars($product['category_alias'].'/'.$image['img'], ENT_QUOTES, 'UTF-8')?>.jpg" data-zoom="img/products/<?= htmlspecialchars($product['category_alias'].'/'.$product['image'], ENT_QUOTES, 'UTF-8')?>.webp" alt="product-image">
                                             </picture>
                                         </div>
                                     <?php endforeach;?>
@@ -86,7 +86,6 @@
                                     <?php endif;?>
                                 </div>
                                 <div class="header-product-card__actions product-card-actions">
-                                    <span class="_icon-comp product-card-actions__comp"></span>
                                     <span class="_icon-fav product-card-actions__like"></span>
                                 </div>
                             </div>
@@ -141,9 +140,7 @@
                                 <select name="material" class="product">
                                     <option default selected>Select <?= htmlspecialchars(strtolower($mod['name']), ENT_QUOTES, 'UTF-8');?></option>
                                     <?php foreach($mod['options'] as $opt): ?>
-                                    <option value="<?= htmlspecialchars($opt['value'], ENT_QUOTES, 'UTF-8');?>">
-                                        <?= htmlspecialchars($opt['name'], ENT_QUOTES, 'UTF-8');?>
-                                    </option>
+                                    <option value="<?= htmlspecialchars($opt['value'], ENT_QUOTES, 'UTF-8');?>"><?= htmlspecialchars($opt['name'], ENT_QUOTES, 'UTF-8');?></option>
                                     <?php endforeach;?>
                                 </select>
                             </div>
@@ -156,11 +153,11 @@
                                 if ($product['discount_price']): ?>
                                     <span class="product-price__current">
                                         <span class="product-price__symbol"><?= htmlspecialchars($currency['symbol'], ENT_QUOTES, 'UTF-8');?></span>
-                                        <span class="product-price__value"> <?= htmlspecialchars(number_format($product['discount_price'] * $currency['value'], 2, ',', ' '), ENT_QUOTES, 'UTF-8');?></span>
+                                        <span class="product-price__value"><?= htmlspecialchars(number_format($product['discount_price'] * $currency['value'], 2, ',', ' '), ENT_QUOTES, 'UTF-8');?></span>
                                     </span>
                                     <span class="product-price__old">
                                         <span class="product-price__symbol"><?= htmlspecialchars($currency['symbol'], ENT_QUOTES, 'UTF-8');?></span>
-                                        <span class="product-price__value"> <?= htmlspecialchars(number_format($product['price'] * $currency['value'], 2, ',', ' '), ENT_QUOTES, 'UTF-8');?></span>
+                                        <span class="product-price__value"><?= htmlspecialchars(number_format($product['price'] * $currency['value'], 2, ',', ' '), ENT_QUOTES, 'UTF-8');?></span>
                                     </span>
                                 <?php else: ?>
                                     <span class="product-price__current">
@@ -178,7 +175,7 @@
                                     <button class="quantity__button quantity__button_plus" type="button"></button>
                                 </div>
                                 <div class="actions-product__buttons">
-                                    <button class="actions-product__cart cart-button button _icon-cart">To cart</button>
+                                    <button class="actions-product__cart cart-button-view button _icon-cart">To cart</button>
                                     <button class="actions-product__buy button button_black">Buy now</button>
                                 </div>
                             </div>
@@ -201,9 +198,7 @@
                             </div>
                             <div class="information-product__blocks">
                                 <?php if ($product['description']):?>
-                                    <div class="information-product__block product-block-description _tabs-block _active">
-                                        <?= htmlspecialchars($product['description'], ENT_QUOTES, 'UTF-8');?>
-                                    </div>
+                                    <div class="information-product__block product-block-description _tabs-block _active"><?= htmlspecialchars($product['description'], ENT_QUOTES, 'UTF-8');?></div>
                                 <?php endif;?>
                                 <?php if ($product['additional_information']): ?>
                                     <div class="information-product__block product-block-additional-info _tabs-block">

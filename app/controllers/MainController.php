@@ -23,7 +23,8 @@ class MainController extends AppController
         $gear_products = $product_model->getProductsByCategoryAlias('protective-gear', 6);
         $articles =  $article_model->getArticles(4);
         $categories = App::$registry->getProperty('categories');
-  
+
+        http_response_code(200);
         $this->setData(compact('brands', 'shortboard_products', 'new_products', 'longboard_products', 'discount_products', 'recommend_products', 'gear_products', 'articles', 'categories'));
         $this->setMeta(App::$registry->getProperty("app_name"), 'SurfSail - online shop in US', 'surfboards, wetsuits, online, shop');
         $this->getView();

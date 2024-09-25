@@ -29,6 +29,7 @@ class ProductController extends AppController
         $related_products = $product_model->getRelatedProducts($product['id']);
         $mods = $product_model->getProductMods($product['id']);
 
+        http_response_code(200);
         $this->setData(compact('product', 'currency', 'gallery_images', 'product_brand', 'related_products', 'reviews', 'mods'));
         $this->setMeta($product['title'], $product['meta_desc'], $product['meta_kwords']);
         $this->getView();
