@@ -3,7 +3,9 @@ namespace app\controllers;
 
 use nosmi\base\Controller;
 use app\models\AppModel;
+use app\models\CartModel;
 use app\models\CategoryModel;
+use app\widgets\cart\Cart;
 use app\widgets\currency\Currency;
 use nosmi\App;
 use nosmi\Cache;
@@ -14,6 +16,9 @@ abstract class AppController extends Controller
     {
         parent::__construct($route);
         new AppModel();
+        $cart_model = new CartModel();
+        $cart_model->initializeCart();
+        App::$registry->setProperty('cart_items_qty', Cart::getCartQty());
         App::$registry->setProperty('currencies', Currency::getCurrencies());
         App::$registry->setProperty('currency', Currency::getCurrency(App::$registry->getProperty('currencies')));
         $this->getCategories();

@@ -4,8 +4,5 @@
 			"nosmi\\": "vendor/nosmi/core",
 			"app\\": "app"
 		}
-	},
-	"require": {
-		"gabordemooij/redbean": "dev-master"
 	}
 }

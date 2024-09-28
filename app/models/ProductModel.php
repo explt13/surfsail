@@ -18,21 +18,23 @@ class ProductModel extends AppModel
         return $stmt->fetch();
     }
 
-    public function getProductsByIds(array $ids)
+    public function getProductsByProductObjects(array $products)
     {
-        if (!empty($ids)) {
+        if (!empty($products)) {
+            $ids = array_keys($products);
             $placeholders = implode(',', array_fill(0, count($ids), '?'));
             $stmt = $this->pdo->prepare("SELECT p.* FROM product p WHERE p.id IN ($placeholders)");
-            $stmt->execute(array_keys($ids));
+            $stmt->execute($ids);
             $result = $stmt->fetchAll();
-            $products = [];
-            foreach ($result as $product) {
-                $products[$product["id"]] = $product;
+    
+            foreach ($result as &$res) {
+                $product_id = $res['id'];
+                $res['qty'] = $products[$product_id]['qty'];
+                $res['added_date'] = $products[$product_id]['added_date'];
             }
-            foreach ($ids as $id => $qty) {
-                $products[$id]['qty'] = $qty;
-            }
-            return $products;
+    
+            usort($result, fn($a, $b) => $b['added_date'] - $a['added_date']);
+            return $result;
         }
         return false;
     }

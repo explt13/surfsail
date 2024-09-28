@@ -22,7 +22,7 @@
     <?php
     use app\views\helpers\ProductHelper;
     if ($product): ?>
-        <div class="product" data-qty="<?= htmlspecialchars($product["qty"]);?>" data-id="<?= htmlspecialchars($product['id'], ENT_QUOTES, 'UTF-8');?>">
+        <div class="product" data-qty="<?= htmlspecialchars($product["available_qty"]);?>" data-id="<?= htmlspecialchars($product['id'], ENT_QUOTES, 'UTF-8');?>">
             <div class="product__container container">
                 <div class="product__main main-product">
                     <div class="main-product__images images-product">
@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="rating__value">4.6</div>
                                 </div>
-                                <?php if ($product['qty'] > 0): ?>
+                                <?php if ($product['available_qty'] > 0): ?>
                                     <div class="body-product__available _true">In stock</div>
                                 <?php else: ?>
                                     <div class="body-product__available">Out of stock</div>
@@ -175,7 +175,13 @@
                                     <button class="quantity__button quantity__button_plus" type="button"></button>
                                 </div>
                                 <div class="actions-product__buttons">
-                                    <button class="actions-product__cart cart-button-view button _icon-cart">To cart</button>
+                                    <button class="actions-product__cart cart-button-view button">
+                                        <span class="actions-product__cart-link _icon-cart">To cart</span>
+                                        <?php if($product_in_cart !== false): ?>
+                                            <span class="actions-product__cart-have">(you have <b><?= htmlspecialchars($product_in_cart['qty']); ?></b> in cart)</span>
+                                        <?php endif;?>
+                                    </button>
+                                   
                                     <button class="actions-product__buy button button_black">Buy now</button>
                                 </div>
                             </div>

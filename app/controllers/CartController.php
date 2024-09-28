@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\CartModel;
 use app\models\ProductModel;
 use nosmi\App;
 
@@ -10,15 +11,23 @@ class CartController extends AppController
     public function indexAction()
     {
         $currency = App::$registry->getProperty('currency');
+        $cart_items_qty = App::$registry->getProperty('cart_items_qty');
         $products_model = new ProductModel();
-        $cart = [];
-        if (isset($_COOKIE['cart'])) {
-            $cart = json_decode($_COOKIE['cart'], true) ?? [];
-        }
-        $products = $products_model->getProductsByIds($cart);
+
+        $cart = $_SESSION['cart'];
+        $products = $products_model->getProductsByProductObjects($cart);
         http_response_code(200);
-        $this->setData(compact('currency', 'products'));
+        $this->setData(compact('cart_items_qty', 'currency', 'products'));
         $this->getView();
+    }
+
+    public function getCartProductsAction()
+    {
+        header('Content-Type: application/json');
+        $cart_model = new CartModel();
+        $products_ids = $cart_model->getCartProductsIds();
+        http_response_code(200);
+        echo json_encode($products_ids);
     }
 
     public function addAction()
@@ -26,41 +35,13 @@ class CartController extends AppController
         header('Content-Type: application/json');
         $data = json_decode(file_get_contents('php://input'), true);
         $products_model = new ProductModel();
-        $cart = [];
+        $cart_model = new CartModel();
+
         $product = $products_model->getProductById($data['product_id']);
-        if (isset($_COOKIE['cart'])) {
-            $cart = json_decode($_COOKIE['cart'], true);
-        }
-        if (!key_exists($data['product_id'], $cart) && !$product === false) {
-            if ($product['qty'] >= $data["qty"]) {
-                $cart[$data['product_id']] = $data["qty"];
-                $msg = 'Item added successfully';
-                $action = 'add';
-            } else {
-                http_response_code(422);
-                echo json_encode(['success' => false, 'message' => "Out of stock. Only {$product['qty']} left"]);
-                die();
-            }
-        } else {
-            if ($data['fromView'] && $cart[$data['product_id']]) {
-                $cart[$data['product_id']] = $cart[$data['product_id']] + $data['qty'];
-                $action = "add";
-                $msg = 'Item added successfully';
-            } else {
-                if ($cart[$data['product_id']]) {
-                    unset($cart[$data['product_id']]);
-                    $msg = 'Item removed successfully';
-                    $action = 'remove';
-                } else {
-                    http_response_code(409);
-                    echo json_encode(['success' => false, 'message' => 'No such product']);
-                    die();
-                }
-            }
-        }
-        setcookie('cart', json_encode($cart), time() + 3600 * 24 * 7, '/');
-        http_response_code(200);
-        echo json_encode(['success' => true, 'message' => $msg, 'action' => $action]);
+        $result = $cart_model->addProduct($product, $data);
+        
+        http_response_code($result['response_code']);
+        echo json_encode(['message' => $result['message'], 'action' => $result['action']]);
     }
 
     public function buyAction()
@@ -70,15 +51,9 @@ class CartController extends AppController
     public function deleteAction()
     {
         $data = json_decode(file_get_contents('php://input'), true);
-        $cart_products = json_decode($_COOKIE['cart'] ?? "[]", true);
-        if (array_key_exists($data['product_id'], $cart_products)) {
-            unset($cart_products[$data['product_id']]);
-            setcookie("cart", json_encode($cart_products), time() + 3600 * 24 * 7, '/');
-            http_response_code(200);
-            echo json_encode(["status" => "success", "message" => "Product has been removed"]);
-        } else {
-            http_response_code(400);
-            echo json_encode(["status" => "failure", "message" => "No such product in cart"]);
-        }
+        $cart_model = new CartModel();
+        $result = $cart_model->deleteProduct($data['product_id']);
+        http_response_code($result['response_code']);
+        echo json_encode(["message" => "Product has been removed"]);
     }
 }

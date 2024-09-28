@@ -1663,3 +1663,19 @@
 --------------------------------------
 [2024-09-25 19:55:10] Error: app\models\BrandModel::getProductBrand(): Argument #1 ($brand_id) must be of type int, null given, called in E:\OpenServer\domains\surfsail\app\controllers\ProductController.php on line 26 | File: E:\OpenServer\domains\surfsail\app\models\BrandModel.php | Line: 22
 --------------------------------------
+[2024-09-27 19:10:44] Error: htmlspecialchars(): Argument #1 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\views\Cart\index.php | Line: 9
+--------------------------------------
+[2024-09-27 19:11:50] Error: htmlspecialchars(): Argument #1 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\views\Cart\index.php | Line: 9
+--------------------------------------
+[2024-09-27 19:12:05] Error: htmlspecialchars(): Argument #1 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\views\Cart\index.php | Line: 9
+--------------------------------------
+[2024-09-27 19:12:09] Error: htmlspecialchars(): Argument #1 ($string) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\views\Cart\index.php | Line: 9
+--------------------------------------
+[2024-09-27 22:42:35] Error: error_log(): Argument #1 ($message) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\models\CartModel.php | Line: 65
+--------------------------------------
+[2024-09-27 22:42:38] Error: error_log(): Argument #1 ($message) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\models\CartModel.php | Line: 65
+--------------------------------------
+[2024-09-27 22:42:44] Error: error_log(): Argument #1 ($message) must be of type string, array given | File: E:\OpenServer\domains\surfsail\app\models\CartModel.php | Line: 65
+--------------------------------------
+[2024-09-28 16:08:21] Error: array_reduce(): Argument #1 ($array) must be of type array, null given | File: E:\OpenServer\domains\surfsail\app\widgets\cart\Cart.php | Line: 26
+--------------------------------------

@@ -6,13 +6,11 @@ use nosmi\App;
 
 class Cart
 {
-    private $cart = [];
-    private $products;
     private $items_count;
 
     public function __construct()
     {
-        $this->setCart();
+        $this->items_count = App::$registry->getProperty('cart_items_qty');
         echo $this->render();
     }
 
@@ -22,12 +20,9 @@ class Cart
         require_once __DIR__.'/tpl/cart_tpl.php';
         return ob_get_clean();
     }
-    private function setCart()
+    public static function getCartQty()
     {
-        $cart = [];
-        if (isset($_COOKIE['cart'])) {
-            $cart = json_decode($_COOKIE['cart'], true) ?? [];
-        }
-        $this->items_count = count($cart);
+        $cart = $_SESSION['cart'];
+        return array_reduce($cart, fn($a, $b) => $a + $b['qty'], 0);
     }
 }
