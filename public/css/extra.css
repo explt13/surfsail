@@ -13,6 +13,18 @@
 .actions-product__buy{
     box-shadow: 0 4px 20px 0 rgba(93, 138, 168, 0.43);
 }
+.actions-product__cart{
+    display: block;
+}
+.actions-product__cart-link{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: .75rem;
+}
+.actions-product__cart-have{
+    font-size: .75rem;
+}
 .product-price{
     gap: 0.25rem;
     text-wrap: nowrap;
@@ -57,6 +69,16 @@ button{
 .cart-item__image{
     position: relative;
     display: flex;
+    height: 5.75rem;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+.cart-item__image img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    
 }
 .cart-item__image::after{
     content: "";

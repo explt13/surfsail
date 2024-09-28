@@ -62,61 +62,172 @@ handleCurrency();
 function main() {
     const page = document.querySelector('.page');
 
-    if (page.classList.contains('page_product' || 'page_home')) {
+    if (page.classList.contains('page_home') || page.classList.contains('page_product')) {
         const cartButtons = document.querySelectorAll('.cart-button');
         const cartButtonView = document.querySelector('.cart-button-view');
         if (cartButtonView) {
             const productTableParams = document.querySelector('.body-product__table');
-            const buyButton = document.querySelector('.actions-product__buy');
             const product = cartButtonView.closest('[data-id]');
-            let qty = parseInt(product.querySelector('.quantity__input input').value);
+            let alreadyHaveQtyEl = document.querySelector('.actions-product__cart-have b');
+            const buyButton = document.querySelector('.actions-product__buy');
+            const minusButton = document.querySelector('.quantity__button_minus');
+            const plusButton = document.querySelector('.quantity__button_plus');
+            let productQty = parseInt(product.querySelector('.quantity__input input').value.trim()); // 1
+            let maxQty = parseInt(product.dataset.qty.trim());
+            let alreadyHaveQtyValue = 0;
+            if (alreadyHaveQtyEl) {
+                alreadyHaveQtyValue = parseInt(alreadyHaveQtyEl.textContent.trim());
+            }
+
             if (productTableParams.innerHTML.trim() === ''){
                 productTableParams.remove();
             }
             cartButtonView.addEventListener('click', async function(){
-                addToCart(this, product, true, qty);
+                addToCart(this, product, true, productQty).then(
+                    function(){
+                        cart.dataset.qty = parseInt(cart.dataset.qty) + productQty;
+                        if (!alreadyHaveQtyEl) {
+                            const span = document.createElement('span');
+                            span.classList.add('actions-product__cart-have');
+                            span.innerHTML = `(you have <b>${productQty}</b> in cart)`
+                            cartButtonView.appendChild(span);
+                            alreadyHaveQtyEl = span.querySelector('b');
+                            alreadyHaveQtyValue = parseInt(alreadyHaveQtyEl.textContent.trim());
+                            if (productQty > maxQty - alreadyHaveQtyValue){
+                                productQty = maxQty - alreadyHaveQtyValue;
+                                if (productQty < 1) {
+                                    product.querySelector('.quantity__input input').value = 1;
+                                } else {
+                                    product.querySelector('.quantity__input input').value = productQty;
+                                }
+                            }
+                        } else {
+                            alreadyHaveQtyValue += productQty;
+                            alreadyHaveQtyEl.textContent = alreadyHaveQtyValue;
+                            if (productQty > maxQty - alreadyHaveQtyValue){
+                                productQty = maxQty - alreadyHaveQtyValue;
+                                if (productQty < 1) {
+                                    product.querySelector('.quantity__input input').value = 1;
+                                } else {
+                                    product.querySelector('.quantity__input input').value = productQty;
+                                }
+                            }
+                            
+                            
+                        }
+                        handleQtyButtons();
+                    }
+                );
             });
-            const minusButton = document.querySelector('.quantity__button_minus');
-            const plusButton = document.querySelector('.quantity__button_plus');
-            minusButton.addEventListener('click', function() {
-                if (qty > 1) {
-                    qty--;
+     
+        
+            const handleQtyButtons = () => {
+                if (productQty <= 1) {
+                    minusButton.disabled = true;
+                    minusButton.style.backgroundColor = "#b3b3b3";
                 }
-                if (qty <= product.dataset.qty) {
-                    [cartButtonView, buyButton].forEach(button => {
-                        button.style.backgroundColor = "";
-                        button.style.cursor = "";
-                        button.disabled = false;
-                        button.style.boxShadow = "";
-                    })
+                if (productQty + alreadyHaveQtyValue >= maxQty) {
+                    plusButton.disabled = true;
+                    plusButton.style.backgroundColor = "#b3b3b3";
+                }
+                if (maxQty === alreadyHaveQtyValue) {
+                    [buyButton, cartButtonView].forEach(button => {
+                        button.disabled = true;
+                        button.style.backgroundColor = "#b3b3b3";
+                        button.style.boxShadow = "0 0 0 0";
+                    });
+                }
+            }
+            handleQtyButtons();
+            
+            minusButton.addEventListener('click', function() {
+                if (productQty > 1) {
+                    productQty--;
+                    if (productQty === 1) {
+                        minusButton.disabled = true;
+                        minusButton.style.backgroundColor = "#b3b3b3";
+                    }
+                }
+                if (productQty + alreadyHaveQtyValue < maxQty) {
+                    plusButton.disabled = false;
+                    plusButton.style.backgroundColor = "";
                 }
             });
             plusButton.addEventListener('click', function() {
-                qty++;
-                if (qty > product.dataset.qty) {
-                    [cartButtonView, buyButton].forEach(button => {
-                        button.style.backgroundColor = "#b3b3b3";
-                        button.style.cursor = "default";
-                        button.disabled = true;
-                        button.style.boxShadow = "0 0 0 0";
-                    })
+                if (productQty < maxQty) {
+                    productQty++;
+                    if (productQty + alreadyHaveQtyValue >= maxQty) {
+                        plusButton.disabled = true;
+                        plusButton.style.backgroundColor = "#b3b3b3";
+                    }
+                }
+                if (productQty > 1) {
+                    minusButton.disabled = false;
+                    minusButton.style.backgroundColor = "";
                 }
             });
         }
 
-        const inCartArray = JSON.parse(decodeURIComponent(getCookie('cart') ?? "[]"));
         const buttonEventHandlers = new Map();
         const cart = document.querySelector('.shop__cart');
-        cartButtons.forEach(button => {
-            const product = button.closest('[data-id]');
-            if (inCartArray.hasOwnProperty(product.dataset.id)) {
-                setButton(button);
-            }
-            button.addEventListener('click', async function(){
-                addToCart(this, product);
+        const setCartButtons = async () => {
+            const response = await fetch('/cart/get-cart-products', {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                }
             })
-        });
+            const data = await response.json();
+            cartButtons.forEach(button => {
+                const product = button.closest('[data-id]');
+                if (data.includes(parseInt(product.dataset.id))){
+                    setButton(button);
+                }
+                button.addEventListener('click', async function(){
+                    addToCart(this, product);
+                })
+            });
+        }
+        setCartButtons();
 
+        async function addToCart(button, product, qty_control = false, qty = 1) {
+            const response = await fetch('/cart/add', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": 'application/json',
+                },
+                body: JSON.stringify({
+                    product_id: parseInt(product.dataset.id),
+                    qty: qty,
+                    qty_control: qty_control,
+                })
+            })
+            const data = await response.json();
+            if (!response.ok) {
+                handleNotification(response.status, data.message);
+                return;
+            }
+            handleNotification(response.status, data.message);
+        
+            if (!qty_control) {
+                if (data.action === 'add') {
+                    cart.dataset.qty = parseInt(cart.dataset.qty) + 1;
+                    const addedProducts = document.querySelectorAll(`[data-id="${product.dataset.id}"]`);
+                    addedProducts.forEach(product => {
+                        const button = product.querySelector('.cart-button');
+                        setButton(button);
+                    })
+                } else if (data.action === 'remove') {
+                    cart.dataset.qty = parseInt(cart.dataset.qty) - 1;
+                    const removedProducts = document.querySelectorAll(`[data-id="${product.dataset.id}"]`)
+                    removedProducts.forEach(product => {
+                        const button = product.querySelector('.cart-button');
+                        unsetButton(button);
+                    })
+                }
+            }
+        }
+                
         function setButton(button) {
             button.textContent = 'In cart';
             button.classList.add('_in-cart');
@@ -149,52 +260,15 @@ function main() {
             }
             buttonEventHandlers.delete(button)
         }
-        async function addToCart(button, product, fromView = false, qty = 1) {
-            const response = await fetch('/cart/add', {
-                method: 'POST',
-                headers: {
-                    "Content-Type": 'application/json',
-                },
-                body: JSON.stringify({
-                    product_id: (product.dataset.id),
-                    qty: qty,
-                    fromView: fromView,
-                })
-            })
-            const data = await response.json();
-            if (!response.ok) {
-                handleNotification(response.status, data.message);
-                return;
-            }
-            handleNotification(response.status, data.message);
-        
-            if (!fromView) {
-                if (data.action === 'add') {
-                    cart.dataset.qty++;
-                    const addedProducts = document.querySelectorAll(`[data-id="${product.dataset.id}"]`);
-                    addedProducts.forEach(product => {
-                        const button = product.querySelector('.cart-button');
-                        setButton(button);
-                    })
-                } else if (data.action === 'remove') {
-                    cart.dataset.qty--;
-                    const removedProducts = document.querySelectorAll(`[data-id="${product.dataset.id}"]`)
-                    removedProducts.forEach(product => {
-                        const button = product.querySelector('.cart-button');
-                        unsetButton(button);
-                    })
-                }
-            } else {
-                const cartQty = parseInt(cart.dataset.qty) + qty;
-                cart.dataset.qty = cartQty;
-            }
-        }
     }
 
     if (page.classList.contains('page_cart')) {
+        const cart = document.querySelector('.shop__cart');
         const products = document.querySelectorAll('[data-id]');
         const totalSum = document.querySelector('.footer-cart__price');
-        let productsItems = products.length;
+        const totalProductsEl = document.querySelector('.footer-cart__items-qty');
+        let totalProductsQty = parseInt(totalProductsEl.textContent.trim());
+
         let totalSumValue = parseFloat(totalSum.textContent.trim().replace(',', '.').replace(' ', ''));
         products.forEach(product => {
             let productQty = parseInt(product.querySelector('.quantity__input input').value.trim());
@@ -203,10 +277,8 @@ function main() {
             const minusButton = product.querySelector('.quantity__button_minus');
             const plusButton = product.querySelector('.quantity__button_plus');
             const deleteButton = product.querySelector('.cart-item__delete');
-            maxQty = 10;
-            
 
-            function initButtons() {
+            function initPlusMinusButtons() {  // handle on server
                 if (productQty >= maxQty) {
                     plusButton.disabled = true;
                     plusButton.style.backgroundColor = "#b3b3b3";
@@ -216,7 +288,7 @@ function main() {
                     minusButton.style.backgroundColor = "#b3b3b3";
                 }
             }
-            initButtons();
+            initPlusMinusButtons();
             
             
             minusButton.addEventListener('click', function() {
@@ -225,6 +297,9 @@ function main() {
                     totalSum.textContent = remainder;
                     totalSumValue = parseFloat(remainder.replace(',', '.').replace(/[\s&nbsp;]+/g, ''));
                     productQty--;
+                    totalProductsQty--;
+                    cart.dataset.qty = parseInt(cart.dataset.qty) - 1;
+                    totalProductsEl.textContent = totalProductsQty;
                 }
                 if (productQty === 1) {
                     minusButton.disabled = true;
@@ -240,6 +315,9 @@ function main() {
                     totalSum.textContent = formatNumber(totalSumValue + productPrice);
                     totalSumValue += productPrice;
                     productQty++;
+                    totalProductsQty++;
+                    cart.dataset.qty = parseInt(cart.dataset.qty) + 1;
+                    totalProductsEl.textContent = totalProductsQty;
                 }
                 if (productQty > 1) {
                     minusButton.disabled = false;
@@ -253,9 +331,9 @@ function main() {
 
             deleteButton.addEventListener('click', async function(){
                 const response = await fetch('/cart/delete', {
-                    method: "POST",
+                    method: "DELETE",
                     body: JSON.stringify({
-                        product_id: product.dataset.id,
+                        product_id: parseInt(product.dataset.id),
                     }),
                     headers: {
                         'Content-Type': 'application/json',
@@ -270,8 +348,10 @@ function main() {
                 product.remove();
                 totalSum.textContent = formatNumber(totalSumValue - (productPrice * productQty));
                 totalSumValue -= (productPrice * productQty); 
-                productsItems--;
-                if (productsItems === 0) {
+                totalProductsQty--;
+                cart.dataset.qty = parseInt(cart.dataset.qty) - 1;
+                totalProductsEl.textContent = totalProductsQty;
+                if (totalProductsQty === 0) {
                     const cartBody = document.querySelector('.cart__body');
                     cartBody.innerHTML = `
                     <div class=\"cart__no-items\">
@@ -297,9 +377,6 @@ function main() {
     }
 }
 main();
-
-
-
 
 
 function handleNotification(code, msg) {
