@@ -75,97 +75,90 @@ function main() {
             let productQty = parseInt(product.querySelector('.quantity__input input').value.trim()); // 1
             let maxQty = parseInt(product.dataset.qty.trim());
             let alreadyHaveQtyValue = 0;
+            
             if (alreadyHaveQtyEl) {
                 alreadyHaveQtyValue = parseInt(alreadyHaveQtyEl.textContent.trim());
             }
-
-            if (productTableParams.innerHTML.trim() === ''){
+            
+            if (productTableParams.innerHTML.trim() === '') {
                 productTableParams.remove();
             }
-            cartButtonView.addEventListener('click', async function(){
-                addToCart(this, product, true, productQty).then(
-                    function(){
-                        cart.dataset.qty = parseInt(cart.dataset.qty) + productQty;
-                        if (!alreadyHaveQtyEl) {
-                            const span = document.createElement('span');
-                            span.classList.add('actions-product__cart-have');
-                            span.innerHTML = `(you have <b>${productQty}</b> in cart)`
-                            cartButtonView.appendChild(span);
-                            alreadyHaveQtyEl = span.querySelector('b');
-                            alreadyHaveQtyValue = parseInt(alreadyHaveQtyEl.textContent.trim());
-                            if (productQty > maxQty - alreadyHaveQtyValue){
-                                productQty = maxQty - alreadyHaveQtyValue;
-                                if (productQty < 1) {
-                                    product.querySelector('.quantity__input input').value = 1;
-                                } else {
-                                    product.querySelector('.quantity__input input').value = productQty;
-                                }
+            
+            cartButtonView.addEventListener('click', async function() {
+                addToCart(this, product, true, productQty).then(() => {
+                    cart.dataset.qty = parseInt(cart.dataset.qty) + productQty;
+            
+                    if (!alreadyHaveQtyEl) {
+                        const span = document.createElement('span');
+                        span.classList.add('actions-product__cart-have');
+                        span.innerHTML = `(you have <b>${productQty}</b> in cart)`;
+                        cartButtonView.appendChild(span);
+                        alreadyHaveQtyEl = span.querySelector('b');
+                        alreadyHaveQtyValue = parseInt(alreadyHaveQtyEl.textContent.trim());
+                        if (productQty > maxQty - alreadyHaveQtyValue){
+                            productQty = maxQty - alreadyHaveQtyValue;
+                            if (productQty < 1) {
+                                product.querySelector('.quantity__input input').value = 1;
+                            } else {
+                                product.querySelector('.quantity__input input').value = productQty;
                             }
-                        } else {
-                            alreadyHaveQtyValue += productQty;
-                            alreadyHaveQtyEl.textContent = alreadyHaveQtyValue;
-                            if (productQty > maxQty - alreadyHaveQtyValue){
-                                productQty = maxQty - alreadyHaveQtyValue;
-                                if (productQty < 1) {
-                                    product.querySelector('.quantity__input input').value = 1;
-                                } else {
-                                    product.querySelector('.quantity__input input').value = productQty;
-                                }
-                            }
-                            
-                            
                         }
-                        handleQtyButtons();
+                    } else {
+                        alreadyHaveQtyValue += productQty;
+                        alreadyHaveQtyEl.textContent = alreadyHaveQtyValue;
+                        if (productQty > maxQty - alreadyHaveQtyValue){
+                            productQty = maxQty - alreadyHaveQtyValue;
+                            if (productQty < 1) {
+                                product.querySelector('.quantity__input input').value = 1;
+                            } else {
+                                product.querySelector('.quantity__input input').value = productQty;
+                            }
+                        }
                     }
-                );
+            
+                    handleQtyButtons();
+                });
             });
-     
-        
+            
             const handleQtyButtons = () => {
-                if (productQty <= 1) {
-                    minusButton.disabled = true;
-                    minusButton.style.backgroundColor = "#b3b3b3";
-                }
-                if (productQty + alreadyHaveQtyValue >= maxQty) {
-                    plusButton.disabled = true;
-                    plusButton.style.backgroundColor = "#b3b3b3";
-                }
-                if (maxQty === alreadyHaveQtyValue) {
+                minusButton.disabled = productQty <= 1;
+                plusButton.disabled = productQty + alreadyHaveQtyValue >= maxQty;
+            
+                minusButton.style.backgroundColor = minusButton.disabled ? "#b3b3b3" : "";
+                plusButton.style.backgroundColor = plusButton.disabled ? "#b3b3b3" : "";
+
+                if ((productQty + alreadyHaveQtyValue > maxQty) || alreadyHaveQtyValue === maxQty) {
                     [buyButton, cartButtonView].forEach(button => {
                         button.disabled = true;
                         button.style.backgroundColor = "#b3b3b3";
-                        button.style.boxShadow = "0 0 0 0";
+                        button.style.boxShadow = "none";
+                    });
+                } else {
+                    [buyButton, cartButtonView].forEach(button => {
+                        button.disabled = false;
+                        button.style.backgroundColor = "";
+                        button.style.boxShadow = "";
                     });
                 }
-            }
-            handleQtyButtons();
+            };
             
             minusButton.addEventListener('click', function() {
                 if (productQty > 1) {
                     productQty--;
-                    if (productQty === 1) {
-                        minusButton.disabled = true;
-                        minusButton.style.backgroundColor = "#b3b3b3";
-                    }
-                }
-                if (productQty + alreadyHaveQtyValue < maxQty) {
-                    plusButton.disabled = false;
-                    plusButton.style.backgroundColor = "";
+                    product.querySelector('.quantity__input input').value = productQty;
+                    handleQtyButtons();
                 }
             });
+            
             plusButton.addEventListener('click', function() {
                 if (productQty < maxQty) {
                     productQty++;
-                    if (productQty + alreadyHaveQtyValue >= maxQty) {
-                        plusButton.disabled = true;
-                        plusButton.style.backgroundColor = "#b3b3b3";
-                    }
-                }
-                if (productQty > 1) {
-                    minusButton.disabled = false;
-                    minusButton.style.backgroundColor = "";
+                    product.querySelector('.quantity__input input').value = productQty;
+                    handleQtyButtons();
                 }
             });
+            
+            handleQtyButtons();
         }
 
         const buttonEventHandlers = new Map();
@@ -348,8 +341,8 @@ function main() {
                 product.remove();
                 totalSum.textContent = formatNumber(totalSumValue - (productPrice * productQty));
                 totalSumValue -= (productPrice * productQty); 
-                totalProductsQty--;
-                cart.dataset.qty = parseInt(cart.dataset.qty) - 1;
+                totalProductsQty -= productQty;
+                cart.dataset.qty = parseInt(cart.dataset.qty) - productQty;
                 totalProductsEl.textContent = totalProductsQty;
                 if (totalProductsQty === 0) {
                     const cartBody = document.querySelector('.cart__body');
