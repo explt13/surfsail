@@ -41,10 +41,11 @@
                 <div class="body-header__container container">
                     <a href="/" class="body-header__logo _icon-logo"></a>
                     <div data-da=".catalog-header__container, 479.98" class="body-header__search search-header">
-                        <form action="#" class="search-header__form">
-                            <button type="submit" class="search-header__button _icon-search"></button>
-                            <input type="text" placeholder="Search.." name="form[]" autocomplete="off" data-error="Error" class="search-header__search">
-                        </form>
+                        <div action="/search/test" class="search-header__form">
+                            <button class="search-header__button _icon-search"></button>
+                            <input type="text" placeholder="Search.." autocomplete="off" data-error="Error" class="search-header__search">
+                        </div>
+                        <div class="search-header__result"></div>
                     </div>
                     <div class="body-header__information information">
                         <div class="information__details">

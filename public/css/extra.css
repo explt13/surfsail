@@ -4,6 +4,57 @@
 .menu__icon {
     z-index: 14;
 }
+.pagging{
+    gap: 1rem;
+}
+.pagging__dots{
+    cursor: default;
+    margin: 0 .125rem
+}
+.pagging__arrow_disabled{
+    pointer-events: none;
+    color:#ababab;
+}
+.pagging__list{
+    gap: unset;
+}
+.pagging__link._active{
+    margin: 0 .5rem;
+}
+.body-header__search{
+    border: 0;
+    border-radius: 0;
+    background-color: unset;
+    position: relative;
+}
+.search-header__form{
+    background-color: #e5eaeb;
+    border: 1px solid #898989;
+    border-radius: 5px;
+}
+.search-header__result{
+    position: absolute;
+    top: 100%;
+    background-color: #fefefe;
+    z-index: 1000;
+    width: 100%;
+    border-radius: 5px;
+}
+.search-header__result-list{
+    padding: 15px;
+}
+.search-header__result-item{
+    cursor: pointer;
+    font-size: 1.125rem;
+    width: fit-content;
+}
+.search-header__result-item:not(:last-child){
+    margin: 0 0 1rem 0;
+}
+
+.body-header__information{
+    z-index: 20;
+}
 .information__shop,.information__fav,.information__number,.top-header__user{
     z-index: 12;
 }

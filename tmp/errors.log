@@ -1679,3 +1679,63 @@
 --------------------------------------
 [2024-09-28 16:08:21] Error: array_reduce(): Argument #1 ($array) must be of type array, null given | File: E:\OpenServer\domains\surfsail\app\widgets\cart\Cart.php | Line: 26
 --------------------------------------
+[2024-09-29 10:29:13] Error: Page not found | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 44
+--------------------------------------
+[2024-09-29 10:29:25] Error: Class "app\controllers\CatalogController" does not exist | File: E:\OpenServer\domains\surfsail\vendor\nosmi\core\Router.php | Line: 29
+--------------------------------------
+[2024-09-29 13:21:06] Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'surfsail.products' doesn't exist | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 124
+--------------------------------------
+[2024-10-01 15:50:17] Error: app\models\ProductModel::getProductGalleryImages(): Argument #1 ($product_id) must be of type int, null given, called in E:\OpenServer\domains\surfsail\app\controllers\ProductController.php on line 27 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 14
+--------------------------------------
+[2024-10-01 16:26:54] Error: Call to undefined method app\models\ProductModel::getProductsByArray() | File: E:\OpenServer\domains\surfsail\app\models\CartModel.php | Line: 68
+--------------------------------------
+[2024-10-01 16:27:33] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IN (?,?,?,?)' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 100
+--------------------------------------
+[2024-10-01 16:27:33] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IN (?,?,?,?)' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 100
+--------------------------------------
+[2024-10-01 16:28:02] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IN (?,?,?,?)' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 101
+--------------------------------------
+[2024-10-01 16:28:25] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IN (?,?,?,?)' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 101
+--------------------------------------
+[2024-10-01 16:28:40] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IN (?,?,?,?)' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 100
+--------------------------------------
+[2024-10-01 16:50:38] Error: syntax error, unexpected token "endif" | File: E:\OpenServer\domains\surfsail\app\views\helpers\ProductHelper.php | Line: 114
+--------------------------------------
+[2024-10-01 18:51:56] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '9' at line 1 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 99
+--------------------------------------
+[2024-10-01 18:53:59] Error: app\models\ProductModel::getProducts(): Argument #3 ($offset) must be of type ?int, string given, called in E:\OpenServer\domains\surfsail\app\controllers\MainController.php on line 21 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 66
+--------------------------------------
+[2024-10-01 18:54:00] Error: app\models\ProductModel::getProducts(): Argument #3 ($offset) must be of type ?int, string given, called in E:\OpenServer\domains\surfsail\app\controllers\MainController.php on line 21 | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 66
+--------------------------------------
+[2024-10-01 19:28:16] Error: Class "app\controllers\PaginationModel" not found | File: E:\OpenServer\domains\surfsail\app\controllers\CatalogController.php | Line: 12
+--------------------------------------
+[2024-10-01 19:29:19] Error: Unsupported operand types: array / int | File: E:\OpenServer\domains\surfsail\app\models\PaginationModel.php | Line: 18
+--------------------------------------
+[2024-10-01 19:29:33] Error: Unsupported operand types: array / int | File: E:\OpenServer\domains\surfsail\app\models\PaginationModel.php | Line: 18
+--------------------------------------
+[2024-10-01 19:50:43] Error: Typed property app\widgets\pagination\Pagination::$sec_prev_page must not be accessed before initialization | File: E:\OpenServer\domains\surfsail\app\widgets\pagination\tpl\pagination_tpl.php | Line: 4
+--------------------------------------
+[2024-10-01 19:51:00] Error: Typed property app\widgets\pagination\Pagination::$sec_prev_page must not be accessed before initialization | File: E:\OpenServer\domains\surfsail\app\widgets\pagination\tpl\pagination_tpl.php | Line: 4
+--------------------------------------
+[2024-10-01 19:51:01] Error: Typed property app\widgets\pagination\Pagination::$sec_prev_page must not be accessed before initialization | File: E:\OpenServer\domains\surfsail\app\widgets\pagination\tpl\pagination_tpl.php | Line: 4
+--------------------------------------
+[2024-10-01 19:52:21] Error: Typed property app\widgets\pagination\Pagination::$sec_prev_page must not be accessed before initialization | File: E:\OpenServer\domains\surfsail\app\widgets\pagination\tpl\pagination_tpl.php | Line: 4
+--------------------------------------
+[2024-10-01 19:52:22] Error: Typed property app\widgets\pagination\Pagination::$sec_prev_page must not be accessed before initialization | File: E:\OpenServer\domains\surfsail\app\widgets\pagination\tpl\pagination_tpl.php | Line: 4
+--------------------------------------
+[2024-10-01 19:52:29] Error: Typed property app\widgets\pagination\Pagination::$sec_prev_page must not be accessed before initialization | File: E:\OpenServer\domains\surfsail\app\widgets\pagination\tpl\pagination_tpl.php | Line: 4
+--------------------------------------
+[2024-10-01 19:52:29] Error: Typed property app\widgets\pagination\Pagination::$sec_prev_page must not be accessed before initialization | File: E:\OpenServer\domains\surfsail\app\widgets\pagination\tpl\pagination_tpl.php | Line: 4
+--------------------------------------
+[2024-10-01 19:52:30] Error: Typed property app\widgets\pagination\Pagination::$sec_prev_page must not be accessed before initialization | File: E:\OpenServer\domains\surfsail\app\widgets\pagination\tpl\pagination_tpl.php | Line: 4
+--------------------------------------
+[2024-10-01 20:00:13] Error: Typed property app\widgets\pagination\Pagination::$sec_prev_page must not be accessed before initialization | File: E:\OpenServer\domains\surfsail\app\widgets\pagination\tpl\pagination_tpl.php | Line: 4
+--------------------------------------
+[2024-10-01 20:03:32] Error: Call to private method app\widgets\pagination\Pagination::render() from scope nosmi\base\View | File: E:\OpenServer\domains\surfsail\app\views\Catalog\index.php | Line: 169
+--------------------------------------
+[2024-10-01 20:52:08] Error: Call to private nosmi\Cache::__construct() from scope app\widgets\pagination\Pagination | File: E:\OpenServer\domains\surfsail\app\widgets\pagination\Pagination.php | Line: 25
+--------------------------------------
+[2024-10-01 21:16:38] Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'surfsail.products' doesn't exist | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 110
+--------------------------------------
+[2024-10-01 21:16:42] Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'surfsail.products' doesn't exist | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 110
+--------------------------------------

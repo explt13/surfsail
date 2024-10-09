@@ -7,10 +7,7 @@
                         <a href="/" class="breadcrumbs__link">Main page</a>
                     </li>
                     <li class="breadcrumbs__item">
-                        <a href="./catalog.html" class="breadcrumbs__link">Surfboards</a>
-                    </li>
-                    <li class="breadcrumbs__item">
-                        <a href="./catalog.html" class="breadcrumbs__link">Surfboards</a>
+                        <a href="/catalog" class="breadcrumbs__link">Catalog</a>
                     </li>
                     <li class="breadcrumbs__item">
                         <span class="breadcrumbs__current"><?= htmlspecialchars($product['title'], ENT_QUOTES, 'UTF-8');?></span>
@@ -255,7 +252,7 @@
                     </section>
                 <?php endif;?>
                 <?php if ($related_products) {
-                    ProductHelper::renderCatalog($related_products, 'You might like', 'related', false);
+                    ProductHelper::renderSliderCatalog($related_products, 'You might like', 'related', false);
                 }
                 ?>
             </div>
