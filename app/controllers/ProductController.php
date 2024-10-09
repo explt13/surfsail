@@ -18,7 +18,7 @@ class ProductController extends AppController
         $brand_model = new BrandModel();
         $review_model = new ReviewModel();
 
-        $product = $product_model->getProductByAlias($alias);
+        $product = $product_model->getProducts(['alias' => $alias, 'active' => 1], 1);
         if (!$product) {
             throw new \Exception('Product not found', 404);
         }

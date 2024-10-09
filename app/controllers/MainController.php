@@ -17,10 +17,10 @@ class MainController extends AppController
         $brands = $brands_model->getBrands(10);
         $shortboard_products = $product_model->getProductsBySubCategory('Shortboards', 7);
         $longboard_products = $product_model->getProductsBySubCategory('Longboards', 7);
-        $new_products = $product_model->getNewProducts(10);
-        $discount_products = $product_model->getDiscountProducts(10);
+        $new_products = $product_model->getProducts(['new' => 1], 10);
+        $discount_products = $product_model->getProducts(['sale' => 1], 10, 0, 'discount_percentage', true);
         $recommend_products = $product_model->getProductsBySubCategory("Bags and Vests", 2);
-        $gear_products = $product_model->getProductsByCategoryAlias('protective-gear', 6);
+        $gear_products = $product_model->getProducts(['category_alias' => 'protective-gear'], 6);
         $articles =  $article_model->getArticles(4);
         $categories = App::$registry->getProperty('categories');
 

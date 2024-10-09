@@ -420,3 +420,96 @@ function handleNotification(code, msg) {
 const formatNumber = (number) => {
     return Intl.NumberFormat(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}).format(number)
 }
+
+const handleSearch = () => {
+    const search = document.querySelector('.search-header__form');
+    const searchInput = document.querySelector('.search-header__search');
+    let result = document.querySelector('.search-header__result');
+    let val;
+    let timeID;
+
+    if (!result) {
+        result = document.createElement('div');
+        result.classList.add('search-header__result');
+        search.parentNode.appendChild(result);
+    }
+
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.search-header__form')) {
+            result.style.display = 'none';
+        } else {
+            result.style.display = 'block';
+        }
+    })
+
+    searchInput.addEventListener('input', function(e){
+        const inputValue = e.target.value.trim();
+        searchInput.value = searchInput.value.replace(/^\s+/, '');
+
+        if (val != inputValue){
+            clearTimeout(timeID);
+        }
+        
+        if (inputValue.length < 2){
+            result.innerHTML = '';
+            return;
+        }
+        
+        
+        timeID = setTimeout(() => {
+            sendSearch(inputValue);
+        }, 700);
+        val = inputValue;
+        result.innerHTML = '<ul class="search-header__result-list">Searching..</ul>';
+
+    });
+
+    const sendSearch = async (inputValue) => {
+        const response = await fetch(`/search/get?query=${encodeURIComponent(inputValue)}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        });
+        const data = await response.json();
+        if (!response.ok) {
+            handleNotification(response.status, "Try again later");
+            return;
+        }
+
+        result.innerHTML = '';
+        const resultList = document.createElement('ul');
+        resultList.classList.add('search-header__result-list');
+
+        if (data.length === 0){
+            resultList.textContent = "No results";
+            result.appendChild(resultList);
+            return;
+        }
+
+        data.forEach(searchItem => {
+            const resEl = document.createElement('li');
+            resEl.classList.add('search-header__result-item');
+            const startInd = searchItem.title.toLowerCase().search(inputValue.toLowerCase());
+            const endInd = startInd + inputValue.length;
+            const resultString = `<a href="/product/${escapeHTML(searchItem.alias)}">` +
+            escapeHTML(searchItem.title.slice(0, startInd)) + "<b>" + 
+            escapeHTML(searchItem.title.slice(startInd, endInd)) + "</b>" + 
+            escapeHTML(searchItem.title.slice(endInd)) + 
+            "</a>";
+            resEl.innerHTML = resultString;
+            resultList.appendChild(resEl);
+        });
+        result.appendChild(resultList);
+        search.parentNode.appendChild(result);
+    }
+}
+handleSearch();
+
+const escapeHTML = (str) => str.replace(/[&<>"']/g, (char) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+}[char]));

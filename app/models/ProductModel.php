@@ -3,41 +3,6 @@ namespace app\models;
 
 class ProductModel extends AppModel
 {
-    public function getProductByAlias(string $alias)
-    {
-        $stmt = $this->pdo->prepare('SELECT * FROM product p WHERE p.alias = :alias AND p.active = 1');
-        $stmt->execute(['alias' => $alias]);
-        $result = $stmt->fetch();
-        return $result;
-    }
-
-    public function getProductById(int $product_id)
-    {
-        $stmt = $this->pdo->prepare('SELECT * FROM product p WHERE p.id = :id');
-        $stmt->execute(["id" => $product_id]);
-        return $stmt->fetch();
-    }
-
-    public function getProductsByProductObjects(array $products)
-    {
-        if (!empty($products)) {
-            $ids = array_keys($products);
-            $placeholders = implode(',', array_fill(0, count($ids), '?'));
-            $stmt = $this->pdo->prepare("SELECT p.* FROM product p WHERE p.id IN ($placeholders)");
-            $stmt->execute($ids);
-            $result = $stmt->fetchAll();
-    
-            foreach ($result as &$res) {
-                $product_id = $res['id'];
-                $res['qty'] = $products[$product_id]['qty'];
-                $res['added_date'] = $products[$product_id]['added_date'];
-            }
-    
-            usort($result, fn($a, $b) => $b['added_date'] - $a['added_date']);
-            return $result;
-        }
-        return false;
-    }
     
     public function getProductGalleryImages(int $product_id)
     {
@@ -98,23 +63,51 @@ class ProductModel extends AppModel
         return $stmt->fetchAll();
     }
     
-    public function getNewProducts(int $limit)
+    public function getProducts(array $filters = [], int $limit = null, int $offset = 0, string $orderBy = null, $desc = false)
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM product p WHERE p.new = 1 LIMIT :lim');
-        $stmt->execute(['lim' => $limit]);
-        return $stmt->fetchAll();
-    }
+        $query = 'SELECT * FROM product p';
+        $allowedOrderColumns = ['price', 'title', 'discount_percentage', 'added_at', 'id'];
+        $params = [];
 
-    public function getDiscountProducts(int $limit)
-    {
-        $stmt = $this->pdo->prepare('SELECT * FROM product p WHERE p.sale = 1 ORDER BY p.discount_percentage DESC LIMIT :lim');
-        $stmt->execute(['lim' => $limit]);
-        return $stmt->fetchAll();
+        if (!empty($filters)) {
+            $query .= " WHERE 1=1";
+            foreach ($filters as $fname => $fvalue) {
+                if (is_array($fvalue)) {
+                    $placeholders = implode(',', array_fill(0, count($fvalue), '?'));
+                    $query .= " AND p.$fname IN ($placeholders)";
+                    $params = array_merge($params, $fvalue);
+                } elseif (strpos($fname, 'LIKE_') === 0) {
+                    // Handle LIKE cases (e.g. 'LIKE_title')
+                    $columnName = substr($fname, 5);
+                    $query .= " AND p.$columnName LIKE :$fname";
+                    $params[$fname] = "%$fvalue%";
+                } else {
+                    $query .= " AND p.$fname = :$fname";
+                    $params[$fname] = $fvalue;
+                }
+
+            }
+        }
+        if ($orderBy && in_array($orderBy, $allowedOrderColumns)) {
+            $query .= ' ORDER BY p.' . $orderBy . ($desc ? ' DESC' : ' ASC');
+        }
+
+        if ($limit) {
+            $query .= ' LIMIT :lim';
+            $params['lim'] = $limit;
+        }
+        if ($offset) {
+            $query .= ' OFFSET :ofs';
+            $params['ofs'] = $offset;
+        }
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute($params);
+        
+        return ($limit === 1) ? $stmt->fetch() : $stmt->fetchAll();
     }
-    public function getProductsByCategoryAlias(string $category_alias, int $limit)
+    public function getTotalProducts(): int
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM product p WHERE p.category_alias = :category_alias LIMIT :lim');
-        $stmt->execute(['category_alias' => $category_alias, 'lim' => $limit]);
-        return $stmt->fetchAll();
+        $stmt = $this->pdo->query("SELECT COUNT(*) FROM product");
+        return (int) $stmt->fetchColumn();
     }
 }

@@ -59,4 +59,24 @@ class CartModel extends AppModel
             return ["response_code" => 400, "message" => "No such product in cart"];
         }
     }
+
+    public function getProductsFromCart(array $cart)
+    {
+        if (!empty($cart)) {
+            $product_model = new ProductModel();
+            $ids = array_keys($cart);
+            $result = $product_model->getProducts(["id" => $ids]);
+    
+            foreach ($result as &$res) {
+                $product_id = $res['id'];
+                $res['qty'] = $cart[$product_id]['qty'];
+                $res['added_date'] = $cart[$product_id]['added_date'];
+            }
+    
+            usort($result, fn($a, $b) => $b['added_date'] - $a['added_date']);
+            return $result;
+        }
+        return false;
+    }
+    
 }

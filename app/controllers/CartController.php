@@ -12,10 +12,10 @@ class CartController extends AppController
     {
         $currency = App::$registry->getProperty('currency');
         $cart_items_qty = App::$registry->getProperty('cart_items_qty');
-        $products_model = new ProductModel();
+        $cart_model = new CartModel();
 
         $cart = $_SESSION['cart'];
-        $products = $products_model->getProductsByProductObjects($cart);
+        $products = $cart_model->getProductsFromCart($cart);
         http_response_code(200);
         $this->setData(compact('cart_items_qty', 'currency', 'products'));
         $this->getView();
@@ -37,7 +37,7 @@ class CartController extends AppController
         $products_model = new ProductModel();
         $cart_model = new CartModel();
 
-        $product = $products_model->getProductById($data['product_id']);
+        $product = $products_model->getProducts(['id' => $data['product_id']], 1);
         $result = $cart_model->addProduct($product, $data);
         
         http_response_code($result['response_code']);
