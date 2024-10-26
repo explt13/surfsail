@@ -26,8 +26,8 @@ class Router
         $url = self::removeQueryString($url);
         if (self::routeExists($url)) {
             $controller = 'app\\controllers\\' . self::$route['prefix'] . self::$route['controller'] . 'Controller';
-            $classReflection = new \ReflectionClass($controller);
-            if (class_exists($controller) && !$classReflection->isAbstract()) {
+            $controllerReflection = new \ReflectionClass($controller);
+            if (class_exists($controller) && !$controllerReflection->isAbstract()) {
                 $controllerObject = new $controller(self::$route);
                 $action = self::lowerCamelCase(self::$route['action']) . "Action";
                 if (method_exists($controllerObject, $action)) {

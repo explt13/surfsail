@@ -16,6 +16,7 @@ class CatalogController extends AppController
         $pagination = new Pagination($page_number, 2, 'catalog');
         $offset = ($page_number - 1) * $per_page;
         $products = $product_model->getProducts([], 2, 0, 'added_at');
+        $this->setMeta('Catalog', 'Catalog page', 'Products, list, catalog, new products, add, cart');
         $this->setData(compact('products', 'pagination'));
         $this->getView();
     }

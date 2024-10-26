@@ -61,110 +61,129 @@ handleCurrency();
 
 function main() {
     const page = document.querySelector('.page');
-
-    if (page.classList.contains('page_home') || page.classList.contains('page_product')) {
-        const cartButtons = document.querySelectorAll('.cart-button');
-        const cartButtonView = document.querySelector('.cart-button-view');
-        if (cartButtonView) {
-            const productTableParams = document.querySelector('.body-product__table');
-            const product = cartButtonView.closest('[data-id]');
-            let alreadyHaveQtyEl = document.querySelector('.actions-product__cart-have b');
-            const buyButton = document.querySelector('.actions-product__buy');
-            const minusButton = document.querySelector('.quantity__button_minus');
-            const plusButton = document.querySelector('.quantity__button_plus');
-            let productQty = parseInt(product.querySelector('.quantity__input input').value.trim()); // 1
-            let maxQty = parseInt(product.dataset.qty.trim());
-            let alreadyHaveQtyValue = 0;
-            
-            if (alreadyHaveQtyEl) {
-                alreadyHaveQtyValue = parseInt(alreadyHaveQtyEl.textContent.trim());
-            }
-            
-            if (productTableParams.innerHTML.trim() === '') {
-                productTableParams.remove();
-            }
-            
-            cartButtonView.addEventListener('click', async function() {
-                addToCart(this, product, true, productQty).then(() => {
-                    cart.dataset.qty = parseInt(cart.dataset.qty) + productQty;
-            
-                    if (!alreadyHaveQtyEl) {
-                        const span = document.createElement('span');
-                        span.classList.add('actions-product__cart-have');
-                        span.innerHTML = `(you have <b>${productQty}</b> in cart)`;
-                        cartButtonView.appendChild(span);
-                        alreadyHaveQtyEl = span.querySelector('b');
-                        alreadyHaveQtyValue = parseInt(alreadyHaveQtyEl.textContent.trim());
-                        if (productQty > maxQty - alreadyHaveQtyValue){
-                            productQty = maxQty - alreadyHaveQtyValue;
-                            if (productQty < 1) {
-                                product.querySelector('.quantity__input input').value = 1;
-                            } else {
-                                product.querySelector('.quantity__input input').value = productQty;
-                            }
-                        }
-                    } else {
-                        alreadyHaveQtyValue += productQty;
-                        alreadyHaveQtyEl.textContent = alreadyHaveQtyValue;
-                        if (productQty > maxQty - alreadyHaveQtyValue){
-                            productQty = maxQty - alreadyHaveQtyValue;
-                            if (productQty < 1) {
-                                product.querySelector('.quantity__input input').value = 1;
-                            } else {
-                                product.querySelector('.quantity__input input').value = productQty;
-                            }
+    const cartButtons = document.querySelectorAll('.cart-button');
+    const favoriteButtons = document.querySelectorAll('.product-card-actions__like')
+    const cartButtonView = document.querySelector('.cart-button-view');
+    const cart = document.querySelector('.shop__cart');
+    if (cartButtonView) {
+        const productTableParams = document.querySelector('.body-product__table');
+        const product = cartButtonView.closest('[data-id]');
+        let alreadyHaveQtyEl = document.querySelector('.actions-product__cart-have b');
+        const buyButton = document.querySelector('.actions-product__buy');
+        const minusButton = document.querySelector('.quantity__button_minus');
+        const plusButton = document.querySelector('.quantity__button_plus');
+        let productQty = parseInt(product.querySelector('.quantity__input input').value.trim()); // 1
+        let maxQty = parseInt(product.dataset.qty.trim());
+        let alreadyHaveQtyValue = 0;
+        
+        if (alreadyHaveQtyEl) {
+            alreadyHaveQtyValue = parseInt(alreadyHaveQtyEl.textContent.trim());
+        }
+        
+        if (productTableParams.innerHTML.trim() === '') {
+            productTableParams.remove();
+        }
+        
+        cartButtonView.addEventListener('click', async function() {
+            addToCart(this, product, productQty).then(() => {
+                cart.dataset.qty = parseInt(cart.dataset.qty) + productQty;
+        
+                if (!alreadyHaveQtyEl) {
+                    const span = document.createElement('span');
+                    span.classList.add('actions-product__cart-have');
+                    span.innerHTML = `(you have <b>${productQty}</b> in cart)`;
+                    cartButtonView.appendChild(span);
+                    alreadyHaveQtyEl = span.querySelector('b');
+                    alreadyHaveQtyValue = parseInt(alreadyHaveQtyEl.textContent.trim());
+                    if (productQty > maxQty - alreadyHaveQtyValue){
+                        productQty = maxQty - alreadyHaveQtyValue;
+                        if (productQty < 1) {
+                            product.querySelector('.quantity__input input').value = 1;
+                        } else {
+                            product.querySelector('.quantity__input input').value = productQty;
                         }
                     }
-            
-                    handleQtyButtons();
-                });
-            });
-            
-            const handleQtyButtons = () => {
-                minusButton.disabled = productQty <= 1;
-                plusButton.disabled = productQty + alreadyHaveQtyValue >= maxQty;
-            
-                minusButton.style.backgroundColor = minusButton.disabled ? "#b3b3b3" : "";
-                plusButton.style.backgroundColor = plusButton.disabled ? "#b3b3b3" : "";
-
-                if ((productQty + alreadyHaveQtyValue > maxQty) || alreadyHaveQtyValue === maxQty) {
-                    [buyButton, cartButtonView].forEach(button => {
-                        button.disabled = true;
-                        button.style.backgroundColor = "#b3b3b3";
-                        button.style.boxShadow = "none";
-                    });
                 } else {
-                    [buyButton, cartButtonView].forEach(button => {
-                        button.disabled = false;
-                        button.style.backgroundColor = "";
-                        button.style.boxShadow = "";
-                    });
+                    alreadyHaveQtyValue += productQty;
+                    alreadyHaveQtyEl.textContent = alreadyHaveQtyValue;
+                    if (productQty > maxQty - alreadyHaveQtyValue){
+                        productQty = maxQty - alreadyHaveQtyValue;
+                        if (productQty < 1) {
+                            product.querySelector('.quantity__input input').value = 1;
+                        } else {
+                            product.querySelector('.quantity__input input').value = productQty;
+                        }
+                    }
                 }
-            };
-            
-            minusButton.addEventListener('click', function() {
-                if (productQty > 1) {
-                    productQty--;
-                    product.querySelector('.quantity__input input').value = productQty;
-                    handleQtyButtons();
-                }
+        
+                handleQtyButtons();
             });
-            
-            plusButton.addEventListener('click', function() {
-                if (productQty < maxQty) {
-                    productQty++;
-                    product.querySelector('.quantity__input input').value = productQty;
-                    handleQtyButtons();
-                }
-            });
-            
-            handleQtyButtons();
-        }
+        });
+        
+        const handleQtyButtons = () => {
+            minusButton.disabled = productQty <= 1;
+            plusButton.disabled = productQty + alreadyHaveQtyValue >= maxQty;
+        
+            minusButton.style.backgroundColor = minusButton.disabled ? "#b3b3b3" : "";
+            plusButton.style.backgroundColor = plusButton.disabled ? "#b3b3b3" : "";
 
+            if ((productQty + alreadyHaveQtyValue > maxQty) || alreadyHaveQtyValue === maxQty) {
+                [buyButton, cartButtonView].forEach(button => {
+                    button.disabled = true;
+                    button.style.backgroundColor = "#b3b3b3";
+                    button.style.boxShadow = "none";
+                });
+            } else {
+                [buyButton, cartButtonView].forEach(button => {
+                    button.disabled = false;
+                    button.style.backgroundColor = "";
+                    button.style.boxShadow = "";
+                });
+            }
+        };
+        
+        minusButton.addEventListener('click', function() {
+            if (productQty > 1) {
+                productQty--;
+                product.querySelector('.quantity__input input').value = productQty;
+                handleQtyButtons();
+            }
+        });
+        
+        plusButton.addEventListener('click', function() {
+            if (productQty < maxQty) {
+                productQty++;
+                product.querySelector('.quantity__input input').value = productQty;
+                handleQtyButtons();
+            }
+        });
+        
+        handleQtyButtons();
+        async function addToCart(button, product, qty) {
+            const response = await fetch('/cart/add', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": 'application/json',
+                },
+                body: JSON.stringify({
+                    product_id: parseInt(product.dataset.id),
+                    qty: qty,
+                    qty_control: true,
+                })
+            })
+            const data = await response.json();
+            if (!response.ok) {
+                handleNotification(response.status, data.message);
+                return;
+            }
+            handleNotification(response.status, data.message);
+        }
+    }
+
+    if (cartButtons) {
         const buttonEventHandlers = new Map();
-        const cart = document.querySelector('.shop__cart');
         const setCartButtons = async () => {
-            const response = await fetch('/cart/get-cart-products', {
+            const response = await fetch('/cart/get-products-list', {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -183,7 +202,7 @@ function main() {
         }
         setCartButtons();
 
-        async function addToCart(button, product, qty_control = false, qty = 1) {
+        async function addToCart(button, product) {
             const response = await fetch('/cart/add', {
                 method: 'POST',
                 headers: {
@@ -191,8 +210,8 @@ function main() {
                 },
                 body: JSON.stringify({
                     product_id: parseInt(product.dataset.id),
-                    qty: qty,
-                    qty_control: qty_control,
+                    qty: 1,
+                    qty_control: false,
                 })
             })
             const data = await response.json();
@@ -202,22 +221,20 @@ function main() {
             }
             handleNotification(response.status, data.message);
         
-            if (!qty_control) {
-                if (data.action === 'add') {
-                    cart.dataset.qty = parseInt(cart.dataset.qty) + 1;
-                    const addedProducts = document.querySelectorAll(`[data-id="${product.dataset.id}"]`);
-                    addedProducts.forEach(product => {
-                        const button = product.querySelector('.cart-button');
-                        setButton(button);
-                    })
-                } else if (data.action === 'remove') {
-                    cart.dataset.qty = parseInt(cart.dataset.qty) - 1;
-                    const removedProducts = document.querySelectorAll(`[data-id="${product.dataset.id}"]`)
-                    removedProducts.forEach(product => {
-                        const button = product.querySelector('.cart-button');
-                        unsetButton(button);
-                    })
-                }
+            if (data.action === 'add') {
+                cart.dataset.qty = parseInt(cart.dataset.qty) + 1;
+                const addedProducts = document.querySelectorAll(`[data-id="${product.dataset.id}"]`);
+                addedProducts.forEach(product => {
+                    const button = product.querySelector('.cart-button');
+                    setButton(button);
+                })
+            } else if (data.action === 'remove') {
+                cart.dataset.qty = parseInt(cart.dataset.qty) - 1;
+                const removedProducts = document.querySelectorAll(`[data-id="${product.dataset.id}"]`)
+                removedProducts.forEach(product => {
+                    const button = product.querySelector('.cart-button');
+                    unsetButton(button);
+                })
             }
         }
                 
@@ -254,7 +271,102 @@ function main() {
             buttonEventHandlers.delete(button)
         }
     }
+    if (favoriteButtons) {
+        async function setButtons() {
+            const response = await fetch('/favorite/get-products-list', {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            })
+            const data = await response.json();
+            favoriteButtons.forEach(button => {
+                const product = button.closest('[data-id]');
+                if (data.includes(parseInt(product.dataset.id))){
+                    button.classList.add('_in-favorite');
+                }
+                button.addEventListener('click', async function(e) {
+                    const response = await fetch('/favorite/add', {
+                        method: "post",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            product_id: parseInt(product.dataset.id),
+                        })
+                    })
+                    const data = await response.json();
+                    if (!response.ok) {
+                        handleNotification(response.code, data.message);
+                        return;
+                    }
+                    handleNotification(response.status, data.message);
+                    if (data.action === 'add'){
+                        const addedProducts = document.querySelectorAll(`[data-id="${product.dataset.id}"]`);
+                        addedProducts.forEach(product => {
+                            const button = product.querySelector('.product-card-actions__like');
+                            button.classList.add('_in-favorite');
+                        })
+                        
+                    } else if (data.action === 'remove') {
+                        const removedProducts = document.querySelectorAll(`[data-id="${product.dataset.id}"]`)
+                        removedProducts.forEach(product => {
+                            const button = product.querySelector('.product-card-actions__like');
+                            button.classList.remove('_in-favorite');
+                        })
+                    }
+                })
+    
+            })
+        }
+        setButtons();
+    }
 
+    if (page.classList.contains('page_favorite')) {
+        const products = document.querySelectorAll('[data-id]');
+        let productsQty = products.length;
+        products.forEach(product => {
+            const deleteButton = product.querySelector('.cart-item__delete');
+            deleteButton.addEventListener('click', async function(){
+                const response = await fetch('/favorite/delete', {
+                    method: "DELETE",
+                    body: JSON.stringify({
+                        product_id: parseInt(product.dataset.id),
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+                const data = await response.json();
+                if (!response.ok) {
+                    handleNotification(response.status, data.message);
+                    return;
+                }
+                handleNotification(response.status, data.message);
+                product.remove();
+                productsQty--;
+                if (productsQty === 0) {
+                    const cartBody = document.querySelector('.cart__body');
+                    cartBody.innerHTML = `
+                    <div class=\"cart__no-items\">
+                        <div class="cart__no-items-image">
+                            <img src="img/home/empty-cart.svg" alt="no favorite items">
+                        </div>
+                        <div class="cart__no-items-text">No favorite items</div>
+                    </div>
+                    `;
+                }
+            });
+        })
+        const mq = window.matchMedia("(min-width: 992px)");
+        if (mq.matches) {
+            const windowSize = window.innerHeight;
+            const headerHeight = document.querySelector('.header').scrollHeight;
+            const cartBody = document.querySelector('.cart__body');
+            cartBody.style.minHeight = (windowSize - headerHeight) + "px";
+        }
+
+    }
     if (page.classList.contains('page_cart')) {
         const cart = document.querySelector('.shop__cart');
         const products = document.querySelectorAll('[data-id]');
@@ -349,7 +461,7 @@ function main() {
                     cartBody.innerHTML = `
                     <div class=\"cart__no-items\">
                         <div class="cart__no-items-image">
-                            <img src="img/cart/empty-cart.svg" alt="no items in cart">
+                            <img src="img/home/empty-cart.svg" alt="no items in cart">
                         </div>
                         <div class="cart__no-items-text">No items in cart</div>
                     </div>
@@ -357,16 +469,6 @@ function main() {
                 }
             });
         });
-
-
-        const mq = window.matchMedia("(max-width: 991px)");
-        if (mq.matches) {
-            const windowSize = window.innerHeight;
-            const cartFooterHeight = document.querySelector('.cart__footer').scrollHeight;
-            const headerHeight = document.querySelector('.header').scrollHeight;
-            const cartBody = document.querySelector('.cart__body');
-            cartBody.style.minHeight = (windowSize - cartFooterHeight - headerHeight) + "px";
-        }
     }
 }
 main();
@@ -376,11 +478,11 @@ function handleNotification(code, msg) {
     let type;
     
     if (code >= 200 && code < 300) {
-        type = '_success'
+        type = '_success';
     } else if (code >= 100 && code < 200 || code >= 300 && code < 400) {
-        type = '_alert'
+        type = '_alert';
     } else if (code >= 400) {
-        type = '_failure'
+        type = '_failure';
     }
     const notificationContainer = document.querySelector('.notification__container');
     
@@ -427,81 +529,82 @@ const handleSearch = () => {
     let result = document.querySelector('.search-header__result');
     let val;
     let timeID;
-
-    if (!result) {
-        result = document.createElement('div');
-        result.classList.add('search-header__result');
-        search.parentNode.appendChild(result);
-    }
-
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.search-header__form')) {
-            result.style.display = 'none';
-        } else {
-            result.style.display = 'block';
+    if (search){
+        if (!result) {
+            result = document.createElement('div');
+            result.classList.add('search-header__result');
+            search.parentNode.appendChild(result);
         }
-    })
-
-    searchInput.addEventListener('input', function(e){
-        const inputValue = e.target.value.trim();
-        searchInput.value = searchInput.value.replace(/^\s+/, '');
-
-        if (val != inputValue){
-            clearTimeout(timeID);
-        }
-        
-        if (inputValue.length < 2){
+    
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-header__form')) {
+                result.style.display = 'none';
+            } else {
+                result.style.display = 'block';
+            }
+        })
+    
+        searchInput.addEventListener('input', function(e){
+            const inputValue = e.target.value.trim();
+            searchInput.value = searchInput.value.replace(/^\s+/, '');
+    
+            if (val != inputValue){
+                clearTimeout(timeID);
+            }
+            
+            if (inputValue.length < 2){
+                result.innerHTML = '';
+                return;
+            }
+            
+            
+            timeID = setTimeout(() => {
+                sendSearch(inputValue);
+            }, 700);
+            val = inputValue;
+            result.innerHTML = '<ul class="search-header__result-list">Searching..</ul>';
+    
+        });
+    
+        const sendSearch = async (inputValue) => {
+            const response = await fetch(`/search/get?query=${encodeURIComponent(inputValue)}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            });
+            const data = await response.json();
+            if (!response.ok) {
+                handleNotification(response.status, "Try again later");
+                return;
+            }
+    
             result.innerHTML = '';
-            return;
-        }
-        
-        
-        timeID = setTimeout(() => {
-            sendSearch(inputValue);
-        }, 700);
-        val = inputValue;
-        result.innerHTML = '<ul class="search-header__result-list">Searching..</ul>';
-
-    });
-
-    const sendSearch = async (inputValue) => {
-        const response = await fetch(`/search/get?query=${encodeURIComponent(inputValue)}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            },
-        });
-        const data = await response.json();
-        if (!response.ok) {
-            handleNotification(response.status, "Try again later");
-            return;
-        }
-
-        result.innerHTML = '';
-        const resultList = document.createElement('ul');
-        resultList.classList.add('search-header__result-list');
-
-        if (data.length === 0){
-            resultList.textContent = "No results";
+            const resultList = document.createElement('ul');
+            resultList.classList.add('search-header__result-list');
+    
+            if (data.length === 0){
+                resultList.textContent = "No results";
+                result.appendChild(resultList);
+                return;
+            }
+    
+            data.forEach(searchItem => {
+                const resEl = document.createElement('li');
+                resEl.classList.add('search-header__result-item');
+                const startInd = searchItem.title.toLowerCase().search(inputValue.toLowerCase());
+                const endInd = startInd + inputValue.length;
+                const resultString = `<a href="/product/${escapeHTML(searchItem.alias)}">` +
+                escapeHTML(searchItem.title.slice(0, startInd)) + "<b>" + 
+                escapeHTML(searchItem.title.slice(startInd, endInd)) + "</b>" + 
+                escapeHTML(searchItem.title.slice(endInd)) + 
+                "</a>";
+                resEl.innerHTML = resultString;
+                resultList.appendChild(resEl);
+            });
             result.appendChild(resultList);
-            return;
+            search.parentNode.appendChild(result);
         }
-
-        data.forEach(searchItem => {
-            const resEl = document.createElement('li');
-            resEl.classList.add('search-header__result-item');
-            const startInd = searchItem.title.toLowerCase().search(inputValue.toLowerCase());
-            const endInd = startInd + inputValue.length;
-            const resultString = `<a href="/product/${escapeHTML(searchItem.alias)}">` +
-            escapeHTML(searchItem.title.slice(0, startInd)) + "<b>" + 
-            escapeHTML(searchItem.title.slice(startInd, endInd)) + "</b>" + 
-            escapeHTML(searchItem.title.slice(endInd)) + 
-            "</a>";
-            resEl.innerHTML = resultString;
-            resultList.appendChild(resEl);
-        });
-        result.appendChild(resultList);
-        search.parentNode.appendChild(result);
     }
 }
 handleSearch();
@@ -513,3 +616,25 @@ const escapeHTML = (str) => str.replace(/[&<>"']/g, (char) => ({
     '"': '&quot;',
     "'": '&#039;'
 }[char]));
+
+const handleForms = () => {
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        const authContainer = form.closest('.auth__container');
+        form.addEventListener('formValidated', async (e) => {
+            const formData = new FormData(form);
+            const isLogin = authContainer.classList.contains('_login');
+            const action = isLogin ? 'login' : 'signup';
+            const response = await fetch(`/auth/${action}`, {
+                method: "POST",
+                body: formData,
+            });
+            const data = await response.json();
+            handleNotification(response.status, data.message);
+            if (response.ok) {
+                window.location.replace("/");
+            }
+        })
+    })
+}
+handleForms();

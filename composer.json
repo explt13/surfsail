@@ -4,5 +4,8 @@
 			"nosmi\\": "vendor/nosmi/core",
 			"app\\": "app"
 		}
+	},
+	"require": {
+		"respect/validation": "^2.3"
 	}
 }

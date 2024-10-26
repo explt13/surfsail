@@ -34,13 +34,13 @@
                                     <button class="quantity__button quantity__button_plus" type="button"></button>
                                 </div>
                             </div>
-                            <div class="cart-item__delete _icon-trash"></div>
+                            <div class="cart-item__delete"><img src="/img/home/trash.svg" /></div>
                         </div>
                     <?php endforeach;?>
                 <?php else:?>
                     <div class="cart__no-items">
                         <div class="cart__no-items-image">
-                            <img src="img/cart/empty-cart.svg" alt="no items in cart">
+                            <img src="img/home/empty-cart.svg" alt="no items in cart">
                         </div>
                         <div class="cart__no-items-text"><?= "No items in cart"; ?></div>
                     </div>

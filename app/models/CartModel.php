@@ -1,15 +1,8 @@
 <?php
 namespace app\models;
 
-class CartModel extends AppModel
-{
-    public function initializeCart()
-    {
-        if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = [];
-        }
-    }
-    
+class CartModel extends BundleModel
+{   
     public function addProduct(bool|array $product, array $data)
     {
         if ($product === false) {
@@ -43,40 +36,4 @@ class CartModel extends AppModel
             }
         }
     }
-
-    public function getCartProductsIds()
-    {
-        return array_keys($_SESSION['cart']);
-    }
-
-    public function deleteProduct(int $product_id)
-    {
-        $cart = &$_SESSION['cart'];
-        if (array_key_exists($product_id, $cart)) {
-            unset($cart[$product_id]);
-            return ["response_code" => 200, "message" => "Product has been removed"];
-        } else {
-            return ["response_code" => 400, "message" => "No such product in cart"];
-        }
-    }
-
-    public function getProductsFromCart(array $cart)
-    {
-        if (!empty($cart)) {
-            $product_model = new ProductModel();
-            $ids = array_keys($cart);
-            $result = $product_model->getProducts(["id" => $ids]);
-    
-            foreach ($result as &$res) {
-                $product_id = $res['id'];
-                $res['qty'] = $cart[$product_id]['qty'];
-                $res['added_date'] = $cart[$product_id]['added_date'];
-            }
-    
-            usort($result, fn($a, $b) => $b['added_date'] - $a['added_date']);
-            return $result;
-        }
-        return false;
-    }
-    
 }

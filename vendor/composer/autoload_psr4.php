@@ -8,4 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'nosmi\\' => array($vendorDir . '/nosmi/core'),
     'app\\' => array($baseDir . '/app'),
+    'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
+    'Respect\\Validation\\' => array($vendorDir . '/respect/validation/library'),
+    'Respect\\Stringifier\\' => array($vendorDir . '/respect/stringifier/src'),
 );

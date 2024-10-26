@@ -21,7 +21,7 @@ class App
         if (!empty($params)){
             foreach($params as $k => $v){
                 self::$registry->setProperty($k, $v);
-            }
+            } 
         }
     }
 }

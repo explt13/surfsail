@@ -197,10 +197,11 @@
                 <div class="new-products__slider-body">
                     <div class="slider-new-products swiper new-products__slider">
                         <div class="swiper-wrapper">
-                            <?php foreach($new_products as $product){
-                                ProductHelper::renderCard($product);
-                            }
-                            ?>
+                            <?php foreach($new_products as $product):?>
+                                <div class="slider-products__slide slide-product-card swiper-slide">
+                                    <?php ProductHelper::renderCard($product);?>
+                                </div>
+                            <?php endforeach;?>
                         </div>
                         <div class="pagination">
                             <div class="pagination-bullets"></div>
