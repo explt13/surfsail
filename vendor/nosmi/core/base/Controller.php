@@ -7,7 +7,7 @@ abstract class Controller
     private string $controller;
     private string $model;
     protected string $view;
-    private $layout;
+    protected $layout;
     private string $prefix;
     private array $data = [];
     private array $meta = ["title" => "", "description" => "", "keywords" => ""];
@@ -32,7 +32,7 @@ abstract class Controller
         $this->data = $data;
     }
     
-    public function setMeta(?string $title, ?string $description, ?string $keywords)
+    public function setMeta(?string $title, ?string $description = null, ?string $keywords = null)
     {
         $this->meta['title'] = $title;
         $this->meta['description'] = $description;

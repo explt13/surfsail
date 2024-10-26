@@ -1739,3 +1739,171 @@
 --------------------------------------
 [2024-10-01 21:16:42] Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'surfsail.products' doesn't exist | File: E:\OpenServer\domains\surfsail\app\models\ProductModel.php | Line: 110
 --------------------------------------
+[2024-10-15 17:07:07] Error: Can not connect to the database: SQLSTATE[HY000] [2002] No such file or directory | File: /var/www/projects/surfsail/vendor/nosmi/core/Db.php | Line: 19
+--------------------------------------
+[2024-10-15 17:34:11] Error: Can not connect to the database: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost' | File: /var/www/projects/surfsail/vendor/nosmi/core/Db.php | Line: 19
+--------------------------------------
+[2024-10-15 17:44:17] Error: Can not connect to the database: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for explt13 failed: Temporary failure in name resolution | File: /var/www/projects/surfsail/vendor/nosmi/core/Db.php | Line: 19
+--------------------------------------
+[2024-10-15 17:44:46] Error: Can not connect to the database: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for explt13 failed: Temporary failure in name resolution | File: /var/www/projects/surfsail/vendor/nosmi/core/Db.php | Line: 19
+--------------------------------------
+[2024-10-15 17:44:47] Error: Can not connect to the database: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for explt13 failed: Temporary failure in name resolution | File: /var/www/projects/surfsail/vendor/nosmi/core/Db.php | Line: 19
+--------------------------------------
+[2024-10-15 18:04:52] Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'surfsail.currency' doesn't exist | File: /var/www/projects/surfsail/app/models/CurrencyModel.php | Line: 8
+--------------------------------------
+[2024-10-15 18:06:01] Error: Can not connect to the database: SQLSTATE[HY000] [1049] Unknown database 'surfsail' | File: /var/www/projects/surfsail/vendor/nosmi/core/Db.php | Line: 19
+--------------------------------------
+[2024-10-16 12:12:01] Error: Class "app\controllers\SomethingController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-10-16 12:16:57] Error: Class "app\controllers\SomethingController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-10-16 12:18:30] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-10-16 12:24:19] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-16 13:30:18] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-18 10:24:41] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-18 10:34:58] Error: Class "app\controllers\TmpController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-10-18 10:55:47] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-19 06:25:29] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-19 06:37:25] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-19 06:37:27] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-19 06:40:59] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-19 16:40:36] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-19 17:34:34] Error: app\models\UserModel::addUser(): Argument #1 ($data) must be of type array, null given, called in /var/www/projects/surfsail/app/controllers/AuthController.php on line 19 | File: /var/www/projects/surfsail/app/models/UserModel.php | Line: 17
+--------------------------------------
+[2024-10-19 17:34:38] Error: app\models\UserModel::addUser(): Argument #1 ($data) must be of type array, null given, called in /var/www/projects/surfsail/app/controllers/AuthController.php on line 19 | File: /var/www/projects/surfsail/app/models/UserModel.php | Line: 17
+--------------------------------------
+[2024-10-19 17:34:40] Error: app\models\UserModel::addUser(): Argument #1 ($data) must be of type array, null given, called in /var/www/projects/surfsail/app/controllers/AuthController.php on line 19 | File: /var/www/projects/surfsail/app/models/UserModel.php | Line: 17
+--------------------------------------
+[2024-10-19 17:35:20] Error: app\models\UserModel::addUser(): Argument #1 ($data) must be of type array, null given, called in /var/www/projects/surfsail/app/controllers/AuthController.php on line 19 | File: /var/www/projects/surfsail/app/models/UserModel.php | Line: 17
+--------------------------------------
+[2024-10-19 17:35:21] Error: app\models\UserModel::addUser(): Argument #1 ($data) must be of type array, null given, called in /var/www/projects/surfsail/app/controllers/AuthController.php on line 19 | File: /var/www/projects/surfsail/app/models/UserModel.php | Line: 17
+--------------------------------------
+[2024-10-19 17:35:27] Error: app\models\UserModel::addUser(): Argument #1 ($data) must be of type array, null given, called in /var/www/projects/surfsail/app/controllers/AuthController.php on line 19 | File: /var/www/projects/surfsail/app/models/UserModel.php | Line: 17
+--------------------------------------
+[2024-10-19 18:42:36] Error: SQLSTATE[HY000]: General error: 1364 Field 'first_name' doesn't have a default value | File: /var/www/projects/surfsail/app/models/UserModel.php | Line: 35
+--------------------------------------
+[2024-10-19 18:58:14] Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Azatabut03@gmail.com' for key 'user.email' | File: /var/www/projects/surfsail/app/models/UserModel.php | Line: 35
+--------------------------------------
+[2024-10-19 18:59:49] Error: All of the required rules must pass for "123213" | File: /var/www/projects/surfsail/vendor/respect/validation/library/Factory.php | Line: 233
+--------------------------------------
+[2024-10-25 12:04:55] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 12:05:16] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 12:05:20] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 12:16:37] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 13:05:57] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 13:35:22] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 13:35:22] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 13:35:23] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 13:37:24] Error: Action: app\controllers\MainController::authAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-10-25 13:37:25] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 13:42:47] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 13:42:47] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 18:04:06] Error: Class "app\controllers\ProfileController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-10-25 18:04:06] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 18:21:38] Error: Class "app\controllers\ProfileController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-10-25 18:21:38] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 19:02:40] Error: Class "app\controllers\FavoriteController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-10-25 19:02:40] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 19:02:55] Error: Product not found | File: /var/www/projects/surfsail/app/controllers/ProductController.php | Line: 23
+--------------------------------------
+[2024-10-25 19:08:07] Error: app\models\ProductModel::getProductsFromArray(): Argument #1 ($array) must be of type array, null given, called in /var/www/projects/surfsail/app/controllers/FavoriteController.php on line 15 | File: /var/www/projects/surfsail/app/models/ProductModel.php | Line: 113
+--------------------------------------
+[2024-10-25 19:08:08] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 19:18:44] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 19:18:48] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 19:18:55] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 19:19:02] Error: Call to undefined method app\models\CartModel::initializeCart() | File: /var/www/projects/surfsail/app/controllers/AppController.php | Line: 23
+--------------------------------------
+[2024-10-25 19:19:03] Error: Call to undefined method app\models\CartModel::initializeCart() | File: /var/www/projects/surfsail/app/controllers/AppController.php | Line: 23
+--------------------------------------
+[2024-10-25 19:19:41] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 19:20:06] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-25 19:27:34] Error: Too few arguments to function app\models\CartModel::__construct(), 0 passed in /var/www/projects/surfsail/app/controllers/CartController.php on line 28 and exactly 1 expected | File: /var/www/projects/surfsail/app/models/CartModel.php | Line: 8
+--------------------------------------
+[2024-10-25 19:27:36] Error: Too few arguments to function app\models\CartModel::__construct(), 0 passed in /var/www/projects/surfsail/app/controllers/CartController.php on line 28 and exactly 1 expected | File: /var/www/projects/surfsail/app/models/CartModel.php | Line: 8
+--------------------------------------
+[2024-10-26 17:10:31] Error: array_reduce(): Argument #1 ($array) must be of type array, null given | File: /var/www/projects/surfsail/app/widgets/cart/Cart.php | Line: 26
+--------------------------------------
+[2024-10-26 17:10:32] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-26 17:10:41] Error: array_reduce(): Argument #1 ($array) must be of type array, null given | File: /var/www/projects/surfsail/app/widgets/cart/Cart.php | Line: 26
+--------------------------------------
+[2024-10-26 17:10:41] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-26 17:10:42] Error: array_reduce(): Argument #1 ($array) must be of type array, null given | File: /var/www/projects/surfsail/app/widgets/cart/Cart.php | Line: 26
+--------------------------------------
+[2024-10-26 17:10:43] Error: array_reduce(): Argument #1 ($array) must be of type array, null given | File: /var/www/projects/surfsail/app/widgets/cart/Cart.php | Line: 26
+--------------------------------------
+[2024-10-26 17:10:43] Error: array_reduce(): Argument #1 ($array) must be of type array, null given | File: /var/www/projects/surfsail/app/widgets/cart/Cart.php | Line: 26
+--------------------------------------
+[2024-10-26 17:10:44] Error: array_reduce(): Argument #1 ($array) must be of type array, null given | File: /var/www/projects/surfsail/app/widgets/cart/Cart.php | Line: 26
+--------------------------------------
+[2024-10-26 17:10:45] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-26 17:23:59] Error: Typed property app\controllers\BundleController::$controller_model must not be accessed before initialization | File: /var/www/projects/surfsail/app/controllers/BundleController.php | Line: 36
+--------------------------------------
+[2024-10-26 17:23:59] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-10-26 17:24:00] Error: Typed property app\controllers\BundleController::$controller_model must not be accessed before initialization | File: /var/www/projects/surfsail/app/controllers/BundleController.php | Line: 36
+--------------------------------------
+[2024-10-26 17:24:02] Error: Typed property app\controllers\BundleController::$controller_model must not be accessed before initialization | File: /var/www/projects/surfsail/app/controllers/BundleController.php | Line: 36
+--------------------------------------
+[2024-10-26 17:24:07] Error: Typed property app\controllers\BundleController::$controller_model must not be accessed before initialization | File: /var/www/projects/surfsail/app/controllers/BundleController.php | Line: 36
+--------------------------------------
+[2024-10-26 17:31:26] Error: Typed property app\controllers\BundleController::$controller_model must not be accessed before initialization | File: /var/www/projects/surfsail/app/controllers/BundleController.php | Line: 36
+--------------------------------------
+[2024-10-26 17:31:36] Error: Typed property app\controllers\BundleController::$controller_model must not be accessed before initialization | File: /var/www/projects/surfsail/app/controllers/BundleController.php | Line: 36
+--------------------------------------
+[2024-10-26 17:32:40] Error: Typed property app\controllers\BundleController::$controller_model must not be accessed before initialization | File: /var/www/projects/surfsail/app/controllers/BundleController.php | Line: 36
+--------------------------------------
+[2024-10-26 17:39:26] Error: Typed property app\controllers\BundleController::$controller_model must not be accessed before initialization | File: /var/www/projects/surfsail/app/controllers/BundleController.php | Line: 37
+--------------------------------------
+[2024-10-26 17:39:29] Error: Typed property app\controllers\BundleController::$controller_model must not be accessed before initialization | File: /var/www/projects/surfsail/app/controllers/BundleController.php | Line: 37
+--------------------------------------
+[2024-10-26 17:40:53] Error: Typed property app\controllers\BundleController::$controller_model must not be accessed before initialization | File: /var/www/projects/surfsail/app/controllers/BundleController.php | Line: 36
+--------------------------------------
+[2024-10-26 17:56:03] Error: Class "CartModel" not found | File: /var/www/projects/surfsail/app/controllers/BundleController.php | Line: 36
+--------------------------------------
+[2024-10-26 17:58:25] Error: Class "CartModel" not found | File: /var/www/projects/surfsail/app/controllers/BundleController.php | Line: 36
+--------------------------------------
+[2024-10-26 17:58:28] Error: Class "CartModel" not found | File: /var/www/projects/surfsail/app/controllers/BundleController.php | Line: 36
+--------------------------------------
+[2024-10-26 18:03:46] Error: Class "CartModel" not found | File: /var/www/projects/surfsail/app/controllers/BundleController.php | Line: 36
+--------------------------------------
+[2024-10-26 19:51:10] Error: app\models\FavoriteModel::addProduct(): Argument #2 ($data) must be of type array, int given, called in /var/www/projects/surfsail/app/controllers/BundleController.php on line 25 | File: /var/www/projects/surfsail/app/models/FavoriteModel.php | Line: 6
+--------------------------------------

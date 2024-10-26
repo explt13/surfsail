@@ -1,4 +1,4 @@
-a:2:{s:4:"data";s:34959:"    <div class="header__row header__row_catalog catalog-header">
+a:2:{s:4:"data";s:34737:"    <div class="header__row header__row_catalog catalog-header">
         <div class="catalog-header__container container">
             <nav class="catalog-header__menu menu-catalog">
                 <button class="menu-catalog__back back-menu _icon-back">Back</button>
@@ -220,4 +220,4 @@ a:2:{s:4:"data";s:34959:"    <div class="header__row header__row_catalog catalog
             </nav>
         </div>
     </div>
-";s:3:"exp";i:1729874775;}
+";s:3:"exp";i:1731672715;}

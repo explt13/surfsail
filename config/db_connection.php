@@ -2,6 +2,6 @@
 
 return [
     'dsn' => 'mysql:host=localhost;dbname=surfsail;charst=utf8mb4',
-    'user' => 'root',
-    'password' => '',
+    'user' => 'explt13',
+    'password' => 'Azatabut03@',
 ];

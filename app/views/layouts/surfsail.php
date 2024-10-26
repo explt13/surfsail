@@ -25,7 +25,15 @@
                             <li class="menu-top-header__item"><a href="#" class="menu-top-header__link">Contacts</a></li>
                         </ul>
                     </nav>
-                    <a class="top-header__user link-user _icon-user"><span>Account</span></a>
+                    <div class="top-header__user-panel">
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <a href='user' class="top-header__user link-user">Welcome, <?= htmlspecialchars($_SESSION['user']['first_name'] ?? 'User', ENT_QUOTES, 'UTF-8') ?></a>
+                        <a href='auth/logout' class="top-header__logout"><img src="img/home/logout.svg" /></a>
+                    <?php else:?>
+                        <a href="auth?form=login" class="top-header__user-login">Log In</a>
+                        <a href="auth?form=register" class="top-header__user-signup">Sign Up</a>
+                    <?php endif;?>
+                    </div>
                     <nav class="menu">
                         <button class="menu__icon icon-menu">
                             <span></span>
@@ -63,7 +71,7 @@
                                 <div class="number__order">Order a call</div>
                             </div>
                         </div>
-                        <a data-da=".top-header__container, 991.98, 2" href="#" class="information__fav _icon-fav"></a>
+                        <a data-da=".top-header__container, 991.98, 2" href="favorite" class="information__fav _icon-fav"></a>
                         <?php new app\widgets\cart\Cart();?>
                     </div>
                 </div>
@@ -237,9 +245,9 @@
                         </div>
                     </div>
                     <div class="body-footer__socials">
-                        <a href="#"><img src="/img/home/footer/facebook.svg" alt="facebook"></a>
-                        <a href="#"><img src="/img/home/footer/viber.svg" alt="viber"></a>
-                        <a href="#"><img src="/img/home/footer/whatsapp.svg" alt="whatsapp"></a>
+                        <a href="#"><img src="/img/home/facebook.svg" alt="facebook"></a>
+                        <a href="#"><img src="/img/home/viber.svg" alt="viber"></a>
+                        <a href="#"><img src="/img/home/whatsapp.svg" alt="whatsapp"></a>
                     </div>
                 </div>
             </div>

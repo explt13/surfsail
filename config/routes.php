@@ -3,6 +3,7 @@ use nosmi\Router;
 
 
 Router::add("^product/(?P<alias>[a-z0-9-]+)/?$", ['controller' => 'Product', 'action' => 'view']);
+Router::add("^auth/(?P<action>[a-z-]+)/?$", ['controller' => 'Auth', 'auth' => false]);
 
 // default routes
 Router::add('^admin$', ['controller' => 'Main', 'action' => 'index', 'prefix' => 'admin']);

@@ -110,4 +110,23 @@ class ProductModel extends AppModel
         $stmt = $this->pdo->query("SELECT COUNT(*) FROM product");
         return (int) $stmt->fetchColumn();
     }
+    public function getProductsFromArray(array $array)
+    {
+        if (!empty($array)) {
+            $product_model = new ProductModel();
+            $ids = array_keys($array);
+            $result = $product_model->getProducts(["id" => $ids]);
+    
+            foreach ($result as &$res) {
+                $product_id = $res['id'];
+                $res['qty'] = $array[$product_id]['qty'];
+                $res['added_date'] = $array[$product_id]['added_date'];
+            }
+    
+            usort($result, fn($a, $b) => $b['added_date'] - $a['added_date']);
+            return $result;
+        }
+        return false;
+    }
+
 }
