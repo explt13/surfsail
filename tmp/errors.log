@@ -1907,3 +1907,207 @@
 --------------------------------------
 [2024-10-26 19:51:10] Error: app\models\FavoriteModel::addProduct(): Argument #2 ($data) must be of type array, int given, called in /var/www/projects/surfsail/app/controllers/BundleController.php on line 25 | File: /var/www/projects/surfsail/app/models/FavoriteModel.php | Line: 6
 --------------------------------------
+[2024-11-04 10:30:05] Error: Action: app\controllers\FavoriteController::getProductsActionAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-04 10:30:11] Error: Action: app\controllers\FavoriteController::getProductsActionAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-04 10:58:12] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-04 11:03:34] Error: Class "app\controllers\FpvoriteController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-04 11:03:34] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 10:47:19] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 10:47:19] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 10:47:23] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 10:48:09] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 10:48:10] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 10:48:28] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 10:48:28] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 11:00:11] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:00:12] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 11:00:12] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:00:13] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 11:00:59] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:00:59] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 11:00:59] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:01:42] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:01:42] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 11:01:55] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:01:55] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 11:02:06] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:02:06] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 11:02:27] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:02:28] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:02:30] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:02:36] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 11:02:56] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:02:59] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 11:03:05] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:03:15] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:04:00] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:04:16] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 11:04:16] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 11:04:17] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 11:04:17] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 11:04:45] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:04:51] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:04:51] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 11:04:52] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:05:35] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:05:35] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 11:05:56] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:06:07] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:06:08] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:06:08] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 11:06:16] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 11:06:18] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 11:06:34] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 11:06:35] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 11:06:48] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:06:49] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:07:04] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:07:05] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 11:07:10] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 11:07:10] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 11:07:44] Error: Action: app\controllers\UserController::aAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:07:45] Error: Action: app\controllers\UserController::aAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:07:46] Error: Action: app\controllers\UserController::aAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:07:54] Error: Action: app\controllers\UserController::aAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:07:55] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 11:08:12] Error: Action: app\controllers\UserController::aAction not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 36
+--------------------------------------
+[2024-11-09 11:08:38] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 11:08:39] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 11:09:53] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 11:09:54] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 11:10:56] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 11:10:57] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 11:11:07] Error: Class "app\controllers\AuthController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 29
+--------------------------------------
+[2024-11-09 20:03:33] Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'title' cannot be null | File: /var/www/projects/surfsail/app/models/OrderModel.php | Line: 44
+--------------------------------------
+[2024-11-09 20:03:33] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 20:08:09] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 20:13:28] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 20:54:47] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 20:56:02] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 20:56:24] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 20:56:27] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 20:57:51] Error: Access to undeclared static property app\models\BundleModel::$name | File: /var/www/projects/surfsail/app/models/BundleModel.php | Line: 11
+--------------------------------------
+[2024-11-09 20:57:51] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 20:59:39] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 21:01:38] Error: Call to undefined method app\models\ProductModel::getProductsFromArray() | File: /var/www/projects/surfsail/app/controllers/FavoriteController.php | Line: 16
+--------------------------------------
+[2024-11-09 21:01:38] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 21:13:46] Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'qty' cannot be null | File: /var/www/projects/surfsail/app/models/OrderModel.php | Line: 47
+--------------------------------------
+[2024-11-09 21:13:46] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 21:15:29] Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'qty' cannot be null | File: /var/www/projects/surfsail/app/models/OrderModel.php | Line: 47
+--------------------------------------
+[2024-11-09 21:15:30] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-09 21:16:39] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-10 15:03:19] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-10 15:04:14] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-10 15:07:04] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-10 15:29:09] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-10 15:29:54] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-10 15:30:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-10 15:31:14] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-10 16:01:11] Error: Can not connect to the database: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) | File: /var/www/projects/surfsail/vendor/nosmi/core/Db.php | Line: 19
+--------------------------------------
+[2024-11-10 16:03:21] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-10 16:46:44] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-10 16:47:26] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-10 17:10:03] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-10 18:21:10] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------

@@ -31,8 +31,12 @@ class BundleController extends AppController
     public function getProductsListAction()
     {
         header('Content-Type: application/json');
-        $bundle_model = new $this->controller_model($this->controller_name_lc);
-        $products_ids = $bundle_model->getProductsIds();
+        if (isset($_SESSION['user'])) {
+            $bundle_model = new $this->controller_model($this->controller_name_lc);
+            $products_ids = $bundle_model->getProductsIds();
+        } else {
+            $products_ids = [];
+        }
         http_response_code(200);
         echo json_encode($products_ids);
     }

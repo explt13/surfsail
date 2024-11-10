@@ -3,6 +3,7 @@ namespace app\models;
 
 class FavoriteModel extends BundleModel
 {
+    protected string $name = 'favorite';
     public function addProduct(bool|array $product, array $data)
     {
         if ($product === false) {

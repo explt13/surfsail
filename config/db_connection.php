@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'dsn' => 'mysql:host=localhost;dbname=surfsail;charst=utf8mb4',
-    'user' => 'explt13',
-    'password' => 'Azatabut03@',
+    'dsn' => $_ENV['DB_DSN'],
+    'user' => $_ENV['DB_USER'],
+    'password' => $_ENV['DB_PASSWORD'],
 ];

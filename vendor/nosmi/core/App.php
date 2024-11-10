@@ -9,6 +9,7 @@ class App
     {
         $query = $_SERVER["QUERY_STRING"];
         session_start();
+        cors();
         self::$registry = Registry::getInstance(); // Registry::$instance => new Registry
         $this->setParams();
         ErrorHandler::getInstance();

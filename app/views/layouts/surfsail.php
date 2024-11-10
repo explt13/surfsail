@@ -28,7 +28,7 @@
                     <div class="top-header__user-panel">
                     <?php if (isset($_SESSION['user'])): ?>
                         <a href='user' class="top-header__user link-user">Welcome, <?= htmlspecialchars($_SESSION['user']['first_name'] ?? 'User', ENT_QUOTES, 'UTF-8') ?></a>
-                        <a href='auth/logout' class="top-header__logout"><img src="img/home/logout.svg" /></a>
+                        <a href='user/logout' class="top-header__logout"><img src="img/home/logout.svg" /></a>
                     <?php else:?>
                         <a href="auth?form=login" class="top-header__user-login">Log In</a>
                         <a href="auth?form=register" class="top-header__user-signup">Sign Up</a>
