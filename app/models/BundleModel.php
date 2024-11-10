@@ -3,17 +3,12 @@ namespace app\models;
 
 use app\controllers\BundleController;
 
-class BundleModel extends AppModel
+abstract class BundleModel extends AppModel
 {
-    private string $name;
-    public function __construct(string $name)
+    public function initializeBundle()
     {
-        $this->name = $name;
-    }
-    public static function initializeBundle(string $name)
-    {
-        if (!isset($_SESSION[$name])) {
-            $_SESSION[$name] = [];
+        if (!isset($_SESSION[$this->name])) {
+            $_SESSION[$this->name] = [];
         }
     }
     public function getProductsIds()
@@ -30,5 +25,24 @@ class BundleModel extends AppModel
         } else {
             return ["response_code" => 400, "message" => "No such product in $this->name"];
         }
+    }
+
+    public function getProductsFromArray(array $array)
+    {
+        if (!empty($array)) {
+            $product_model = new ProductModel();
+            $ids = array_keys($array);
+            $result = $product_model->getProducts(["id" => $ids]);
+    
+            foreach ($result as &$res) {
+                $product_id = $res['id'];
+                $res['qty'] = $array[$product_id]['qty'];
+                $res['added_date'] = $array[$product_id]['added_date'];
+            }
+    
+            usort($result, fn($a, $b) => $b['added_date'] - $a['added_date']);
+            return $result;
+        }
+        return false;
     }
 }

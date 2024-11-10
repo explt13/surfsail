@@ -22,6 +22,39 @@ function redirect($path = null)
         $redirect = $_SERVER['HTTP_REFERER'] ?? PATH;
     }
 
+    if (isAjax()) {
+        header('Content-Type: application/json');
+        echo json_encode(['redirect' => $redirect]);
+        http_response_code(401);
+        die;
+    }
+
     header("Location: $redirect");
     die;
+}
+
+function isAjax()
+{
+    return (strtolower($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '') === 'xmlhttprequest');
+}
+
+
+function cors() {
+    $allowed_origins = ['http://surfsail.com'];
+    if (in_array($_SERVER['HTTP_ORIGIN'], $allowed_origins)){
+        header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+        header('Access-Control-Allow-Credentials: true');
+        header('Access-Control-Max-Age: 86400');
+    }
+    
+    if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+        
+        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+            header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+        
+        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+            header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+    
+        exit(0);
+    }
 }

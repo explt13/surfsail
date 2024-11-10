@@ -33,23 +33,20 @@ class UserModel extends AppModel
                 }
             }
             $stmt = $this->pdo->prepare('INSERT INTO user (email, password, role) VALUES (:email, :password, :role)');
-            $result = $stmt->execute([
+            $stmt->execute([
                 'email' => $this->attributes['email'],
                 'password' => $this->attributes['password'],
                 'role' => $this->attributes['role']
             ]);
-            if ($result) {
-                $user_id = $this->pdo->lastInsertId();
-                $_SESSION['user'] = [
-                    'id' => $user_id,
-                    'email' => $this->attributes['email'],
-                    'role' => $this->attributes['role'],
-                ];
-                return ['response_code' => 200, 'message' => 'Registered successfully'];
-            } else {
-                throw new \Exception('Cannot create a user');
-            }
-
+            
+            $user_id = $this->pdo->lastInsertId();
+            $_SESSION['user'] = [
+                'id' => $user_id,
+                'email' => $this->attributes['email'],
+                'role' => $this->attributes['role'],
+            ];
+            return ['response_code' => 200, 'message' => 'Registered successfully'];
+          
         } catch (\PDOException $e) {
             if ($e->getCode() === '23000') {
                 return ['response_code' => 400, 'message' => 'Email is already registered.'];
@@ -79,5 +76,11 @@ class UserModel extends AppModel
             'role' => $user['role'],
         ];
         return ['response_code' => 200, 'message' => 'Login successfully'];
+    }
+
+
+    public static function isAdmin()
+    {
+        return (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin');
     }
 }

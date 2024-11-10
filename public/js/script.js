@@ -18,15 +18,17 @@ const handleCurrency = () => {
     options.forEach(option => {
         option.addEventListener('click', async function(e){
             const currency = e.target.textContent;
-            const response = await fetch(`/currency/change`, {
+            const response = await fetchSecured(`/currency/change`, {
                 method: "POST",
                 headers: {
                     "Content-Type": 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
                 },
                 body: JSON.stringify({
                     currency: currency,
                 }),
             });
+            if (!response) return;
             const data = await response.json();
             if (!response.ok) {
                 throw new Error(response.statusText, data.message);
@@ -160,10 +162,11 @@ function main() {
         
         handleQtyButtons();
         async function addToCart(button, product, qty) {
-            const response = await fetch('/cart/add', {
+            const response = await fetchSecured('/cart/add', {
                 method: 'POST',
                 headers: {
                     "Content-Type": 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
                 },
                 body: JSON.stringify({
                     product_id: parseInt(product.dataset.id),
@@ -171,6 +174,7 @@ function main() {
                     qty_control: true,
                 })
             })
+            if (!response) return;
             const data = await response.json();
             if (!response.ok) {
                 handleNotification(response.status, data.message);
@@ -183,12 +187,14 @@ function main() {
     if (cartButtons) {
         const buttonEventHandlers = new Map();
         const setCartButtons = async () => {
-            const response = await fetch('/cart/get-products-list', {
+            const response = await fetchSecured('/cart/get-products-list', {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
+                    'X-Requested-With': 'XMLHttpRequest'
                 }
             })
+            if (!response) return;
             const data = await response.json();
             cartButtons.forEach(button => {
                 const product = button.closest('[data-id]');
@@ -203,10 +209,11 @@ function main() {
         setCartButtons();
 
         async function addToCart(button, product) {
-            const response = await fetch('/cart/add', {
+            const response = await fetchSecured('/cart/add', {
                 method: 'POST',
                 headers: {
                     "Content-Type": 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
                 },
                 body: JSON.stringify({
                     product_id: parseInt(product.dataset.id),
@@ -214,6 +221,7 @@ function main() {
                     qty_control: false,
                 })
             })
+            if (!response) return;
             const data = await response.json();
             if (!response.ok) {
                 handleNotification(response.status, data.message);
@@ -271,14 +279,16 @@ function main() {
             buttonEventHandlers.delete(button)
         }
     }
-    if (favoriteButtons) {
+    if (favoriteButtons.length > 0) {
         async function setButtons() {
-            const response = await fetch('/favorite/get-products-list', {
+            const response = await fetchSecured('/favorite/get-products-list', {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
+                    'X-Requested-With': 'XMLHttpRequest'
                 }
             })
+            if (!response) return;
             const data = await response.json();
             favoriteButtons.forEach(button => {
                 const product = button.closest('[data-id]');
@@ -286,15 +296,17 @@ function main() {
                     button.classList.add('_in-favorite');
                 }
                 button.addEventListener('click', async function(e) {
-                    const response = await fetch('/favorite/add', {
+                    const response = await fetchSecured('/favorite/add', {
                         method: "post",
                         headers: {
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest'
                         },
                         body: JSON.stringify({
                             product_id: parseInt(product.dataset.id),
                         })
                     })
+                    if (!response) return;
                     const data = await response.json();
                     if (!response.ok) {
                         handleNotification(response.code, data.message);
@@ -328,15 +340,17 @@ function main() {
         products.forEach(product => {
             const deleteButton = product.querySelector('.cart-item__delete');
             deleteButton.addEventListener('click', async function(){
-                const response = await fetch('/favorite/delete', {
+                const response = await fetchSecured('/favorite/delete', {
                     method: "DELETE",
                     body: JSON.stringify({
                         product_id: parseInt(product.dataset.id),
                     }),
                     headers: {
                         'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
                     }
                 });
+                if (!response) return;
                 const data = await response.json();
                 if (!response.ok) {
                     handleNotification(response.status, data.message);
@@ -435,15 +449,17 @@ function main() {
             });
 
             deleteButton.addEventListener('click', async function(){
-                const response = await fetch('/cart/delete', {
+                const response = await fetchSecured('/cart/delete', {
                     method: "DELETE",
                     body: JSON.stringify({
                         product_id: parseInt(product.dataset.id),
                     }),
                     headers: {
                         'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
                     }
                 });
+                if (!response) return;
                 const data = await response.json();
                 if (!response.ok) {
                     handleNotification(response.status, data.message);
@@ -472,6 +488,17 @@ function main() {
     }
 }
 main();
+
+async function fetchSecured(url, options){
+    const response = await fetch(url, options);
+    if (response.status === 401 || response.status === 302) {
+        const data = await response.json();
+        window.location.replace(data.redirect);
+        return null;
+    }
+    
+    return response;
+}
 
 
 function handleNotification(code, msg) {
@@ -625,7 +652,7 @@ const handleForms = () => {
             const formData = new FormData(form);
             const isLogin = authContainer.classList.contains('_login');
             const action = isLogin ? 'login' : 'signup';
-            const response = await fetch(`/auth/${action}`, {
+            const response = await fetch(`/user/${action}`, {
                 method: "POST",
                 body: formData,
             });

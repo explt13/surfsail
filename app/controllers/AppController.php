@@ -1,11 +1,13 @@
 <?php
 namespace app\controllers;
 
-use app\middlewares\RouterMiddleware;
+use app\middlewares\AuthMiddleware;
 use nosmi\base\Controller;
 use app\models\AppModel;
 use app\models\BundleModel;
+use app\models\CartModel;
 use app\models\CategoryModel;
+use app\models\FavoriteModel;
 use app\widgets\cart\Cart;
 use app\widgets\currency\Currency;
 use nosmi\App;
@@ -16,12 +18,14 @@ abstract class AppController extends Controller
     public function __construct(array $route)
     {
         parent::__construct($route);
-        $routerMiddleware = new RouterMiddleware();
-        $routerMiddleware->CheckSecure($route);
+        $routerMiddleware = new AuthMiddleware();
+        $routerMiddleware->CheckAuth($route);
         new AppModel();
-        BundleModel::initializeBundle('cart');
-        BundleModel::initializeBundle('favorite');
-        App::$registry->setProperty('cart_items_qty', Cart::getCartQty());
+        $cart_model = new CartModel();
+        $favorite_model = new FavoriteModel();
+        $cart_model->initializeBundle();
+        $favorite_model->initializeBundle();
+        App::$registry->setProperty('cart_items_qty', AuthMiddleware::isLoggedIn() ? Cart::getCartQty() : 0);
         App::$registry->setProperty('currencies', Currency::getCurrencies());
         App::$registry->setProperty('currency', Currency::getCurrency(App::$registry->getProperty('currencies')));
         $this->getCategories();

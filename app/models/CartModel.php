@@ -3,6 +3,7 @@ namespace app\models;
 
 class CartModel extends BundleModel
 {   
+    protected string $name = 'cart';
     public function addProduct(bool|array $product, array $data)
     {
         if ($product === false) {
@@ -14,6 +15,8 @@ class CartModel extends BundleModel
             if ($data["qty"] <= $product['available_qty'] && $data["qty"] > 0) {
                 $cart[$data['product_id']] = [
                     "product_id" => $data['product_id'],
+                    'title' => $data['title'],
+                    'price' => $data['price'],
                     "qty" => $data['qty'],
                     "added_date" => time(),
                 ];
