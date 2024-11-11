@@ -11,8 +11,9 @@
     cursor: pointer;
     transition: filter 0.15s ease-in-out;
 }
+
 .top-header__logout:hover{
-    filter: brightness(0) saturate(100%) invert(20%) sepia(94%) saturate(7419%) hue-rotate(358deg) brightness(112%) contrast(111%);
+    filter: brightness(0) saturate(100%) invert(20%) sepia(70%) saturate(7458%) hue-rotate(3deg) brightness(93%) contrast(107%);
 }
 .top-header__logout img {
     width: 100%;
@@ -29,7 +30,7 @@
     width: 100%;
 }
 .cart-item__delete:hover{
-    filter: brightness(0) saturate(100%) invert(20%) sepia(94%) saturate(7419%) hue-rotate(358deg) brightness(112%) contrast(111%);
+    filter: brightness(0) saturate(100%) invert(20%) sepia(70%) saturate(7458%) hue-rotate(3deg) brightness(93%) contrast(107%);
 }
 
 .menu__body {
@@ -228,4 +229,61 @@ button{
 }
 .product-card-actions__like._in-favorite:hover{
     color: black;
+}
+.actions-product__buttons{
+    align-items: center;
+}
+.actions-product__buy{
+    align-self: stretch;
+}
+.actions-product__delete{
+    width: 2rem;
+}
+.actions-product__delete img{
+    width: 100%;
+    transition:  filter .15s ease-in-out;
+    /* filter: brightness(0) saturate(100%) invert(20%) sepia(70%) saturate(7458%) hue-rotate(3deg) brightness(93%) contrast(127%); */
+}
+.actions-product__delete:hover img{
+    filter: brightness(0) saturate(100%) invert(20%) sepia(70%) saturate(7458%) hue-rotate(3deg) brightness(93%) contrast(57%);
+}
+.menu{
+    order: 1;
+}
+
+@media (max-width: 992px) {
+    .top-header__user-panel{
+        margin-left: 0;
+    }
+    .top-header__logout::before{
+        content: "Log out";
+        display: block;
+        font-size: 1.375rem;
+        color: white;
+    }
+    .top-header__logout{
+        display: flex;
+        gap: 0.875rem;
+        width: 100%;
+    }
+    .top-header__logout img{
+        width: 1.125rem;
+    }
+    .menu__body-user{
+        margin-bottom: 1.5625rem;
+    
+    }
+    .menu__body-user a{
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 64rem) {
+    .page_auth .container{
+        padding: 0;
+    }
+    .auth__body{
+        padding: 4rem 0.785rem;
+        border-radius: 0!important;
+    }
 }

@@ -28,7 +28,7 @@ class OrderModel extends AppModel
             redirect();
         } catch (\Exception $e) {
             $this->pdo->rollBack();
-            echo "ERror has occured";
+            redirect();
         }
     }
     protected function saveOrderProduct(int $order_id)
@@ -90,7 +90,6 @@ class OrderModel extends AppModel
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     
         $mail->send();
-        echo 'Message has been sent';
     }
 }
 

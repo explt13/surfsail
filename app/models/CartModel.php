@@ -4,8 +4,10 @@ namespace app\models;
 class CartModel extends BundleModel
 {   
     protected string $name = 'cart';
-    public function addProduct(bool|array $product, array $data)
+    public function addProduct(array $data)
     {
+        $products_model = new ProductModel();
+        $product = $products_model->getProducts(['id' => $data['product_id']], 1);
         if ($product === false) {
             return ["response_code" => 409, 'message' => 'No such product'];
         }

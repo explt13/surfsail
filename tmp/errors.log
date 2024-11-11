@@ -2111,3 +2111,15 @@
 --------------------------------------
 [2024-11-10 18:21:10] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
 --------------------------------------
+[2024-11-11 07:36:20] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-11 17:10:16] Error: Value of type null is not callable | File: /var/www/projects/surfsail/app/views/Product/view.php | Line: 180
+--------------------------------------
+[2024-11-11 17:10:16] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-11 17:10:16] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
+[2024-11-11 17:10:17] Error: Value of type null is not callable | File: /var/www/projects/surfsail/app/views/Product/view.php | Line: 180
+--------------------------------------
+[2024-11-11 17:10:17] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/core/Router.php | Line: 44
+--------------------------------------
