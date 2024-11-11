@@ -17,7 +17,7 @@
             <div class="header__row header__row_top top-header">
                 <div class="top-header__container container">
                     <nav class="top-header__menu menu-top-header">
-                        <ul data-da=".menu__body, 991.98" class="menu-top-header__list">
+                        <ul data-da=".menu__body-list, 991.98" class="menu-top-header__list">
                             <li class="menu-top-header__item menu-top-header__item_catalog"><a data-catalog href="#" class="menu-top-header__link menu-top-header__link_catalog _icon-arrow_sh_d">Product catalog</a></li>
                             <li class="menu-top-header__item"><a href="#" class="menu-top-header__link">About us</a></li>
                             <li class="menu-top-header__item"><a href="#" class="menu-top-header__link">Shipping</a></li>
@@ -25,10 +25,10 @@
                             <li class="menu-top-header__item"><a href="#" class="menu-top-header__link">Contacts</a></li>
                         </ul>
                     </nav>
-                    <div class="top-header__user-panel">
+                    <div class="top-header__user-panel" data-da=".menu__body-user, 991.98">
                     <?php if (isset($_SESSION['user'])): ?>
                         <a href='user' class="top-header__user link-user">Welcome, <?= htmlspecialchars($_SESSION['user']['first_name'] ?? 'User', ENT_QUOTES, 'UTF-8') ?></a>
-                        <a href='user/logout' class="top-header__logout"><img src="img/home/logout.svg" /></a>
+                        <a data-da=".menu-top-header__list, 991.98" href='user/logout' class="top-header__logout"><img src="img/home/logout.svg" /></a>
                     <?php else:?>
                         <a href="auth?form=login" class="top-header__user-login">Log In</a>
                         <a href="auth?form=register" class="top-header__user-signup">Sign Up</a>
@@ -41,6 +41,10 @@
                             <span></span>
                         </button>
                         <div class="menu__body">
+                            <div class="menu__body-user">
+                            </div>
+                            <div class="menu__body-list">
+                            </div>
                         </div>
                     </nav>
                 </div>

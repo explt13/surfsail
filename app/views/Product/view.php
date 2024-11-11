@@ -172,10 +172,15 @@
                                     <button class="quantity__button quantity__button_plus" type="button"></button>
                                 </div>
                                 <div class="actions-product__buttons">
+                                    <?php if (isset($_SESSION['cart'][$product['id']])): ?>
+                                        <button class="actions-product__delete">
+                                            <img src="img/home/trash.svg" />
+                                        </button>
+                                    <?php endif;?>
                                     <button class="actions-product__cart cart-button-view button">
                                         <span class="actions-product__cart-link _icon-cart">To cart</span>
-                                        <?php if($product_in_cart !== false): ?>
-                                            <span class="actions-product__cart-have">(you have <b><?= htmlspecialchars($product_in_cart['qty']); ?></b> in cart)</span>
+                                        <?php if(isset($_SESSION['cart'][$product['id']])): ?>
+                                            <span class="actions-product__cart-have">(you have <b><?= htmlspecialchars($_SESSION['cart'][$product['id']]['qty']); ?></b> in cart)</span>
                                         <?php endif;?>
                                     </button>
                                    

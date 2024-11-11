@@ -18,11 +18,8 @@ class BundleController extends AppController
     {
         header('Content-Type: application/json');
         $data = json_decode(file_get_contents('php://input'), true);
-        $products_model = new ProductModel();
         $bundle_model = new $this->controller_model($this->controller_name_lc);
-        
-        $product = $products_model->getProducts(['id' => $data['product_id']], 1);
-        $result = $bundle_model->addProduct($product, $data);
+        $result = $bundle_model->addProduct($data);
         
         http_response_code($result['response_code']);
         echo json_encode(['message' => $result['message'], 'action' => $result['action']]);

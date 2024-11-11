@@ -91,6 +91,9 @@ function main() {
                 cart.dataset.qty = parseInt(cart.dataset.qty) + productQty;
         
                 if (!alreadyHaveQtyEl) {
+                    const buttonsActions = document.querySelector('.actions-product__buttons');
+                    buttonsActions.insertAdjacentHTML('afterbegin', '<button class="actions-product__delete"><img src="img/home/trash.svg" /></button>');
+                    deleteEvent();
                     const span = document.createElement('span');
                     span.classList.add('actions-product__cart-have');
                     span.innerHTML = `(you have <b>${productQty}</b> in cart)`;
@@ -143,7 +146,36 @@ function main() {
                 });
             }
         };
-        
+        const deleteEvent = () => {
+            const deleteButton = document.querySelector('.actions-product__delete');
+            if (deleteButton){
+                deleteButton.addEventListener('click', async function () {
+                    const response = await fetchSecured('/cart/delete', {
+                        method: "DELETE",
+                        body: JSON.stringify({
+                            product_id: parseInt(product.dataset.id),
+                        }),
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    });
+                    if (!response) return;
+                    const data = await response.json();
+                    if (!response.ok) {
+                        handleNotification(response.status, data.message);
+                        return;
+                    }
+                    cart.dataset.qty = parseInt(cart.dataset.qty) - alreadyHaveQtyValue;
+                    alreadyHaveQtyValue = 0;
+                    alreadyHaveQtyEl.textContent = 0;
+                    handleQtyButtons();
+                    deleteButton.remove();
+                })
+            }
+        }
+        deleteEvent();
+     
         minusButton.addEventListener('click', function() {
             if (productQty > 1) {
                 productQty--;
@@ -387,8 +419,8 @@ function main() {
         const totalSum = document.querySelector('.footer-cart__price');
         const totalProductsEl = document.querySelector('.footer-cart__items-qty');
         let totalProductsQty = parseInt(totalProductsEl.textContent.trim());
+        let totalSumValue = parseFloat(totalSum.textContent.trim().replace(',', '.').replace(' ', '')); 
 
-        let totalSumValue = parseFloat(totalSum.textContent.trim().replace(',', '.').replace(' ', ''));
         products.forEach(product => {
             let productQty = parseInt(product.querySelector('.quantity__input input').value.trim());
             let maxQty = parseInt(product.dataset.qty.trim());
@@ -412,9 +444,8 @@ function main() {
             
             minusButton.addEventListener('click', function() {
                 if (productQty > 1) {
-                    const remainder = formatNumber(totalSumValue - productPrice);
-                    totalSum.textContent = remainder;
-                    totalSumValue = parseFloat(remainder.replace(',', '.').replace(/[\s&nbsp;]+/g, ''));
+                    totalSum.textContent = formatNumber(totalSumValue - productPrice);
+                    totalSumValue -= productPrice;
                     productQty--;
                     totalProductsQty--;
                     cart.dataset.qty = parseInt(cart.dataset.qty) - 1;
@@ -485,6 +516,15 @@ function main() {
                 }
             });
         });
+
+        const mq = window.matchMedia("(max-width: 992px)");
+        if (mq.matches) {
+            const windowSize = window.innerHeight;
+            const cartFooterHeight = document.querySelector('.cart__footer').scrollHeight;
+            const headerHeight = document.querySelector('.header').scrollHeight;
+            const cartBody = document.querySelector('.cart__body');
+            cartBody.style.minHeight = (windowSize - cartFooterHeight - headerHeight) + "px";
+        }
     }
 }
 main();
