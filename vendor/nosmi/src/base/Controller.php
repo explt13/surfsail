@@ -1,30 +1,28 @@
 <?php
 namespace nosmi\base;
 
+use nosmi\RouteContext;
+
 abstract class Controller
 {
-    public array $route;
-    private string $controller;
-    private string $model;
-    protected string $view;
-    protected $layout;
-    private string $prefix;
+    // private string $controller;
+    // private string $model;
+    // protected string $view;
+    // protected $layout;
+    // private string $prefix;
+    protected RouteContext $route;
     private array $data = [];
     private array $meta = ["title" => "", "description" => "", "keywords" => ""];
 
-    public function __construct(array $route)
+    public function init(RouteContext $route_context)
     {
-        $this->route = $route;
-        $this->controller = $route['controller'];
-        $this->model = $route['controller'];
-        $this->view = $route['action'];
-        $this->prefix = $route['prefix'];
+        $this->route = $route_context;
     }
 
     public function getView(): void
     {
-        $viewObject = new View($this->route, $this->layout, $this->view, $this->meta);
-        $viewObject->render($this->data);
+        $view = new View($this->route->controller, $this->route->action, $this->route->prefix, $this->route->layout, $this->meta);
+        $view->render($this->data);
     }
 
     public function setData(array $data)

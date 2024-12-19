@@ -6,6 +6,7 @@ use app\models\interfaces\ProductModelInterface;
 class SearchController extends AppController
 {
     protected $product_model;
+    
     public function __construct(ProductModelInterface $product_model)
     {
         $this->product_model = $product_model;

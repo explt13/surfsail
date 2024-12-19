@@ -5,15 +5,13 @@ use app\models\ProductModel;
 
 abstract class BundleController extends AppController
 {
-    public function __construct(array $array)
-    {
-        parent::__construct($array);
-    }
+    protected $bundle_model;
+
     public function addAction()
     {
         header('Content-Type: application/json');
         $data = json_decode(file_get_contents('php://input'), true);
-        $result = $bundle_model->addProduct($data);
+        $result = $this->bundle_model->addProduct($data);
 
         http_response_code($result['response_code']);
         echo json_encode(['message' => $result['message'], 'action' => $result['action']]);
@@ -23,7 +21,7 @@ abstract class BundleController extends AppController
     {
         header('Content-Type: application/json');
         if (isset($_SESSION['user'])) {
-            $products_ids = $bundle_model->getProductsIds();
+            $products_ids = $this->bundle_model->getProductsIds();
         } else {
             $products_ids = [];
         }
@@ -34,7 +32,7 @@ abstract class BundleController extends AppController
     public function deleteAction()
     {
         $data = json_decode(file_get_contents('php://input'), true);
-        $result = $bundle_model->deleteProduct($data['product_id']);
+        $result = $this->bundle_model->deleteProduct($data['product_id']);
         http_response_code($result['response_code']);
         echo json_encode(["message" => "Product has been removed"]);
     }

@@ -1,6 +1,9 @@
 <?php
 namespace nosmi;
 
+use app\middlewares\AuthMiddleware;
+use app\middlewares\interfaces\AuthMiddlewareInterface;
+use app\models\AppModel;
 use app\models\ArticleModel;
 use app\models\BrandModel;
 use app\models\CartModel;
@@ -21,27 +24,30 @@ use app\models\OrderModel;
 use app\models\ProductModel;
 use app\models\ReviewModel;
 use app\models\UserModel;
+use nosmi\base\Controller;
 
-class Container
+class Container implements ContainerInterface
 {
     use SingletonTrait;
 
     protected array $services = array();
 
-
     protected function __construct()
     {
         $this->services = array(
-            ArticleModelInterface::class     => fn() => $this->make(ArticleModel::class),
-            BrandModelInterface::class       => fn() => $this->make(BrandModel::class),
-            CartModelInterface::class        => fn() => $this->make(CartModel::class),
-            CategoryModelInterface::class    => fn() => $this->make(CategoryModel::class),
-            CurrencyModelInterface::class    => fn() => $this->make(CurrencyModel::class),
-            FavoriteModelInterface::class    => fn() => $this->make(FavoriteModel::class),
-            OrderModelInterface::class       => fn() => $this->make(OrderModel::class),
-            ProductModelInterface::class     => fn() => $this->make(ProductModel::class),
-            ReviewModelInterface::class      => fn() => $this->make(ReviewModel::class),
-            UserModelInterface::class        => fn() => $this->make(UserModel::class),
+            ArticleModelInterface::class    => fn() => $this->make(ArticleModel::class),
+            BrandModelInterface::class      => fn() => $this->make(BrandModel::class),
+            CartModelInterface::class       => fn() => $this->make(CartModel::class),
+            CategoryModelInterface::class   => fn() => $this->make(CategoryModel::class),
+            CurrencyModelInterface::class   => fn() => $this->make(CurrencyModel::class),
+            FavoriteModelInterface::class   => fn() => $this->make(FavoriteModel::class),
+            OrderModelInterface::class      => fn() => $this->make(OrderModel::class),
+            ProductModelInterface::class    => fn() => $this->make(ProductModel::class),
+            ReviewModelInterface::class     => fn() => $this->make(ReviewModel::class),
+            UserModelInterface::class       => fn() => $this->make(UserModel::class),
+            AuthMiddlewareInterface::class  => fn() => $this->make(AuthMiddleware::class),
+            AppModel::class                 => fn() => $this->make(AppModel::class),
+            ContainerInterface::class       => fn() => self::getInstance(),
         );
     }
 
@@ -49,7 +55,7 @@ class Container
     * @param string $id Interface Name
     * @param callable $callback, fn() => new Class;
     */
-    public function set(string $id, callable $callback)
+    public function set(string $id, callable $callback): void
     {
         $this->services[$id] = $callback;
     }
@@ -59,7 +65,7 @@ class Container
         return isset($this->services[$id]);
     }
     
-    public function get(string $id): mixed
+    public function get(string $id): object
     {
         if (isset($this->services[$id])) {
             if (is_object($this->services[$id])) {
@@ -74,12 +80,19 @@ class Container
         return $this->make($id);
     }
     
-    public function make(string $service)
+    public function make(string $service): object
     {
         $reflectorClass = new \ReflectionClass($service);
 
         if ($reflectorClass->isAbstract()) {
             throw new \Exception("Cannot instantiate abstract class or interface: $service");
+        }
+
+        if ($reflectorClass->isInterface()) {
+            $reflectionClass = substr($service, 0, -9);
+            if (!class_exists($reflectionClass)) {
+                throw new \Exception("Class $reflectionClass not found");
+            }
         }
 
         $reflectorConstructor = $reflectorClass->getConstructor();

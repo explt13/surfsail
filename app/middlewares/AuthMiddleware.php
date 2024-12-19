@@ -1,7 +1,9 @@
 <?php
 namespace app\middlewares;
 
-class AuthMiddleware
+use app\middlewares\interfaces\AuthMiddlewareInterface;
+
+class AuthMiddleware implements AuthMiddlewareInterface
 {
     public function CheckAuth($route) {
         if (isset($_SESSION['user']) && $route['controller'] === 'Auth' && $route['action'] === 'index') {

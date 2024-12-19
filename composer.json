@@ -1,7 +1,7 @@
 {
 	"autoload": {
 		"psr-4": {
-			"nosmi\\": "vendor/nosmi/core",
+			"nosmi\\": "vendor/nosmi/src",
 			"app\\": "app"
 		}
 	},

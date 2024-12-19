@@ -29,9 +29,8 @@ class Router
             $controllerReflection = new \ReflectionClass($controller);
             if (class_exists($controller) && !$controllerReflection->isAbstract()) {
                 $container = Container::getInstance();
-
+                $container->set(RouteContext::class, fn() => new RouteContext(self::$route));
                 $controllerObject = $container->get($controller);
-
                 $action = self::lowerCamelCase(self::$route['action']) . "Action";
                 if (method_exists($controllerObject, $action)) {
                     $controllerObject->$action();

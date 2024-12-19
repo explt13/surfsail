@@ -4,7 +4,6 @@ namespace nosmi;
 class App
 {
     public static Registry $registry;
-    public static Container $container;
 
     public function __construct()
     {
