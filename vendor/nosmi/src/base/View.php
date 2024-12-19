@@ -1,25 +1,23 @@
 <?php
 namespace nosmi\base;
 
+use nosmi\RouteContext;
+
 class View
 {
-    public array $route;
     private string $controller;
-    private string $model;
     private string $view;
     private string | false | null $layout;
     private string $prefix;
     private array $meta = []; // app/views/layouts/meta.php
 
-    public function __construct($route, $layout = null, $view = '', $meta = [])
+    public function __construct(string $controller, string $action, string $prefix, string $layout, $meta)
     {
-        $this->route = $route;
-        $this->controller = $route['controller'];
-        $this->model = $route['controller'];
-        $this->view = $view;
-        $this->prefix = $route['prefix'];
-        $this->meta = $meta;
+        $this->controller = $controller;
+        $this->view = $action;
+        $this->prefix = $prefix;
         $this->setLayout($layout);
+        $this->meta = $meta;
     }
 
     private function setLayout($layout)

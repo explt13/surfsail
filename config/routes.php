@@ -3,7 +3,7 @@ use nosmi\Router;
 
 
 Router::add("^product/(?P<alias>[a-z0-9-]+)/?$", ['controller' => 'Product', 'action' => 'view']);
-Router::add("^auth/?$", ['controller' => 'User', 'action' => 'auth']);
+Router::add("^auth/?$", ['controller' => 'User', 'action' => 'auth', 'layout' => 'clean']);
 
 Router::add("^cart/(?P<action>get-products-list)/?$", ['controller' => 'Cart', 'auth' => false]);
 Router::add("^cart/?(?P<action>[a-z-]+)?/?$", ['controller' => 'Cart', 'auth' => true]);

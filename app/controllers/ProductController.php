@@ -22,7 +22,7 @@ class ProductController extends AppController
     public function viewAction()
     {
         $currency = App::$registry->getProperty('currency');
-        $alias = $this->route['alias'];
+        $alias = $this->route->alias;
 
 
         $product = $this->product_model->getProducts(['alias' => $alias, 'active' => 1], 1);

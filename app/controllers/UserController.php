@@ -6,6 +6,7 @@ use \app\models\interfaces\UserModelInterface;
 class UserController extends AppController
 {
     protected $user_model;
+    
     public function __construct(UserModelInterface $user_model)
     {
         $this->user_model = $user_model;
@@ -13,7 +14,6 @@ class UserController extends AppController
 
     public function authAction()
     {
-        $this->layout = 'clean';
         $this->setMeta('Register', 'Register page');
         $this->getView();
     }

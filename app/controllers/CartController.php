@@ -12,9 +12,8 @@ class CartController extends BundleController
 {   
     protected $order_model;
     protected $bundle_model;
-    public function __construct(CartModelInterface $bundle_model, OrderModelInterface $order_model, array $route)
+    public function __construct(CartModelInterface $bundle_model, OrderModelInterface $order_model)
     {
-        parent::__construct($route);
         $this->bundle_model = $bundle_model;
         $this->order_model = $order_model; 
     }

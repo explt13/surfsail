@@ -23,5 +23,4 @@ class FavoriteController extends BundleController
         $this->setData(compact('cart_items_qty', 'currency', 'products'));
         $this->getView();
     }
- 
 }

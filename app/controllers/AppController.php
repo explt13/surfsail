@@ -2,6 +2,7 @@
 namespace app\controllers;
 
 use app\middlewares\AuthMiddleware;
+use app\middlewares\interfaces\AuthMiddlewareInterface;
 use nosmi\base\Controller;
 use app\models\AppModel;
 use app\models\CartModel;
@@ -12,24 +13,21 @@ use app\models\interfaces\CategoryModelInterface;
 use app\models\interfaces\CurrencyModelInterface;
 use app\widgets\cart\Cart;
 use nosmi\App;
-use nosmi\Cache;
+use nosmi\ContainerInterface;
 
 class AppController extends Controller
 {
     protected $currency_model;
     protected $auth_middleware;
     protected $category_model; 
+    protected $app_model;
 
-    public function __construct(CurrencyModelInterface $currency_model, AuthMiddleware $auth_middleware, CategoryModelInterface $category_model, array $route)
+    public function __construct(ContainerInterface $container)
     {
-        parent::__construct($route);
-        new AppModel();
-
-        $this->auth_middleware = $auth_middleware;
-        $this->currency_model = $currency_model;
-        $this->category_model = $category_model;
-
-        $this->auth_middleware->CheckAuth($route);
+        $this->app_model = $container->get(AppModel::class);
+        $this->auth_middleware = $container->get(AuthMiddlewareInterface::class);
+        $this->currency_model = $container->get(CurrencyModelInterface::class);
+        $this->category_model = $container->get(CategoryModelInterface::class);
 
         
         App::$registry->setProperty('cart_items_qty', AuthMiddleware::isLoggedIn() ? Cart::getCartQty() : 0);
