@@ -7,6 +7,11 @@ class Registry
 
     private $properties = [];
 
+    protected function __construct()
+    {
+        $this->setParams();
+    }
+
     public function setProperty($name, $value)
     {
         $this->properties[$name] = $value;
@@ -18,5 +23,15 @@ class Registry
     public function getProperties()
     {
         return $this->properties;
+    }
+
+    public function setParams()
+    {
+        $params = require_once CONF . "/params.php";
+        if (!empty($params)){
+            foreach($params as $k => $v){
+                $this->setProperty($k, $v);
+            } 
+        }
     }
 }

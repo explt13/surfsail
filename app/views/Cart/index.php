@@ -62,8 +62,8 @@
                         <span class="footer-cart__symbol"><?=htmlspecialchars($currency['symbol']);?> </span>
                         <span class="footer-cart__price"><?php
                         if ($products){
-                            echo htmlspecialchars(number_format(array_reduce($products, function($a, $b){
-                            return $a + ($b['discount_price'] ?? $b['price']) * $b['qty'];
+                            echo htmlspecialchars(number_format(array_reduce($products, function($a, $b) use ($currency) {
+                            return $a + (($b['discount_price'] ?? $b['price']) * $currency['value']) * $b['qty'];
                             }, 0), 2, ',', ' '));
                         }
                         else {

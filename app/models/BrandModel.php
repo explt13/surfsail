@@ -1,7 +1,9 @@
 <?php
 namespace app\models;
 
-class BrandModel extends AppModel
+use app\models\interfaces\BrandModelInterface;
+
+class BrandModel extends AppModel implements BrandModelInterface
 {
     public function getBrands(?int $limit = null)
     {
@@ -19,12 +21,11 @@ class BrandModel extends AppModel
         
         return $stmt->fetchAll();
     }
-    public function getProductBrand(?int $brand_id)
+
+    public function getBrandById(int $brand_id)
     {
-        if ($brand_id) {
-            $stmt = $this->pdo->prepare('SELECT title, alias FROM brand WHERE id = :id');
-            $stmt->execute(['id' => $brand_id]);
-            return $stmt->fetch();
-        }
+        $stmt = $this->pdo->prepare('SELECT title, alias FROM brand WHERE id = :id');
+        $stmt->execute(['id' => $brand_id]);
+        return $stmt->fetch();
     }
 }

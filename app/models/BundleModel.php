@@ -1,16 +1,17 @@
 <?php
 namespace app\models;
 
-use app\controllers\BundleController;
+use app\models\interfaces\BundleModelInterface;
 
-abstract class BundleModel extends AppModel
+abstract class BundleModel extends AppModel implements BundleModelInterface
 {
-    public function initializeBundle()
+    public function __construct()
     {
         if (!isset($_SESSION[$this->name])) {
             $_SESSION[$this->name] = [];
         }
     }
+
     public function getProductsIds()
     {
         return array_keys($_SESSION[$this->name]);
@@ -27,19 +28,19 @@ abstract class BundleModel extends AppModel
         }
     }
 
-    public function getProductsFromArray(array $array)
+    public function getProductsFromArray()
     {
+        $array = $_SESSION[$this->name];
         if (!empty($array)) {
-            $product_model = new ProductModel();
             $ids = array_keys($array);
-            $result = $product_model->getProducts(["id" => $ids]);
+            $result = $this->product_model->getProducts(["id" => $ids]);
     
             foreach ($result as &$res) {
                 $product_id = $res['id'];
                 $res['qty'] = $array[$product_id]['qty'];
                 $res['added_date'] = $array[$product_id]['added_date'];
             }
-    
+
             usort($result, fn($a, $b) => $b['added_date'] - $a['added_date']);
             return $result;
         }

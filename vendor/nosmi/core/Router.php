@@ -28,7 +28,10 @@ class Router
             $controller = 'app\\controllers\\' . self::$route['prefix'] . self::$route['controller'] . 'Controller';
             $controllerReflection = new \ReflectionClass($controller);
             if (class_exists($controller) && !$controllerReflection->isAbstract()) {
-                $controllerObject = new $controller(self::$route);
+                $container = Container::getInstance();
+
+                $controllerObject = $container->get($controller);
+
                 $action = self::lowerCamelCase(self::$route['action']) . "Action";
                 if (method_exists($controllerObject, $action)) {
                     $controllerObject->$action();
@@ -86,8 +89,7 @@ class Router
             if (strpos($params[0], "=") === false) {
                 return rtrim($params[0], '/');
             }
-            return '';
         }
-        return ''; // can omit it
+        return '';
     }
 }

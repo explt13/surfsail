@@ -1,7 +1,9 @@
 <?php
 namespace app\models;
 
-class ProductModel extends AppModel
+use app\models\interfaces\ProductModelInterface;
+
+class ProductModel extends AppModel implements ProductModelInterface
 {
     
     public function getProductGalleryImages(int $product_id)

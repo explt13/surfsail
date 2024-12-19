@@ -23,6 +23,13 @@
                             <li class="menu-top-header__item"><a href="#" class="menu-top-header__link">Shipping</a></li>
                             <li class="menu-top-header__item"><a href="#" class="menu-top-header__link">News</a></li>
                             <li class="menu-top-header__item"><a href="#" class="menu-top-header__link">Contacts</a></li>
+                         
+                            <?php
+
+    use app\widgets\currency\Currency;
+
+ new Currency()?>
+                        
                         </ul>
                     </nav>
                     <div class="top-header__user-panel" data-da=".menu__body-user, 991.98">
