@@ -108,7 +108,7 @@
                             </div>
                         </div>
                         <div class="body-product__table table-product">
-                            <?php if ($product_brand):?>
+                            <?php if (isset($product_brand) && $product_brand):?>
                                 <div class="table-product__label">Brand:</div>
                                 <a href="catalog?brand=<?= htmlspecialchars($product_brand['alias'], ENT_QUOTES, 'UTF-8');?>" class="table-product__value"><?= htmlspecialchars($product_brand['title'], ENT_QUOTES, 'UTF-8');?></a>
                             <?php endif;?>

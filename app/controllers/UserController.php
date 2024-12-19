@@ -1,10 +1,16 @@
 <?php
 namespace app\controllers;
 
-use app\models\UserModel;
+use \app\models\interfaces\UserModelInterface;
 
 class UserController extends AppController
 {
+    protected $user_model;
+    public function __construct(UserModelInterface $user_model)
+    {
+        $this->user_model = $user_model;
+    }
+
     public function authAction()
     {
         $this->layout = 'clean';
@@ -16,8 +22,7 @@ class UserController extends AppController
     {
         header('Content-Type: application/json');
         $data = $_POST['auth'];
-        $user_model = new UserModel();
-        $result = $user_model->signUp($data);
+        $result = $this->user_model->signup($data);
         http_response_code($result['response_code']);
         echo json_encode(['message' => $result['message']]);
     }
@@ -25,14 +30,12 @@ class UserController extends AppController
     {
         header('Content-Type: application/json');
         $data = $_POST['auth'];
-        $user_model = new UserModel();
-        $result = $user_model->loginUser($data);
+        $result = $this->user_model->login($data);
         http_response_code($result['response_code']);
         echo json_encode(['message' => $result['message']]);
     }
     public function logoutAction()
     {
-        unset($_SESSION['user']);
-        redirect();
+        $this->user_model->logout();
     }
 }

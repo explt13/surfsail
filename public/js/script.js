@@ -12,12 +12,11 @@ function setCookie(cname, cvalue, exdays) {
 }
 
 const handleCurrency = () => {
-    const options = document.querySelectorAll('.select_information__city .select__option');
+    const options = document.querySelectorAll('.select_currency .select__option');
     let prevCurrencyValue = null;
-
     options.forEach(option => {
         option.addEventListener('click', async function(e){
-            const currency = e.target.textContent;
+            const currency = e.target.dataset.value;
             const response = await fetchSecured(`/currency/change`, {
                 method: "POST",
                 headers: {
@@ -87,7 +86,7 @@ function main() {
         }
         
         cartButtonView.addEventListener('click', async function() {
-            addToCart(this, product, productQty).then(() => {
+            addToCartMore(this, product, productQty, "addup", true).then(() => {
                 cart.dataset.qty = parseInt(cart.dataset.qty) + productQty;
         
                 if (!alreadyHaveQtyEl) {
@@ -267,7 +266,7 @@ function main() {
                 addedProducts.forEach(product => {
                     const button = product.querySelector('.cart-button');
                     setButton(button);
-                })
+                });
             } else if (data.action === 'remove') {
                 cart.dataset.qty = parseInt(cart.dataset.qty) - 1;
                 const removedProducts = document.querySelectorAll(`[data-id="${product.dataset.id}"]`)
@@ -439,10 +438,9 @@ function main() {
                     minusButton.style.backgroundColor = "#b3b3b3";
                 }
             }
-            initPlusMinusButtons();
-            
-            
-            minusButton.addEventListener('click', function() {
+            initPlusMinusButtons();            
+            let timeID;
+            minusButton.addEventListener('click', async function() {
                 if (productQty > 1) {
                     totalSum.textContent = formatNumber(totalSumValue - productPrice);
                     totalSumValue -= productPrice;
@@ -450,17 +448,22 @@ function main() {
                     totalProductsQty--;
                     cart.dataset.qty = parseInt(cart.dataset.qty) - 1;
                     totalProductsEl.textContent = totalProductsQty;
-                }
+                } 
                 if (productQty === 1) {
                     minusButton.disabled = true;
                     minusButton.style.backgroundColor = "#b3b3b3";
-                }
+                } 
                 if (productQty < maxQty) {
                     plusButton.disabled = false;
                     plusButton.style.backgroundColor = "";
                 }
+                clearTimeout(timeID);
+                timeID = setTimeout(() => {
+                    addToCartMore(this, product, productQty, 'actual', false);
+                }, 1000);
             });
-            plusButton.addEventListener('click', function() {
+
+            plusButton.addEventListener('click', async function() {
                 if (productQty < maxQty) {
                     totalSum.textContent = formatNumber(totalSumValue + productPrice);
                     totalSumValue += productPrice;
@@ -477,6 +480,10 @@ function main() {
                     plusButton.disabled = true;
                     plusButton.style.backgroundColor = "#b3b3b3";
                 }
+                clearTimeout(timeID);
+                timeID = setTimeout(() => {
+                    addToCartMore(this, product, productQty, 'actual', false);
+                }, 1000);
             });
 
             deleteButton.addEventListener('click', async function(){
@@ -525,6 +532,29 @@ function main() {
             const cartBody = document.querySelector('.cart__body');
             cartBody.style.minHeight = (windowSize - cartFooterHeight - headerHeight) + "px";
         }
+    }
+    async function addToCartMore(button, product, qty, action, update_time=true) {
+        const response = await fetchSecured('/cart/add', {
+            method: 'POST',
+            headers: {
+                "Content-Type": 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: JSON.stringify({
+                product_id: parseInt(product.dataset.id),
+                qty: qty,
+                qty_control: true,
+                action: action,
+                update_time: update_time,
+            })
+        })
+        if (!response) return;
+        const data = await response.json();
+        if (!response.ok) {
+            handleNotification(response.status, data.message);
+            return;
+        }
+        handleNotification(response.status, data.message);
     }
 }
 main();

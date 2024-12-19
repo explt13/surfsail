@@ -32,6 +32,10 @@ class ErrorHandler
         if (!($errno === 'PDOException')){
             http_response_code($err_response);
         }
+        if (isAjax()) {
+            echo json_encode(["message" => $err_message, "response_code" => $err_response]);
+            die;
+        }
         if ($err_response === 404 && !DEBUG) {
             require WWW . "/errors/404.php";
             die;

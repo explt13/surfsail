@@ -1,8 +1,10 @@
 <?php
 namespace app\models;
+
+use app\models\interfaces\UserModelInterface;
 use \Respect\Validation\Validator as v;
 
-class UserModel extends AppModel
+class UserModel extends AppModel implements UserModelInterface
 {
     protected array $attributes = [
         'password' => "",
@@ -15,7 +17,7 @@ class UserModel extends AppModel
     ];
 
 
-    public function signUp($data)
+    public function signup($data)
     {
         try{
             $this->load($data);
@@ -59,7 +61,7 @@ class UserModel extends AppModel
         
     }
 
-    public function loginUser($data)
+    public function login($data)
     {
         $stmt = $this->pdo->prepare('SELECT u.* FROM user u WHERE u.email = :email');
         $stmt->execute(['email' => $data['email']]);
@@ -78,6 +80,18 @@ class UserModel extends AppModel
         return ['response_code' => 200, 'message' => 'Login successfully'];
     }
 
+    public function logout()
+    {
+        unset($_SESSION['user']);
+        redirect();
+    }
+
+    public function getUserByEmail(string $email)
+    {
+        $stmt = $this->pdo->prepare('SELECT * FROM user u WHERE u.email = :email');
+        $stmt->execute(['email' => $email]);
+        return $stmt->fetch();
+    }
 
     public static function isAdmin()
     {

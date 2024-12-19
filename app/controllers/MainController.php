@@ -1,27 +1,34 @@
 <?php
 namespace app\controllers;
 
-use app\models\ArticleModel;
-use app\models\BrandModel;
-use app\models\ProductModel;
+use app\models\interfaces\BrandModelInterface;
+use app\models\interfaces\ProductModelInterface;
+use app\models\interfaces\ArticleModelInterface;
 use nosmi\App;
 
 class MainController extends AppController
 {
+    protected $product_model;
+    protected $brand_model;
+    protected $article_model;
+
+    public function __construct(ProductModelInterface $product_model, ArticleModelInterface $article_model, BrandModelInterface $brand_model)
+    {
+        $this->product_model = $product_model;
+        $this->brand_model = $brand_model;
+        $this->article_model = $article_model;
+    }
+
     public function indexAction()
     {
-        $brands_model = new BrandModel();
-        $product_model = new ProductModel();
-        $article_model = new ArticleModel();
-
-        $brands = $brands_model->getBrands(10);
-        $shortboard_products = $product_model->getProductsBySubCategory('Shortboards', 7);
-        $longboard_products = $product_model->getProductsBySubCategory('Longboards', 7);
-        $new_products = $product_model->getProducts(['new' => 1], 10);
-        $discount_products = $product_model->getProducts(['sale' => 1], 10, 0, 'discount_percentage', true);
-        $recommend_products = $product_model->getProductsBySubCategory("Bags and Vests", 2);
-        $gear_products = $product_model->getProducts(['category_alias' => 'protective-gear'], 6);
-        $articles =  $article_model->getArticles(4);
+        $brands = $this->brand_model->getBrands(10);
+        $shortboard_products = $this->product_model->getProductsBySubCategory('Shortboards', 7);
+        $longboard_products = $this->product_model->getProductsBySubCategory('Longboards', 7);
+        $new_products = $this->product_model->getProducts(['new' => 1], 10);
+        $discount_products = $this->product_model->getProducts(['sale' => 1], 10, 0, 'discount_percentage', true);
+        $recommend_products = $this->product_model->getProductsBySubCategory("Bags and Vests", 2);
+        $gear_products = $this->product_model->getProducts(['category_alias' => 'protective-gear'], 6);
+        $articles =  $this->article_model->getArticles(4);
         $categories = App::$registry->getProperty('categories');
 
         http_response_code(200);

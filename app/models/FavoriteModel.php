@@ -1,11 +1,21 @@
 <?php
 namespace app\models;
 
-class FavoriteModel extends BundleModel
+use app\models\interfaces\FavoriteModelInterface;
+use app\models\interfaces\ProductModelInterface;
+
+class FavoriteModel extends BundleModel implements FavoriteModelInterface
 {
     protected string $name = 'favorite';
-    public function addProduct(bool|array $product, array $data)
+    protected $product_model;
+    public function __construct(ProductModelInterface $product_model)
     {
+        $this->product_model = $product_model;
+    }
+    
+    public function addProduct(array $data)
+    {
+        $product = $this->product_model->getProducts(['id' => $data['product_id']], 1);
         if ($product === false) {
             return ["response_code" => 409, 'message' => 'No such product'];
         }

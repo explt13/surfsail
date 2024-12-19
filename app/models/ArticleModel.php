@@ -1,9 +1,11 @@
 <?php
 namespace app\models;
 
-class ArticleModel extends AppModel
+use app\models\interfaces\ArticleModelInterface;
+
+class ArticleModel extends AppModel implements ArticleModelInterface
 {
-    public function getArticles($limit)
+    public function getArticles(?int $limit)
     {
         $sql = "SELECT a.* FROM article a";
 
@@ -17,5 +19,12 @@ class ArticleModel extends AppModel
         }
         $stmt->execute();       
         return $stmt->fetchAll();
+    }
+    public function publish()
+    {
+    }
+    
+    public function delete()
+    {
     }
 }

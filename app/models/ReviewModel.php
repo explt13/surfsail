@@ -1,7 +1,9 @@
 <?php
 namespace app\models;
 
-class ReviewModel extends AppModel
+use app\models\interfaces\ReviewModelInterface;
+
+class ReviewModel extends AppModel implements ReviewModelInterface
 {
     public function getReviewsByProductId(int $product_id)
     {
@@ -23,5 +25,13 @@ class ReviewModel extends AppModel
             unset($review["user_id"], $review["first_name"], $review["last_name"], $review["profile_pic"]);
         }
         return $reviews;
+    }
+
+    public function publish()
+    {
+    }
+    
+    public function delete()
+    {
     }
 }
