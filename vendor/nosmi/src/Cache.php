@@ -1,7 +1,7 @@
 <?php
 namespace nosmi;
 
-class Cache
+class Cache implements CacheInterface
 {
     use SingletonTrait;
 

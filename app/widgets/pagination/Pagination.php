@@ -3,9 +3,11 @@
 namespace app\widgets\pagination;
 
 use app\models\ProductModel;
+use nosmi\base\Widget;
 use nosmi\App;
+use nosmi\CacheInterface;
 
-class Pagination
+class Pagination extends Widget
 {
     private int $total_pages;
     private int $per_page;
@@ -18,14 +20,13 @@ class Pagination
     private bool $disabled_prev = false;
     private bool $disabled_next = false;
 
-    public function __construct(int $current_page, int $per_page, string $page)
+    public function __construct(int $total_products, int $current_page, int $per_page, string $page)
     {
-        $product_model = new ProductModel;
-        $total_products = $product_model->getTotalProducts();
         $this->per_page = $per_page;
         $this->total_pages = ceil($total_products / $this->per_page);
         $this->page = $page;
         $this->current_page = $current_page;
+        $this->tpl = __DIR__.'/tpl/pagination_tpl.php';
         $this->setup();
     }
 
@@ -52,12 +53,5 @@ class Pagination
             $this->sec_next_page = $this->current_page + 2;
         }
         
-    }
-
-    public function render()
-    {
-        ob_start();
-        require_once __DIR__.'/tpl/pagination_tpl.php';
-        return ob_get_clean();
     }
 }

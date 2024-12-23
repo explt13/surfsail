@@ -51,7 +51,7 @@
             <div class="container footer-cart__container">
                 <div class="footer-cart__body">
                     <div class="footer-cart__items"><span class="footer-cart__items-qty"><?php
-                    if ($products) {
+                    if ($cart_items_qty) {
                         echo htmlspecialchars($cart_items_qty, ENT_QUOTES, 'UTF-8');
                     } else {
                         echo 0;

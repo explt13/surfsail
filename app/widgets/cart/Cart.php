@@ -1,28 +1,18 @@
 <?php
 namespace app\widgets\cart;
 
+use app\models\interfaces\CartModelInterface;
 use app\models\ProductModel;
+use nosmi\base\Widget;
 use nosmi\App;
 
-class Cart
+class Cart extends Widget
 {
-    private $items_count;
+    protected $items_count;
 
     public function __construct()
     {
-        $this->items_count = App::$registry->getProperty('cart_items_qty');
-        echo $this->render();
-    }
-
-    private function render()
-    {
-        ob_start();
-        require_once __DIR__.'/tpl/cart_tpl.php';
-        return ob_get_clean();
-    }
-    public static function getCartQty()
-    {
-        $cart = $_SESSION['cart'];
-        return array_reduce($cart, fn($a, $b) => $a + $b['qty'], 0);
+        $this->items_count = App::$registry->getProperty('cart_items_qty') ?? 0;
+        $this->tpl = __DIR__.'/tpl/cart_tpl.php';
     }
 }

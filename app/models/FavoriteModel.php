@@ -7,10 +7,9 @@ use app\models\interfaces\ProductModelInterface;
 class FavoriteModel extends BundleModel implements FavoriteModelInterface
 {
     protected string $name = 'favorite';
-    protected $product_model;
     public function __construct(ProductModelInterface $product_model)
     {
-        $this->product_model = $product_model;
+        parent::__construct($product_model);
     }
     
     public function addProduct(array $data)

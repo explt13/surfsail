@@ -24,68 +24,76 @@ use app\models\OrderModel;
 use app\models\ProductModel;
 use app\models\ReviewModel;
 use app\models\UserModel;
-use nosmi\base\Controller;
+use nosmi\base\Widget;
+use nosmi\base\WidgetFactory;
+use nosmi\base\WidgetInterface;
 
 class Container implements ContainerInterface
 {
     use SingletonTrait;
 
+    protected array $bindings = array();
     protected array $services = array();
 
     protected function __construct()
     {
-        $this->services = array(
-            ArticleModelInterface::class    => fn() => $this->make(ArticleModel::class),
-            BrandModelInterface::class      => fn() => $this->make(BrandModel::class),
-            CartModelInterface::class       => fn() => $this->make(CartModel::class),
-            CategoryModelInterface::class   => fn() => $this->make(CategoryModel::class),
-            CurrencyModelInterface::class   => fn() => $this->make(CurrencyModel::class),
-            FavoriteModelInterface::class   => fn() => $this->make(FavoriteModel::class),
-            OrderModelInterface::class      => fn() => $this->make(OrderModel::class),
-            ProductModelInterface::class    => fn() => $this->make(ProductModel::class),
-            ReviewModelInterface::class     => fn() => $this->make(ReviewModel::class),
-            UserModelInterface::class       => fn() => $this->make(UserModel::class),
-            AuthMiddlewareInterface::class  => fn() => $this->make(AuthMiddleware::class),
-            AppModel::class                 => fn() => $this->make(AppModel::class),
+        $this->bindings = array(
+            ArticleModelInterface::class    => fn() => $this->autowire(ArticleModel::class),
+            BrandModelInterface::class      => fn() => $this->autowire(BrandModel::class),
+            CartModelInterface::class       => fn() => $this->autowire(CartModel::class),
+            CategoryModelInterface::class   => fn() => $this->autowire(CategoryModel::class),
+            CurrencyModelInterface::class   => fn() => $this->autowire(CurrencyModel::class),
+            FavoriteModelInterface::class   => fn() => $this->autowire(FavoriteModel::class),
+            OrderModelInterface::class      => fn() => $this->autowire(OrderModel::class),
+            ProductModelInterface::class    => fn() => $this->autowire(ProductModel::class),
+            ReviewModelInterface::class     => fn() => $this->autowire(ReviewModel::class),
+            UserModelInterface::class       => fn() => $this->autowire(UserModel::class),
+            AuthMiddlewareInterface::class  => fn() => $this->autowire(AuthMiddleware::class),
+            AppModel::class                 => fn() => $this->autowire(AppModel::class),
             ContainerInterface::class       => fn() => self::getInstance(),
+            CacheInterface::class           => fn() => Cache::getInstance(),
+            WidgetInterface::class          => fn() => $this->autowire(Widget::class),
         );
     }
 
     /** 
     * @param string $id Interface Name
-    * @param callable $callback, fn() => new Class;
+    * @param callable $callback, fn() => new Concrete;
     */
     public function set(string $id, callable $callback): void
     {
-        $this->services[$id] = $callback;
+        if (!interface_exists($id) && !class_exists($id)) {
+            throw new \Exception("Cannot bind non-existent interface or class: $id");
+        }
+        $this->bindings[$id] = $callback;
     }
 
     public function has(string $id): bool
     {
-        return isset($this->services[$id]);
+        return isset($this->bindings[$id]);
     }
     
     public function get(string $id): object
     {
         if (isset($this->services[$id])) {
-            if (is_object($this->services[$id])) {
-                return $this->services[$id];
-            }
-    
-            if (is_callable($this->services[$id])) {
-                $this->services[$id] = $this->services[$id]();
+            return $this->services[$id];
+        }
+        
+        if (isset($this->bindings[$id])) {
+            if (is_callable($this->bindings[$id])) {
+                $this->services[$id] = $this->bindings[$id]();
                 return $this->services[$id];
             }
         }
-        return $this->make($id);
+        return $this->autowire($id);
     }
     
-    public function make(string $service): object
+    public function autowire(string $service): object
     {
         $reflectorClass = new \ReflectionClass($service);
 
         if ($reflectorClass->isAbstract()) {
-            throw new \Exception("Cannot instantiate abstract class or interface: $service");
+            throw new \Exception("Cannot instantiate abstract class: $service");
         }
 
         if ($reflectorClass->isInterface()) {
@@ -112,9 +120,11 @@ class Container implements ContainerInterface
             if ($argType === null) {
                 throw new \Exception("Unable to resolve argument '{$arg->getName()}' for service '$service'");
             }
+            if (!class_exists($argType->getName()) && !interface_exists($argType->getName())) {
+                throw new \Exception("Parameter '{$arg->getName()}' is not a class or interface");
+            }
             $dependencies[$arg->getName()] = $this->get($argType->getName());
         }
-
         return new $service(...$dependencies);
     }
 }

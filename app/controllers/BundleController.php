@@ -1,11 +1,23 @@
 <?php
 namespace app\controllers;
 
-use app\models\ProductModel;
+use app\models\interfaces\BundleModelInterface;
+use app\models\interfaces\CategoryModelInterface;
+use app\models\interfaces\CurrencyModelInterface;
 
 abstract class BundleController extends AppController
 {
     protected $bundle_model;
+
+    public function __construct(
+        $bundle_model,
+        CurrencyModelInterface $currency_model,
+        CategoryModelInterface $category_model
+    )
+    {
+        parent::__construct($currency_model, $category_model);
+        $this->bundle_model = $bundle_model;
+    }
 
     public function addAction()
     {

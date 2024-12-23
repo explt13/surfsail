@@ -1,14 +1,21 @@
 <?php
 namespace app\controllers;
 
+use app\models\interfaces\CategoryModelInterface;
+use app\models\interfaces\CurrencyModelInterface;
 use \app\models\interfaces\UserModelInterface;
 
 class UserController extends AppController
 {
     protected $user_model;
     
-    public function __construct(UserModelInterface $user_model)
+    public function __construct(
+        UserModelInterface $user_model,
+        CurrencyModelInterface $currency_model,
+        CategoryModelInterface $category_model
+    )
     {
+        parent::__construct($currency_model, $category_model);
         $this->user_model = $user_model;
     }
 

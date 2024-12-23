@@ -4,13 +4,19 @@ namespace app\models;
 use app\models\interfaces\CategoryModelInterface;
 use nosmi\App;
 use nosmi\Cache;
+use nosmi\CacheInterface;
 
 class CategoryModel extends AppModel implements CategoryModelInterface
 {
+    protected CacheInterface $cache;
+    public function __construct(CacheInterface $cache)
+    {
+        parent::__construct();
+        $this->cache = $cache;
+    }
     public function getCategories()
     {
-        $cache = Cache::getInstance();
-        $categories = $cache->get('categories');
+        $categories = $this->cache->get('categories');
         if (!$categories) {
             $stmt = $this->pdo->query("
             SELECT
@@ -71,7 +77,7 @@ class CategoryModel extends AppModel implements CategoryModelInterface
                     'sub_category_id' => $row['ssc_sub_category_id'],
                 ];
             }
-            $cache->set('categories', $categories, 3600 * 24 * 7 * 30);
+            $this->cache->set('categories', $categories, 3600 * 24 * 7 * 30);
         }
         App::$registry->setProperty('categories', $categories);
 
