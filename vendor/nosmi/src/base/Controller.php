@@ -1,16 +1,13 @@
 <?php
 namespace nosmi\base;
 
+use nosmi\CacheInterface;
 use nosmi\RouteContext;
 
 abstract class Controller
 {
-    // private string $controller;
-    // private string $model;
-    // protected string $view;
-    // protected $layout;
-    // private string $prefix;
     protected RouteContext $route;
+    protected CacheInterface $cache;
     private array $data = [];
     private array $meta = ["title" => "", "description" => "", "keywords" => ""];
 

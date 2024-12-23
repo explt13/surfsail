@@ -11,22 +11,13 @@ class View
     private string $prefix;
     private array $meta = []; // app/views/layouts/meta.php
 
-    public function __construct(string $controller, string $action, string $prefix, string $layout, $meta)
+    public function __construct(string $controller, string $action, string $prefix, ?string $layout, $meta)
     {
         $this->controller = $controller;
         $this->view = $action;
         $this->prefix = $prefix;
-        $this->setLayout($layout);
+        $this->layout = $layout ?? LAYOUT;
         $this->meta = $meta;
-    }
-
-    private function setLayout($layout)
-    {
-        if ($layout === false) {
-            $this->layout = false;
-        } else {
-            $this->layout = $layout ?? LAYOUT;
-        }
     }
     
     public function render(array $data)
@@ -40,11 +31,9 @@ class View
         } else {
             throw new \Exception("View not found: {$this->view}", 500);
         }
-        if ($this->layout !== false) {
-            $layoutFile = APP . "/views/layouts/" . $this->layout . '.php';
-            if (is_file($layoutFile)) {
-                require_once $layoutFile;
-            }
+        $layoutFile = APP . "/views/layouts/" . $this->layout . '.php';
+        if (is_file($layoutFile)) {
+            require_once $layoutFile;
         } else {
             throw new \Exception("Layout not found: {$this->layout}", 500);
         }

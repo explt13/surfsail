@@ -2,10 +2,20 @@
 
 namespace app\controllers;
 
+use app\models\interfaces\CategoryModelInterface;
+use app\models\interfaces\CurrencyModelInterface;
 use nosmi\App;
 
 class CurrencyController extends AppController
 {
+    public function __construct(
+        CurrencyModelInterface $currency_model,
+        CategoryModelInterface $category_model
+    )
+    {
+        parent::__construct($currency_model, $category_model);
+    }
+
     public function getAction()
     {
         header('Content-Type: application/json');
@@ -19,6 +29,7 @@ class CurrencyController extends AppController
         }
 
     }
+
     public function changeAction()
     {
         header('Content-Type: application/json');

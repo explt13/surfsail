@@ -8,4 +8,5 @@ interface BundleModelInterface
     public function getProductsFromArray();
     public function deleteProduct(int $product_id);
     public function addProduct(array $data);
+    public function getItemsQty();
 }

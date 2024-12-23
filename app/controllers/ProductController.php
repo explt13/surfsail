@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\interfaces\BrandModelInterface;
+use app\models\interfaces\CategoryModelInterface;
+use app\models\interfaces\CurrencyModelInterface;
 use app\models\interfaces\ProductModelInterface;
 use app\models\interfaces\ReviewModelInterface;
 use nosmi\App;
@@ -13,12 +15,20 @@ class ProductController extends AppController
     protected $brand_model;
     protected $review_model;
 
-    public function __construct(ProductModelInterface $product_model, ReviewModelInterface $review_model, BrandModelInterface $brand_model)
+    public function __construct(
+        ProductModelInterface $product_model,
+        ReviewModelInterface $review_model,
+        BrandModelInterface $brand_model,
+        CurrencyModelInterface $currency_model,
+        CategoryModelInterface $category_model
+    )
     {
+        parent::__construct($currency_model, $category_model);
         $this->product_model = $product_model;
         $this->brand_model = $brand_model;
         $this->review_model = $review_model;
     }
+    
     public function viewAction()
     {
         $currency = App::$registry->getProperty('currency');

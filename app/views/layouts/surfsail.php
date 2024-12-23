@@ -23,12 +23,6 @@
                             <li class="menu-top-header__item"><a href="#" class="menu-top-header__link">Shipping</a></li>
                             <li class="menu-top-header__item"><a href="#" class="menu-top-header__link">News</a></li>
                             <li class="menu-top-header__item"><a href="#" class="menu-top-header__link">Contacts</a></li>
-                         
-                            <?php
-
-    use app\widgets\currency\Currency;
-
- new Currency()?>
                         
                         </ul>
                     </nav>
@@ -83,11 +77,11 @@
                             </div>
                         </div>
                         <a data-da=".top-header__container, 991.98, 2" href="favorite" class="information__fav _icon-fav"></a>
-                        <?php new app\widgets\cart\Cart();?>
+                        <?php (new app\widgets\cart\Cart())->render();?>
                     </div>
                 </div>
             </div>
-            <?php new \app\widgets\menu\Menu();?>
+            <?php (new app\widgets\menu\Menu())->render() ;?>
         </header>
         <?= $view ?>
         <footer class="footer">

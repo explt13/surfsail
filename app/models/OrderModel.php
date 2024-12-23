@@ -29,6 +29,7 @@ class OrderModel extends AppModel implements OrderModelInterface
         CartModelInterface $cart_model,
     )
     {
+        parent::__construct();
         $this->product_model = $product_model;
         $this->currency_model = $currency_model;
         $this->user_model = $user_model;

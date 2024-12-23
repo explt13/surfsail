@@ -2,8 +2,10 @@
 
 namespace app\middlewares\interfaces;
 
-interface AuthMiddlewareInterface extends MiddlewareInterface
+use nosmi\RouteContext;
+
+interface AuthMiddlewareInterface
 {
-    public function CheckAuth($route);
-    public static function isLoggedIn();
+    public function CheckAuth(RouteContext $route);
+    public static function setIsLoggedIn();
 }

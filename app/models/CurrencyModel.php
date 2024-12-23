@@ -2,17 +2,23 @@
 namespace app\models;
 
 use app\models\interfaces\CurrencyModelInterface;
-use nosmi\App;
-use nosmi\Cache;
+use nosmi\CacheInterface;
 
 class CurrencyModel extends AppModel implements CurrencyModelInterface
 {
+    protected CacheInterface $cache;
+
+    public function __construct(CacheInterface $cache)
+    {
+        parent::__construct();
+        $this->cache = $cache;
+    }
+
     public function getCurrencies()
     {
         $stmt = $this->pdo->query('SELECT c.* FROM currency c ORDER BY c.base DESC');
-        $cache = Cache::getInstance();
 
-        if ($currencies = $cache->get('currencies')) {
+        if ($currencies = $this->cache->get('currencies')) {
             return $currencies;
         }
         else {
@@ -21,7 +27,7 @@ class CurrencyModel extends AppModel implements CurrencyModelInterface
             foreach ($currencies as $k => $v) {
                 $curs[$v['code']] = $v;
             }
-            $cache->set('currencies', $curs);
+            $this->cache->set('currencies', $curs);
         }
         return $curs;
     }

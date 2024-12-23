@@ -12,6 +12,7 @@ class App
         cors();
         self::$registry = Registry::getInstance(); // Registry::$instance => new Registry;
         ErrorHandler::getInstance();
-        Router::dispatch($query);
+        $router = new Router(Container::getInstance());
+        $router->dispatch($query);
     }
 }

@@ -1,10 +1,19 @@
 <?php
 namespace nosmi;
 
+use nosmi\base\Controller;
+use nosmi\base\WidgetInterface;
+
 class Router
 {
     private static array $routes = [];
     private static array $route = [];
+    private ContainerInterface $container;
+
+    public function __construct(ContainerInterface $container)
+    {
+        $this->container = $container;
+    }
 
     public static function add($regexp, $route = [])
     {
@@ -21,32 +30,28 @@ class Router
         return self::$route;
     }
     
-    public static function dispatch($url)
+    public function dispatch($url)
     {
         $url = self::removeQueryString($url);
-        if (self::routeExists($url)) {
-            $controller = 'app\\controllers\\' . self::$route['prefix'] . self::$route['controller'] . 'Controller';
-            $controllerReflection = new \ReflectionClass($controller);
-            if (class_exists($controller) && !$controllerReflection->isAbstract()) {
-                $container = Container::getInstance();
-                $container->set(RouteContext::class, fn() => new RouteContext(self::$route));
-                $controllerObject = $container->get($controller);
-                $action = self::lowerCamelCase(self::$route['action']) . "Action";
-                if (method_exists($controllerObject, $action)) {
-                    $controllerObject->$action();
-                } else {
-                    throw new \Exception("Action: $controller::$action not found", 404);
-                }
+        if ($this->routeExists($url)) {
+            $controller = "app\\controllers\\" . self::$route['prefix'] . self::$route['controller'] . 'Controller'; // admin prefix
+            $this->container->set(RouteContext::class, fn() => new RouteContext(self::$route));
 
+            $controllerObject = $this->container->get($controller);
+            
+            $action = $this->lowerCamelCase(self::$route['action']) . "Action";
+            if (method_exists($controllerObject, $action)) {
+                $controllerObject->init($this->container->get(RouteContext::class)); // implement proxy   
+                $controllerObject->$action();
             } else {
-                throw new \Exception("Controller: $controller not found", 404);
+                throw new \Exception("Action: $controller::$action not found", 404);
             }
             
         } else {
             throw new \Exception("Page not found", 404);
         }
     }
-    private static function routeExists($url)
+    private function routeExists($url)
     {
         foreach (self::$routes as $regexp => $route){
             if (preg_match("#{$regexp}#", $url, $matches)){
@@ -63,7 +68,7 @@ class Router
                 } else {
                     $route['prefix'] .= '\\';
                 }
-                $route['controller'] = self::upperCamelCase($route['controller']);
+                $route['controller'] = $this->upperCamelCase($route['controller']);
                 self::$route = $route;
                 return true;
             }
@@ -71,17 +76,17 @@ class Router
         return false;
     }
     
-    private static function upperCamelCase(string $str)
+    private function upperCamelCase(string $str)
     {
         return str_replace(" ", "", ucwords(str_replace("-", " ", $str)));
     }
     
-    private static function lowerCamelCase(string $str)
+    private function lowerCamelCase(string $str)
     {
         return lcfirst(self::upperCamelCase($str));
     }
 
-    protected static function removeQueryString($url)
+    protected function removeQueryString($url)
     {
         if ($url) {
             $params = explode("&", $url, 2);
