@@ -9,16 +9,16 @@ use nosmi\CacheInterface;
 
 class Pagination extends Widget
 {
-    private int $total_pages;
-    private int $per_page;
-    private int $current_page;
-    private ?int $next_page = null;
-    private ?int $prev_page = null;
-    private ?int $sec_next_page = null;
-    private ?int $sec_prev_page = null;
-    private string $page;
-    private bool $disabled_prev = false;
-    private bool $disabled_next = false;
+    protected int $total_pages;
+    protected int $per_page;
+    protected int $current_page;
+    protected ?int $next_page = null;
+    protected ?int $prev_page = null;
+    protected ?int $sec_next_page = null;
+    protected ?int $sec_prev_page = null;
+    protected string $page;
+    protected bool $disabled_prev = false;
+    protected bool $disabled_next = false;
 
     public function __construct(int $total_products, int $current_page, int $per_page, string $page)
     {

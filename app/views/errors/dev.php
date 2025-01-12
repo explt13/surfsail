@@ -9,7 +9,7 @@
     <div class="wrapper">
         <main class="page">
             <section class="error">
-                <div class="error__text" style="box-sizing: border-box; padding: 10px; background-color: #de6868; font-size: 36px;"><?= $errno ?> has occured</div>
+                <div class="error__text" style="box-sizing: border-box; padding: 10px; background-color: #de6868; font-size: 36px;"><?= $err_type ?> has occured</div>
                 <table class="error__subtext" style="width: 100%; font-size: 22px; border-collapse:collapse">
                     <tr style="background-color: rgba(240, 105, 105, 0.2);">
                         <td style="padding: 15px 30px;"><b>Message</b></td>

@@ -22,6 +22,7 @@ class CurrencyController extends AppController
         $currency = App::$registry->getProperty('currencies')[$_COOKIE['currency'] ?? 'USD'];
         if ($currency) {
             http_response_code(200);
+            setcookie('currency', $currency['code'], time() + 3600 * 24 * 7, '/');
             echo json_encode(['success' => true, 'currency' => $currency]);
         } else {
             http_response_code(400);

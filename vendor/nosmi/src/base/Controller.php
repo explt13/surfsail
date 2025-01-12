@@ -11,7 +11,7 @@ abstract class Controller
     private array $data = [];
     private array $meta = ["title" => "", "description" => "", "keywords" => ""];
 
-    public function init(RouteContext $route_context)
+    public final function init(RouteContext $route_context)
     {
         $this->route = $route_context;
     }

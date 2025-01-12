@@ -7,8 +7,8 @@ use nosmi\CacheInterface;
 
 class Currency extends Widget
 {
-    private array $currencies;
-    private array $currency;
+    protected array $currencies;
+    protected array $currency;
 
     public function __construct()
     {

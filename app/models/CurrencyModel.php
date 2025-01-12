@@ -7,6 +7,7 @@ use nosmi\CacheInterface;
 class CurrencyModel extends AppModel implements CurrencyModelInterface
 {
     protected CacheInterface $cache;
+    protected array $currencies;
 
     public function __construct(CacheInterface $cache)
     {
@@ -16,31 +17,33 @@ class CurrencyModel extends AppModel implements CurrencyModelInterface
 
     public function getCurrencies()
     {
-        $stmt = $this->pdo->query('SELECT c.* FROM currency c ORDER BY c.base DESC');
+        $currencies = $this->cache->get('currencies');
 
-        if ($currencies = $this->cache->get('currencies')) {
-            return $currencies;
-        }
-        else {
-            $currencies = $stmt->fetchAll();
-            $curs = [];
-            foreach ($currencies as $k => $v) {
-                $curs[$v['code']] = $v;
+        if (!$currencies) {
+            $stmt = $this->pdo->query('SELECT c.* FROM currency c ORDER BY c.base DESC');
+            $curs = $stmt->fetchAll();
+            $currencies = [];
+            foreach ($curs as $k => $v) {
+                $currencies[$v['code']] = $v;
             }
-            $this->cache->set('currencies', $curs);
+            $this->cache->set('currencies', $currencies);
         }
-        return $curs;
+        $this->currencies = $currencies;
+        return $currencies;
     }
 
-    public static function getCurrencyByCookie($currencies)
+    public function getCurrencyByCookie()
     {
         $key = null;
-        if (isset($_COOKIE['currency']) && array_key_exists($_COOKIE['currency'], $currencies)) {
+        if (empty($this->currencies)) {
+            $this->getCurrencies();
+        }
+        if (isset($_COOKIE['currency']) && array_key_exists($_COOKIE['currency'], $this->currencies)) {
             $key = $_COOKIE['currency'];
         } else {
-            $key = key($currencies);
+            $key = key($this->currencies);
         }
-        $currency = $currencies[$key];
+        $currency = $this->currencies[$key];
         return $currency;
     }
 

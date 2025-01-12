@@ -1,21 +1,37 @@
 <?php
 namespace app\middlewares;
 
-use app\middlewares\interfaces\AuthMiddlewareInterface;
+use app\middlewares\interfaces\MiddlewareInterface;
 use nosmi\App;
+use nosmi\base\Middleware;
 use nosmi\RouteContext;
 
-class AuthMiddleware implements AuthMiddlewareInterface
+class AuthMiddleware extends Middleware
 {
-    public function CheckAuth(RouteContext $route) {
-        if (isset($_SESSION['user']) && $route->controller === 'Auth' && $route->action === 'index') {
+    private RouteContext $route;
+    public function __construct(RouteContext $route)
+    {
+        $this->route = $route;
+    }
+
+    protected function CheckAuth()
+    {
+        if (isset($_SESSION['user']) && $this->route->controller === 'Auth' && $this->route->action === 'index') {
             redirect();
         }
-        if (isset($route->auth) && $route->auth === true && !isset($_SESSION['user'])) {
+        if (isset($this->route->auth) && $this->route->auth === true && !isset($_SESSION['user'])) {
             redirect('auth');
         }
     }
-    public static function setIsLoggedIn() {
+
+    protected function setIsLoggedIn()
+    {
         App::$registry->setProperty('loggedIn', isset($_SESSION['user']));
+    }
+
+    public function run()
+    {
+        $this->checkAuth();
+        $this->setIsLoggedIn();
     }
 }

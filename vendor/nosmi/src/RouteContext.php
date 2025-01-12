@@ -6,15 +6,36 @@ class RouteContext
 {
     private array $data = [];
     private array $readOnlyProperties = [];
-    private bool $canOverwrite = false; 
+    private bool $canOverwrite = false;
 
-    public function __construct(array $props = [])
+    public function setRoute(array $route)
     {
-        foreach ($props as $key => $value) {
+        $route = $this->prepareRoute($route);
+        foreach ($route as $key => $value) {
             $this->data[$key] = $value;
             $this->readOnlyProperties[] = $key;
         }
     }
+
+    private function prepareRoute(array $route)
+    {
+        if (empty($route['action'])) {
+            $route['action'] = 'index';
+        }
+        if (!isset($route['prefix'])) {
+            $route['prefix'] = '';
+        } else {
+            $route['prefix'] .= '\\';
+        }
+        $route['controller'] = $this->upperCamelCase($route['controller']);
+        return $route;
+    }
+
+    private function upperCamelCase(string $str)
+    {
+        return str_replace('-', '', ucwords($str, '-'));
+    }
+
 
     public function __get(string $name)
     {
@@ -23,13 +44,11 @@ class RouteContext
 
     public function __set(string $name, $value)
     {
-        if (!$this->canOverwrite){
-            if (in_array($name, $this->readOnlyProperties)) {
-                throw new \Exception("Cannot set read-only property: $name");
-            }
-            if (isset($this->data[$name])) {
-                throw new \Exception("Cannot overwrite existing property: $name");
-            }
+        if (in_array($name, $this->readOnlyProperties)) {
+            throw new \Exception("Cannot set read-only property: $name");
+        }
+        if (!$this->canOverwrite && isset($this->data[$name])){
+            throw new \Exception("Cannot overwrite existing property: $name");
         }
         $this->data[$name] = $value;
     }

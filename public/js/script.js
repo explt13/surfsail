@@ -714,12 +714,12 @@ const escapeHTML = (str) => str.replace(/[&<>"']/g, (char) => ({
     "'": '&#039;'
 }[char]));
 
-const handleForms = () => {
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
-        const authContainer = form.closest('.auth__container');
-        form.addEventListener('formValidated', async (e) => {
-            const formData = new FormData(form);
+const handleAuth = () => {
+    const authForm = document.querySelector('.auth__form');
+    if (authForm){
+        const authContainer = authForm.closest('.auth__container');
+        authForm.addEventListener('formValidated', async (e) => {
+            const formData = new FormData(authForm);
             const isLogin = authContainer.classList.contains('_login');
             const action = isLogin ? 'login' : 'signup';
             const response = await fetch(`/user/${action}`, {
@@ -732,6 +732,73 @@ const handleForms = () => {
                 window.location.replace("/");
             }
         })
-    })
+    }
 }
-handleForms();
+handleAuth();
+
+
+const handleFilters = () => {
+    
+    const applyFiltersBtn = document.querySelector('.filter-catalog__apply-button');
+    if (applyFiltersBtn) {
+        applyFiltersBtn.addEventListener('click', async function() {
+            const filterUrl = getFilterUrl();
+            const response = await fetch(filterUrl, {
+                method: "GET",
+            });
+            window.history.pushState({}, "", filterUrl);
+        });
+    
+        function getFilterUrl() {
+            const filterItems = document.querySelectorAll('.item-filter');
+            let filterUrl = '/catalog?filter=';
+            if (filterItems.length > 0) {
+                filterItems.forEach((filterItem, index) => {
+                    const groupNameEl = filterItem.querySelector('.item-filter__title');
+                    const groupNameType = filterItem.dataset.filtertype;
+                    const groupName = groupNameEl.dataset.alias;
+        
+                    switch (groupNameType) {
+                        case 'checkbox':
+                            const checkedOptions = filterItem.querySelectorAll('input:checked');
+                            if (checkedOptions.length > 0) {
+                                const values = Array.from(checkedOptions)
+                                .map(el => el.value)
+                                .join(',');
+                                filterUrl += encodeURIComponent(groupName + ':' + values + ';');
+                            }
+                            break;
+                        case 'range':
+                            const rangeMinEl = document.querySelector('[data-range-from]');
+                            const rangeMaxEl = document.querySelector('[data-range-to]');
+                            if (rangeMinEl && rangeMaxEl) {
+                                const rangeMin = rangeMinEl.value.replace(/[\$\s]/g, '');
+                                const rangeMax = rangeMaxEl.value.replace(/[\$\s]/g, '');
+                                filterUrl += encodeURIComponent(groupName + ':' + rangeMin + ',' + rangeMax + ';');
+                            }
+                            else if (rangeMinEl) {
+                                const rangeMin = rangeMinEl.value;
+                                filterUrl += encodeURIComponent(groupName + ':' + rangeMin + ';');
+                            }
+                            else if (rangeMaxEl) {
+                                const rangeMax = rangeMaxEl.value;
+                                filterUrl += encodeURIComponent(groupName + ':' + rangeMax + ';');
+                            }
+                            break;
+                        case 'radio':
+                            const checked = filterItem.querySelector('input:checked');
+                            if (checked) {
+                                filterUrl += encodeURIComponent(groupName + ':' + checked.value + ';');
+                            }
+                            break;
+                    }
+                })
+                return filterUrl;
+            }
+            
+        }
+    }
+
+    
+}
+handleFilters();
