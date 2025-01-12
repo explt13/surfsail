@@ -2,6 +2,7 @@
 
 namespace app\widgets\menu;
 
+use app\models\CategoryModel;
 use nosmi\base\Widget;
 use nosmi\App;
 use nosmi\Cache;
@@ -9,13 +10,13 @@ use nosmi\CacheInterface;
 
 class Menu extends Widget
 {
-    private string $prepend = '';
-    private ?array $categories = [];
-    private string $cache_key = 'menu';
-    private int $cache_time = 3600 * 24 * 30;
+    protected string $prepend = '';
+    protected ?array $categories = [];
+    protected string $cache_key = 'menu';
+    protected int $cache_time = 3600 * 24 * 30;
     protected CacheInterface $cache;
-    private int $sub_categories_to_show;
-    private ?string $menuHtml;
+    protected int $sub_categories_to_show;
+    protected ?string $menuHtml;
 
     public function __construct($props = [])
     {

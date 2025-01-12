@@ -3,7 +3,6 @@
 namespace nosmi\base;
 
 use nosmi\base\WidgetInterface;
-use nosmi\CacheInterface;
 
 abstract class Widget implements WidgetInterface
 {

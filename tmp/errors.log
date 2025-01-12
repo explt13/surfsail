@@ -172,3 +172,859 @@
 --------------------------------------
 [2024-12-23 17:17:04] Error: Cannot access private property app\widgets\cart\Cart::$items_count | File: /var/www/projects/surfsail/app/widgets/cart/tpl/cart_tpl.php | Line: 2
 --------------------------------------
+[2024-12-24 17:41:36] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-24 17:41:45] Error: Cannot access private property app\widgets\pagination\Pagination::$page | File: /var/www/projects/surfsail/app/widgets/pagination/tpl/pagination_tpl.php | Line: 2
+--------------------------------------
+[2024-12-24 17:41:49] Error: Cannot access private property app\widgets\pagination\Pagination::$page | File: /var/www/projects/surfsail/app/widgets/pagination/tpl/pagination_tpl.php | Line: 2
+--------------------------------------
+[2024-12-24 17:41:58] Error: Cannot access private property app\widgets\pagination\Pagination::$page | File: /var/www/projects/surfsail/app/widgets/pagination/tpl/pagination_tpl.php | Line: 2
+--------------------------------------
+[2024-12-24 17:42:03] Error: Cannot access private property app\widgets\pagination\Pagination::$page | File: /var/www/projects/surfsail/app/widgets/pagination/tpl/pagination_tpl.php | Line: 2
+--------------------------------------
+[2024-12-24 17:42:33] Error: Cannot access private property app\widgets\pagination\Pagination::$page | File: /var/www/projects/surfsail/app/widgets/pagination/tpl/pagination_tpl.php | Line: 2
+--------------------------------------
+[2024-12-24 17:42:34] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-24 17:42:42] Error: Cannot access private property app\widgets\pagination\Pagination::$page | File: /var/www/projects/surfsail/app/widgets/pagination/tpl/pagination_tpl.php | Line: 2
+--------------------------------------
+[2024-12-24 17:43:57] Error: Cannot access private property app\widgets\pagination\Pagination::$page | File: /var/www/projects/surfsail/app/widgets/pagination/tpl/pagination_tpl.php | Line: 2
+--------------------------------------
+[2024-12-24 17:43:58] Error: Cannot access private property app\widgets\pagination\Pagination::$page | File: /var/www/projects/surfsail/app/widgets/pagination/tpl/pagination_tpl.php | Line: 2
+--------------------------------------
+[2024-12-24 17:43:58] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-24 17:44:13] Error: Cannot access private property app\widgets\pagination\Pagination::$page | File: /var/www/projects/surfsail/app/widgets/pagination/tpl/pagination_tpl.php | Line: 2
+--------------------------------------
+[2024-12-24 17:44:28] Error: Cannot access private property app\widgets\pagination\Pagination::$page | File: /var/www/projects/surfsail/app/widgets/pagination/tpl/pagination_tpl.php | Line: 2
+--------------------------------------
+[2024-12-24 17:46:13] Error: Cannot access private property app\widgets\pagination\Pagination::$page | File: /var/www/projects/surfsail/app/widgets/pagination/tpl/pagination_tpl.php | Line: 2
+--------------------------------------
+[2024-12-24 17:47:16] Error: Cannot access private property app\widgets\pagination\Pagination::$page | File: /var/www/projects/surfsail/app/widgets/pagination/tpl/pagination_tpl.php | Line: 2
+--------------------------------------
+[2024-12-24 17:47:16] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-24 17:47:17] Error: Cannot access private property app\widgets\pagination\Pagination::$page | File: /var/www/projects/surfsail/app/widgets/pagination/tpl/pagination_tpl.php | Line: 2
+--------------------------------------
+[2024-12-24 17:47:18] Error: Cannot access private property app\widgets\pagination\Pagination::$page | File: /var/www/projects/surfsail/app/widgets/pagination/tpl/pagination_tpl.php | Line: 2
+--------------------------------------
+[2024-12-24 17:47:18] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-24 17:47:21] Error: Cannot access private property app\widgets\pagination\Pagination::$page | File: /var/www/projects/surfsail/app/widgets/pagination/tpl/pagination_tpl.php | Line: 2
+--------------------------------------
+[2024-12-24 17:47:32] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-24 17:47:36] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-24 17:47:43] Error: Cannot access private property app\widgets\pagination\Pagination::$page | File: /var/www/projects/surfsail/app/widgets/pagination/tpl/pagination_tpl.php | Line: 2
+--------------------------------------
+[2024-12-26 11:25:02] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-26 11:25:02] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-26 11:25:35] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-26 11:25:44] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-26 11:25:54] Error: Product not found | File: /var/www/projects/surfsail/app/controllers/ProductController.php | Line: 40
+--------------------------------------
+[2024-12-26 11:25:56] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-26 12:40:45] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-26 13:05:43] Error: Cannot instantiate abstract class: app\models\interfaces\FilterModelInterface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 96
+--------------------------------------
+[2024-12-26 13:05:43] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-26 13:05:53] Error: Cannot instantiate abstract class: app\models\interfaces\FilterModelInterface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 96
+--------------------------------------
+[2024-12-26 13:07:40] Error: Cannot instantiate abstract class: app\models\interfaces\FilterModelInterface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 96
+--------------------------------------
+[2024-12-26 13:07:41] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-26 13:07:41] Error: Cannot instantiate abstract class: app\models\interfaces\FilterModelInterface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 96
+--------------------------------------
+[2024-12-26 13:07:41] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-26 13:07:55] Error: Class app\models\interfaces\FilterModel not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 98
+--------------------------------------
+[2024-12-26 13:28:26] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-26 13:30:49] Error: Typed property nosmi\base\Model::$pdo must not be accessed before initialization | File: /var/www/projects/surfsail/app/models/FilterModel.php | Line: 30
+--------------------------------------
+[2024-12-26 13:30:49] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-26 13:32:10] Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'surfsail.filter_option' doesn't exist | File: /var/www/projects/surfsail/app/models/FilterModel.php | Line: 38
+--------------------------------------
+[2024-12-26 13:35:06] Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined | File: /var/www/projects/surfsail/app/models/FilterModel.php | Line: 39
+--------------------------------------
+[2024-12-26 13:35:06] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-26 13:36:13] Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined | File: /var/www/projects/surfsail/app/models/FilterModel.php | Line: 39
+--------------------------------------
+[2024-12-26 13:36:14] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-26 13:36:52] Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined | File: /var/www/projects/surfsail/app/models/FilterModel.php | Line: 39
+--------------------------------------
+[2024-12-26 13:36:52] Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined | File: /var/www/projects/surfsail/app/models/FilterModel.php | Line: 39
+--------------------------------------
+[2024-12-26 13:36:52] Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined | File: /var/www/projects/surfsail/app/models/FilterModel.php | Line: 39
+--------------------------------------
+[2024-12-26 13:36:53] Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined | File: /var/www/projects/surfsail/app/models/FilterModel.php | Line: 39
+--------------------------------------
+[2024-12-26 14:42:33] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-26 14:45:58] Error: app\models\FilterModel::getOptions(): Argument #1 ($group_id) must be of type int, null given, called in /var/www/projects/surfsail/app/models/FilterModel.php on line 23 | File: /var/www/projects/surfsail/app/models/FilterModel.php | Line: 37
+--------------------------------------
+[2024-12-26 14:45:58] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-26 14:52:32] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-26 14:52:41] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2024-12-27 18:11:39] Error: Cannot access offset of type string on string | File: /var/www/projects/surfsail/app/views/Catalog/index.php | Line: 41
+--------------------------------------
+[2024-12-27 18:11:40] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2025-01-02 08:41:07] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2025-01-02 08:41:07] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2025-01-02 08:41:25] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 51
+--------------------------------------
+[2025-01-02 19:14:08] Error: Too few arguments to function app\middlewares\CurrencyMiddleware::__construct(), 0 passed in /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php on line 21 and exactly 1 expected | File: /var/www/projects/surfsail/app/middlewares/CurrencyMiddleware.php | Line: 13
+--------------------------------------
+[2025-01-02 19:14:08] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+--------------------------------------
+[2025-01-03 08:17:13] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 08:17:13] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+--------------------------------------
+[2025-01-03 08:20:05] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 08:20:25] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 08:21:12] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 08:21:32] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 08:21:32] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 08:21:32] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+--------------------------------------
+[2025-01-03 08:22:00] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 08:22:01] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 08:22:01] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+--------------------------------------
+[2025-01-03 09:41:07] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:41:07] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+--------------------------------------
+[2025-01-03 09:41:18] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:46:34] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 24
+--------------------------------------
+[2025-01-03 09:46:34] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 24
+--------------------------------------
+[2025-01-03 09:46:35] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+--------------------------------------
+[2025-01-03 09:46:41] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 24
+--------------------------------------
+[2025-01-03 09:46:42] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 24
+--------------------------------------
+[2025-01-03 09:46:42] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+--------------------------------------
+[2025-01-03 09:46:50] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 23
+--------------------------------------
+[2025-01-03 09:52:45] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 23
+--------------------------------------
+[2025-01-03 09:52:45] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+--------------------------------------
+[2025-01-03 09:53:31] Error: Unsupported operand types: string + string | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 18
+--------------------------------------
+[2025-01-03 09:53:31] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+--------------------------------------
+[2025-01-03 09:53:41] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 23
+--------------------------------------
+[2025-01-03 09:54:40] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:41] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:41] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:41] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:42] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:42] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:42] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:42] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:42] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:42] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:42] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:43] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:43] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:43] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:43] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:43] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:44] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:44] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:44] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:44] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:44] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:44] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:54:45] Error: Typed property nosmi\base\Middleware::$middlewares must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 22
+--------------------------------------
+[2025-01-03 09:57:16] Error: Class "app\middlewares\AuthMiddleware.phpMiddleware" not found | File: /var/www/projects/surfsail/vendor/nosmi/src/base/Middleware.php | Line: 23
+--------------------------------------
+[2025-01-03 10:13:37] Error: Too few arguments to function app\middlewares\AuthMiddleware::CheckAuth(), 0 passed in /var/www/projects/surfsail/app/middlewares/AuthMiddleware.php on line 27 and exactly 1 expected | File: /var/www/projects/surfsail/app/middlewares/AuthMiddleware.php | Line: 10
+--------------------------------------
+[2025-01-03 10:13:38] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+--------------------------------------
+[2025-01-03 10:28:15] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+--------------------------------------
+[2025-01-05 11:54:52] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+--------------------------------------
+[2025-01-05 11:54:53] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+--------------------------------------
+[2025-01-05 11:58:23] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+--------------------------------------
+[2025-01-05 11:58:23] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+--------------------------------------
+[2025-01-05 11:58:23] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+--------------------------------------
+[2025-01-05 11:58:24] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+--------------------------------------
+[2025-01-05 12:02:47] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+--------------------------------------
+[2025-01-05 12:02:47] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+--------------------------------------
+[2025-01-05 12:04:23] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+--------------------------------------
+[2025-01-05 12:04:40] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+--------------------------------------
+[2025-01-05 12:04:48] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+--------------------------------------
+[2025-01-05 12:05:07] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+--------------------------------------
+[2025-01-05 12:05:08] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+--------------------------------------
+[2025-01-05 12:05:17] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+--------------------------------------
+[2025-01-05 12:05:33] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+--------------------------------------
+[2025-01-05 12:05:35] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+--------------------------------------
+[2025-01-05 12:05:53] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+--------------------------------------
+[2025-01-05 12:06:24] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+--------------------------------------
+[2025-01-05 12:06:29] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+--------------------------------------
+[2025-01-05 12:29:32] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 12:29:32] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-05 12:29:34] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 12:37:04] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 12:37:04] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-05 12:37:12] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 12:38:10] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 12:38:10] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-05 12:38:56] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 12:39:00] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 12:39:02] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 12:39:03] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:47:06] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:47:06] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-05 14:47:20] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:47:21] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:47:21] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:47:21] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-05 14:47:27] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:47:49] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:47:49] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-05 14:47:57] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:47:59] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:48:13] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:48:14] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:48:14] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-05 14:48:17] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:48:46] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:48:47] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-05 14:48:49] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:49:02] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:49:03] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:49:04] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:49:04] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-05 14:49:31] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:49:31] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:49:31] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-05 14:49:32] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:49:32] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-05 14:49:34] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:49:53] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:49:53] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-05 14:50:21] Error: Class "app\providers\CurrencyServiceProvider" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 50
+                    
+--------------------------------------
+[2025-01-05 14:51:43] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-05 15:17:40] Error: Class "app\middlewa.res\AuthMiddleware" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-05 15:17:40] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-05 15:23:05] Error: Class app\models\interfaces\ArticleModel not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 84
+                    
+--------------------------------------
+[2025-01-05 15:23:05] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-05 15:23:51] Error: Class app\models\interfaces\ArticleModel not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 84
+                    
+--------------------------------------
+[2025-01-05 15:23:51] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-05 15:48:57] Error: Class app\models\interfaces\ArticleModel not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 84
+                    
+--------------------------------------
+[2025-01-05 15:48:57] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 46
+                    
+--------------------------------------
+[2025-01-05 15:49:20] Error: Class app\models\interfaces\ArticleModel not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 84
+                    
+--------------------------------------
+[2025-01-05 15:49:24] Error: Class "app\controllers\SadsController" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-05 15:49:27] Error: Class app\models\interfaces\ArticleModel not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 84
+                    
+--------------------------------------
+[2025-01-05 15:49:36] Error: Class app\models\interfaces\ArticleModel not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 84
+                    
+--------------------------------------
+[2025-01-05 16:26:20] Error: Class app\models\interfaces\ArticleModel not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 84
+                    
+--------------------------------------
+[2025-01-05 16:26:20] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 45
+                    
+--------------------------------------
+[2025-01-05 16:28:26] Error: Class app\models\interfaces\ArticleModel not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 84
+                    
+--------------------------------------
+[2025-01-05 16:28:38] Error: Class app\models\interfaces\ArticleModel not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 85
+                    
+--------------------------------------
+[2025-01-05 16:28:46] Error: Class app\models\interfaces\ArticleModel not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 85
+                    
+--------------------------------------
+[2025-01-05 18:21:32] Error: Class app\models\interfaces\ArticleModel not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 85
+                    
+--------------------------------------
+[2025-01-05 18:21:33] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 45
+                    
+--------------------------------------
+[2025-01-05 18:21:56] Error: Cannot instantiate interface app\models\interfaces\ArticleModelInterface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 60
+                    
+--------------------------------------
+[2025-01-05 18:21:56] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 45
+                    
+--------------------------------------
+[2025-01-05 18:23:30] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 45
+                    
+--------------------------------------
+[2025-01-05 18:23:52] Error: Cannot instantiate interface app\models\interfaces\ArticleModelInterface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 60
+                    
+--------------------------------------
+[2025-01-05 18:23:53] Error: Cannot instantiate interface app\models\interfaces\ArticleModelInterface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 60
+                    
+--------------------------------------
+[2025-01-05 18:23:59] Error: Class \Aapp\models\ArticleModel not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 85
+                    
+--------------------------------------
+[2025-01-05 18:24:05] Error: Cannot instantiate interface app\models\interfaces\ArticleModelInterface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 60
+                    
+--------------------------------------
+[2025-01-05 18:24:19] Error: Cannot instantiate interface app\models\interfaces\ArticleModelInterface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 60
+                    
+--------------------------------------
+[2025-01-05 19:11:14] Error: Cannot instantiate interface app\models\interfaces\ArticleModelInterface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 60
+                    
+--------------------------------------
+[2025-01-05 19:11:14] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 45
+                    
+--------------------------------------
+[2025-01-05 19:11:31] Error: Cannot instantiate interface app\models\interfaces\ArticleModelInterface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 60
+                    
+--------------------------------------
+[2025-01-05 19:11:42] Error: Cannot instantiate interface app\models\interfaces\ArticleModelInterface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 60
+                    
+--------------------------------------
+[2025-01-05 19:11:43] Error: Cannot instantiate interface app\models\interfaces\ArticleModelInterface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 60
+                    
+--------------------------------------
+[2025-01-05 19:11:43] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 45
+                    
+--------------------------------------
+[2025-01-05 19:12:34] Error: Cannot instantiate interface app\models\interfaces\ArticleModelInterface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 61
+                    
+--------------------------------------
+[2025-01-05 19:12:45] Error: Cannot instantiate interface app\models\interfaces\ArticleModelInterface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 61
+                    
+--------------------------------------
+[2025-01-05 19:12:56] Error: Cannot instantiate interface app\models\interfaces\ArticleModelInterface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 61
+                    
+--------------------------------------
+[2025-01-05 19:17:29] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 45
+                    
+--------------------------------------
+[2025-01-05 19:43:32] Error: Call to undefined method nosmi\Container::getInstance() | File: /var/www/projects/surfsail/config/dependencies.php | Line: 56
+                    
+--------------------------------------
+[2025-01-05 19:44:15] Error: Call to undefined method nosmi\Container::getInstance() | File: /var/www/projects/surfsail/config/dependencies.php | Line: 56
+                    
+--------------------------------------
+[2025-01-05 19:44:16] Error: Call to undefined method nosmi\Container::getInstance() | File: /var/www/projects/surfsail/config/dependencies.php | Line: 56
+                    
+--------------------------------------
+[2025-01-05 19:44:16] Error: Call to undefined method nosmi\Container::getInstance() | File: /var/www/projects/surfsail/config/dependencies.php | Line: 56
+                    
+--------------------------------------
+[2025-01-05 19:44:51] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 11
+                    
+--------------------------------------
+[2025-01-05 19:44:51] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 11
+                    
+--------------------------------------
+[2025-01-05 19:44:51] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 11
+                    
+--------------------------------------
+[2025-01-05 19:45:52] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 11
+                    
+--------------------------------------
+[2025-01-05 19:46:02] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 11
+                    
+--------------------------------------
+[2025-01-05 19:46:02] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 11
+                    
+--------------------------------------
+[2025-01-05 19:46:02] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 11
+                    
+--------------------------------------
+[2025-01-05 19:46:04] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 11
+                    
+--------------------------------------
+[2025-01-05 19:46:37] Error: Call to private nosmi\Cache::__construct() from scope nosmi\Container | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 60
+                    
+--------------------------------------
+[2025-01-05 19:46:37] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 45
+                    
+--------------------------------------
+[2025-01-05 19:46:45] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 13
+                    
+--------------------------------------
+[2025-01-05 19:46:46] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 13
+                    
+--------------------------------------
+[2025-01-05 19:46:46] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 13
+                    
+--------------------------------------
+[2025-01-05 19:49:38] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 13
+                    
+--------------------------------------
+[2025-01-05 19:50:45] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 11
+                    
+--------------------------------------
+[2025-01-05 20:00:54] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 11
+                    
+--------------------------------------
+[2025-01-05 20:00:55] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 11
+                    
+--------------------------------------
+[2025-01-08 10:40:55] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 11
+                    
+--------------------------------------
+[2025-01-08 10:40:55] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 11
+                    
+--------------------------------------
+[2025-01-08 12:10:14] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 11
+                    
+--------------------------------------
+[2025-01-08 12:10:14] Error: Cannot assign true to property nosmi\Container::$bindings of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 11
+                    
+--------------------------------------
+[2025-01-08 15:30:57] Error: Call to private nosmi\Cache::__construct() from scope nosmi\Container | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 58
+                    
+--------------------------------------
+[2025-01-08 15:30:57] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 45
+                    
+--------------------------------------
+[2025-01-08 15:34:20] Error: Call to private nosmi\Cache::__construct() from scope nosmi\Container | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 60
+                    
+--------------------------------------
+[2025-01-08 15:34:20] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 45
+                    
+--------------------------------------
+[2025-01-10 19:13:43] Error: Parameter 'props' is not a class or interface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 70
+                    
+--------------------------------------
+[2025-01-10 19:13:44] Error: Parameter 'props' is not a class or interface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 70
+                    
+--------------------------------------
+[2025-01-10 19:14:05] Error: Parameter 'props' is not a class or interface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 70
+                    
+--------------------------------------
+[2025-01-10 19:14:22] Error: Parameter 'props' is not a class or interface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 70
+                    
+--------------------------------------
+[2025-01-10 19:15:15] Error: Parameter 'props' is not a class or interface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 70
+                    
+--------------------------------------
+[2025-01-10 19:27:33] Error: Typed property nosmi\Router::$container must not be accessed before initialization | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-10 20:18:23] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-10 20:18:23] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-10 20:18:29] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-10 20:18:51] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-10 20:18:56] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-10 20:19:11] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 43
+                    
+--------------------------------------
+[2025-01-10 20:19:51] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-10 20:36:54] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-11 05:56:46] Error: preg_match(): Argument #2 ($subject) must be of type string, array given | File: /var/www/projects/surfsail/vendor/nosmi/src/RouteContext.php | Line: 13
+                    
+--------------------------------------
+[2025-01-11 05:56:46] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-11 06:04:17] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-11 06:04:27] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-11 06:09:29] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-11 06:09:29] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-11 06:16:03] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-11 06:16:41] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-11 06:17:56] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-11 06:17:56] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-11 06:19:51] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 06:19:52] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-11 06:20:40] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 06:20:53] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 06:20:55] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 06:21:30] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 06:22:00] Error: Call to undefined method nosmi\RouteContext::upperCamelCase() | File: /var/www/projects/surfsail/vendor/nosmi/src/RouteContext.php | Line: 27
+                    
+--------------------------------------
+[2025-01-11 06:26:30] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 06:26:56] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 06:27:13] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 06:28:05] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 06:28:14] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 06:28:42] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 06:34:02] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 06:34:02] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-11 06:34:03] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 06:34:03] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 06:34:15] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 06:35:16] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 06:35:23] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 06:35:23] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 06:35:34] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 16:11:34] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-11 16:11:40] Error: Class "app\controllers\Controller" does not exist | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 79
+                    
+--------------------------------------
+[2025-01-11 16:20:19] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-11 16:34:07] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-11 16:34:08] Error: Action: app\controllers\MainController::viewAction not found | File: /var/www/projects/surfsail/vendor/nosmi/src/ControllerResolver.php | Line: 26
+                    
+--------------------------------------
+[2025-01-11 16:34:20] Error: nosmi\base\View::__construct(): Argument #3 ($prefix) must be of type string, null given, called in /var/www/projects/surfsail/vendor/nosmi/src/base/Controller.php on line 21 | File: /var/www/projects/surfsail/vendor/nosmi/src/base/View.php | Line: 12
+                    
+--------------------------------------
+[2025-01-11 16:58:28] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 42
+                    
+--------------------------------------
+[2025-01-11 16:59:02] Error: nosmi\base\View::__construct(): Argument #3 ($prefix) must be of type string, null given, called in /var/www/projects/surfsail/vendor/nosmi/src/base/Controller.php on line 21 | File: /var/www/projects/surfsail/vendor/nosmi/src/base/View.php | Line: 12
+                    
+--------------------------------------
+[2025-01-11 16:59:12] Error: nosmi\base\View::__construct(): Argument #3 ($prefix) must be of type string, null given, called in /var/www/projects/surfsail/vendor/nosmi/src/base/Controller.php on line 21 | File: /var/www/projects/surfsail/vendor/nosmi/src/base/View.php | Line: 12
+                    
+--------------------------------------
+[2025-01-11 16:59:32] Error: nosmi\base\View::__construct(): Argument #3 ($prefix) must be of type string, null given, called in /var/www/projects/surfsail/vendor/nosmi/src/base/Controller.php on line 21 | File: /var/www/projects/surfsail/vendor/nosmi/src/base/View.php | Line: 12
+                    
+--------------------------------------
+[2025-01-12 08:22:29] Error: Call to undefined method nosmi\App::getInstance() | File: /var/www/projects/surfsail/config/dependencies.php | Line: 58
+                    
+--------------------------------------
+[2025-01-12 08:22:29] Error: Call to undefined method nosmi\App::getInstance() | File: /var/www/projects/surfsail/config/dependencies.php | Line: 58
+                    
+--------------------------------------
+[2025-01-12 08:23:15] Error: Call to undefined method nosmi\App::getInstance() | File: /var/www/projects/surfsail/config/dependencies.php | Line: 58
+                    
+--------------------------------------
+[2025-01-12 08:25:02] Error: Call to undefined method nosmi\App::getInstance() | File: /var/www/projects/surfsail/config/dependencies.php | Line: 58
+                    
+--------------------------------------
+[2025-01-12 08:25:36] Error: Call to undefined method nosmi\App::getInstance() | File: /var/www/projects/surfsail/config/dependencies.php | Line: 58
+                    
+--------------------------------------
+[2025-01-12 08:26:05] Error: Call to undefined method nosmi\App::getInstance() | File: /var/www/projects/surfsail/config/dependencies.php | Line: 58
+                    
+--------------------------------------
+[2025-01-12 08:26:15] Error: Call to undefined method nosmi\App::getInstance() | File: /var/www/projects/surfsail/config/dependencies.php | Line: 58
+                    
+--------------------------------------
+[2025-01-12 08:26:16] Error: Call to undefined method nosmi\App::getInstance() | File: /var/www/projects/surfsail/config/dependencies.php | Line: 58
+                    
+--------------------------------------
+[2025-01-12 08:26:18] Error: Call to undefined method nosmi\App::getInstance() | File: /var/www/projects/surfsail/config/dependencies.php | Line: 58
+                    
+--------------------------------------
+[2025-01-12 08:26:19] Error: Call to undefined method nosmi\App::getInstance() | File: /var/www/projects/surfsail/config/dependencies.php | Line: 58
+                    
+--------------------------------------
+[2025-01-12 08:26:19] Error: Call to undefined method nosmi\App::getInstance() | File: /var/www/projects/surfsail/config/dependencies.php | Line: 58
+                    
+--------------------------------------
+[2025-01-12 08:27:11] Error: Call to undefined method nosmi\App::autowire() | File: /var/www/projects/surfsail/config/dependencies.php | Line: 40
+                    
+--------------------------------------
+[2025-01-12 08:27:11] Error: Call to undefined method nosmi\App::autowire() | File: /var/www/projects/surfsail/config/dependencies.php | Line: 40
+                    
+--------------------------------------
+[2025-01-12 08:27:12] Error: Call to undefined method nosmi\App::autowire() | File: /var/www/projects/surfsail/config/dependencies.php | Line: 40
+                    
+--------------------------------------
+[2025-01-12 08:27:58] Error: Access to undeclared static property nosmi\Router::$routes | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 47
+                    
+--------------------------------------
+[2025-01-12 08:27:59] Error: Access to undeclared static property nosmi\Router::$routes | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 47
+                    
+--------------------------------------
+[2025-01-12 08:27:59] Error: Access to undeclared static property nosmi\Router::$routes | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 47
+                    
+--------------------------------------
+[2025-01-12 08:31:59] Error: Too few arguments to function nosmi\App::{closure}(), 0 passed in /var/www/projects/surfsail/vendor/nosmi/src/Container.php on line 41 and exactly 1 expected | File: /var/www/projects/surfsail/config/dependencies.php | Line: 59
+                    
+--------------------------------------
+[2025-01-12 08:31:59] Error: Too few arguments to function nosmi\App::{closure}(), 0 passed in /var/www/projects/surfsail/vendor/nosmi/src/Container.php on line 41 and exactly 1 expected | File: /var/www/projects/surfsail/config/dependencies.php | Line: 59
+                    
+--------------------------------------
+[2025-01-12 08:32:28] Error: Too few arguments to function nosmi\App::{closure}(), 0 passed in /var/www/projects/surfsail/vendor/nosmi/src/Container.php on line 41 and exactly 1 expected | File: /var/www/projects/surfsail/config/dependencies.php | Line: 59
+                    
+--------------------------------------
+[2025-01-12 08:32:29] Error: Too few arguments to function nosmi\App::{closure}(), 0 passed in /var/www/projects/surfsail/vendor/nosmi/src/Container.php on line 41 and exactly 1 expected | File: /var/www/projects/surfsail/config/dependencies.php | Line: 59
+                    
+--------------------------------------
+[2025-01-12 08:55:20] Error: Parameter 'url' is not a class or interface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 69
+                    
+--------------------------------------
+[2025-01-12 08:55:20] Error: Parameter 'url' is not a class or interface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 69
+                    
+--------------------------------------
+[2025-01-12 12:45:14] Error: Parameter 'routes' is not a class or interface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 69
+                    
+--------------------------------------
+[2025-01-12 12:45:15] Error: Parameter 'routes' is not a class or interface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 69
+                    
+--------------------------------------
+[2025-01-12 13:20:19] Error: Parameter 'routes' is not a class or interface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 69
+                    
+--------------------------------------
+[2025-01-12 13:20:19] Error: Parameter 'routes' is not a class or interface | File: /var/www/projects/surfsail/vendor/nosmi/src/Container.php | Line: 69
+                    
+--------------------------------------
+[2025-01-12 13:27:01] Error: Cannot assign true to property nosmi\Router::$routes of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 18
+                    
+--------------------------------------
+[2025-01-12 13:27:01] Error: Cannot assign true to property nosmi\Router::$routes of type array | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 18
+                    
+--------------------------------------
+[2025-01-12 13:27:23] Error: Action: app\controllers\ProductController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/src/ControllerResolver.php | Line: 25
+                    
+--------------------------------------

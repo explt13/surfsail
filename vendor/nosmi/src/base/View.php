@@ -1,8 +1,6 @@
 <?php
 namespace nosmi\base;
 
-use nosmi\RouteContext;
-
 class View
 {
     private string $controller;

@@ -18,130 +18,40 @@
         <div class="catalog__container container">
             <div class="catalog__body">
                 <div class="catalog__filter filter-catalog">
+                    <button class="filter-catalog__apply-button">Apply filters</button>
                     <button type="button" data-spoiler class="filter-catalog__title">Filter</button>
                     <div data-spoilers class="filter-catalog__items">
-                        <div class="filter-catalog__price price-filter">
-                            <button type="button" class="price-filter__title _icon-arrow_sh_d _active" data-spoiler>Price</button>
-                            <div data-range class="price-filter__body">
-                                <div class="price-filter__inputs">
-                                    <input data-range-from="0" type="text" value="300" autocomplete="off" name="form[]" class="price-filter__input">
-                                    <input data-range-to="5000" type="text" value="2000" autocomplete="off" name="form[]" class="price-filter__input">
-                                </div>
-                                <div data-range-item class="price-filter__range"></div>
+                        <?php foreach ($filters as $filter):?>
+                            <?php $style_modifier = $filter['style_modifier'] ? htmlspecialchars('item-filter_' . $filter['style_modifier']) : null; ?>
+                            <div class="filter-catalog__checkbox item-filter <?= $style_modifier ?>" data-filtertype=<?= htmlspecialchars($filter['type']); ?>>
+                                <button type="button" class="item-filter__title _icon-arrow_sh_d _active" data-alias=<?= htmlspecialchars($filter['alias'])?> data-spoiler><?= htmlspecialchars($filter['name'])?></button>
+                                <?php switch ($filter['type']):
+                                    case "checkbox": ?>
+                                        <div class="item-filter__body">
+                                            <?php foreach ($filter['options'] as $option): ?> 
+                                                <div class="checkbox"> 
+                                                    <?php $id = bin2hex(random_bytes(8));?>
+                                                    <input id="<?= htmlspecialchars($id);?>" type="checkbox" class="checkbox__input" value="<?= htmlspecialchars($option['alias']);?>">
+                                                    <label for="<?= htmlspecialchars($id);?>" class="checkbox__label">
+                                                        <span class="checkbox__text"><?= htmlspecialchars($option['name'])?></span>
+                                                        <small><?= htmlspecialchars($option['product_qty'])?></small>
+                                                    </label>
+                                                </div>
+                                            <?php endforeach;?>
+                                        </div>
+                                    <?php break;
+                                    case "range": ?>
+                                        <div data-range class="item-filter__body range-item">
+                                            <div class="range-item__inputs">
+                                                <input data-range-from="0" type="text" value="300" autocomplete="off" name="priceMin" class="range-item__input">
+                                                <input data-range-to="3000" type="text" value="1000" autocomplete="off" name="priceMax" class="range-item__input">
+                                            </div>
+                                            <div data-range-item class="range-item__slider"></div>
+                                        </div>
+                                    <?php break;?>
+                                <?php endswitch;?>
                             </div>
-                        </div>
-                        <div class="filter-catalog__item item-filter">
-                            <button type="button" class="item-filter__title _icon-arrow_sh_d _active" data-spoiler>Brand</button>
-                            <div class="item-filter__body">
-                                <div class="checkbox">
-                                    <input id="c_1" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_1" class="checkbox__label"><span class="checkbox__text">Lost</span><small>(190)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_2" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_2" class="checkbox__label"><span class="checkbox__text">Firewire</span><small>(201)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_3" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_3" class="checkbox__label"><span class="checkbox__text">Channel Islands</span><small>(122)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_4" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_4" class="checkbox__label"><span class="checkbox__text">JS Industries</span><small>(190)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_5" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_5" class="checkbox__label"><span class="checkbox__text">HaydenShapes</span><small>(121)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_6" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_6" class="checkbox__label"><span class="checkbox__text">DHD</span><small>(123)</small></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="filter-catalog__item item-filter">
-                            <button type="button" class="item-filter__title _icon-arrow_sh_d _active" data-spoiler>Board Types</button>
-                            <div class="item-filter__body">
-                                <div class="checkbox">
-                                    <input id="c_7" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_7" class="checkbox__label"><span class="checkbox__text">Shortboard</span><small>(120)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_8" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_8" class="checkbox__label"><span class="checkbox__text">Longboard</span><small>(231)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_9" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_9" class="checkbox__label"><span class="checkbox__text">Fish</span><small>(92)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_10" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_10" class="checkbox__label"><span class="checkbox__text">Funboard</span><small>(32)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_11" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_11" class="checkbox__label"><span class="checkbox__text">Gun</span><small>(23)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_12" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_12" class="checkbox__label"><span class="checkbox__text">Hybrid</span><small>(145)</small></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="filter-catalog__item item-filter">
-                            <button type="button" class="item-filter__title _icon-arrow_sh_d _active" data-spoiler>Materials</button>
-                            <div class="item-filter__body">
-                                <div class="checkbox">
-                                    <input id="c_13" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_13" class="checkbox__label"><span class="checkbox__text">Polyurethane</span><small>(120)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_14" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_14" class="checkbox__label"><span class="checkbox__text">Epoxy</span><small>(231)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_15" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_15" class="checkbox__label"><span class="checkbox__text">Fiberglass</span><small>(92)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_16" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_16" class="checkbox__label"><span class="checkbox__text">Carbon Fiber</span><small>(32)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_17" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_17" class="checkbox__label"><span class="checkbox__text">Wood</span><small>(23)</small></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="filter-catalog__item item-filter">
-                            <button type="button" class="item-filter__title _icon-arrow_sh_d _active" data-spoiler>Sizes</button>
-                            <div class="item-filter__body">
-                                <div class="checkbox">
-                                    <input id="c_18" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_18" class="checkbox__label"><span class="checkbox__text">5-6 ft</span><small>(120)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_19" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_19" class="checkbox__label"><span class="checkbox__text">6-7 ft</span><small>(231)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_20" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_20" class="checkbox__label"><span class="checkbox__text">7-8 ft</span><small>(92)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_21" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_21" class="checkbox__label"><span class="checkbox__text">8-9 ft</span><small>(32)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_22" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_22" class="checkbox__label"><span class="checkbox__text">9-10 ft</span><small>(23)</small></label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="c_23" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                    <label for="c_23" class="checkbox__label"><span class="checkbox__text">10+ ft</span><small>(23)</small></label>
-                                </div>
-                            </div>
-                        </div>
+                        <?php endforeach;?>
                     </div>
                 </div>
                 <div class="catalog__content">
@@ -157,8 +67,6 @@
                     <div class="catalog__products">
                         <?php
                         use app\views\helpers\ProductHelper;
-                        use app\widgets\pagination\Pagination;
-
                         foreach($products as $product){
                             ProductHelper::renderCard($product);
                         }

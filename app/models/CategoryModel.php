@@ -79,7 +79,6 @@ class CategoryModel extends AppModel implements CategoryModelInterface
             }
             $this->cache->set('categories', $categories, 3600 * 24 * 7 * 30);
         }
-        App::$registry->setProperty('categories', $categories);
-
+        return $categories;
     }
 }

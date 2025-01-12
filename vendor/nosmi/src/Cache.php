@@ -13,9 +13,6 @@ class Cache implements CacheInterface
             if (file_put_contents(CACHE . "/" . md5($key) . '.txt', serialize($content))) {
                 return true;
             }
-            $err_handler = ErrorHandler::getInstance();
-            $err_handler->logError("Cannot set cache $key");
-            return false;
         }
         throw new \Exception("Cannot set cache $key with $seconds seconds");
     }

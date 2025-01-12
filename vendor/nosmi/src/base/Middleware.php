@@ -2,22 +2,6 @@
 
 namespace nosmi\base;
 
-class Middleware
+abstract class Middleware implements MiddlewareInterface
 {
-    protected array $middlewares;
-
-    public function __construct()
-    {
-        $this->middlewares = [
-            'Auth',
-        ];
-    }
-    
-    public function run()
-    {
-        foreach ($this->middlewares as $middleware) {
-            $middlewareClass = "app\\middlewares\\" . $middleware . "Middleware";
-            
-        }
-    }
 }
