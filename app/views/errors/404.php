@@ -16,7 +16,7 @@
                 <div class="error__subtext" style="font-size: 36px">
                     page not found
                 </div>
-                <a href="<?=PATH?>" class="error__back">
+                <a href="<?=DOMAIN?>" class="error__back">
                     Back to home page
                 </a>
             </section>

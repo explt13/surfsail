@@ -1,6 +1,8 @@
 <?php
 namespace nosmi;
 
+use nosmi\interfaces\ContainerInterface;
+
 class Container implements ContainerInterface
 {
     use SingletonTrait;

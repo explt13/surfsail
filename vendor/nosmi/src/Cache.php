@@ -1,6 +1,8 @@
 <?php
 namespace nosmi;
 
+use nosmi\interfaces\CacheInterface;
+
 class Cache implements CacheInterface
 {
     use SingletonTrait;
@@ -13,6 +15,7 @@ class Cache implements CacheInterface
             if (file_put_contents(CACHE . "/" . md5($key) . '.txt', serialize($content))) {
                 return true;
             }
+            debug(CACHE . "/" . md5($key) . '.txt');
         }
         throw new \Exception("Cannot set cache $key with $seconds seconds");
     }

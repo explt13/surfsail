@@ -2,38 +2,72 @@
 
 namespace app\controllers;
 
-use app\models\CartModel;
 use app\models\interfaces\CartModelInterface;
-use app\models\interfaces\CategoryModelInterface;
-use app\models\interfaces\CurrencyModelInterface;
 use app\models\interfaces\OrderModelInterface;
-use app\models\OrderModel;
 use nosmi\App;
+use nosmi\base\Controller;
 
-class CartController extends BundleController
+class CartController extends Controller
 {   
     protected $order_model;
+    protected $cart_model;
 
     public function __construct(
-        CartModelInterface $bundle_model,
+        CartModelInterface $cart_model,
         OrderModelInterface $order_model,
-        CurrencyModelInterface $currency_model,
-        CategoryModelInterface $category_model
     )
     {
-        parent::__construct($bundle_model, $currency_model, $category_model);
         $this->order_model = $order_model; 
+        $this->cart_model = $cart_model; 
     }
 
     public function indexAction()
     {
         $currency = App::$registry->getProperty('currency');
-        $cart_items_qty = $this->bundle_model->getItemsQty();
-        $products = $this->bundle_model->getProductsFromArray();
+        $cart_items_qty = $this->cart_model->getProductsQty();
+        $products = $this->cart_model->getProductsFromArray();
         http_response_code(200);
         $this->setMeta("Cart", "User's cart page", 'Cart, page, products, buy, order');
-        $this->setData(compact('cart_items_qty', 'currency', 'products'));
-        $this->getView();
+        $this->render(data: compact('cart_items_qty', 'currency', 'products'));
+    }
+
+    public function addAction()
+    {
+        header('Content-Type: application/json');
+        $data = json_decode(file_get_contents('php://input'), true);
+        $result = $this->cart_model->addProduct($data);
+
+        http_response_code($result['response_code']);
+        echo json_encode(['message' => $result['message'], 'action' => $result['action']]);
+    }
+
+    public function addMultipleAction()
+    {
+        header('Content-Type: application/json');
+        $data = $this->request->getPostData();
+        $result = $this->cart_model->addMultipleProducts($data);
+        http_response_code($result['response_code']);
+        echo json_encode(['message' => $result['message']]);
+    }
+
+    public function getAddedItemsAction()
+    {
+        header('Content-Type: application/json');
+        if (isset($_SESSION['user'])) {
+            $products_ids = $this->cart_model->getAddedProductsIds();
+        } else {
+            $products_ids = [];
+        }
+        http_response_code(200);
+        echo json_encode($products_ids);
+    }
+
+    public function deleteAction()
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+        $result = $this->cart_model->deleteProduct($data['product_id']);
+        http_response_code($result['response_code']);
+        echo json_encode(["message" => "Product has been removed"]);
     }
     
     public function buyAction()

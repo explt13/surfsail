@@ -16,7 +16,7 @@
                                     </picture>
                                 </a>
                                 <div class="cart-item__information">
-                                    <a class="cart-item__title" href="/product/<?= htmlspecialchars($product['alias'])?>"><?= htmlspecialchars($product['title'], ENT_QUOTES, 'UTF-8');?></a>
+                                    <a class="cart-item__title" href="/product/<?= htmlspecialchars($product['alias'])?>"><?= htmlspecialchars($product["name"], ENT_QUOTES, 'UTF-8');?></a>
                                     <div class="cart-item__description"><?= htmlspecialchars($product['description'], ENT_QUOTES, 'UTF-8');?></div>
                                 </div>
                             </div>

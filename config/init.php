@@ -17,14 +17,8 @@ define("CACHE", $_ENV['CACHE']);
 define("CONF", $_ENV['CONF']);
 define("LAYOUT", $_ENV['LAYOUT']);
 
-// http://surfsail.com/public/index.php
-$app_path = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['PHP_SELF']}";
+// https://surfsail.com
+$app_path = "https://{$_SERVER['HTTP_HOST']}";
 
-// http://surfsail.com/public/
-$app_path = preg_replace("/[^\/]+$/", '', $app_path);
-
-// http://surfsail.com
-$app_path = preg_replace("/\/public\//", "", $app_path);
-
-define("PATH", $app_path);
-define("ADMIN", PATH . '/admin');
+define("DOMAIN", $app_path);
+define("ADMIN_DOMAIN", DOMAIN . '/admin');

@@ -2,6 +2,8 @@
 
 namespace nosmi;
 
+use nosmi\interfaces\ContainerInterface;
+
 class MiddlewareLoader
 {
     protected array $middlewares;

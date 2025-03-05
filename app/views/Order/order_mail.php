@@ -54,7 +54,7 @@
             <?php
             foreach ($products as $product_id => $product): ?>
             <tr>
-                <td><?= htmlspecialchars($product['title'])?></td>
+                <td><?= htmlspecialchars($product["name"])?></td>
                 <td><?= htmlspecialchars($product['qty'])?></td>
                 <td><?= htmlspecialchars(($product['discount_price'] ?? $product['price']) . ' ' . $currency['symbol']);?></td>
             </tr>

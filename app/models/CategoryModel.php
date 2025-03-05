@@ -4,7 +4,7 @@ namespace app\models;
 use app\models\interfaces\CategoryModelInterface;
 use nosmi\App;
 use nosmi\Cache;
-use nosmi\CacheInterface;
+use nosmi\interfaces\CacheInterface;
 
 class CategoryModel extends AppModel implements CategoryModelInterface
 {
@@ -18,8 +18,7 @@ class CategoryModel extends AppModel implements CategoryModelInterface
     {
         $categories = $this->cache->get('categories');
         if (!$categories) {
-            $stmt = $this->pdo->query("
-            SELECT
+            $stmt = $this->pdo->query("SELECT
             ssc.id as ssc_id,
             ssc.title as ssc_title,
             ssc.alias as ssc_alias,

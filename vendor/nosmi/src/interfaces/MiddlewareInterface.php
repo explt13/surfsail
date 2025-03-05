@@ -1,7 +1,6 @@
 <?php
 
-namespace nosmi\base;
-
+namespace nosmi\interfaces;
 
 interface MiddlewareInterface
 {

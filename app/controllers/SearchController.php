@@ -1,21 +1,15 @@
 <?php
 namespace app\controllers;
 
-use app\models\interfaces\CategoryModelInterface;
-use app\models\interfaces\CurrencyModelInterface;
 use app\models\interfaces\ProductModelInterface;
+use nosmi\base\Controller;
 
-class SearchController extends AppController
+class SearchController extends Controller
 {
     protected $product_model;
     
-    public function __construct(
-        ProductModelInterface $product_model,
-        CurrencyModelInterface $currency_model,
-        CategoryModelInterface $category_model
-    )
+    public function __construct(ProductModelInterface $product_model)
     {
-        parent::__construct($currency_model, $category_model);
         $this->product_model = $product_model;
     }
     
@@ -25,12 +19,11 @@ class SearchController extends AppController
         $query = $_GET['query'] ?? null;
         $query = trim($query);
         if ($query !== ""){
-            $result = $this->product_model->getProducts(["LIKE_title" => $query], 5);
+            $result = $this->product_model->getProducts(["LIKE_name" => $query], 5);
             http_response_code(200);
             echo json_encode($result);
             return;
         }
         http_response_code(400);
-        die;
     }
 }

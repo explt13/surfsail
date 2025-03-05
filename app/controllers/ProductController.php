@@ -3,13 +3,12 @@
 namespace app\controllers;
 
 use app\models\interfaces\BrandModelInterface;
-use app\models\interfaces\CategoryModelInterface;
-use app\models\interfaces\CurrencyModelInterface;
 use app\models\interfaces\ProductModelInterface;
 use app\models\interfaces\ReviewModelInterface;
 use nosmi\App;
+use nosmi\base\Controller;
 
-class ProductController extends AppController
+class ProductController extends Controller
 {
     protected $product_model;
     protected $brand_model;
@@ -19,17 +18,14 @@ class ProductController extends AppController
         ProductModelInterface $product_model,
         ReviewModelInterface $review_model,
         BrandModelInterface $brand_model,
-        CurrencyModelInterface $currency_model,
-        CategoryModelInterface $category_model
     )
     {
-        parent::__construct($currency_model, $category_model);
         $this->product_model = $product_model;
         $this->brand_model = $brand_model;
         $this->review_model = $review_model;
     }
     
-    public function viewAction()
+    public function indexAction()
     {
         $currency = App::$registry->getProperty('currency');
         $alias = $this->route->alias;
@@ -48,8 +44,7 @@ class ProductController extends AppController
         $mods = $this->product_model->getProductMods($product['id']);
 
         http_response_code(200);
-        $this->setData(compact('product', 'currency', 'gallery_images', 'product_brand', 'related_products', 'reviews', 'mods'));
-        $this->setMeta($product['title'], $product['meta_desc'], $product['meta_kwords']);
-        $this->getView();
+        $this->setMeta($product["name"], $product['meta_desc'], $product['meta_kwords']);
+        $this->render(data: compact('product', 'currency', 'gallery_images', 'product_brand', 'related_products', 'reviews', 'mods'));
     }
 }

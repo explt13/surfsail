@@ -5,18 +5,12 @@ use app\models\interfaces\ArticleModelInterface;
 
 class ArticleModel extends AppModel implements ArticleModelInterface
 {
-    public function getArticles(?int $limit)
+    public function getArticles(int $limit = 50)
     {
         $sql = "SELECT a.* FROM article a";
-
-        if ($limit !== null) {
-            $sql .= " LIMIT :lim";
-        }
+        $sql .= " LIMIT :lim";
         $stmt = $this->pdo->prepare($sql);
-
-        if ($limit !== null) {
-            $stmt->bindValue(':lim', (int)$limit, \PDO::PARAM_INT);
-        }
+        $stmt->bindValue(':lim', (int)$limit, \PDO::PARAM_INT);
         $stmt->execute();       
         return $stmt->fetchAll();
     }

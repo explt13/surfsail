@@ -6,7 +6,7 @@ use app\models\CategoryModel;
 use nosmi\base\Widget;
 use nosmi\App;
 use nosmi\Cache;
-use nosmi\CacheInterface;
+use nosmi\interfaces\CacheInterface;
 
 class Menu extends Widget
 {
@@ -20,9 +20,9 @@ class Menu extends Widget
 
     public function __construct($props = [])
     {
+        parent::__construct(null);
         $this->cache = Cache::getInstance();
         $this->sub_categories_to_show = App::$registry->getProperty('sub_categories_to_show');
-        $this->tpl = __DIR__.'/tpl/menu_tpl.php';
         $this->setProps($props);
         $this->cacheMenu();
     }

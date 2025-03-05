@@ -5,7 +5,7 @@
                 <button class="menu-catalog__back back-menu _icon-back">Back</button>
                 <ul class="menu-catalog__list">
                     <?php foreach($this->categories as $category): ?>
-                        <li class="menu-catalog__item"><button data-parent="<?= htmlspecialchars($category['id'], ENT_QUOTES, 'UTF-8')?>" class="menu-catalog__link"><?= htmlspecialchars($category["title"], ENT_QUOTES, 'UTF-8')?></button></li>
+                        <li class="menu-catalog__item"><button data-parent="<?= htmlspecialchars($category['id'], ENT_QUOTES, 'UTF-8')?>" class="menu-catalog__link _icon-arrow_sh_d _ipl-after"><?= htmlspecialchars($category["title"], ENT_QUOTES, 'UTF-8')?></button></li>
                     <?php endforeach;?>
                 </ul>
                 <div class="menu-catalog__sub-menu sub-menu-catalog">

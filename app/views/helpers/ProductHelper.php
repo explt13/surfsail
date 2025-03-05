@@ -43,7 +43,7 @@ class ProductHelper {
             <?php elseif ($product['new']): ?>
                 <div class="product-card__band product-card__band_new"><span>new</span></div>
             <?php endif;?>
-            <a href="product/<?= htmlspecialchars($product['alias'], ENT_QUOTES, 'UTF-8');?>" class="product-card__image-container"> <!-- CHANGE PATH -->
+            <a href="product/<?= htmlspecialchars($product['alias'], ENT_QUOTES, 'UTF-8');?>" class="product-card__image-container">
                 <div class="product-card__image">
                     <picture>
                         <source srcset="img/products/<?= htmlspecialchars($product['category_alias'].'/'.$product['image'], ENT_QUOTES, 'UTF-8');?>.webp" type="image/webp">
@@ -53,7 +53,7 @@ class ProductHelper {
                 </div>
             </a>
             <div class="product-card__information information-product-card">
-                <a href="product/<?= htmlspecialchars($product['alias'], ENT_QUOTES, 'UTF-8');?>" class="information-product-card__title"><?= htmlspecialchars($product['title'], ENT_QUOTES, 'UTF-8');?></a>
+                <a href="product/<?= htmlspecialchars($product['alias'], ENT_QUOTES, 'UTF-8');?>" class="information-product-card__title"><?= htmlspecialchars($product["name"], ENT_QUOTES, 'UTF-8');?></a>
                 <div class="information-product-card__review review-information">
                     <div class="review-information__rating rating">
                         <div class="rating__body">
@@ -73,7 +73,7 @@ class ProductHelper {
                 <div class="information-product-card__price">
                     <?php self::renderPrice($product) ?>
                     <div class="information-product-card__actions product-card-actions">
-                        <span class="_icon-fav product-card-actions__like"></span>
+                        <span class="_icon-fav product-card-actions__like like"></span>
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@ class ProductHelper {
                         <div class="block-products__top-row section-row-top">
                             <h2 class="block-products__title section-title"><?= htmlspecialchars($section_title, ENT_QUOTES, 'UTF-8');?></h2>
                             <?php if ($more): ?>
-                                <a href="./catalog.html" class="block-products__more _icon-arrow_sh_r">All catalog</a>
+                                <a href="/catalog" class="block-products__more _icon-arrow_sh_r _ipl-after">All catalog</a>
                             <?php endif;?>
                         </div>
                         <div class="block-products__body body-products">

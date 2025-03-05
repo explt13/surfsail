@@ -6,16 +6,18 @@ class Router
 {
     private array $routes;
     private array $route_params;
+    private string $routes_dest;
     private MiddlewareLoader $middleware_loader;
-    private RouteContext $route_context;
     private ControllerResolver $controller_resolver;
+    private RouteContext $route_context;
 
-    public function __construct(MiddlewareLoader $middleware_loader, RouteContext $route_context, ControllerResolver $controller_resolver, array $routes)
+    public function __construct(MiddlewareLoader $middleware_loader, ControllerResolver $controller_resolver, RouteContext $route_context)
     {
+        $this->routes_dest = CONF . '/routes.php';
         $this->middleware_loader = $middleware_loader;
-        $this->route_context = $route_context;
         $this->controller_resolver = $controller_resolver;
-        $this->routes = $routes;
+        $this->route_context = $route_context;
+        $this->routes = $this->getRoutes();
     }
 
     public function add(string $regexp, array $route = []): self
@@ -24,9 +26,17 @@ class Router
         return $this;
     }
 
-    public function getRoutes(): array
+    /**
+     * @param string $routes_dest a path to routes file that must return an array with routes where [pattern] => [default params, ...];
+     */
+    public function setRoutesDest(string $routes_dest): void
     {
-        return $this->routes;
+        $this->routes_dest = $routes_dest;
+    }
+
+    private function getRoutes(): array
+    {   
+        return require_once $this->routes_dest;
     }
     
     public function dispatch(string $url): void
@@ -52,12 +62,11 @@ class Router
         }
         return false;
     }
-    
 
-    protected function extractRouteFromQueryString(string $url): string
+    private function extractRouteFromQueryString(string $url): string
     {
         if ($url) {
-            list($route, $query) = explode("&", $url, 2);
+            $route = explode("&", $url, 2)[0];
             if (strpos($route, "=") === false) {
                 return rtrim($route, '/');
             }

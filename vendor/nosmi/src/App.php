@@ -1,6 +1,8 @@
 <?php
 namespace nosmi;
 
+use nosmi\interfaces\ContainerInterface;
+
 class App
 {
     public static Registry $registry;
@@ -11,11 +13,10 @@ class App
         $this->container = Container::getInstance();
     }
 
-    public function bootstrap()
+    public function bootstrap(): void
     {
         session_start();
         ErrorHandler::getInstance();
-        cors();
         $container_dependencies = require_once CONF . '/dependencies.php';
         $this->container->init($container_dependencies);
         self::$registry = Registry::getInstance();
@@ -24,16 +25,8 @@ class App
         $serviceLoader->load();
     }
 
-    public function run()
+    public function run(): void
     {
-        $this->container->set(Router::class, fn (ContainerInterface $container) =>
-            new Router(
-                $container->get(MiddlewareLoader::class),
-                $container->get(RouteContext::class),
-                $container->get(ControllerResolver::class),
-                require_once CONF . '/routes.php'
-            )
-        );
         $router = $this->container->get(Router::class);
         $router->dispatch($_SERVER['QUERY_STRING']);
     }

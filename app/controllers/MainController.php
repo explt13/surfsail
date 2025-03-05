@@ -4,11 +4,10 @@ namespace app\controllers;
 use app\models\interfaces\BrandModelInterface;
 use app\models\interfaces\ProductModelInterface;
 use app\models\interfaces\ArticleModelInterface;
-use app\models\interfaces\CategoryModelInterface;
-use app\models\interfaces\CurrencyModelInterface;
 use nosmi\App;
+use nosmi\base\Controller;
 
-class MainController extends AppController
+class MainController extends Controller
 {
     protected $product_model;
     protected $brand_model;
@@ -18,11 +17,8 @@ class MainController extends AppController
         ProductModelInterface $product_model,
         ArticleModelInterface $article_model,
         BrandModelInterface $brand_model,
-        CurrencyModelInterface $currency_model,
-        CategoryModelInterface $category_model
     )
     {
-        parent::__construct($currency_model, $category_model);
         $this->product_model = $product_model;
         $this->brand_model = $brand_model;
         $this->article_model = $article_model;
@@ -30,6 +26,7 @@ class MainController extends AppController
 
     public function indexAction()
     {
+        debug($_SESSION);
         $brands = $this->brand_model->getBrands(10);
         $shortboard_products = $this->product_model->getProductsBySubCategory('Shortboards', 7);
         $longboard_products = $this->product_model->getProductsBySubCategory('Longboards', 7);
@@ -41,8 +38,7 @@ class MainController extends AppController
         $categories = App::$registry->getProperty('categories');
 
         http_response_code(200);
-        $this->setData(compact('brands', 'shortboard_products', 'new_products', 'longboard_products', 'discount_products', 'recommend_products', 'gear_products', 'articles', 'categories'));
         $this->setMeta(App::$registry->getProperty("app_name"), 'SurfSail - online shop in US', 'surfboards, wetsuits, online, shop');
-        $this->getView();
+        $this->render(data: compact('brands', 'shortboard_products', 'new_products', 'longboard_products', 'discount_products', 'recommend_products', 'gear_products', 'articles', 'categories'));
     }
 }

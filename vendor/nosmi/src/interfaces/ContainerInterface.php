@@ -1,6 +1,6 @@
 <?php
 
-namespace nosmi;
+namespace nosmi\interfaces;
 
 interface ContainerInterface
 {

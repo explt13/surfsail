@@ -1,37 +1,48 @@
 <?php
 namespace nosmi\base;
 
-use nosmi\CacheInterface;
+use nosmi\interfaces\CacheInterface;
+use nosmi\Request;
 use nosmi\RouteContext;
 
 abstract class Controller
 {
     protected RouteContext $route;
     protected CacheInterface $cache;
-    private array $data = [];
-    private array $meta = ["title" => "", "description" => "", "keywords" => ""];
+    private View $view;
+    protected Request $request;
 
-    public final function init(RouteContext $route_context)
+    public final function init(RouteContext $route, Request $request, View $view): void
     {
-        $this->route = $route_context;
+        $this->route = $route;
+        $this->request = $request;
+        $this->view = $view;
     }
 
-    public function getView(): void
+    /**
+     * Sets view and data
+     * @param null|string $view if not $view passed, RouteContext::$route['action'] will be set
+     * @param array $data associative array, where key is variable and value result, $data['products'] => ['Product 1'...]
+     * @param int $render_options Flags to be set for desired render, default - View::RENDER_SSR | View::INCLUDE_LAYOUT
+     */
+    public function render(?string $view = null, array $data = [], int $render_options = View::RENDER_SSR | View::INCLUDE_LAYOUT)
     {
-        $view = new View($this->route->controller, $this->route->action, $this->route->prefix, $this->route->layout, $this->meta);
-        $view->render($this->data);
+        if (is_null($view)) {
+            $view = $this->route->action;
+        }
+        $this->view->render($view, $data, $render_options);
     }
-
-    public function setData(array $data)
+    public function getAjaxHtml(string $view, array $data = [], array $json_payload = [], int $render_options = View::RENDER_AJAX): string
     {
-        $this->data = $data;
+        $html = $this->view->render($view, $data, $render_options);
+        if (is_null($html)){
+            throw new \Exception('Cannot get html', 404);
+        }
+        return $html;
     }
     
-    public function setMeta(?string $title, ?string $description = null, ?string $keywords = null)
+    protected function setMeta(?string $title, ?string $description = null, ?string $keywords = null): void
     {
-        $this->meta['title'] = $title;
-        $this->meta['description'] = $description;
-        $this->meta['keywords'] = $keywords;
-
+        $this->view->setMeta($title, $description, $keywords);
     }
 }

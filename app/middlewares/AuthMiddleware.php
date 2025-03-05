@@ -1,12 +1,11 @@
 <?php
 namespace app\middlewares;
 
-use app\middlewares\interfaces\MiddlewareInterface;
 use nosmi\App;
-use nosmi\base\Middleware;
+use nosmi\interfaces\MiddlewareInterface;
 use nosmi\RouteContext;
 
-class AuthMiddleware extends Middleware
+class AuthMiddleware implements MiddlewareInterface
 {
     private RouteContext $route;
     public function __construct(RouteContext $route)
@@ -19,8 +18,9 @@ class AuthMiddleware extends Middleware
         if (isset($_SESSION['user']) && $this->route->controller === 'Auth' && $this->route->action === 'index') {
             redirect();
         }
-        if (isset($this->route->auth) && $this->route->auth === true && !isset($_SESSION['user'])) {
-            redirect('auth');
+        if (isset($this->route->secured) && $this->route->secured === true && !isset($_SESSION['user'])) {
+            redirect('/auth', 'You have to be logged in');
+            exit;
         }
     }
 
