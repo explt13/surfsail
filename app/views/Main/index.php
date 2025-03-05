@@ -73,37 +73,41 @@
         </div>
     </section>
     <section class="advatages">
-        <div class="advatages__container container">
-            <div class="advantages-main">
-                <div class="advantages-main__item">
-                    <div class="advantages-main__icon">
+        <div class="advatages__container container" data-spoilers="991">
+            <div class="advantages__title-mobile" data-spoiler>
+                <span class="advantages__title-mobile-text">Why us?</span>
+                <span class="advantages__title-mobile-arrow _icon-arrow_sh_d"></span>
+            </div>
+            <div class="advantages__items">
+                <div class="advantages__item item-advantage">
+                    <div class="item-advantage__icon">
                         <img src="img/home/garantee.svg" alt="garantee-icon">
                     </div>
-                    <div class="advantages-main__text">
+                    <div class="item-advantage__text">
                         100% Money-Back Guarantee
                     </div>
                 </div>
-                <div class="advantages-main__item">
-                    <div class="advantages-main__icon">
+                <div class="advantages__item item-advantage">
+                    <div class="item-advantage__icon">
                         <img src="img/home/truck.svg" alt="truck-icon">
                     </div>
-                    <div class="advantages-main__text">
+                    <div class="item-advantage__text">
                         Delivery across the US
                     </div>
                 </div>
-                <div class="advantages-main__item">
-                    <div class="advantages-main__icon">
+                <div class="advantages__item item-advantage">
+                    <div class="item-advantage__icon">
                         <img src="img/home/list.svg" alt="list-icon">
                     </div>
-                    <div class="advantages-main__text">
+                    <div class="item-advantage__text">
                         Option to place an order without registration
                     </div>
                 </div>
-                <div class="advantages-main__item">
-                    <div class="advantages-main__icon">
+                <div class="advantages__item item-advantage">
+                    <div class="item-advantage__icon">
                         <img src="img/home/percentages.svg" alt="percentages-icon">
                     </div>
-                    <div class="advantages-main__text">
+                    <div class="item-advantage__text">
                         Discounts for regular customers
                     </div>
                 </div>
@@ -112,36 +116,37 @@
     </section>
     <?php
     if ($brands): ?>
-    <section class="brands">
+    <section class="brands" data-spoilers="575">
         <div class="brands__container container">
-            <div class="brands__title section-title">Brands</div>
+            <div class="brands__title section-title" data-spoiler>Brands</div>
             <div class="brands__cards">
                 <?php foreach($brands as $brand): ?>
-                <a href="catalog.html" class="brands__item item-brand">
+                <a href="/catalog" class="brands__item item-brand">
                     <div class="item-brand__image">
                         <picture>
                             <source srcset="img/brands/<?= htmlspecialchars($brand['image'], ENT_QUOTES, 'UTF-8')?>.webp" type="image/webp">
                             <source srcset="img/brands/<?= htmlspecialchars($brand['image'], ENT_QUOTES, 'UTF-8')?>.jpg" type="image/jpeg">
-                            <img src="img/brands/<?= htmlspecialchars($brand['image'], ENT_QUOTES, 'UTF-8')?>.png" alt="brands-image-<?= htmlspecialchars($brand['title'], ENT_QUOTES, 'UTF-8')?>">
+                            <img src="img/brands/<?= htmlspecialchars($brand['image'], ENT_QUOTES, 'UTF-8')?>.png" alt="brands-image-<?= htmlspecialchars($brand['name'], ENT_QUOTES, 'UTF-8')?>">
                         </picture>
                     </div>
-                    <div class="item-brand__text _icon-arrow_sh_r"><?= htmlspecialchars($brand['title'], ENT_QUOTES, 'UTF-8')?></div>
+                    <div class="item-brand__text _icon-arrow_sh_r _ipl-after"><?= htmlspecialchars($brand['name'], ENT_QUOTES, 'UTF-8')?></div>
                 </a>
                 <?php endforeach;?>
-                <a href="catalog.html" class="brands__more _icon-arrow_sh_r">
+                <a href="/catalog" class="brands__more _icon-arrow_sh_r _ipl-after">
                     MORE
                 </a>
             </div>
+            <div class="brands__mobile-devider">and</div>
         </div>
     </section>
     <?php endif;?>
     <?php if ($categories): ?>
-    <section class="categories">
+    <section class="categories" data-spoilers="575">
         <div class="categories__container container">
-            <div class="categories__title section-title">Categories</div>
+            <div class="categories__title section-title" data-spoiler>Categories</div>
             <div class="categories__row">
                 <?php foreach($categories as $category): ?>
-                    <a href="./catalog.html" class="categories__item item-category categories__item">
+                    <a href="/catalog" class="categories__item item-category categories__item">
                         <div class="item-category__information">
                             <h2 class="item-category__title title-category"><?= htmlspecialchars($category['title'], ENT_QUOTES, 'UTF-8');?></h2>
                             <ul class="item-category__list">
@@ -192,7 +197,7 @@
                         of surf culture. Whether you're looking for the latest surfboard designs, innovative safety gear, or stylish apparel, 
                         you'll find it all right here.
                     </div>
-                    <a href="./catalog.html" class="new-products__link _icon-arrow_sh_r">More new products</a>
+                    <a href="/catalog" class="new-products__link _icon-arrow_sh_r">More new products</a>
                 </div>
                 <div class="new-products__slider-body">
                     <div class="slider-new-products swiper new-products__slider">
@@ -225,7 +230,7 @@
                     <?php foreach($recommend_products as $product): ?>
                     <div class="cards-recommend__card card-recommend">
                         <div class="card-recommend__body">
-                            <a class="card-recommend__title title-category"><?= htmlspecialchars($product['title'], ENT_QUOTES, 'UTF-8')?></a>
+                            <a class="card-recommend__title title-category"><?= htmlspecialchars($product["name"], ENT_QUOTES, 'UTF-8')?></a>
                             <div class="card-recommend__text"><?= htmlspecialchars($product['description'], ENT_QUOTES,'UTF-8')?></div>
                             <a href="" class="card-recommend__button button">More details</a>
                         </div>

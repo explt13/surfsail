@@ -10,7 +10,7 @@
                         <a href="/catalog" class="breadcrumbs__link">Catalog</a>
                     </li>
                     <li class="breadcrumbs__item">
-                        <span class="breadcrumbs__current"><?= htmlspecialchars($product['title'], ENT_QUOTES, 'UTF-8');?></span>
+                        <span class="breadcrumbs__current"><?= htmlspecialchars($product["name"], ENT_QUOTES, 'UTF-8');?></span>
                     </li>
                 </ul>
             </nav>
@@ -73,7 +73,7 @@
                     <div class="main-product__body body-product">
                         <div class="body-product__header header-product">
                             <div class="header-product__line">
-                                <h1 class="header-product__title"><?= htmlspecialchars($product['title'], ENT_QUOTES, 'UTF-8');?></h1>
+                                <h1 class="header-product__title"><?= htmlspecialchars($product["name"], ENT_QUOTES, 'UTF-8');?></h1>
                                 <div class="header-product__mods">
                                     <?php if($product['new']): ?>
                                         <span class="header-product__new">new</span>
@@ -83,7 +83,7 @@
                                     <?php endif;?>
                                 </div>
                                 <div class="header-product-card__actions product-card-actions">
-                                    <span class="_icon-fav product-card-actions__like"></span>
+                                    <span class="_icon-fav product-card-actions__like like"></span>
                                 </div>
                             </div>
                             <div class="header-product__line header-product__line_secondary">
@@ -108,25 +108,27 @@
                             </div>
                         </div>
                         <div class="body-product__table table-product">
-                            <?php if (isset($product_brand) && $product_brand):?>
-                                <div class="table-product__label">Brand:</div>
-                                <a href="catalog?brand=<?= htmlspecialchars($product_brand['alias'], ENT_QUOTES, 'UTF-8');?>" class="table-product__value"><?= htmlspecialchars($product_brand['title'], ENT_QUOTES, 'UTF-8');?></a>
-                            <?php endif;?>
-                            <?PHP if ($product['length']): ?>
-                                <div class="table-product__label">Length:</div>
-                                <div class="table-product__value"><?= htmlspecialchars($product['length'], ENT_QUOTES, 'UTF-8');?></div>
-                            <?php endif;?>
-                            <?php if ($product['width']): ?>
-                                <div class="table-product__label">Width:</div>
-                                <div class="table-product__value"><?= htmlspecialchars($product['width'], ENT_QUOTES, 'UTF-8');?></div>
-                            <?php endif;?>
-                            <?php if ($product['thickness']): ?>
-                                <div class="table-product__label">Thickness:</div>
-                                <div class="table-product__value"><?= htmlspecialchars($product['thickness'], ENT_QUOTES, 'UTF-8');?></div>
-                            <?php endif;?>
-                            <?php if ($product['weight']): ?>
-                                <div class="table-product__label">Weight:</div>
-                                <div class="table-product__value"><?= htmlspecialchars($product['weight'], ENT_QUOTES, 'UTF-8');?> kg</div>
+                            <?php if (false): ?> <!-- do later -->
+                                <?php if (isset($product_brand) && $product_brand):?>
+                                    <div class="table-product__label">Brand:</div>
+                                    <a href="catalog?brand=<?= htmlspecialchars($product_brand['alias'], ENT_QUOTES, 'UTF-8');?>" class="table-product__value"><?= htmlspecialchars($product_brand['name'], ENT_QUOTES, 'UTF-8');?></a>
+                                <?php endif;?>
+                                <?php if ($product['length']): ?>
+                                    <div class="table-product__label">Length:</div>
+                                    <div class="table-product__value"><?= htmlspecialchars($product['length'], ENT_QUOTES, 'UTF-8');?></div>
+                                <?php endif;?>
+                                <?php if ($product['width']): ?>
+                                    <div class="table-product__label">Width:</div>
+                                    <div class="table-product__value"><?= htmlspecialchars($product['width'], ENT_QUOTES, 'UTF-8');?></div>
+                                <?php endif;?>
+                                <?php if ($product['thickness']): ?>
+                                    <div class="table-product__label">Thickness:</div>
+                                    <div class="table-product__value"><?= htmlspecialchars($product['thickness'], ENT_QUOTES, 'UTF-8');?></div>
+                                <?php endif;?>
+                                <?php if ($product['weight']): ?>
+                                    <div class="table-product__label">Weight:</div>
+                                    <div class="table-product__value"><?= htmlspecialchars($product['weight'], ENT_QUOTES, 'UTF-8');?> kg</div>
+                                <?php endif;?>
                             <?php endif;?>
                         </div>
                         <?php if ($mods): ?>
@@ -178,7 +180,7 @@
                                         </button>
                                     <?php endif;?>
                                     <button class="actions-product__cart cart-button-view button">
-                                        <span class="actions-product__cart-link _icon-cart">To cart</span>
+                                        <span class="actions-product__cart-link _icon-cart _ipl-after">To cart</span>
                                         <?php if(isset($_SESSION['cart'][$product['id']])): ?>
                                             <span class="actions-product__cart-have">(you have <b><?= htmlspecialchars($_SESSION['cart'][$product['id']]['qty']); ?></b> in cart)</span>
                                         <?php endif;?>

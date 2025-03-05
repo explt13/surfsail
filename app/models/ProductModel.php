@@ -5,6 +5,13 @@ use app\models\interfaces\ProductModelInterface;
 
 class ProductModel extends AppModel implements ProductModelInterface
 {
+    private readonly array $allowedOrderColumns;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->allowedOrderColumns = ['price', 'name', 'discount_percentage', 'added_at', 'id'];
+    }
     
     public function getProductGalleryImages(int $product_id)
     {
@@ -13,7 +20,7 @@ class ProductModel extends AppModel implements ProductModelInterface
         return $stmt->fetchAll();
     }
 
-    public function getRelatedProducts(int $product_id)
+    public function getRelatedProducts(int $product_id, int $limit = 50)
     {
         $stmt = $this->pdo->prepare('SELECT p.* FROM product_related pr INNER JOIN product p ON pr.related_id = p.id WHERE pr.product_id = :id');
         $stmt->execute(['id' => $product_id]);
@@ -57,47 +64,60 @@ class ProductModel extends AppModel implements ProductModelInterface
         return $result;
     }
 
-    public function getProductsBySubCategory(string $sub_categroy, int $limit)
+    public function getProductsBySubCategory(string $sub_category, int $limit = 100)
     {
         $stmt = $this->pdo->prepare('SELECT p.* FROM product p INNER JOIN sub_sub_category ssc ON p.ssc_id = ssc.id
         WHERE ssc.sub_category_id = (SELECT sc.id FROM sub_category sc WHERE sc.title = :sub_category) LIMIT :lim');
-        $stmt->execute(['sub_category' => $sub_categroy, 'lim' => $limit]);
+        $stmt->execute(['sub_category' => $sub_category, 'lim' => $limit]);
         return $stmt->fetchAll();
     }
-    
-    public function getProducts(array $filters = [], int $limit = null, int $offset = 0, string $orderBy = null, $desc = false)
+
+    public function getProductsCount(): int
     {
-        $query = 'SELECT * FROM product p';
-        $allowedOrderColumns = ['price', 'title', 'discount_percentage', 'added_at', 'id'];
+        $stmt = $this->pdo->prepare('SELECT COUNT(*) FROM product p');
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
+    public function getProducts(array $filters = [], int $limit = 100, int $offset = 0, string $orderBy = null, bool $desc = false, int $fetch_mode = self::STRICT_FETCH_MODE): array
+    {
+        $query = 'SELECT p.* FROM product p';
         $params = [];
+
+        if ($fetch_mode === self::STRICT_FETCH_MODE) {
+            $op = "AND";
+        } else if ($fetch_mode === self::SOFT_FETCH_MODE) {
+            $op = "or";
+        } else {
+            throw new \Exception("Invalid fetch mode is passed: $fetch_mode");
+        }
 
         if (!empty($filters)) {
             $query .= " WHERE 1=1";
             foreach ($filters as $fname => $fvalue) {
                 if (is_array($fvalue)) {
                     $placeholders = implode(',', array_fill(0, count($fvalue), '?'));
-                    $query .= " AND p.$fname IN ($placeholders)";
+                    $query .= " $op p.$fname IN ($placeholders)";
                     $params = array_merge($params, $fvalue);
                 } elseif (strpos($fname, 'LIKE_') === 0) {
                     // Handle LIKE cases (e.g. 'LIKE_title')
                     $columnName = substr($fname, 5);
-                    $query .= " AND p.$columnName LIKE :$fname";
+                    $query .= " $op p.$columnName LIKE :$fname";
                     $params[$fname] = "%$fvalue%";
                 } else {
-                    $query .= " AND p.$fname = :$fname";
+                    $query .= " $op p.$fname = :$fname";
                     $params[$fname] = $fvalue;
                 }
 
             }
         }
-        if ($orderBy && in_array($orderBy, $allowedOrderColumns)) {
+        if ($orderBy && in_array($orderBy, $this->allowedOrderColumns)) {
             $query .= ' ORDER BY p.' . $orderBy . ($desc ? ' DESC' : ' ASC');
         }
 
-        if ($limit) {
-            $query .= ' LIMIT :lim';
-            $params['lim'] = $limit;
-        }
+        $query .= ' LIMIT :lim';
+        $params['lim'] = $limit;
+
         if ($offset) {
             $query .= ' OFFSET :ofs';
             $params['ofs'] = $offset;
@@ -107,9 +127,59 @@ class ProductModel extends AppModel implements ProductModelInterface
         
         return ($limit === 1) ? $stmt->fetch() : $stmt->fetchAll();
     }
-    public function getTotalProducts(): int
+
+    private function getFilteredProductsCount(string $query_part, array $params): int
     {
-        $stmt = $this->pdo->query("SELECT COUNT(*) FROM product");
-        return (int) $stmt->fetchColumn();
+        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM product p" . $query_part);
+        $stmt->execute($params);
+        return $stmt->fetchColumn();
+    }
+
+    public function getFilteredProducts(array $filters, int $limit = 100, int $offset = 0, string $orderBy = null, bool $desc = false): array
+    {
+        // key is name of group and value is array field(s) to filter
+        $range_groups = ['price' => ['price', 'discount_price']];
+        $params = [];
+        $query = "SELECT p.* FROM product p";
+        $query_part = $this->getQueryPart($filters, $range_groups, $params);
+        $params[] = $limit;
+        $products_count = $this->getFilteredProductsCount($query_part, $params);
+        $query .= $query_part;
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute($params);
+        return array($products_count, $stmt->fetchAll());
+    }
+
+    private function getQueryPart(array $filters, array $range_groups, array &$params): string
+    {
+        $query_part = "";
+        $conditions = "";
+        $groups_count = count(array_diff_key($filters, $range_groups));
+        foreach($filters as $group => $options) {
+            if (array_key_exists($group, $range_groups)) {
+                $min = $options[0] ?? 0;
+                $max = $options[1] ?? 10_000;
+                $q = join(' OR ', array_map(fn($field) => "p.$field BETWEEN ? AND ?", $range_groups[$group]));
+                $conditions .= "(". $q . ") AND ";
+                $params = array_merge($params, array_merge(...array_fill(0, count($range_groups[$group]), [$min, $max])));
+                continue;
+            }
+            $placeholders = join(",", array_fill(0, count($options), '?'));
+            $conditions .= "fo.alias IN ($placeholders) OR ";
+            $params = array_merge($params, $options);
+        }
+        if ($groups_count !== 0) {
+            $conditions = substr($conditions, 0, strrpos($conditions, ' OR '));
+            $query_part .= " INNER JOIN filter_product fp ON p.id = fp.product_id 
+                INNER JOIN filter_option fo ON fp.filter_option_id = fo.id 
+                INNER JOIN filter_group fg ON fg.id = fo.filter_group_id WHERE $conditions 
+                GROUP BY p.id HAVING COUNT(DISTINCT fg.alias) = $groups_count";
+        } else {
+            $conditions = substr($conditions, 0, strrpos($conditions, ' AND '));
+            $query_part = " WHERE $conditions";
+        }
+        
+        $query_part .= " LIMIT ?"; //
+        return $query_part;
     }
 }

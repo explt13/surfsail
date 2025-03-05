@@ -57,7 +57,7 @@ class OrderModel extends AppModel implements OrderModelInterface
         }
     }
     protected function saveOrderProduct(int $order_id)
-    {;
+    {
         $products = $this->product_model->getProducts(["id" => array_keys($_SESSION['cart'])]);
         
         $data = [];
@@ -67,7 +67,7 @@ class OrderModel extends AppModel implements OrderModelInterface
         foreach ($products as $key => $product) {
             $product_id = (int) $product['id'];
             $query .= " (?, ?, ?, ?, ?),";
-            array_push($data, $order_id, $product_id, $product['title'], $product['price'], $_SESSION['cart'][$product_id]['qty']);
+            array_push($data, $order_id, $product_id, $product["name"], $product['price'], $_SESSION['cart'][$product_id]['qty']);
             $counter++;
             if ($counter === $batchsize) {
                 $query = rtrim($query, ',');
@@ -144,7 +144,7 @@ class OrderModel extends AppModel implements OrderModelInterface
         foreach ($_SESSION['cart'] as $product_id => $product) {
             $total_product_price = $product['price'] * $product['qty'];
             $total_price += $total_product_price;
-            $text .= "$num. {$product['title']} | {$product['price']} x {$product['qty']} | $total_product_price\n";
+            $text .= "$num. {$product["name"]} | {$product['price']} x {$product['qty']} | $total_product_price\n";
         }
         $text .= "total: $total_price";
         return $text;

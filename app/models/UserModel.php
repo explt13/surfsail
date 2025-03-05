@@ -83,6 +83,7 @@ class UserModel extends AppModel implements UserModelInterface
     public function logout()
     {
         unset($_SESSION['user']);
+        // session_destroy();
         redirect();
     }
 

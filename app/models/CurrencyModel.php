@@ -2,7 +2,7 @@
 namespace app\models;
 
 use app\models\interfaces\CurrencyModelInterface;
-use nosmi\CacheInterface;
+use nosmi\interfaces\CacheInterface;
 
 class CurrencyModel extends AppModel implements CurrencyModelInterface
 {

@@ -2,20 +2,11 @@
 
 namespace app\controllers;
 
-use app\models\interfaces\CategoryModelInterface;
-use app\models\interfaces\CurrencyModelInterface;
 use nosmi\App;
+use nosmi\base\Controller;
 
-class CurrencyController extends AppController
+class CurrencyController extends Controller
 {
-    public function __construct(
-        CurrencyModelInterface $currency_model,
-        CategoryModelInterface $category_model
-    )
-    {
-        parent::__construct($currency_model, $category_model);
-    }
-
     public function getAction()
     {
         header('Content-Type: application/json');
@@ -25,10 +16,10 @@ class CurrencyController extends AppController
             setcookie('currency', $currency['code'], time() + 3600 * 24 * 7, '/');
             echo json_encode(['success' => true, 'currency' => $currency]);
         } else {
-            http_response_code(400);
-            echo json_encode(['success' => false, "message" => "No such currency exists"]);
+            // http_response_code(400);
+            // echo json_encode(['success' => false, "message" => "No such currency exists"]);
+            throw new \Exception('No such currency exists', 400);
         }
-
     }
 
     public function changeAction()

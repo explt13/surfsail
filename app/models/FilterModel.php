@@ -3,7 +3,7 @@
 namespace app\models;
 
 use app\models\interfaces\FilterModelInterface;
-use nosmi\CacheInterface;
+use nosmi\interfaces\CacheInterface;
 
 class FilterModel extends AppModel implements FilterModelInterface
 {
@@ -17,14 +17,18 @@ class FilterModel extends AppModel implements FilterModelInterface
     }
     public function getFilters()
     {
-        $filters = [];
+        $groups = $this->getGroups();
+        $options = $this->getAllOptions();
 
-        foreach ($this->getGroups() as $group) {
-            $group['options'] = $this->getOptions($group["id"]);
-            $filters[] = $group;
+        $groupedOptions = [];
+        foreach ($options as $option) {
+            $groupedOptions[$option['filter_group_id']][] = $option;
         }
 
-        return $filters;
+        foreach ($groups as &$group) {
+            $group['options'] = $groupedOptions[$group['id']] ?? [];
+        }
+        return $groups;
     }
 
     protected function getGroups()
@@ -33,12 +37,12 @@ class FilterModel extends AppModel implements FilterModelInterface
         $stmt->execute();
         return $stmt->fetchAll();
     }
-    
-    protected function getOptions(int $group_id)
+
+    protected function getAllOptions()
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM filter_option WHERE filter_group_id=:group_id');
-        $stmt->bindValue(':group_id', $group_id, \PDO::PARAM_INT);
+        $stmt = $this->pdo->prepare('SELECT * FROM filter_option');
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
 }

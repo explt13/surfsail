@@ -14,47 +14,26 @@ function debugIncludedFile()
     }
 }
 
-function redirect($path = null)
+function redirect(string $path = null, string $ajax_msg = ''): void
 {
     if ($path) {
-        $redirect = PATH . $path;
+        $redirect = DOMAIN . $path;
     } else {
-        $redirect = $_SERVER['HTTP_REFERER'] ?? PATH;
+        $redirect = $_SERVER['HTTP_REFERER'] ?? DOMAIN;
     }
 
     if (isAjax()) {
-        header('Content-Type: application/json');
-        echo json_encode(['redirect' => $redirect]);
         http_response_code(401);
-        die;
+        header('Content-Type: application/json');
+        echo json_encode(['redirect' => $redirect, 'err_msg' => $ajax_msg]);
+        exit;
     }
-
     header("Location: $redirect");
-    die;
+    exit;
 }
 
-function isAjax()
+function isAjax(): bool
 {
     return (strtolower($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '') === 'xmlhttprequest');
 }
 
-
-function cors() {
-    $allowed_origins = ['http://surfsail.com'];
-    if (in_array($_SERVER['HTTP_ORIGIN'], $allowed_origins)){
-        header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-        header('Access-Control-Allow-Credentials: true');
-        header('Access-Control-Max-Age: 86400');
-    }
-    
-    if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-        
-        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-            header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-        
-        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-            header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
-    
-        exit(0);
-    }
-}

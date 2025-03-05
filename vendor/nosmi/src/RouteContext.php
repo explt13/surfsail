@@ -4,21 +4,24 @@ namespace nosmi;
 
 class RouteContext
 {
-    private array $data = [];
+    private array $route = [];
     private array $readOnlyProperties = [];
     private bool $canOverwrite = false;
 
-    public function setRoute(array $route)
+    public function setRoute(array $route): void
     {
         $route = $this->prepareRoute($route);
         foreach ($route as $key => $value) {
-            $this->data[$key] = $value;
+            $this->route[$key] = $value;
             $this->readOnlyProperties[] = $key;
         }
     }
 
-    private function prepareRoute(array $route)
+    private function prepareRoute(array $route): array
     {
+        if (!isset($route['layout'])) {
+            $route['layout'] = LAYOUT;
+        }
         if (empty($route['action'])) {
             $route['action'] = 'index';
         }
@@ -31,35 +34,35 @@ class RouteContext
         return $route;
     }
 
-    private function upperCamelCase(string $str)
+    private function upperCamelCase(string $str): string
     {
         return str_replace('-', '', ucwords($str, '-'));
     }
 
 
-    public function __get(string $name)
+    public function __get(string $name): mixed
     {
-        return $this->data[$name] ?? null;
+        return $this->route[$name] ?? null;
     }
 
-    public function __set(string $name, $value)
+    public function __set(string $name, mixed $value): void
     {
         if (in_array($name, $this->readOnlyProperties)) {
             throw new \Exception("Cannot set read-only property: $name");
         }
-        if (!$this->canOverwrite && isset($this->data[$name])){
+        if (!$this->canOverwrite && isset($this->route[$name])){
             throw new \Exception("Cannot overwrite existing property: $name");
         }
-        $this->data[$name] = $value;
+        $this->route[$name] = $value;
     }
 
     public function __isset(string $name): bool
     {
-        return isset($this->data[$name]);
+        return isset($this->route[$name]);
     }
 
     public function toArray(): array
     {
-        return $this->data;
+        return $this->route;
     }
 }
