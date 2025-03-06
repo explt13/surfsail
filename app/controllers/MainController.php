@@ -26,7 +26,6 @@ class MainController extends Controller
 
     public function indexAction()
     {
-        debug($_SESSION);
         $brands = $this->brand_model->getBrands(10);
         $shortboard_products = $this->product_model->getProductsBySubCategory('Shortboards', 7);
         $longboard_products = $this->product_model->getProductsBySubCategory('Longboards', 7);

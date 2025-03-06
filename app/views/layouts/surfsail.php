@@ -21,7 +21,7 @@
     <meta charset="UTF-8">
 </head>
 
-<body>
+<body data-page=<?= lcfirst($this->route->controller)?>>
     <div class="wrapper">
         <header class="header">
             <div class="header__row header__row_top top-header">
@@ -243,14 +243,14 @@
                         </div>
                         <div class="footer-body-row__column column-item column-item_mailing">
                             <button class="column-item__title _not-spoiler">NEWSLETTER</button>
-                            <form action="#" class="column-item__form form-mailing">
-                                <label for="form-mailing__input" class="form-mailing__label">Subscribe</label>
-                                <div class="form-mailing__input-container">
-                                    <input autocomplete="off" name="form[]" type="text" data-error="Error" data-required="email" placeholder="example@gmail.com" class="form-mailing__input" id="form-mailing__input">
-                                    <button type="submit" class="form-mailing__button _icon-arrow_sh_r"></button>
+                            <form action="#" class="column-item__form form-newsletter">
+                                <label for="form-newsletter__input" class="form-newsletter__label">Subscribe</label>
+                                <div class="form-newsletter__input-container">
+                                    <input autocomplete="off" name="form[]" type="text" data-error="Error" data-required="email" placeholder="example@gmail.com" class="form-newsletter__input" id="form-newsletter__input">
+                                    <button type="submit" class="form-newsletter__button _icon-arrow_sh_r"></button>
                                 </div>
-                                <div class="form-mailing__agreement">
-                                    <input type="checkbox" class="form-mailing__agreement-button">
+                                <div class="form-newsletter__agreement checkbox checkbox_terms">
+                                    <input id="newsletter-aggreement" name="newsletter" type="checkbox" class="checkbox__input form-newsletter__agreement-button">
                                     <label for="newsletter-aggreement" tabindex="0" class="checkbox__label checkbox__label_terms form-newsletter__label-aggrement">
                                         <div class="checkbox__box checkbox__box_terms"></div>
                                         <div class="checkbox__text checkbox__text_terms">I have read and agree to the </div>
@@ -260,9 +260,9 @@
                         </div>
                     </div>
                     <div class="body-footer__socials">
-                        <a href="#"><img src="/img/home/facebook.svg" alt="facebook"></a>
-                        <a href="#"><img src="/img/home/viber.svg" alt="viber"></a>
-                        <a href="#"><img src="/img/home/whatsapp.svg" alt="whatsapp"></a>
+                        <a href="#"><img src="img/footer/facebook.svg" alt="facebook"></a>
+                        <a href="#"><img src="img/footer/viber.svg" alt="viber"></a>
+                        <a href="#"><img src="img/footer/whatsapp.svg" alt="whatsapp"></a>
                     </div>
                 </div>
             </div>

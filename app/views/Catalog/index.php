@@ -26,7 +26,7 @@
                 </select>
             </div>
             <div class="catalog__body">
-                <div class="catalog__filter filter-catalog" ata-spoiler-opened data-spoilers="1044,max">
+                <div class="catalog__filter filter-catalog" data-spoiler-opened data-spoilers="1044,max">
                     <!-- <button class="filter-catalog__apply-button">Apply filters</button> -->
                     <button data-spoiler data-spoiler-time="1000" type="button" data-spoiler class="filter-catalog__title">Filter</button>
                     <div data-spoiler-opened="1045,min" data-spoilers class="filter-catalog__items">

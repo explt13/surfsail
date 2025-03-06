@@ -1,14 +1,14 @@
-a:2:{s:4:"data";s:34737:"    <div class="header__row header__row_catalog catalog-header">
+a:2:{s:4:"data";s:34905:"    <div class="header__row header__row_catalog catalog-header">
         <div class="catalog-header__container container">
             <nav class="catalog-header__menu menu-catalog">
                 <button class="menu-catalog__back back-menu _icon-back">Back</button>
                 <ul class="menu-catalog__list">
-                                            <li class="menu-catalog__item"><button data-parent="1" class="menu-catalog__link">Surfboards</button></li>
-                                            <li class="menu-catalog__item"><button data-parent="2" class="menu-catalog__link">Wetsuits and Apparel</button></li>
-                                            <li class="menu-catalog__item"><button data-parent="3" class="menu-catalog__link">Surfing Accessories</button></li>
-                                            <li class="menu-catalog__item"><button data-parent="4" class="menu-catalog__link">Protective Gear</button></li>
-                                            <li class="menu-catalog__item"><button data-parent="5" class="menu-catalog__link">Beach Accessories</button></li>
-                                            <li class="menu-catalog__item"><button data-parent="6" class="menu-catalog__link">Equipment</button></li>
+                                            <li class="menu-catalog__item"><button data-parent="1" class="menu-catalog__link _icon-arrow_sh_d _ipl-after">Surfboards</button></li>
+                                            <li class="menu-catalog__item"><button data-parent="2" class="menu-catalog__link _icon-arrow_sh_d _ipl-after">Wetsuits and Apparel</button></li>
+                                            <li class="menu-catalog__item"><button data-parent="3" class="menu-catalog__link _icon-arrow_sh_d _ipl-after">Surfing Accessories</button></li>
+                                            <li class="menu-catalog__item"><button data-parent="4" class="menu-catalog__link _icon-arrow_sh_d _ipl-after">Protective Gear</button></li>
+                                            <li class="menu-catalog__item"><button data-parent="5" class="menu-catalog__link _icon-arrow_sh_d _ipl-after">Beach Accessories</button></li>
+                                            <li class="menu-catalog__item"><button data-parent="6" class="menu-catalog__link _icon-arrow_sh_d _ipl-after">Equipment</button></li>
                                     </ul>
                 <div class="menu-catalog__sub-menu sub-menu-catalog">
                     <button class="sub-menu-catalog__back back-menu _icon-back">Back</button>
@@ -220,4 +220,4 @@ a:2:{s:4:"data";s:34737:"    <div class="header__row header__row_catalog catalog
             </nav>
         </div>
     </div>
-";s:3:"exp";i:1739780671;}
+";s:3:"exp";i:1743824838;}

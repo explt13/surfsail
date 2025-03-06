@@ -15,56 +15,6 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
-function getNotifictionType(code) {
-    let type;
-    if (code >= 200 && code < 300) {
-        type = '_success';
-    } else if (code >= 100 && code < 200 || code >= 300 && code < 400) {
-        type = '_alert';
-    } else if (code >= 400) {
-        type = '_failure';
-    }
-    return type;
-}
-
-function addNotification(code, msg) {
-    const type = getNotifictionType(code);
-    
-    const notificationContainer = document.querySelector('.notification__container');
-    
-    const notificationItem = document.createElement('div');
-    notificationItem.classList.add('notification__item');
-    setTimeout(() => {
-        notificationItem.classList.add('_active');
-    }, 0);
-    notificationContainer.appendChild(notificationItem);
-
-    const notificationBody = document.createElement('div');
-    notificationBody.classList.add('notification__body');
-    
-    notificationBody.classList.add(type);
-    notificationItem.appendChild(notificationBody);
-
-    const notificationMessage = document.createElement('div');
-    notificationMessage.classList.add('notification__message');
-    notificationMessage.classList.add(`_icon-notif${type}`);
-    notificationMessage.textContent = msg;
-    notificationBody.appendChild(notificationMessage);
-
-    const notificationTime = document.createElement('div');
-    notificationTime.classList.add('notification__time');
-    setTimeout(() => {
-        notificationTime.classList.add('_start');
-    }, 500)
-    notificationBody.appendChild(notificationTime);
-
-    setTimeout(() => {
-        notificationItem.classList.remove('_active');
-        setTimeout(() => {
-            notificationItem.remove();
-        }, 500)
-    }, 3500);
-}
 
 const formatNumber = (number) => {
     return Intl.NumberFormat(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}).format(number)
@@ -148,13 +98,22 @@ const handleResponse = async (response, notifyOnResult) => {
     }
 
     if ((notifyOnResult & NOTIFY_ON_FAILURE) && !succeed) {
-        addNotification(response.status, data.err_msg ?? 'Failure');
+        nSender(response.status, data.err_msg ?? 'Operation has failed. Try again later');
+        
     }
     if ((notifyOnResult & NOTIFY_ON_SUCCESS) && succeed) {
-        addNotification(response.status, data.message ?? 'Success');
+        nSender(response.status, data.message ?? 'Operation successful');
     }
     return result;
 }
+
+const notificationSender = () => {
+    const notification = document.querySelector('.notification');
+    return function (code, msg) {
+        notification.dispatchEvent(new CustomEvent('notification-sent', {detail: {code, msg}}));
+    }
+}
+const nSender = notificationSender();
 
 
 const showPostponedNotification = () => {
