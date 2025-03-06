@@ -3,4 +3,6 @@ vendor/*
 !vendor/autoload.php
 !vendor/nosmi
 config/.env
+tmp
+.vscode
 .vs_code
