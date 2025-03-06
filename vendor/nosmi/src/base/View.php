@@ -45,6 +45,7 @@ class View
             echo $this->includeLayout($content);
             return null;
         }
+        return null;
     }
 
     private function getContentHtml(string $view, array $data): string
