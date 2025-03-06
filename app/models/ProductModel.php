@@ -79,7 +79,7 @@ class ProductModel extends AppModel implements ProductModelInterface
         return $stmt->fetchColumn();
     }
 
-    public function getProducts(array $filters = [], int $limit = 100, int $offset = 0, string $orderBy = null, bool $desc = false, int $fetch_mode = self::STRICT_FETCH_MODE): array
+    public function getProducts(array $filters = [], int $limit = 100, int $offset = 0, ?string $orderBy = null, bool $desc = false, int $fetch_mode = self::STRICT_FETCH_MODE): array
     {
         $query = 'SELECT p.* FROM product p';
         $params = [];
@@ -135,7 +135,7 @@ class ProductModel extends AppModel implements ProductModelInterface
         return $stmt->fetchColumn();
     }
 
-    public function getFilteredProducts(array $filters, int $limit = 100, int $offset = 0, string $orderBy = null, bool $desc = false): array
+    public function getFilteredProducts(array $filters, int $limit = 100, int $offset = 0, ?string $orderBy = null, bool $desc = false): array
     {
         // key is name of group and value is array field(s) to filter
         $range_groups = ['price' => ['price', 'discount_price']];

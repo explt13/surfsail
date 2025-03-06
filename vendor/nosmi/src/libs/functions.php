@@ -14,7 +14,7 @@ function debugIncludedFile()
     }
 }
 
-function redirect(string $path = null, string $ajax_msg = ''): void
+function redirect(?string $path = null, string $ajax_msg = ''): void
 {
     if ($path) {
         $redirect = DOMAIN . $path;
@@ -25,7 +25,7 @@ function redirect(string $path = null, string $ajax_msg = ''): void
     if (isAjax()) {
         http_response_code(401);
         header('Content-Type: application/json');
-        echo json_encode(['redirect' => $redirect, 'err_msg' => $ajax_msg]);
+        echo json_encode(['redirect' => $redirect, 'message' => $ajax_msg]);
         exit;
     }
     header("Location: $redirect");
