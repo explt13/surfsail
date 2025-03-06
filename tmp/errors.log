@@ -4472,3 +4472,72 @@
 [2025-03-06 05:34:51 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
                     
 --------------------------------------
+[2025-03-06 09:28:56 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
+                    
+--------------------------------------
+[2025-03-06 09:30:00 +00:00] Error: Custom Error: Undefined property: nosmi\base\View::$rout in /var/www/projects/surfsail/app/views/layouts/clean.php on line 23 | File: /var/www/projects/surfsail/vendor/nosmi/src/ErrorHandler.php | Line: 23
+                    
+--------------------------------------
+[2025-03-06 14:10:28 +00:00] Error: Action: app\controllers\UserController::registerAction not found | File: /var/www/projects/surfsail/vendor/nosmi/src/ControllerResolver.php | Line: 32
+                    
+--------------------------------------
+[2025-03-06 14:10:32 +00:00] Error: Action: app\controllers\UserController::registerAction not found | File: /var/www/projects/surfsail/vendor/nosmi/src/ControllerResolver.php | Line: 32
+                    
+--------------------------------------
+[2025-03-06 14:16:50 +00:00] Error: Action: app\controllers\UserController::nullAction not found | File: /var/www/projects/surfsail/vendor/nosmi/src/ControllerResolver.php | Line: 32
+                    
+--------------------------------------
+[2025-03-06 14:51:47 +00:00] Error: Action: app\controllers\UserController::indexAction not found | File: /var/www/projects/surfsail/vendor/nosmi/src/ControllerResolver.php | Line: 32
+                    
+--------------------------------------
+[2025-03-06 14:51:47 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
+                    
+--------------------------------------
+[2025-03-06 14:55:38 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
+                    
+--------------------------------------
+[2025-03-06 14:55:38 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
+                    
+--------------------------------------
+[2025-03-06 14:55:38 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
+                    
+--------------------------------------
+[2025-03-06 14:55:38 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
+                    
+--------------------------------------
+[2025-03-06 14:55:38 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
+                    
+--------------------------------------
+[2025-03-06 14:55:38 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
+                    
+--------------------------------------
+[2025-03-06 14:55:38 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
+                    
+--------------------------------------
+[2025-03-06 14:55:38 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
+                    
+--------------------------------------
+[2025-03-06 14:56:05 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
+                    
+--------------------------------------
+[2025-03-06 14:56:05 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
+                    
+--------------------------------------
+[2025-03-06 14:56:05 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
+                    
+--------------------------------------
+[2025-03-06 14:56:05 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
+                    
+--------------------------------------
+[2025-03-06 14:56:05 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
+                    
+--------------------------------------
+[2025-03-06 14:56:05 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
+                    
+--------------------------------------
+[2025-03-06 14:56:05 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
+                    
+--------------------------------------
+[2025-03-06 14:56:05 +00:00] Error: Page not found | File: /var/www/projects/surfsail/vendor/nosmi/src/Router.php | Line: 50
+                    
+--------------------------------------
