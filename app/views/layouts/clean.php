@@ -13,12 +13,14 @@
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.min.css?_v=20240719131907"/>
+    <link rel="stylesheet" href="css/style.min.css"/>
     <link rel="stylesheet" href="css/extra.css"/>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
+    <script src="js/app.min.js" defer></script>
+    <script type="module" src="js/script.js" defer></script>
 </head>
-<body>
+<body data-page=<?= lcfirst($this->route->controller) ?>>
     <div class="wrapper">
         <?= $content ?>
     </div>
@@ -26,10 +28,15 @@
         <div class="notification__container">
         </div>
     </div>
+    <template id="notification-item-template">
+        <div class="notification__item">
+            <div class="notification__message"></div>
+            <button class="notification__close"></button>
+            <div class="notification__time"></div>
+        </div>
+    </template>
     <div class="loader-wrapper">
         <div class="loader"></div>
     </div>
-    <script src="js/app.min.js?_v=20240719131907"></script>
-    <script type="module" src="js/script.js"></script>
 </body>
 </html>

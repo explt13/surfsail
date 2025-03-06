@@ -1,9 +1,8 @@
-import {isEmptyObject, secureFetch, getCookie, setCookie, formatNumber, escapeHTML, debounce, debounceAsync, sleep, NOTIFY_ON_SUCCESS, NOTIFY_ON_FAILURE, is_null} from './utils.js';
+import {isEmptyObject, secureFetch, getCookie, setCookie, formatNumber, escapeHTML, debounce, debounceAsync, sleep, NOTIFY_ON_SUCCESS, NOTIFY_ON_FAILURE, is_null, showPostponedNotification} from './utils.js';
 
 async function main() {
     const page = window.location.pathname.split('/')[1] || 'main';
-    
-    initLocalStorage();
+    showPostponedNotification();
     handleSearch();
     await handleCurrency(); 
     const handlers = {
@@ -36,11 +35,6 @@ async function main() {
     handlers[page]();
 }
 
-const initLocalStorage = () => {
-    if (!localStorage.getItem('postponed_notification')) {
-        localStorage.setItem('postponed_notification', JSON.stringify([]));
-    }
-}
 
 const handleCurrency = async () => {
     const data = await getCurrentCurrency();
@@ -403,7 +397,8 @@ async function addProductToCartFromShowcase() {
                 qty: 1,
                 qty_control: false,
             })
-        }, true);
+        }, NOTIFY_ON_SUCCESS);
+        if (is_null(data)) return;
         const cart = document.querySelector('.shop__cart');
         if (!cart) return;
         const sameProducts = document.querySelectorAll(`[data-id="${product.dataset.id}"]`);
@@ -557,30 +552,19 @@ const renderSearchResult = (data, resultEl, searchEl) => {
     searchEl.parentNode.appendChild(resultEl);
 }
 
-const setAuthForm = () => {
-    const queryParams = decodeURIComponent(window.location.search).replace("?", "").split('&').map(el => el.split('='));
-    const params = Object.fromEntries(queryParams);
-    if (params.form) {
-        document.querySelector('.auth__container').classList.add('_login');
-    }
-}
-setAuthForm();
 const authenticate = () => {
     const authForm = document.querySelector('.auth__form');
-    const authContainer = authForm.closest('.auth__container');
     authForm.addEventListener('formValidated', async (e) => {
+        const params = new URLSearchParams(window.location.search);
+        let authFormMethod = params.get('form');
         const formData = new FormData(authForm);
-        const isLogin = authContainer.classList.contains('_login');
-        const action = isLogin ? 'login' : 'signup';
-        console.log(action);
-        if (is_null(await secureFetch(`/user/${action}`, {
+        if (is_null(await secureFetch(`/user/${authFormMethod}`, {
             method: "POST",
             body: formData,
         }))) return;
         window.location.replace("/");
     })
 }
-
 
 const handleFilters = () => {
     const applyFiltersBtn = document.querySelector('.filter-catalog__apply-button');

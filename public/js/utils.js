@@ -85,7 +85,7 @@ const handleResponse = async (response, notifyOnResult) => {
 
         case (response.status === 401):
             data = await response.json();
-            localStorage.setItem('postponed_notification', JSON.stringify({status: response.status, message: data.err_msg, notify: notifyOnResult}));
+            localStorage.setItem('postponed_notification', JSON.stringify({status: response.status, message: data.message, notify: notifyOnResult}));
             window.history.pushState({}, "", window.location.href);
             window.location.replace(data.redirect);
             return null;
@@ -98,7 +98,7 @@ const handleResponse = async (response, notifyOnResult) => {
     }
 
     if ((notifyOnResult & NOTIFY_ON_FAILURE) && !succeed) {
-        nSender(response.status, data.err_msg ?? 'Operation has failed. Try again later');
+        nSender(response.status, data.message ?? 'Operation has failed. Try again later');
         
     }
     if ((notifyOnResult & NOTIFY_ON_SUCCESS) && succeed) {
@@ -115,8 +115,15 @@ const notificationSender = () => {
 }
 const nSender = notificationSender();
 
-
 const showPostponedNotification = () => {
+    const postponedNotification = localStorage.getItem('postponed_notification');
+    if (postponedNotification) {
+        const notificationItem = JSON.parse(localStorage.getItem('postponed_notification'));
+        setTimeout(() => {
+            nSender(notificationItem.status, notificationItem.message);
+        }, 500)
+        localStorage.removeItem('postponed_notification');
+    }
     
 }
 
@@ -165,4 +172,4 @@ function sleep(seconds) {
     })
 }
 
-export {isEmptyObject, getCookie, setCookie, secureFetch, formatNumber, escapeHTML, showSpinner, debounce, debounceAsync, sleep, NOTIFY_ON_FAILURE, NOTIFY_ON_SUCCESS, is_null};
+export {isEmptyObject, getCookie, setCookie, secureFetch, formatNumber, escapeHTML, showSpinner, debounce, debounceAsync, sleep, NOTIFY_ON_FAILURE, NOTIFY_ON_SUCCESS, is_null, showPostponedNotification, nSender};

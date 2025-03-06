@@ -47,7 +47,7 @@ class ErrorHandler
                     $err_message = "The server had an error. You can try your request.";
                 }
             }
-            echo json_encode(["err_msg" => $err_message]);
+            echo json_encode(["message" => $err_message]);
             die;
         }
 
