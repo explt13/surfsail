@@ -13,7 +13,7 @@ class UserController extends Controller
         $this->user_model = $user_model;
     }
 
-    public function signupAction()
+    public function registerAction()
     {
         header('Content-Type: application/json');
         $data = $_POST['auth'];
