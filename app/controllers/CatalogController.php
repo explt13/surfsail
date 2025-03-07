@@ -40,7 +40,8 @@ class CatalogController extends Controller
 
         if ($this->request->isAjax) {
             $html = $this->getAjaxHtml(view: 'products_ajax', data: compact('products', 'pagination', 'selected_filters'));
-            echo json_encode(['html' => $html]);
+            http_response_code(200);
+            echo json_encode(['html' => $html, 'message' => 'Filters applied successfully']);
             return;
         }
         $filters = $this->filter_model->getFilters();

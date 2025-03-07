@@ -2,6 +2,7 @@ import {isEmptyObject, secureFetch, getCookie, setCookie, formatNumber, escapeHT
 
 async function main() {
     const page = window.location.pathname.split('/')[1] || 'main';
+    reloadPageOnPopState();
     showPostponedNotification();
     handleSearch();
     await handleCurrency(); 
@@ -29,7 +30,7 @@ async function main() {
         catalog: () => {
             setFavoriteButtons('product');
             addProductToCartFromShowcase();
-            handleFiltersRT('catalog');
+            handleFiltersRealTime('catalog');
         }
     }
     handlers[page]();
@@ -645,8 +646,7 @@ const handleFilters = () => {
     }
 }
 
-
-function handleFiltersRT(dist) {
+function handleFiltersRealTime(dist) {
     const filters = {};
     const filterItems = document.querySelectorAll('.item-filter');
 
@@ -669,7 +669,7 @@ function handleFiltersRT(dist) {
             slider.noUiSlider.on('change', async function(vals) {
                 vals = vals.map((v) => Number(v.replace(/[\$\s]/g, '')));
                 filters[filterGroup] = vals;
-                await applyFilters();
+                await debouncedFilters();
             })
         }
     }
@@ -691,7 +691,7 @@ function handleFiltersRT(dist) {
                         delete filters[filterGroup];
                     }
                 }
-                await applyFilters();
+                await debouncedFilters();
             });
         })
     }
@@ -713,6 +713,7 @@ function handleFiltersRT(dist) {
         catalogContent.innerHTML = data.html;
         window.history.pushState({}, "", filterUrl);
     }
+    const debouncedFilters = debounceAsync(applyFilters, 1500);
 
     function prepareFilterStr(filterStr) {
         if (isEmptyObject(filters)) {
@@ -723,6 +724,12 @@ function handleFiltersRT(dist) {
         })
         return filterStr;
     }
+}
+
+const reloadPageOnPopState = () => {
+    window.addEventListener('popstate', async function() {
+        window.location.reload();
+    }) 
 }
 
 try {
