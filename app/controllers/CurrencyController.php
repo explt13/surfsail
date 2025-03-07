@@ -16,8 +16,6 @@ class CurrencyController extends Controller
             setcookie('currency', $currency['code'], time() + 3600 * 24 * 7, '/');
             echo json_encode(['success' => true, 'currency' => $currency]);
         } else {
-            // http_response_code(400);
-            // echo json_encode(['success' => false, "message" => "No such currency exists"]);
             throw new \Exception('No such currency exists', 400);
         }
     }

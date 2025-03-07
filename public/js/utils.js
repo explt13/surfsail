@@ -52,8 +52,14 @@ const NOTIFY_ON_FAILURE = 2;
  * @throws RequestFailed
  */
 
-async function secureFetch(url, options={}, notifyOnResult = NOTIFY_ON_SUCCESS | NOTIFY_ON_FAILURE){
-    showSpinner();
+async function secureFetch(url, options={}, notifyOnResult = NOTIFY_ON_SUCCESS | NOTIFY_ON_FAILURE) {
+    let executed = false;
+    // if it takes more than 1 sec show spinner;
+    setTimeout(() => {
+        if (!executed) {
+            showSpinner();
+        }
+    }, 1000);
     const response = await fetch(url, {
         method: 'GET',
         ...options,
@@ -64,6 +70,7 @@ async function secureFetch(url, options={}, notifyOnResult = NOTIFY_ON_SUCCESS |
         }
     });
     const data = await handleResponse(response, notifyOnResult);
+    executed = true;
     hideSpinner();
     return data;
 }
@@ -134,7 +141,7 @@ function showSpinner() {
 }
 
 function hideSpinner() {
-    spinner.style.display = 'none';
+    spinner.style.removeProperty('display');
 }
 
 /**
@@ -151,13 +158,15 @@ function debounce(callback, wait) {
         }, wait)
     }
 }
-function debounceAsync(callback, wait) {
+function debounceAsync(callback, wait, showSpinnerOnWaiting=false) {
     let timeId;
     return function(...args) {
         return new Promise((resolve, reject) => {
             clearTimeout(timeId);
+            if (showSpinnerOnWaiting) showSpinner()
             timeId = setTimeout(async() => {
                 const data = await callback(...args);
+                if (showSpinnerOnWaiting) hideSpinner();
                 resolve(data);
             }, wait);
         })
