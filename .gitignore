@@ -1,5 +1,5 @@
 vendor/*
 !vendor/nosmi
 config/.env
-tmp
+tmp/*
 .vscode
