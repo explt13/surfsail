@@ -12,8 +12,8 @@ class CurrencyController extends Controller
         header('Content-Type: application/json');
         $currency = App::$registry->getProperty('currencies')[$_COOKIE['currency'] ?? 'USD'];
         if ($currency) {
-            http_response_code(200);
             setcookie('currency', $currency['code'], time() + 3600 * 24 * 7, '/');
+            http_response_code(200);
             echo json_encode(['success' => true, 'currency' => $currency]);
         } else {
             throw new \Exception('No such currency exists', 400);

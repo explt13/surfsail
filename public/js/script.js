@@ -5,7 +5,7 @@ async function main() {
     reloadPageOnPopState();
     showPostponedNotification();
     handleSearch();
-    await handleCurrency(); 
+    await handleCurrency();
     const handlers = {
         favorite: async () => {
             await setFavoriteButtons('product');

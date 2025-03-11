@@ -41,6 +41,10 @@ const is_null = (value) => {
 const NOTIFY_ON_SUCCESS = 1;
 const NOTIFY_ON_FAILURE = 2;
 
+class BadRequestError extends Error {}
+class InternalServerError extends Error {}
+class UndefinedResponseError extends Error {}
+
 /**
  * 
  * @param {string} url - url to fetch the resource 
@@ -69,51 +73,49 @@ async function secureFetch(url, options={}, notifyOnResult = NOTIFY_ON_SUCCESS |
             ...options.headers,
         }
     });
-    const data = await handleResponse(response, notifyOnResult);
-    executed = true;
-    hideSpinner();
-    return data;
+    try {
+        const data = await getResponseData(response, notifyOnResult);
+        return data;
+    } catch (e) {
+        throw e;
+    } finally {
+        executed = true;
+        hideSpinner();
+    }
 }
 
-const handleResponse = async (response, notifyOnResult) => {
-    let result;
-    let data = {};
-    let succeed = false;
+const getResponseData = async (response, notifyOnResult) => {
+    const data = await response.json();
     switch (true) {
-        case (response.status > 199 && response.status < 300):
-            const text = await response.text();
-            try {
-                result = data = JSON.parse(text);
-            } catch (e) {
-                result = text;
+        case (response.status >= 200 && response.status < 300):
+            if (notifyOnResult & NOTIFY_ON_SUCCESS) {
+                nSender(response.status, data.message ?? 'Operation successful');
             }
-            succeed = true;
-            break;
-
+            return data;
+            
+        // redirected
         case (response.status === 401 || response.status === 302):
-            data = await response.json();
             localStorage.setItem('postponed_notification', JSON.stringify({status: response.status, message: data.message, notify: notifyOnResult}));
             window.history.pushState({}, "", window.location.href);
             window.location.replace(data.redirect);
-            return null;
-        
-        // assuming 400 - 599 requests go here having appropriate error message
+            return;
+
+        // assuming 400 - 599 requests go here having an appropriate error message
+        case (response.status >= 400 && response.status < 500):
+            if ((notifyOnResult & NOTIFY_ON_FAILURE)) {
+                nSender(response.status, data.message ?? 'Operation has failed. Try again later');
+            }
+            throw new BadRequestError(data.message);
+            
+        case (response.status >= 500 && response.status < 600):
+            if ((notifyOnResult & NOTIFY_ON_FAILURE)) {
+                nSender(response.status, data.message ?? 'Operation has failed. Try again later');
+            }
+            throw new InternalServerError(data.message);
         default:
-            data = await response.json();
-            result = null;
-            break;
+            throw new UndefinedResponseError();
     }
-
-    if ((notifyOnResult & NOTIFY_ON_FAILURE) && !succeed) {
-        nSender(response.status, data.message ?? 'Operation has failed. Try again later');
-        
-    }
-    if ((notifyOnResult & NOTIFY_ON_SUCCESS) && succeed) {
-        nSender(response.status, data.message ?? 'Operation successful');
-    }
-    return result;
 }
-
 const notificationSender = () => {
     const notification = document.querySelector('.notification');
     return function (code, msg) {
