@@ -25,10 +25,10 @@ class FavoriteController extends Controller
 
     public function addAction()
     {
-        header('Content-Type: application/json');
         $data = json_decode(file_get_contents('php://input'), true);
         $result = $this->favorite_model->addItem($data);
-
+        
+        header('Content-Type: application/json');
         http_response_code($result['response_code']);
         echo json_encode(['message' => $result['message'], 'action' => $result['action']]);
     }

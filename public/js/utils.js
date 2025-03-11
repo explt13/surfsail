@@ -90,7 +90,7 @@ const handleResponse = async (response, notifyOnResult) => {
             succeed = true;
             break;
 
-        case (response.status === 401):
+        case (response.status === 401 || response.status === 302):
             data = await response.json();
             localStorage.setItem('postponed_notification', JSON.stringify({status: response.status, message: data.message, notify: notifyOnResult}));
             window.history.pushState({}, "", window.location.href);
