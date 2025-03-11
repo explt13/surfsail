@@ -516,16 +516,16 @@ const handleSearch = () => {
         resultEl.innerHTML = '<ul class="search-header__result-list">Searching..</ul>';
         
         const searchResultList = await sendSearch(inputValue);
-        renderSearchResult(searchResultList, resultEl, searchEl);
+        renderSearchResult(searchResultList, inputValue, resultEl, searchEl);
     });
 }
 
 const sendSearch = debounceAsync(async (inputValue) => {
-    const data = await secureFetch(`/search/get?query=${encodeURIComponent(inputValue)}`);
+    const data = await secureFetch(`/search/get?query=${encodeURIComponent(inputValue)}`, {}, 0);
     return data;
 }, 700);
 
-const renderSearchResult = (data, resultEl, searchEl) => {
+const renderSearchResult = (data, inputValue, resultEl, searchEl) => {
     resultEl.innerHTML = '';
     const resultList = document.createElement('ul');
     resultList.classList.add('search-header__result-list');
@@ -557,16 +557,16 @@ const authenticate = () => {
     const authForm = document.querySelector('.auth__form');
     authForm.addEventListener('formValidated', async (e) => {
         const params = new URLSearchParams(window.location.search);
-        let authFormMethod = params.get('form');
+        const authFormMethod = params.get('form');
+        const authRedirecTo = params.get('r_link') ?? '';
         const formData = new FormData(authForm);
         if (is_null(await secureFetch(`/user/${authFormMethod}`, {
             method: "POST",
             body: formData,
         }))) return;
-        window.location.replace("/");
+        window.location.replace(window.location.origin + authRedirecTo);
     })
 }
-
 const handleFilters = () => {
     const applyFiltersBtn = document.querySelector('.filter-catalog__apply-button');
     if (applyFiltersBtn) {
@@ -731,7 +731,6 @@ const reloadPageOnPopState = () => {
         window.location.reload();
     }) 
 }
-
 try {
     await main();
     console.log('successfully initialized')

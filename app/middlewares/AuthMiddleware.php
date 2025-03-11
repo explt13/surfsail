@@ -19,8 +19,11 @@ class AuthMiddleware implements MiddlewareInterface
             redirect();
         }
         if (isset($this->route->secured) && $this->route->secured === true && !isset($_SESSION['user'])) {
-            redirect('/auth', 'You have to be logged in');
-            exit;
+            $redirect_after = $_SERVER['REQUEST_URI'];
+            if (isAjax()) {
+                $redirect_after = $_SERVER['HTTP_REFERER'] ? str_replace(DOMAIN, '', $_SERVER['HTTP_REFERER']) : '';
+            }
+            redirect('/auth', 'You have to be logged in', "?r_link=$redirect_after");
         }
     }
 

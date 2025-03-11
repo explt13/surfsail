@@ -7,13 +7,13 @@
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.min.css?_v=20240719131907"/>
+    <link rel="stylesheet" href="css/extra.css"/>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
 </head>
 <body style="margin: 0; padding: 0;">
     <div class="wrapper">
-        <main class="page page_500">
+        <main class="page page_500 page_error">
             <section class="error" style="height: 100%; display: flex; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             justify-content: center; align-items: center; flex-direction: column;">
                 <div class="err-img" style="width: 8rem; aspect-ratio: 1;">

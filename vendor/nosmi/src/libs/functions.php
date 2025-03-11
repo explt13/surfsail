@@ -14,10 +14,10 @@ function debugIncludedFile()
     }
 }
 
-function redirect(?string $path = null, string $ajax_msg = ''): void
+function redirect(?string $path = null, string $reason_msg = '', ?string $redirect_after = null): void
 {
     if ($path) {
-        $redirect = DOMAIN . $path;
+        $redirect = DOMAIN . $path . $redirect_after;
     } else {
         $redirect = $_SERVER['HTTP_REFERER'] ?? DOMAIN;
     }
@@ -25,7 +25,7 @@ function redirect(?string $path = null, string $ajax_msg = ''): void
     if (isAjax()) {
         http_response_code(401);
         header('Content-Type: application/json');
-        echo json_encode(['redirect' => $redirect, 'message' => $ajax_msg]);
+        echo json_encode(['redirect' => $redirect, 'message' => $reason_msg]);
         exit;
     }
     header("Location: $redirect");
