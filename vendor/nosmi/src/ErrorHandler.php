@@ -45,7 +45,7 @@ class ErrorHandler
         if (isAjax()) {
             if (!DEBUG) {
                 if ($err_response >= 500 && $err_response < 600) {
-                    $err_message = "The server had an error. You can try your request.";
+                    $err_message = "Operation has failed. Try again later";
                 }
             }
             echo json_encode(["message" => $err_message]);

@@ -38,8 +38,7 @@ async function main() {
 
 
 const handleCurrency = async () => {
-    const data = await getCurrentCurrency();
-    if (is_null(data)) return;
+    const data = await secureFetch(`/currency/get`, {}, 0);
     let currentCurrencyValue = data.currency.value;
     const options = document.querySelectorAll('.select_currency .select__option');
     options.forEach(option => {
@@ -75,10 +74,6 @@ const handleCurrency = async () => {
             })
         }
     }
-}
-
-async function getCurrentCurrency(){
-    return await secureFetch(`/currency/get`, {}, NOTIFY_ON_FAILURE);
 }
 
 function handleCart() {

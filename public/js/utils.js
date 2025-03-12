@@ -41,9 +41,29 @@ const is_null = (value) => {
 const NOTIFY_ON_SUCCESS = 1;
 const NOTIFY_ON_FAILURE = 2;
 
-class BadRequestError extends Error {}
-class InternalServerError extends Error {}
-class UndefinedResponseError extends Error {}
+class FetchDataError extends Error {
+    constructor (message, details) {
+        super(message)
+        if (!details.message) {
+            details.message = 'Operation has failed. Try again later';
+        }
+        this._details = details;
+    }
+
+    getDetails() {
+        return this._details;
+    }
+}
+
+class BadRequestError extends FetchDataError {}
+
+class InternalServerError extends FetchDataError {}
+
+class UndefinedResponseError extends FetchDataError {
+    constructor() {
+        super('Undefined Response Error', {status: 500, message: 'Operation has failed. Try again later'})
+    }
+}
 
 /**
  * 
@@ -74,9 +94,18 @@ async function secureFetch(url, options={}, notifyOnResult = NOTIFY_ON_SUCCESS |
         }
     });
     try {
-        const data = await getResponseData(response, notifyOnResult);
+        const data = await getResponseData(response);
+        if (notifyOnResult & NOTIFY_ON_SUCCESS) {
+            nSender(response.status, data.message ?? 'Operation successful');
+        }
         return data;
     } catch (e) {
+        if (e instanceof FetchDataError) {
+            const errorDetails = e.getDetails();
+            if ((notifyOnResult & NOTIFY_ON_FAILURE)) {
+                nSender(errorDetails.status, errorDetails.message);
+            }
+        }
         throw e;
     } finally {
         executed = true;
@@ -84,38 +113,35 @@ async function secureFetch(url, options={}, notifyOnResult = NOTIFY_ON_SUCCESS |
     }
 }
 
-const getResponseData = async (response, notifyOnResult) => {
+const getResponseData = async (response) => {
     const data = await response.json();
     switch (true) {
+        
+        // Success
         case (response.status >= 200 && response.status < 300):
-            if (notifyOnResult & NOTIFY_ON_SUCCESS) {
-                nSender(response.status, data.message ?? 'Operation successful');
-            }
             return data;
             
         // redirected
         case (response.status === 401 || response.status === 302):
-            localStorage.setItem('postponed_notification', JSON.stringify({status: response.status, message: data.message, notify: notifyOnResult}));
+            localStorage.setItem('postponed_notification', JSON.stringify({status: response.status, message: data.message}));
             window.history.pushState({}, "", window.location.href);
             window.location.replace(data.redirect);
             return;
 
-        // assuming 400 - 599 requests go here having an appropriate error message
+        // Client Errors
         case (response.status >= 400 && response.status < 500):
-            if ((notifyOnResult & NOTIFY_ON_FAILURE)) {
-                nSender(response.status, data.message ?? 'Operation has failed. Try again later');
-            }
-            throw new BadRequestError(data.message);
-            
+            throw new BadRequestError(data.message, {status: response.status});
+
+        // Server Errors
         case (response.status >= 500 && response.status < 600):
-            if ((notifyOnResult & NOTIFY_ON_FAILURE)) {
-                nSender(response.status, data.message ?? 'Operation has failed. Try again later');
-            }
-            throw new InternalServerError(data.message);
+            throw new InternalServerError(data.message, {status: response.status});
+
+        // Fallback
         default:
             throw new UndefinedResponseError();
     }
 }
+
 const notificationSender = () => {
     const notification = document.querySelector('.notification');
     return function (code, msg) {
@@ -133,15 +159,12 @@ const showPostponedNotification = () => {
         }, 500)
         localStorage.removeItem('postponed_notification');
     }
-    
 }
-
 
 const spinner = document.querySelector('.loader-wrapper');
 function showSpinner() {
     spinner.style.display = 'block';
 }
-
 function hideSpinner() {
     spinner.style.removeProperty('display');
 }
@@ -160,6 +183,7 @@ function debounce(callback, wait) {
         }, wait)
     }
 }
+
 function debounceAsync(callback, wait, showSpinnerOnWaiting=false) {
     let timeId;
     return function(...args) {
