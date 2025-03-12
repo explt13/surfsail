@@ -38,16 +38,19 @@ async function main() {
 
 
 const handleCurrency = async () => {
-    const data = await secureFetch(`/currency/get`, {}, 0);
+    let data;
+    try {
+        data = await secureFetch(`/currency/get`, {}, NOTIFY_ON_FAILURE);
+    } catch (e) {
+        console.warn('Couldn\'t init currency changing functionality');
+        return;
+    }
     let currentCurrencyValue = data.currency.value;
     const options = document.querySelectorAll('.select_currency .select__option');
+    
     options.forEach(option => {
         option.addEventListener('click', async function(e) {
             const data = await changeCurrency(e);
-            if (is_null(data)) {
-                console.warn('Can not change currency to ' + e.target.dataset.value);
-                return;
-            }
             calculatePrices(data.currency);
             currentCurrencyValue = data.value.value;
         })
@@ -153,17 +156,17 @@ function handleCart() {
 
         initPlusMinusButtons(plusButton, minusButton, productQty, maxQty);
         minusButton.addEventListener('click', async function() {
-            if (is_null(await debounceAddToCartFewProducts(product, productQty, 'direct_control', false))) return;
+            await debounceAddToCartFewProducts(product, productQty, 'direct_control', false);
             handleMinusButton(this, plusButton, productQty, productPrice, maxQty);
         });
 
         plusButton.addEventListener('click', async function() {
-            if (is_null(await debounceAddToCartFewProducts(product, productQty, 'direct_control', false))) return;
+            await debounceAddToCartFewProducts(product, productQty, 'direct_control', false);
             handlePlusButton(this, minusButton, productQty, productPrice, maxQty);
         });
 
         deleteButton.addEventListener('click', async function(){
-            if (is_null(await deleteProductFromAdded('cart'))) return;
+            await deleteProductFromAdded('cart');
             product.remove();
             totalSum.textContent = formatNumber(totalSumValue - (productPrice * productQty));
             totalSumValue -= (productPrice * productQty);
@@ -187,7 +190,7 @@ function handleCart() {
 }
 
 async function addToCartFewProducts(product, qty, mode, update_time) {
-    return await secureFetch('/cart/add-multiple', {
+    await secureFetch('/cart/add-multiple', {
         method: 'POST',
         body: JSON.stringify({
             product_id: parseInt(product.dataset.id),
@@ -199,7 +202,7 @@ async function addToCartFewProducts(product, qty, mode, update_time) {
 }
 
 async function deleteProductFromAdded(deleteFrom) {
-    return await secureFetch(`/${deleteFrom}/delete`, {
+    await secureFetch(`/${deleteFrom}/delete`, {
         method: "DELETE",
         body: JSON.stringify({
             product_id: parseInt(product.dataset.id),
@@ -230,7 +233,7 @@ function deleteFromFavorite() {
     products.forEach(product => {
         const deleteButton = product.querySelector('.cart-item__delete');
         deleteButton.addEventListener('click', async function(){
-            if (is_null(await deleteProductFromAdded('favorite'))) return;
+            await deleteProductFromAdded('favorite');
             product.remove();
             productsQty--;
             if (productsQty === 0) {
@@ -251,6 +254,7 @@ function deleteFromFavorite() {
 function addProductFromProductPage() {
     const cartButtonView = document.querySelector('.cart-button-view');
     if (!cartButtonView) return;
+
     const cart = document.querySelector('.shop__cart');
     const productTableParams = document.querySelector('.body-product__table');
     const product = cartButtonView.closest('[data-id]');
@@ -301,7 +305,7 @@ function addProductFromProductPage() {
     }
     
     cartButtonView.addEventListener('click', async function() {
-        if (is_null(await addToCartFewProducts(product, productQty, 'addup', true))) return;
+        await addToCartFewProducts(product, productQty, 'addup', true);
         cart.dataset.qty = parseInt(cart.dataset.qty) + 1;
         setProductQty();
         updateQtyButtons();
@@ -350,7 +354,7 @@ function addProductFromProductPage() {
         const deleteButton = document.querySelector('.actions-product__delete');
         if (deleteButton){
             deleteButton.addEventListener('click', async function () {
-                const data = await secureFetch('/cart/delete', {
+                await secureFetch('/cart/delete', {
                     method: "DELETE",
                     body: JSON.stringify({
                         product_id: parseInt(product.dataset.id),
@@ -371,7 +375,12 @@ async function addProductToCartFromShowcase() {
     const cartButtons = document.querySelectorAll('.cart-button');
     const buttonEventHandlers = new Map();
     const setCartButtons = async () => {
-        const data = await secureFetch('/cart/get-added-items', {}, 0);
+        let data = [];
+        try {
+            data = await secureFetch('/cart/get-added-items', {}, NOTIFY_ON_FAILURE);
+        } catch (e) {
+            console.warn('Couldn\'t load added products from cart')
+        }
         cartButtons.forEach(button => {
             const product = button.closest('[data-id]');
             if (!product) return;
@@ -394,7 +403,6 @@ async function addProductToCartFromShowcase() {
                 qty_control: false,
             })
         }, NOTIFY_ON_SUCCESS);
-        if (is_null(data)) return;
         const cart = document.querySelector('.shop__cart');
         if (!cart) return;
         const sameProducts = document.querySelectorAll(`[data-id="${product.dataset.id}"]`);
@@ -451,7 +459,12 @@ async function addProductToCartFromShowcase() {
 
 async function setFavoriteButtons(entity) {
     const favoriteButtons = document.querySelectorAll('.like');
-    const alreadyInFav = await secureFetch(`/favorite/${entity}/get-added-items`, {}, 0) ?? [];
+    let alreadyInFav = [];
+    try {
+        alreadyInFav = await secureFetch(`/favorite/${entity}/get-added-items`, {}, NOTIFY_ON_FAILURE);
+    } catch (e) {
+        console.warn(`Couldn\'t load favorite ${entity}s`)
+    }
     favoriteButtons.forEach(button => {
         const item = button.closest('[data-id]');
         if (alreadyInFav.includes(parseInt(item.dataset.id))){
@@ -472,7 +485,6 @@ const addToFavorite = async (item, entity) => {
             entity: entity,
         })
     });
-    if (is_null(data)) return;
     const sameItems = document.querySelectorAll(`[data-id="${item.dataset.id}"]`);
     if (data.action === 'add'){
         sameItems.forEach(item => {
@@ -509,14 +521,17 @@ const handleSearch = () => {
             return;
         }
         resultEl.innerHTML = '<ul class="search-header__result-list">Searching..</ul>';
-        
-        const searchResultList = await sendSearch(inputValue);
-        renderSearchResult(searchResultList, inputValue, resultEl, searchEl);
+        try {
+            const searchResultList = await sendSearch(inputValue);
+            renderSearchResult(searchResultList, inputValue, resultEl, searchEl);
+        } catch (e) {
+            resultEl.innerHTML = '<ul class="search-header__result-list">Searching problems, try again later</ul>';
+        }
     });
 }
 
 const sendSearch = debounceAsync(async (inputValue) => {
-    const data = await secureFetch(`/search/get?query=${encodeURIComponent(inputValue)}`, {}, 0);
+    const data = await secureFetch(`/search/get?query=${encodeURIComponent(inputValue)}`, {}, NOTIFY_ON_FAILURE);
     return data;
 }, 700);
 
@@ -555,10 +570,10 @@ const authenticate = () => {
         const authFormMethod = params.get('form');
         const authRedirecTo = params.get('r_link') ?? '';
         const formData = new FormData(authForm);
-        if (is_null(await secureFetch(`/user/${authFormMethod}`, {
+        await secureFetch(`/user/${authFormMethod}`, {
             method: "POST",
             body: formData,
-        }))) return;
+        });
         window.location.replace(window.location.origin + authRedirecTo);
     })
 }
@@ -704,7 +719,7 @@ function handleFiltersRealTime(dist) {
         const filterStr = prepareFilterStr('?f=');
         const filterUrl = `/${dist}${filterStr}`;
         const data = await secureFetch(filterUrl);
-        const catalogContent = document.querySelector('.catalog__content')
+        const catalogContent = document.querySelector('.catalog__content');
         catalogContent.innerHTML = data.html;
         window.history.pushState({}, "", filterUrl);
     }

@@ -191,9 +191,13 @@ function debounceAsync(callback, wait, showSpinnerOnWaiting=false) {
             clearTimeout(timeId);
             if (showSpinnerOnWaiting) showSpinner()
             timeId = setTimeout(async() => {
-                const data = await callback(...args);
-                if (showSpinnerOnWaiting) hideSpinner();
-                resolve(data);
+                try {
+                    const data = await callback(...args);
+                    if (showSpinnerOnWaiting) hideSpinner();
+                    resolve(data);
+                } catch (e) {
+                    reject(e);
+                }
             }, wait);
         })
     }
