@@ -10,6 +10,7 @@ async function main() {
         favorite: async () => {
             await setFavoriteButtons('product');
             deleteFromFavorite();
+            favoriteMinHeightCalc();
         },
         cart: () => {
             setFavoriteButtons('product');
@@ -43,6 +44,7 @@ const handleCurrency = async () => {
         data = await secureFetch(`/currency/get`, {}, NOTIFY_ON_FAILURE);
     } catch (e) {
         console.warn('Couldn\'t init currency changing functionality');
+        console.error(e);
         return;
     }
     let currentCurrencyValue = data.currency.value;
@@ -166,7 +168,7 @@ function handleCart() {
         });
 
         deleteButton.addEventListener('click', async function(){
-            await deleteProductFromAdded('cart');
+            await deleteProductFromAdded('cart', product);
             product.remove();
             totalSum.textContent = formatNumber(totalSumValue - (productPrice * productQty));
             totalSumValue -= (productPrice * productQty);
@@ -201,22 +203,21 @@ async function addToCartFewProducts(product, qty, mode, update_time) {
     });
 }
 
-async function deleteProductFromAdded(deleteFrom) {
+async function deleteProductFromAdded(deleteFrom, item) {
     await secureFetch(`/${deleteFrom}/delete`, {
         method: "DELETE",
         body: JSON.stringify({
-            product_id: parseInt(product.dataset.id),
+            item_id: parseInt(item.dataset.id),
         }),
         headers: {
             'Content-Type': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest'
         }
     });
 }
 
-function deleteFromFavorite() {
-    const products = document.querySelectorAll('[data-id]');
-    let productsQty = products.length;
+function deleteFromFavorite(entity) {
+    const items = document.querySelectorAll('[data-id]');
+    let itemsQty = products.length;
 
     function renderEmptyFav() {
         const cartBody = document.querySelector('.cart__body');
@@ -230,18 +231,20 @@ function deleteFromFavorite() {
         `;
     }
 
-    products.forEach(product => {
+    items.forEach(item => {
         const deleteButton = product.querySelector('.cart-item__delete');
         deleteButton.addEventListener('click', async function(){
-            await deleteProductFromAdded('favorite');
-            product.remove();
-            productsQty--;
-            if (productsQty === 0) {
+            await deleteProductFromAdded(`favorite/${entity}`, item);
+            item.remove();
+            itemsQty--;
+            if (itemsQty === 0) {
                 renderEmptyFav();
             }
         });
     })
+}
 
+const favoriteMinHeightCalc = () => {
     const mq = window.matchMedia("(min-width: 992px)");
     if (mq.matches) {
         const windowSize = window.innerHeight;
@@ -379,7 +382,8 @@ async function addProductToCartFromShowcase() {
         try {
             data = await secureFetch('/cart/get-added-items', {}, NOTIFY_ON_FAILURE);
         } catch (e) {
-            console.warn('Couldn\'t load added products from cart')
+            console.warn('Couldn\'t load added products from cart');
+            console.error(e);
         }
         cartButtons.forEach(button => {
             const product = button.closest('[data-id]');
@@ -400,7 +404,6 @@ async function addProductToCartFromShowcase() {
             body: JSON.stringify({
                 product_id: parseInt(product.dataset.id),
                 qty: 1,
-                qty_control: false,
             })
         }, NOTIFY_ON_SUCCESS);
         const cart = document.querySelector('.shop__cart');
@@ -463,7 +466,8 @@ async function setFavoriteButtons(entity) {
     try {
         alreadyInFav = await secureFetch(`/favorite/${entity}/get-added-items`, {}, NOTIFY_ON_FAILURE);
     } catch (e) {
-        console.warn(`Couldn\'t load favorite ${entity}s`)
+        console.warn(`Couldn\'t load favorite ${entity}s`);
+        console.error(e);
     }
     favoriteButtons.forEach(button => {
         const item = button.closest('[data-id]');
@@ -573,6 +577,9 @@ const authenticate = () => {
         await secureFetch(`/user/${authFormMethod}`, {
             method: "POST",
             body: formData,
+            headers: {
+                'Content-Type': null,
+            }
         });
         window.location.replace(window.location.origin + authRedirecTo);
     })

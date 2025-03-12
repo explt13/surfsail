@@ -102,11 +102,11 @@ class ProductModel extends AppModel implements ProductModelInterface
                 } elseif (strpos($fname, 'LIKE_') === 0) {
                     // Handle LIKE cases (e.g. 'LIKE_title')
                     $columnName = substr($fname, 5);
-                    $query .= " $op p.$columnName LIKE :$fname";
-                    $params[$fname] = "%$fvalue%";
+                    $query .= " $op p.$columnName LIKE ?";
+                    $params[] = "%$fvalue%";
                 } else {
-                    $query .= " $op p.$fname = :$fname";
-                    $params[$fname] = $fvalue;
+                    $query .= " $op p.$fname = ?";
+                    $params[] = $fvalue;
                 }
 
             }
@@ -115,12 +115,12 @@ class ProductModel extends AppModel implements ProductModelInterface
             $query .= ' ORDER BY p.' . $orderBy . ($desc ? ' DESC' : ' ASC');
         }
 
-        $query .= ' LIMIT :lim';
-        $params['lim'] = $limit;
+        $query .= ' LIMIT ?';
+        $params[] = $limit;
 
         if ($offset) {
-            $query .= ' OFFSET :ofs';
-            $params['ofs'] = $offset;
+            $query .= ' OFFSET ?';
+            $params[] = $offset;
         }
         $stmt = $this->pdo->prepare($query);
         $stmt->execute($params);

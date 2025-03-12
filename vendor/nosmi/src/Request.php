@@ -24,7 +24,7 @@ class Request
                 throw new \Exception("Invalid JSON received: " . json_last_error_msg(), 500);
             }
         } else if (($this->headers['Content-Type'] === 'application/x-www-form-urlencoded') || 
-        (preg_match("#multipartform-data; boundary=.*#", $this->headers['Content-Type']))) {
+                  (preg_match("#multipartform-data; boundary=.*#", $this->headers['Content-Type']))) {
             $this->post_data = $_POST;
         }
     }

@@ -17,7 +17,7 @@ class FavoriteController extends Controller
     public function indexAction()
     {
         $currency = App::$registry->getProperty('currency');
-        $products = $this->favorite_model->getItemsFromArray();
+        $products = $this->favorite_model->getItemsFromArray('product');
         http_response_code(200);
         $this->setMeta("Favorite", "User's favorite products page", 'Favorite page, products, like');
         $this->render(data: compact('currency', 'products'));
@@ -35,12 +35,13 @@ class FavoriteController extends Controller
 
     public function getAddedItemsAction()
     {
-        header('Content-Type: application/json');
+        $entity = $this->route->entity;
         if (isset($_SESSION['user'])) {
-            $products_ids = $this->favorite_model->getItemsIds();
+            $products_ids = $this->favorite_model->getItemsIds($entity);
         } else {
             $products_ids = [];
         }
+        header('Content-Type: application/json');
         http_response_code(200);
         echo json_encode($products_ids);
     }
@@ -48,7 +49,7 @@ class FavoriteController extends Controller
     public function deleteAction()
     {
         $data = json_decode(file_get_contents('php://input'), true);
-        $result = $this->favorite_model->deleteItem($data['item_id']);
+        $result = $this->favorite_model->deleteItem($data, $this->route->entity);
         http_response_code($result['response_code']);
         echo json_encode(["message" => "Product has been removed"]);
     }

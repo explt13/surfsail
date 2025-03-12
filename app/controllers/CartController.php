@@ -65,7 +65,7 @@ class CartController extends Controller
     public function deleteAction()
     {
         $data = json_decode(file_get_contents('php://input'), true);
-        $result = $this->cart_model->deleteProduct($data['product_id']);
+        $result = $this->cart_model->deleteProduct($data['item_id']);
         http_response_code($result['response_code']);
         echo json_encode(["message" => "Product has been removed"]);
     }

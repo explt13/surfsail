@@ -4,9 +4,9 @@ namespace app\models\interfaces;
 
 interface FavoriteModelInterface
 {
-    public function getItemsIds();
-    public function getItemsFromArray();
-    public function deleteItem(int $product_id);
-    public function getItemsQty();
+    public function getItemsIds(string $entity);
+    public function getItemsFromArray(string $entity);
+    public function deleteItem(array $data, string $entity);
+    public function getItemsQty(string $entity);
     public function addItem(array $data);
 }

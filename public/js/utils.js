@@ -65,6 +65,20 @@ class UndefinedResponseError extends FetchDataError {
     }
 }
 
+const getHeaders = (userHeaders) => {
+    const headers = {
+        'X-Requested-With': 'XMLHttpRequest',
+        'Content-Type': 'application/json',
+        ...userHeaders
+    }
+    for (let key in headers) {
+        if (headers[key] === null) {
+            delete headers[key];
+        }
+    }
+    return headers;
+}
+
 /**
  * 
  * @param {string} url - url to fetch the resource 
@@ -77,6 +91,8 @@ class UndefinedResponseError extends FetchDataError {
  */
 
 async function secureFetch(url, options={}, notifyOnResult = NOTIFY_ON_SUCCESS | NOTIFY_ON_FAILURE) {
+    const headers = getHeaders(options.headers);
+
     let executed = false;
     // if it takes more than 1 sec show spinner;
     setTimeout(() => {
@@ -84,14 +100,12 @@ async function secureFetch(url, options={}, notifyOnResult = NOTIFY_ON_SUCCESS |
             showSpinner();
         }
     }, 1000);
+
     const response = await fetch(url, {
         method: 'GET',
         ...options,
 
-        headers: {
-            'X-Requested-With': 'XMLHttpRequest',
-            ...options.headers,
-        }
+        headers: headers
     });
     try {
         const data = await getResponseData(response);

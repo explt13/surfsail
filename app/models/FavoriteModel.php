@@ -17,43 +17,45 @@ class FavoriteModel extends AppModel implements FavoriteModelInterface
         $this->product_model = $product_model;
         $this->article_model = $article_model;
         if (!isset($_SESSION['favorite'])) $_SESSION['favorite'] = [];
+        if (!isset($_SESSION['favorite']['product'])) $_SESSION['favorite']['product'] = [];
+        if (!isset($_SESSION['favorite']['articles'])) $_SESSION['favorite']['article'] = [];
     }
 
-    public function getItemsQty()
+    public function getItemsQty(string $entity)
     {
-        $bundle = $_SESSION['favorite'];
+        $favorite = $_SESSION['favorite'][$entity];
         if (App::$registry->getProperty('loggedIn') === false) {
             return 0;
         }
-        return array_reduce($bundle, fn($a, $b) => $a + $b['qty'], 0);
+        return array_reduce($favorite, fn($a, $b) => $a + $b['qty'], 0);
     }
 
-    public function getItemsIds()
+    public function getItemsIds(string $entity)
     {
-        return array_keys($_SESSION['favorite']);
+        return array_keys($_SESSION['favorite'][$entity]);
     }
 
-    public function deleteItem(int $product_id)
+    public function deleteItem(array $data, string $entity)
     {
-        $bundle = &$_SESSION['favorite'];
-        if (array_key_exists($product_id, $bundle)) {
-            unset($bundle[$product_id]);
-            return ["response_code" => 200, "message" => "Product has been removed"];
+        $item_id = $data['item_id'];
+        $bundle = &$_SESSION['favorite'][$entity];
+        if (array_key_exists($item_id, $bundle)) {
+            unset($bundle[$item_id]);
+            return ["response_code" => 200, "message" => "$entity has been removed"];
         } else {
-            return ["response_code" => 400, "message" => "No such product in 'favorite'"];
+            return ["response_code" => 400, "message" => "No such $entity in 'favorite'"];
         }
     }
 
-    public function getItemsFromArray()
+    public function getItemsFromArray(string $entity)
     {
-        $array = $_SESSION['favorite'];
+        $array = $_SESSION['favorite'][$entity];
         if (!empty($array)) {
             $ids = array_keys($array);
             $result = $this->product_model->getProducts(["id" => $ids]);
     
             foreach ($result as &$res) {
                 $product_id = $res['id'];
-                $res['qty'] = $array[$product_id]['qty'];
                 $res['added_date'] = $array[$product_id]['added_date'];
             }
 
@@ -70,6 +72,7 @@ class FavoriteModel extends AppModel implements FavoriteModelInterface
         if ($product === false) {
             return ["response_code" => 409, 'message' => 'No such product'];
         }
+        
         $favorite = &$_SESSION['favorite'][$entity];
 
         if (!array_key_exists($data['item_id'], $favorite)) {

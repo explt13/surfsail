@@ -1,4 +1,4 @@
-<main class="page page_cart">
+<main class="page">
     <div class="cart">
         <div class="container cart__container">
             <div class="cart__body">
@@ -73,7 +73,7 @@
                         </span>
                     </div>
                     <?php if ($products): ?>
-                        <a href="cart/buy" class="footer-cart__buy _icon-arrow_f_r">Buy</a>
+                        <a href="cart/buy" class="footer-cart__buy _icon-arrow_f_r _ipl-after">Buy</a>
                     <?php endif;?>
                 </div>
             </div>

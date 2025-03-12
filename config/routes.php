@@ -6,6 +6,7 @@ return [
     "^cart/(?P<action>get-added-items)/?$" => ['controller' => 'Cart', 'secured' => false],
     "^cart/?(?P<action>[a-z-]+)?/?$" => ['controller' => 'Cart', 'secured' => true],
     "^favorite/(?P<entity>[a-z]+)/(?P<action>get-added-items)/?$" => ['controller' => 'Favorite', 'secured' => false],
+    "^favorite/(?P<entity>[a-z]+)/(?P<action>delete)/?$" => ['controller' => 'Favorite', 'secured' => true],
     "^favorite/?(?P<action>[a-z-]+)?/?$" => ['controller' => 'Favorite', 'secured' => true],
     
     // default routes
