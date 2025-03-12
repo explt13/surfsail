@@ -27,7 +27,7 @@ class ErrorHandler
     public function exceptionHandler(\Throwable $e)
     {
         $this->logError($e->getMessage(), $e->getFile(), $e->getLine());
-        $this->render($e::class, $e->getMessage(), $e->getFile(), $e->getLine(), $e->getTrace(), $e->getCode());
+        $this->render($e::class, $e->getMessage(), $e->getFile(), $e->getLine(), $e->getTrace(), $e->getCode() ? $e->getCode() : 500);
     }
 
     private function logError(string $message = '', $file = '', $line = '')
@@ -39,12 +39,13 @@ class ErrorHandler
     private function render($err_type, $err_message, $err_file, $err_line, $callstack, $err_response = 500)
     {
         if (!($err_type === 'PDOException')){
+            $err_response = 500;
             http_response_code($err_response);
         }
         if (isAjax()) {
             if (!DEBUG) {
                 if ($err_response >= 500 && $err_response < 600) {
-                    $err_message = "The server had an error. You can try your request.";
+                    $err_message = "Operation has failed. Try again later";
                 }
             }
             echo json_encode(["message" => $err_message]);

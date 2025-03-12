@@ -41,6 +41,30 @@ const is_null = (value) => {
 const NOTIFY_ON_SUCCESS = 1;
 const NOTIFY_ON_FAILURE = 2;
 
+class FetchDataError extends Error {
+    constructor (message, details) {
+        super(message)
+        if (!details.message) {
+            details.message = 'Operation has failed. Try again later';
+        }
+        this._details = details;
+    }
+
+    getDetails() {
+        return this._details;
+    }
+}
+
+class BadRequestError extends FetchDataError {}
+
+class InternalServerError extends FetchDataError {}
+
+class UndefinedResponseError extends FetchDataError {
+    constructor() {
+        super('Undefined Response Error', {status: 500, message: 'Operation has failed. Try again later'})
+    }
+}
+
 /**
  * 
  * @param {string} url - url to fetch the resource 
@@ -69,49 +93,53 @@ async function secureFetch(url, options={}, notifyOnResult = NOTIFY_ON_SUCCESS |
             ...options.headers,
         }
     });
-    const data = await handleResponse(response, notifyOnResult);
-    executed = true;
-    hideSpinner();
-    return data;
+    try {
+        const data = await getResponseData(response);
+        if (notifyOnResult & NOTIFY_ON_SUCCESS) {
+            nSender(response.status, data.message ?? 'Operation successful');
+        }
+        return data;
+    } catch (e) {
+        if (e instanceof FetchDataError) {
+            const errorDetails = e.getDetails();
+            if ((notifyOnResult & NOTIFY_ON_FAILURE)) {
+                nSender(errorDetails.status, errorDetails.message);
+            }
+        }
+        throw e;
+    } finally {
+        executed = true;
+        hideSpinner();
+    }
 }
 
-const handleResponse = async (response, notifyOnResult) => {
-    let result;
-    let data = {};
-    let succeed = false;
+const getResponseData = async (response) => {
+    const data = await response.json();
     switch (true) {
-        case (response.status > 199 && response.status < 300):
-            const text = await response.text();
-            try {
-                result = data = JSON.parse(text);
-            } catch (e) {
-                result = text;
-            }
-            succeed = true;
-            break;
-
+        
+        // Success
+        case (response.status >= 200 && response.status < 300):
+            return data;
+            
+        // redirected
         case (response.status === 401 || response.status === 302):
-            data = await response.json();
-            localStorage.setItem('postponed_notification', JSON.stringify({status: response.status, message: data.message, notify: notifyOnResult}));
+            localStorage.setItem('postponed_notification', JSON.stringify({status: response.status, message: data.message}));
             window.history.pushState({}, "", window.location.href);
             window.location.replace(data.redirect);
-            return null;
-        
-        // assuming 400 - 599 requests go here having appropriate error message
-        default:
-            data = await response.json();
-            result = null;
-            break;
-    }
+            return;
 
-    if ((notifyOnResult & NOTIFY_ON_FAILURE) && !succeed) {
-        nSender(response.status, data.message ?? 'Operation has failed. Try again later');
-        
+        // Client Errors
+        case (response.status >= 400 && response.status < 500):
+            throw new BadRequestError(data.message, {status: response.status});
+
+        // Server Errors
+        case (response.status >= 500 && response.status < 600):
+            throw new InternalServerError(data.message, {status: response.status});
+
+        // Fallback
+        default:
+            throw new UndefinedResponseError();
     }
-    if ((notifyOnResult & NOTIFY_ON_SUCCESS) && succeed) {
-        nSender(response.status, data.message ?? 'Operation successful');
-    }
-    return result;
 }
 
 const notificationSender = () => {
@@ -131,15 +159,12 @@ const showPostponedNotification = () => {
         }, 500)
         localStorage.removeItem('postponed_notification');
     }
-    
 }
-
 
 const spinner = document.querySelector('.loader-wrapper');
 function showSpinner() {
     spinner.style.display = 'block';
 }
-
 function hideSpinner() {
     spinner.style.removeProperty('display');
 }
@@ -158,6 +183,7 @@ function debounce(callback, wait) {
         }, wait)
     }
 }
+
 function debounceAsync(callback, wait, showSpinnerOnWaiting=false) {
     let timeId;
     return function(...args) {
@@ -165,9 +191,13 @@ function debounceAsync(callback, wait, showSpinnerOnWaiting=false) {
             clearTimeout(timeId);
             if (showSpinnerOnWaiting) showSpinner()
             timeId = setTimeout(async() => {
-                const data = await callback(...args);
-                if (showSpinnerOnWaiting) hideSpinner();
-                resolve(data);
+                try {
+                    const data = await callback(...args);
+                    if (showSpinnerOnWaiting) hideSpinner();
+                    resolve(data);
+                } catch (e) {
+                    reject(e);
+                }
             }, wait);
         })
     }
