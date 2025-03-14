@@ -5,7 +5,6 @@ namespace nosmi;
 class Router
 {
     private array $routes;
-    private array $route_params;
     private string $routes_dest;
     private MiddlewareLoader $middleware_loader;
     private ControllerResolver $controller_resolver;
@@ -42,25 +41,26 @@ class Router
     public function dispatch(string $url): void
     {
         $route = $this->extractRouteFromQueryString($url);
-        if ($this->routeExists($route)) {
-            $this->route_context->setRoute($this->route_params);
-            $this->middleware_loader->run();
-            $this->controller_resolver->resolve();
-        } else {
-            throw new \Exception("Page not found", 404);
-        }
+        $route_params = $this->getRouteParams($route);
+        $this->route_context->setRoute($route_params);
+        $this->middleware_loader->run();
+        $this->controller_resolver->resolve();
     }
 
-    private function routeExists(string $route): bool
+    /**
+     * @var string $route
+     * @return array route params [...default_params, ...$concrete_params];
+     * @throws \Exception
+     */
+    private function getRouteParams(string $route): array
     {
         foreach ($this->routes as $pattern => $default_params) {
             if (preg_match("#{$pattern}#", $route, $matches)) {
                 $matches = array_filter($matches, fn($key) => !is_int($key), ARRAY_FILTER_USE_KEY);
-                $this->route_params = [...$default_params, ...$matches];
-                return true;
+                return [...$default_params, ...$matches];
             }
         }
-        return false;
+        throw new \Exception("Route `$route` is not found", 404);
     }
 
     private function extractRouteFromQueryString(string $url): string

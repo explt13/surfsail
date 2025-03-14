@@ -9,7 +9,7 @@ $dotenv->required('DEBUG')->allowedValues(['0', '1']);
 
 define("DEBUG", (int)$_ENV['DEBUG']);
 define("ROOT", $_ENV['BASE_DIR']);
-define("WWW", $_ENV['WWW']);
+define("PUBLIC_DIR", $_ENV['PUBLIC_DIR']);
 define("APP", $_ENV['APP']);
 define("CORE", $_ENV['CORE']);
 define("LIBS", $_ENV['LIBS']);

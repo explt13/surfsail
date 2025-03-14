@@ -2,6 +2,7 @@
 
 namespace nosmi;
 
+use Exception;
 use nosmi\base\View;
 use nosmi\interfaces\ContainerInterface;
 
