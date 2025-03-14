@@ -17,10 +17,10 @@ class UserModel extends AppModel implements UserModelInterface
     ];
 
 
-    public function signup($data)
+    public function register($data)
     {
         try{
-            $this->load($data);
+            $this->setDefinedAttributes($data);
             foreach ($this->attributes as $k => $v) {
                 $v = trim($v);
                 if ($k === 'email') {
@@ -47,6 +47,9 @@ class UserModel extends AppModel implements UserModelInterface
                 'email' => $this->attributes['email'],
                 'role' => $this->attributes['role'],
             ];
+            session_regenerate_id(true);
+
+            $this->generateRememberToken($data, $user_id);
             return ['response_code' => 200, 'message' => 'Registered successfully'];
           
         } catch (\PDOException $e) {
@@ -61,29 +64,62 @@ class UserModel extends AppModel implements UserModelInterface
         
     }
 
-    public function login($data)
+    public function loginRemembered()
     {
-        $stmt = $this->pdo->prepare('SELECT u.* FROM user u WHERE u.email = :email');
-        $stmt->execute(['email' => $data['email']]);
-        $user = $stmt->fetch();
-        if (!$user) {
-            return ['response_code' => 400, 'message' => 'Email/password is incorrect'];
-        }
-        if (!password_verify($data['password'], $user['password'])) {
-            return ['response_code' => 400, 'message' => 'Email/password is incorrect'];
-        }
+        if (!isset($_COOKIE['rem_token'])) return;
+        
+        $token = $_COOKIE['rem_token'];
+        if (!$token) return;
+
+        $stmt = $this->pdo->prepare('SELECT user_id, token, expires FROM user_remember WHERE token = :token');
+        $stmt->bindParam(':token', $token, \PDO::PARAM_STR, 64);
+        $stmt->execute();
+        $rem_record = $stmt->fetch();
+        if (!$rem_record) return;
+       
+        $usr_fetch_stmt = $this->pdo->prepare('SELECT id, email, role FROM user WHERE id = :user_id');
+        $usr_fetch_stmt->execute(['user_id' => $rem_record['user_id']]);
+        $user = $usr_fetch_stmt->fetch();
         $_SESSION['user'] = [
             'id' => $user['id'],
             'email' => $user['email'],
             'role' => $user['role'],
         ];
+        session_regenerate_id(true);
+    }
+
+    public function login($data)
+    {
+        $stmt = $this->pdo->prepare('SELECT u.* FROM user u WHERE u.email = :email');
+        $stmt->execute(['email' => $data['email']]);
+        $user = $stmt->fetch();
+        
+        if (!$user || !password_verify($data['password'], $user['password'])) {
+            return ['response_code' => 400, 'message' => 'Email/password is incorrect'];
+        }
+
+        $_SESSION['user'] = [
+            'id' => $user['id'],
+            'email' => $user['email'],
+            'role' => $user['role'],
+        ];
+        session_regenerate_id(true);
+
+        $this->generateRememberToken($data, $user['id']);
         return ['response_code' => 200, 'message' => 'Login successfully'];
     }
 
     public function logout()
     {
-        unset($_SESSION['user']);
-        // session_destroy();
+        session_unset();
+        session_destroy();
+        setcookie('id', "", time() - 60 * 60 * 24, '/');
+        if (isset($_COOKIE['rem_token'])) {
+            $token = $_COOKIE['rem_token'];
+            $stmt = $this->pdo->prepare('DELETE FROM user_remember ur WHERE ur.token = :token');
+            $stmt->execute(['token' => $token]);
+            setcookie('rem_token', "", time() - 60 * 60 * 24, '/');
+        }
         redirect();
     }
 
@@ -97,5 +133,21 @@ class UserModel extends AppModel implements UserModelInterface
     public static function isAdmin()
     {
         return (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin');
+    }
+
+    private function generateRememberToken(array $data, int $user_id)
+    {
+        if (isset($data['remember'])) {
+            try {
+                $token = bin2hex(random_bytes(32));
+                $expires = strtotime('+1 year');
+                $stmt = $this->pdo->prepare('INSERT INTO user_remember (user_id, token, expires) VALUES (:user_id, :token, FROM_UNIXTIME(:expires))');
+                $stmt->execute(['user_id' => $user_id, 'token' => $token,'expires' => $expires]);
+                setcookie('rem_token', $token, $expires, '/', "", true, true);
+            } catch (\PDOException $e) {
+                return ['response_code' => 200, 'message' => 'Couldn\'t remember you, next time you will have to log in again'];
+            }
+           
+        }
     }
 }

@@ -9,9 +9,9 @@ class CurrencyController extends Controller
 {
     public function getAction()
     {
-        header('Content-Type: application/json');
         $currency = App::$registry->getProperty('currencies')[$_COOKIE['currency'] ?? 'USD'];
         if ($currency) {
+            header('Content-Type: application/json');
             setcookie('currency', $currency['code'], time() + 3600 * 24 * 7, '/');
             http_response_code(200);
             echo json_encode(['success' => true, 'currency' => $currency]);

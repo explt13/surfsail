@@ -1,6 +1,7 @@
 <?php
 namespace app\middlewares;
 
+use app\models\UserModel;
 use nosmi\App;
 use nosmi\interfaces\MiddlewareInterface;
 use nosmi\RouteContext;
@@ -8,9 +9,11 @@ use nosmi\RouteContext;
 class AuthMiddleware implements MiddlewareInterface
 {
     private RouteContext $route;
-    public function __construct(RouteContext $route)
+    private UserModel $user_model;
+    public function __construct(RouteContext $route, UserModel $user_model)
     {
         $this->route = $route;
+        $this->user_model = $user_model;
     }
 
     protected function CheckAuth()
@@ -27,6 +30,13 @@ class AuthMiddleware implements MiddlewareInterface
         }
     }
 
+    protected function logInUserIfRemembered()
+    {
+        if (!isset($_SESSION['user'])) {
+            $this->user_model->loginRemembered();
+        }
+    }
+
     protected function setIsLoggedIn()
     {
         App::$registry->setProperty('loggedIn', isset($_SESSION['user']));
@@ -35,6 +45,7 @@ class AuthMiddleware implements MiddlewareInterface
     public function run()
     {
         $this->checkAuth();
+        $this->logInUserIfRemembered();
         $this->setIsLoggedIn();
     }
 }
