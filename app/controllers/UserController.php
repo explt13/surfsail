@@ -17,13 +17,12 @@ class UserController extends Controller
     {
         header('Content-Type: application/json');
         $data = $_POST['auth'];
-        $result = $this->user_model->signup($data);
+        $result = $this->user_model->register($data);
         http_response_code($result['response_code']);
         echo json_encode(['message' => $result['message']]);
     }
     public function loginAction() 
     {
-        // debug($_POST);
         $data = $_POST['auth'];
         $result = $this->user_model->login($data);
         header('Content-Type: application/json');

@@ -4,7 +4,7 @@ namespace nosmi;
 
 class Db{
     use SingletonTrait;
-    protected \PDO $connection;
+    private \PDO $connection;
     protected function __construct()
     {
         $db = require_once CONF . '/db_connection.php';

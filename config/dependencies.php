@@ -38,7 +38,7 @@ use nosmi\RouteContext;
 return [
     // -- providers -- //
     CategoryServiceProvider::class  => fn($container) => $container->autowire(CategoryServiceProvider::class),
-    CurrencyServiceProvider::class => fn($container) => $container->autowire(CurrencyServiceProvider::class),
+    CurrencyServiceProvider::class  => fn($container) => $container->autowire(CurrencyServiceProvider::class),
 
     // -- models -- //
     ArticleModelInterface::class    => fn($container) => $container->autowire(ArticleModel::class),

@@ -4,7 +4,6 @@ namespace app\models;
 
 use app\models\interfaces\CartModelInterface;
 use app\models\interfaces\CurrencyModelInterface;
-use app\models\interfaces\IReachable;
 use app\models\interfaces\OrderModelInterface;
 use app\models\interfaces\ProductModelInterface;
 use app\models\interfaces\UserModelInterface;
@@ -131,8 +130,7 @@ class OrderModel extends AppModel implements OrderModelInterface
         $currency = $this->currency_model->getCurrencyById($order['currency_id']);
         ob_start();
         require_once APP . '/views/Order/order_mail.php';
-        $msg = ob_get_clean();
-        return $msg;
+        return ob_get_clean();
     }
     
     private function getPlain()

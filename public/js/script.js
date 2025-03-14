@@ -217,7 +217,7 @@ async function deleteProductFromAdded(deleteFrom, item) {
 
 function deleteFromFavorite(entity) {
     const items = document.querySelectorAll('[data-id]');
-    let itemsQty = products.length;
+    let itemsQty = items.length;
 
     function renderEmptyFav() {
         const cartBody = document.querySelector('.cart__body');

@@ -38,10 +38,11 @@ class ErrorHandler
     
     private function render($err_type, $err_message, $err_file, $err_line, $callstack, $err_response = 500)
     {
-        if (!($err_type === 'PDOException')){
+        if ($err_type === 'PDOException'){
             $err_response = 500;
-            http_response_code($err_response);
         }
+        http_response_code($err_response);
+        
         if (isAjax()) {
             if (!DEBUG) {
                 if ($err_response >= 500 && $err_response < 600) {
