@@ -3,3 +3,5 @@ vendor/*
 config/.env
 tmp/*
 .vscode
+tools/*
+!tools/install-tools.sh

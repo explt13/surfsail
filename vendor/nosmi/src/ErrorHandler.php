@@ -27,7 +27,7 @@ class ErrorHandler
     public function exceptionHandler(\Throwable $e)
     {
         $this->logError($e->getMessage(), $e->getFile(), $e->getLine());
-        $this->render($e::class, $e->getMessage(), $e->getFile(), $e->getLine(), $e->getTrace(), $e->getCode() ? $e->getCode() : 500);
+        $this->render($e::class, $e->getMessage(), $e->getFile(), $e->getLine(), $e->getTrace(), $e->getCode() >= 100 ? $e->getCode() : 500);
     }
 
     private function logError(string $message = '', $file = '', $line = '')
