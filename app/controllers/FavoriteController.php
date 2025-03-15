@@ -2,8 +2,8 @@
 namespace app\controllers;
 
 use app\models\interfaces\FavoriteModelInterface;
-use nosmi\App;
-use nosmi\base\Controller;
+use Explt13\Nosmi\App;
+use Explt13\Nosmi\base\Controller;
 
 class FavoriteController extends Controller
 {

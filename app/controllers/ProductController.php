@@ -5,8 +5,8 @@ namespace app\controllers;
 use app\models\interfaces\BrandModelInterface;
 use app\models\interfaces\ProductModelInterface;
 use app\models\interfaces\ReviewModelInterface;
-use nosmi\App;
-use nosmi\base\Controller;
+use Explt13\Nosmi\App;
+use Explt13\Nosmi\base\Controller;
 
 class ProductController extends Controller
 {

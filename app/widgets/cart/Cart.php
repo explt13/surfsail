@@ -2,8 +2,8 @@
 namespace app\widgets\cart;
 
 
-use nosmi\base\Widget;
-use nosmi\App;
+use Explt13\Nosmi\base\Widget;
+use Explt13\Nosmi\App;
 
 class Cart extends Widget
 {

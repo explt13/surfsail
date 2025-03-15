@@ -4,7 +4,7 @@ namespace app\models;
 use app\models\interfaces\ArticleModelInterface;
 use app\models\interfaces\FavoriteModelInterface;
 use app\models\interfaces\ProductModelInterface;
-use nosmi\App;
+use Explt13\Nosmi\App;
 
 class FavoriteModel extends AppModel implements FavoriteModelInterface
 {

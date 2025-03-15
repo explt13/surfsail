@@ -1,7 +1,8 @@
 vendor/*
-!vendor/nosmi
+!vendor/explt13
 config/.env
-tmp/*
+tmp
 .vscode
 tools/*
 !tools/install-tools.sh
+composer.lock

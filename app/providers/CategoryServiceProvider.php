@@ -5,7 +5,7 @@ namespace app\providers;
 use app\models\CategoryModel;
 use app\models\interfaces\CategoryModelInterface;
 use app\providers\interfaces\ServiceProviderInterface;
-use nosmi\App;
+use Explt13\Nosmi\App;
 
 class CategoryServiceProvider implements ServiceProviderInterface
 {

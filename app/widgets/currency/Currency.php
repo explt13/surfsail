@@ -1,9 +1,9 @@
 <?php
 namespace app\widgets\currency;
 
-use nosmi\base\Widget;
-use nosmi\App;
-use nosmi\interfaces\CacheInterface;
+use Explt13\Nosmi\base\Widget;
+use Explt13\Nosmi\App;
+use Explt13\Nosmi\interfaces\CacheInterface;
 
 class Currency extends Widget
 {

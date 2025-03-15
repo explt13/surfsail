@@ -4,8 +4,8 @@ namespace app\controllers;
 use app\models\interfaces\FilterModelInterface;
 use app\models\interfaces\ProductModelInterface;
 use app\widgets\pagination\Pagination;
-use nosmi\App;
-use nosmi\base\Controller;
+use Explt13\Nosmi\App;
+use Explt13\Nosmi\base\Controller;
 
 class CatalogController extends Controller
 {

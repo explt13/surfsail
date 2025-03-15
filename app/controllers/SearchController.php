@@ -2,7 +2,7 @@
 namespace app\controllers;
 
 use app\models\interfaces\ProductModelInterface;
-use nosmi\base\Controller;
+use Explt13\Nosmi\base\Controller;
 
 class SearchController extends Controller
 {

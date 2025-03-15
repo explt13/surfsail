@@ -25,15 +25,15 @@ use app\models\ReviewModel;
 use app\models\UserModel;
 use app\providers\CategoryServiceProvider;
 use app\providers\CurrencyServiceProvider;
-use nosmi\base\Widget;
-use nosmi\interfaces\WidgetInterface;
-use nosmi\Cache;
-use nosmi\interfaces\CacheInterface;
-use nosmi\Container;
-use nosmi\interfaces\ContainerInterface;
-use nosmi\ControllerResolver;
-use nosmi\MiddlewareLoader;
-use nosmi\RouteContext;
+use Explt13\Nosmi\base\Widget;
+use Explt13\Nosmi\interfaces\WidgetInterface;
+use Explt13\Nosmi\Cache;
+use Explt13\Nosmi\interfaces\CacheInterface;
+use Explt13\Nosmi\Container;
+use Explt13\Nosmi\interfaces\ContainerInterface;
+use Explt13\Nosmi\ControllerResolver;
+use Explt13\Nosmi\MiddlewareLoader;
+use Explt13\Nosmi\RouteContext;
 
 return [
     // -- providers -- //

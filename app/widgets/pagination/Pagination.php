@@ -2,7 +2,7 @@
 
 namespace app\widgets\pagination;
 
-use nosmi\base\Widget;
+use Explt13\Nosmi\base\Widget;
 
 class Pagination extends Widget
 {

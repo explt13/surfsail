@@ -4,7 +4,7 @@ namespace app\providers;
 
 use app\providers\interfaces\ServiceProviderInterface;
 use app\models\interfaces\CurrencyModelInterface;
-use nosmi\App;
+use Explt13\Nosmi\App;
 
 class CurrencyServiceProvider implements ServiceProviderInterface
 {

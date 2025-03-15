@@ -4,8 +4,8 @@ namespace app\controllers;
 
 use app\models\interfaces\CartModelInterface;
 use app\models\interfaces\OrderModelInterface;
-use nosmi\App;
-use nosmi\base\Controller;
+use Explt13\Nosmi\App;
+use Explt13\Nosmi\base\Controller;
 
 class CartController extends Controller
 {   

@@ -3,7 +3,7 @@ namespace app\models;
 
 use app\models\interfaces\CartModelInterface;
 use app\models\interfaces\ProductModelInterface;
-use nosmi\App;
+use Explt13\Nosmi\App;
 
 class CartModel extends AppModel implements CartModelInterface
 {   

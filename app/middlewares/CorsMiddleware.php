@@ -2,7 +2,7 @@
 
 namespace app\middlewares;
 
-use nosmi\interfaces\MiddlewareInterface;
+use Explt13\Nosmi\interfaces\MiddlewareInterface;
 
 class CorsMiddleware implements MiddlewareInterface
 {

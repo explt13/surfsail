@@ -2,9 +2,9 @@
 namespace app\models;
 
 use app\models\interfaces\CategoryModelInterface;
-use nosmi\App;
-use nosmi\Cache;
-use nosmi\interfaces\CacheInterface;
+use Explt13\Nosmi\App;
+use Explt13\Nosmi\Cache;
+use Explt13\Nosmi\interfaces\CacheInterface;
 
 class CategoryModel extends AppModel implements CategoryModelInterface
 {

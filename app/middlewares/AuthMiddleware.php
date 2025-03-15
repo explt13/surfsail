@@ -2,9 +2,9 @@
 namespace app\middlewares;
 
 use app\models\UserModel;
-use nosmi\App;
-use nosmi\interfaces\MiddlewareInterface;
-use nosmi\RouteContext;
+use Explt13\Nosmi\App;
+use Explt13\Nosmi\interfaces\MiddlewareInterface;
+use Explt13\Nosmi\RouteContext;
 
 class AuthMiddleware implements MiddlewareInterface
 {

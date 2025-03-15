@@ -2,7 +2,7 @@
 namespace app\controllers;
 
 use \app\models\interfaces\UserModelInterface;
-use nosmi\base\Controller;
+use Explt13\Nosmi\base\Controller;
 
 class UserController extends Controller
 {

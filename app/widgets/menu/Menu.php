@@ -3,10 +3,10 @@
 namespace app\widgets\menu;
 
 use app\models\CategoryModel;
-use nosmi\base\Widget;
-use nosmi\App;
-use nosmi\Cache;
-use nosmi\interfaces\CacheInterface;
+use Explt13\Nosmi\base\Widget;
+use Explt13\Nosmi\App;
+use Explt13\Nosmi\Cache;
+use Explt13\Nosmi\interfaces\CacheInterface;
 
 class Menu extends Widget
 {

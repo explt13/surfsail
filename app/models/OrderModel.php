@@ -7,7 +7,7 @@ use app\models\interfaces\CurrencyModelInterface;
 use app\models\interfaces\OrderModelInterface;
 use app\models\interfaces\ProductModelInterface;
 use app\models\interfaces\UserModelInterface;
-use nosmi\App;
+use Explt13\Nosmi\App;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;

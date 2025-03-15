@@ -11,7 +11,7 @@ define("DEBUG", (int)$_ENV['DEBUG']);
 define("ROOT", $_ENV['BASE_DIR']);
 define("PUBLIC_DIR", $_ENV['PUBLIC_DIR']);
 define("APP", $_ENV['APP']);
-define("CORE", $_ENV['CORE']);
+define("FRAMEWORK_SRC", $_ENV['FRAMEWORK_SRC']);
 define("LIBS", $_ENV['LIBS']);
 define("CACHE", $_ENV['CACHE']);
 define("CONF", $_ENV['CONF']);

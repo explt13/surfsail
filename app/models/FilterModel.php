@@ -3,7 +3,7 @@
 namespace app\models;
 
 use app\models\interfaces\FilterModelInterface;
-use nosmi\interfaces\CacheInterface;
+use Explt13\Nosmi\interfaces\CacheInterface;
 
 class FilterModel extends AppModel implements FilterModelInterface
 {

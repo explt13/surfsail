@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use nosmi\base\Controller;
+use Explt13\Nosmi\base\Controller;
 
 class AuthController extends Controller
 {

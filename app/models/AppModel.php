@@ -1,7 +1,7 @@
 <?php
 namespace app\models;
 
-use nosmi\base\Model;
+use Explt13\Nosmi\base\Model;
 
 abstract class AppModel extends Model
 {

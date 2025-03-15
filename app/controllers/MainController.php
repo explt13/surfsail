@@ -4,8 +4,8 @@ namespace app\controllers;
 use app\models\interfaces\BrandModelInterface;
 use app\models\interfaces\ProductModelInterface;
 use app\models\interfaces\ArticleModelInterface;
-use nosmi\App;
-use nosmi\base\Controller;
+use Explt13\Nosmi\App;
+use Explt13\Nosmi\base\Controller;
 
 class MainController extends Controller
 {
@@ -26,7 +26,6 @@ class MainController extends Controller
 
     public function indexAction()
     {
-        debug($_SESSION);
         $brands = $this->brand_model->getBrands(10);
         $shortboard_products = $this->product_model->getProductsBySubCategory('Shortboards', 7);
         $longboard_products = $this->product_model->getProductsBySubCategory('Longboards', 7);

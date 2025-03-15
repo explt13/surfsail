@@ -1,7 +1,7 @@
 <?php
 namespace app\views\helpers;
 
-use nosmi\App;
+use Explt13\Nosmi\App;
 
 class ProductHelper {
     
