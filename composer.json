@@ -4,8 +4,8 @@
     "license": "proprietary",
     "repositories": [
         {
-            "type": "path",
-            "url": "../../packages/nosmi/"
+            "type": "vcs",
+            "url": "https://github.com/explt13/nosmi"
         }
     ],
     "autoload": {
@@ -14,9 +14,9 @@
         }
     },
     "require": {
-        "explt13/nosmi": "^1.0",
         "phpmailer/phpmailer": "6.9.3",
         "vlucas/phpdotenv": "5.6.1",
-        "respect/validation": "2.3.11"
+        "respect/validation": "2.3.11",
+        "explt13/nosmi": "^1.0"
     }
 }
