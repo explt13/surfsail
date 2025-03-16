@@ -18,7 +18,7 @@ define("CONF", $_ENV['CONF']);
 define("LAYOUT", $_ENV['LAYOUT']);
 
 // https://surfsail.com
-$app_path = "{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['HTTP_HOST']}";
+$domain = "{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['HTTP_HOST']}";
 
-define("DOMAIN", $app_path);
+define("DOMAIN", $domain);
 define("ADMIN_DOMAIN", DOMAIN . '/admin');
