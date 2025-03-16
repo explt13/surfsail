@@ -6,3 +6,4 @@ tmp
 tools/*
 !tools/install-tools.sh
 composer.lock
+.phpunit.result.cache
