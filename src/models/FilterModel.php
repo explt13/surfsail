@@ -2,18 +2,19 @@
 
 namespace Surfsail\models;
 
-use Surfsail\models\interfaces\FilterModelInterface;
-use Explt13\Nosmi\interfaces\CacheInterface;
+use Explt13\Nosmi\Interfaces\CacheFactoryInterface;
+use Explt13\Nosmi\Interfaces\CacheInterface;
+use Surfsail\interfaces\FilterModelInterface;
 
 class FilterModel extends AppModel implements FilterModelInterface
 {
-    protected CacheInterface $cache;
+    protected CacheFactoryInterface $cache_factory;
     protected array $filters = [];
 
-    public function __construct(CacheInterface $cache)
+    public function __construct(CacheFactoryInterface $cache_factory)
     {
         parent::__construct();
-        $this->cache = $cache;
+        $this->cache_factory = $cache_factory;
     }
     public function getFilters()
     {

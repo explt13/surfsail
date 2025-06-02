@@ -9,7 +9,7 @@ async function main() {
     const handlers = {
         favorite: async () => {
             await setFavoriteButtons('product');
-            deleteFromFavorite();
+            deleteFromFavorite('product');
             favoriteMinHeightCalc();
         },
         cart: () => {
@@ -41,7 +41,7 @@ async function main() {
 const handleCurrency = async () => {
     let data;
     try {
-        data = await secureFetch(`/currency/get`, {}, NOTIFY_ON_FAILURE);
+        data = await secureFetch(`/api/currency`, {}, NOTIFY_ON_FAILURE);
     } catch (e) {
         console.warn('Couldn\'t init currency changing functionality');
         console.error(e);
@@ -60,7 +60,7 @@ const handleCurrency = async () => {
    
     async function changeCurrency(e) {
         const currency = e.target.dataset.value;
-        const data = await secureFetch(`/currency/change`, {
+        const data = await secureFetch(`/api/currency`, {
             method: "POST",
             body: JSON.stringify({
                 currency: currency,
@@ -149,6 +149,7 @@ function handleCart() {
     }
     const debounceAddToCartFewProducts = debounceAsync(addToCartFewProducts, 1000);
     products.forEach(product => {
+        let productQtyEl = product.querySelector('.quantity__input input');
         let productQty = parseInt(product.querySelector('.quantity__input input').value.trim());
         let maxQty = parseInt(product.dataset.qty.trim());
         const productPrice = parseFloat(product.querySelector('.product-price__value').textContent.trim().replace(',', '.').replace(' ', ''));
@@ -158,17 +159,21 @@ function handleCart() {
 
         initPlusMinusButtons(plusButton, minusButton, productQty, maxQty);
         minusButton.addEventListener('click', async function() {
-            await debounceAddToCartFewProducts(product, productQty, 'direct_control', false);
             handleMinusButton(this, plusButton, productQty, productPrice, maxQty);
+            productQtyEl.value = --productQty;
+            await debounceAddToCartFewProducts(product, productQty, false);
         });
 
         plusButton.addEventListener('click', async function() {
-            await debounceAddToCartFewProducts(product, productQty, 'direct_control', false);
             handlePlusButton(this, minusButton, productQty, productPrice, maxQty);
+            productQtyEl.value = ++productQty;
+            await debounceAddToCartFewProducts(product, productQty, false);
         });
 
         deleteButton.addEventListener('click', async function(){
-            await deleteProductFromAdded('cart', product);
+            await secureFetch(`/api/cart/items/${product.dataset.id}`, {
+                method: "DELETE",
+            });
             product.remove();
             totalSum.textContent = formatNumber(totalSumValue - (productPrice * productQty));
             totalSumValue -= (productPrice * productQty);
@@ -191,28 +196,15 @@ function handleCart() {
     }
 }
 
-async function addToCartFewProducts(product, qty, mode, update_time) {
-    await secureFetch('/cart/add-multiple', {
+async function addToCartFewProducts(product, qty, update_time, notify = 3) {
+    await secureFetch('/api/cart/items', {
         method: 'POST',
         body: JSON.stringify({
             product_id: parseInt(product.dataset.id),
             qty,
-            mode,
             update_time,
         })
-    });
-}
-
-async function deleteProductFromAdded(deleteFrom, item) {
-    await secureFetch(`/${deleteFrom}/delete`, {
-        method: "DELETE",
-        body: JSON.stringify({
-            item_id: parseInt(item.dataset.id),
-        }),
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    });
+    }, notify);
 }
 
 function deleteFromFavorite(entity) {
@@ -232,9 +224,12 @@ function deleteFromFavorite(entity) {
     }
 
     items.forEach(item => {
-        const deleteButton = product.querySelector('.cart-item__delete');
+        const itemId = item.dataset.id;
+        const deleteButton = item.querySelector('.cart-item__delete');
         deleteButton.addEventListener('click', async function(){
-            await deleteProductFromAdded(`favorite/${entity}`, item);
+            await secureFetch(`/api/favorite/${entity}/items/${itemId}`, {
+                method: "DELETE",
+            });
             item.remove();
             itemsQty--;
             if (itemsQty === 0) {
@@ -255,174 +250,134 @@ const favoriteMinHeightCalc = () => {
 }
 
 function addProductFromProductPage() {
-    const cartButtonView = document.querySelector('.cart-button-view');
-    if (!cartButtonView) return;
+    
+
+    const cartButton = document.querySelector('.cart-button-view');
+    if (!cartButton) return;
 
     const cart = document.querySelector('.shop__cart');
     const productTableParams = document.querySelector('.body-product__table');
-    const product = cartButtonView.closest('[data-id]');
+    const product = cartButton.closest('[data-id]');
     const buyButton = document.querySelector('.actions-product__buy');
     const minusButton = document.querySelector('.quantity__button_minus');
     const plusButton = document.querySelector('.quantity__button_plus');
-    let alreadyHaveQtyEl = document.querySelector('.actions-product__cart-have b');
-    let productQty = parseInt(product.querySelector('.quantity__input input').value.trim()); // 1
+    let productQty = parseInt(product.querySelector('.quantity__input input').value.trim());
+    let in_cart = productQty > 0;
+    let productQtyInput = product.querySelector('.quantity__input input');
     let maxQty = parseInt(product.dataset.qty.trim());
-    let alreadyHaveQtyValue = 0;
-    
-    if (alreadyHaveQtyEl) {
-        alreadyHaveQtyValue = parseInt(alreadyHaveQtyEl.textContent.trim());
-    }
-    
+
     if (productTableParams.innerHTML.trim() === '') {
         productTableParams.remove();
     }
-
-    function renderAddProduct() {
-        const buttonsActions = document.querySelector('.actions-product__buttons');
-        buttonsActions.insertAdjacentHTML('afterbegin', '<button class="actions-product__delete"><img src="img/home/trash.svg" /></button>');
-        registerDeleteEvent();
-        const span = document.createElement('span');
-        span.classList.add('actions-product__cart-have');
-        span.innerHTML = `(you have <b>${productQty}</b> in cart)`;
-        cartButtonView.appendChild(span);
-    }
-
-    function setProductQty() {
-        if (!alreadyHaveQtyEl) {
-            renderAddProduct();
-            alreadyHaveQtyEl = cartButtonView.querySelector('.actions-product__cart-have b');
-            alreadyHaveQtyValue = parseInt(alreadyHaveQtyEl.textContent.trim());
-        } else {
-            alreadyHaveQtyValue += productQty;
-            alreadyHaveQtyEl.textContent = alreadyHaveQtyValue;
-        }
-        
-        if (productQty > maxQty - alreadyHaveQtyValue){
-            productQty = maxQty - alreadyHaveQtyValue;
-            if (productQty < 1) {
-                product.querySelector('.quantity__input input').value = 1;
-            } else {
-                product.querySelector('.quantity__input input').value = productQty;
-            }
-        }
-    }
     
-    cartButtonView.addEventListener('click', async function() {
-        await addToCartFewProducts(product, productQty, 'addup', true);
+    cartButton.addEventListener('click', async function() {
+        await addToCartFewProducts(product, productQty, true);
+        in_cart = true;
         cart.dataset.qty = parseInt(cart.dataset.qty) + 1;
-        setProductQty();
-        updateQtyButtons();
     });
     
     const updateQtyButtons = () => {
-        minusButton.disabled = productQty <= 1;
-        plusButton.disabled = productQty + alreadyHaveQtyValue >= maxQty;
-    
-        minusButton.style.backgroundColor = minusButton.disabled ? "#b3b3b3" : "";
-        plusButton.style.backgroundColor = plusButton.disabled ? "#b3b3b3" : "";
-
-        if ((productQty + alreadyHaveQtyValue > maxQty) || alreadyHaveQtyValue === maxQty) {
-            [buyButton, cartButtonView].forEach(button => {
-                button.disabled = true;
-                button.style.backgroundColor = "#b3b3b3";
-                button.style.boxShadow = "none";
-            });
-        } else {
-            [buyButton, cartButtonView].forEach(button => {
-                button.disabled = false;
-                button.style.backgroundColor = "";
-                button.style.boxShadow = "";
-            });
-        }
+        minusButton.disabled = productQty <= 0;
+        plusButton.disabled = productQty >= maxQty;
     };
     updateQtyButtons();
-    
-    minusButton.addEventListener('click', function() {
-        if (productQty > 1) {
-            productQty--;
-            product.querySelector('.quantity__input input').value = productQty;
+
+    const debounceAddToCartFewProducts = debounceAsync(addToCartFewProducts, 1000);
+
+    minusButton.addEventListener('click', async function() {
+        --productQty;
+        if (productQty >= 0) {
+            productQtyInput.value = productQty;
             updateQtyButtons();
+        }
+        if (in_cart) {
+            if (productQty === 0) {
+                await secureFetch(`/api/cart/items/${product.dataset.id}`, {
+                    method: "DELETE",
+                });
+                in_cart = false;
+                cart.dataset.qty = parseInt(cart.dataset.qty) - 1;
+                return;
+            }
+
+            await debounceAddToCartFewProducts(product, productQty, true);
         }
     });
     
     plusButton.addEventListener('click', function() {
-        if (productQty < maxQty) {
-            productQty++;
-            product.querySelector('.quantity__input input').value = productQty;
+        ++productQty;
+        if (productQty <= maxQty) {
+            productQtyInput.value = productQty;
             updateQtyButtons();
         }
     });
-
-    const registerDeleteEvent = () => {
-        const deleteButton = document.querySelector('.actions-product__delete');
-        if (deleteButton){
-            deleteButton.addEventListener('click', async function () {
-                await secureFetch('/cart/delete', {
-                    method: "DELETE",
-                    body: JSON.stringify({
-                        product_id: parseInt(product.dataset.id),
-                    }),
-                });
-                cart.dataset.qty = parseInt(cart.dataset.qty) - 1;
-                alreadyHaveQtyValue = 0;
-                alreadyHaveQtyEl.textContent = 0;
-                updateQtyButtons();
-                deleteButton.remove();
-            })
-        }
-    }
-    registerDeleteEvent();
 }
 
 async function addProductToCartFromShowcase() {
     const cartButtons = document.querySelectorAll('.cart-button');
     const buttonEventHandlers = new Map();
+
     const setCartButtons = async () => {
         let data = [];
         try {
-            data = await secureFetch('/cart/get-added-items', {}, NOTIFY_ON_FAILURE);
+            data = await secureFetch('/api/cart/items', {}, NOTIFY_ON_FAILURE);
         } catch (e) {
             console.warn('Couldn\'t load added products from cart');
             console.error(e);
         }
-        cartButtons.forEach(button => {
-            const product = button.closest('[data-id]');
-            if (!product) return;
-            if (data.includes(parseInt(product.dataset.id))){
+        cartButtons.forEach((button) => {
+            const productId = parseInt(button.closest('[data-product][data-id]').dataset.id);
+            if (data.includes(productId)) {
                 setButton(button);
             }
-            button.addEventListener('click', async function(){
-                addToCart(product);
+            button.addEventListener('click', function() {
+                if (data.includes(productId)) {
+                    deleteFromCart(productId);
+                    const index = data.indexOf(productId);
+                    if (index > -1) data.splice(index, 1);
+                } else {
+                    addToCart(productId);
+                    if (!data.includes(productId)) data.push(productId);
+                }
             })
-        });
+        })
     }
     await setCartButtons();
 
-    async function addToCart(product) {
-        const data = await secureFetch('/cart/add', {
+    async function addToCart(productId) {
+        await secureFetch('/api/cart/items', {
             method: 'POST',
             body: JSON.stringify({
-                product_id: parseInt(product.dataset.id),
+                product_id: productId,
                 qty: 1,
             })
-        }, NOTIFY_ON_SUCCESS);
+        }, NOTIFY_ON_SUCCESS | NOTIFY_ON_FAILURE);
         const cart = document.querySelector('.shop__cart');
-        if (!cart) return;
-        const sameProducts = document.querySelectorAll(`[data-id="${product.dataset.id}"]`);
-
-        if (data.action === 'add') {
+        if (cart) {
             cart.dataset.qty = parseInt(cart.dataset.qty) + 1;
-            sameProducts.forEach(product => {
-                const button = product.querySelector('.cart-button');
-                setButton(button);
-            });
-        } else if (data.action === 'remove') {
+        };
+        const sameProducts = document.querySelectorAll(`[data-product][data-id="${productId}"]`);
+
+        sameProducts.forEach(product => {
+            const button = product.querySelector('.cart-button');
+            setButton(button);
+        });
+    }
+
+    async function deleteFromCart(productId) {
+        await secureFetch(`/api/cart/items/${productId}`, {
+            method: 'DELETE',
+        }, NOTIFY_ON_SUCCESS | NOTIFY_ON_FAILURE);
+        const cart = document.querySelector('.shop__cart');
+        if (cart) {
             cart.dataset.qty = parseInt(cart.dataset.qty) - 1;
-            sameProducts.forEach(product => {
-                const button = product.querySelector('.cart-button');
-                unsetButton(button);
-            })
-        }
+        };
+        const sameProducts = document.querySelectorAll(`[data-product][data-id="${productId}"]`);
+
+        sameProducts.forEach(product => {
+            const button = product.querySelector('.cart-button');
+            unsetButton(button);
+        })
     }
             
     function setButton(button) {
@@ -450,7 +405,7 @@ async function addProductToCartFromShowcase() {
         if (button.classList.contains('_remove')) {
             button.classList.remove('_remove');
         }
-        button.textContent = 'Add to cart';
+        button.textContent = 'To cart';
         const handlers = buttonEventHandlers.get(button);
         if (handlers) {
             button.removeEventListener('mouseenter', handlers.onMouseEnter);
@@ -464,7 +419,7 @@ async function setFavoriteButtons(entity) {
     const favoriteButtons = document.querySelectorAll('.like');
     let alreadyInFav = [];
     try {
-        alreadyInFav = await secureFetch(`/favorite/${entity}/get-added-items`, {}, NOTIFY_ON_FAILURE);
+        alreadyInFav = await secureFetch(`/api/favorite/${entity}/items`, {}, NOTIFY_ON_FAILURE);
     } catch (e) {
         console.warn(`Couldn\'t load favorite ${entity}s`);
         console.error(e);
@@ -482,11 +437,10 @@ async function setFavoriteButtons(entity) {
 }
 
 const addToFavorite = async (item, entity) => {
-    const data = await secureFetch(`/favorite/add`, {
+    const data = await secureFetch(`/api/favorite/${entity}/items`, {
         method: "POST",
         body: JSON.stringify({
             item_id: parseInt(item.dataset.id),
-            entity: entity,
         })
     });
     const sameItems = document.querySelectorAll(`[data-id="${item.dataset.id}"]`);
@@ -535,7 +489,7 @@ const handleSearch = () => {
 }
 
 const sendSearch = debounceAsync(async (inputValue) => {
-    const data = await secureFetch(`/search/get?query=${encodeURIComponent(inputValue)}`, {}, NOTIFY_ON_FAILURE);
+    const data = await secureFetch(`/api/search?query=${encodeURIComponent(inputValue)}`, {}, NOTIFY_ON_FAILURE);
     return data;
 }, 700);
 
@@ -574,7 +528,7 @@ const authenticate = () => {
         const authFormMethod = params.get('form');
         const authRedirecTo = params.get('r_link') ?? '';
         const formData = new FormData(authForm);
-        await secureFetch(`/user/${authFormMethod}`, {
+        await secureFetch(`/api/user/${authFormMethod}`, {
             method: "POST",
             body: formData,
             headers: {
@@ -587,7 +541,7 @@ const authenticate = () => {
 const handleFilters = () => {
     const applyFiltersBtn = document.querySelector('.filter-catalog__apply-button');
     if (applyFiltersBtn) {
-        let filterUrl = '/catalog?';
+        let filterUrl = '/api/catalog?';
         applyFiltersBtn.addEventListener('click', async function() {
             getFilterUrl();
             const data = await secureFetch(filterUrl);
@@ -598,7 +552,7 @@ const handleFilters = () => {
                 catalogContent.innerHTML = data.html;
             }
             window.history.pushState({}, "", filterUrl);
-            filterUrl = '/catalog?';
+            filterUrl = '/api/catalog?';
             
         });
     
@@ -683,6 +637,14 @@ function handleFiltersRealTime(dist) {
     function getRange(filterItem, filterGroup) {
         const slider = filterItem.querySelector('[data-range-item]');
         if (slider) {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('f').indexOf(filterGroup) !== -1) {
+                const [min, max] = slider.noUiSlider.get(true);
+                if (!filters[filterGroup]) {
+                    filters[filterGroup] = [];
+                }
+                filters[filterGroup] = [min, max];
+            }
             slider.noUiSlider.on('change', async function(vals) {
                 vals = vals.map((v) => Number(v.replace(/[\$\s]/g, '')));
                 filters[filterGroup] = vals;
@@ -724,11 +686,11 @@ function handleFiltersRealTime(dist) {
 
     async function applyFilters() {
         const filterStr = prepareFilterStr('?f=');
-        const filterUrl = `/${dist}${filterStr}`;
+        const filterUrl = `/api/${dist}${filterStr}`;
         const data = await secureFetch(filterUrl);
         const catalogContent = document.querySelector('.catalog__content');
         catalogContent.innerHTML = data.html;
-        window.history.pushState({}, "", filterUrl);
+        window.history.pushState({}, "", filterUrl.replace('/api', ''));
     }
     const debouncedFilters = debounceAsync(applyFilters, 1500);
 

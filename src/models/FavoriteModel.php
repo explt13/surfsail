@@ -1,9 +1,9 @@
 <?php
 namespace Surfsail\models;
 
-use Surfsail\models\interfaces\ArticleModelInterface;
-use Surfsail\models\interfaces\FavoriteModelInterface;
-use Surfsail\models\interfaces\ProductModelInterface;
+use Surfsail\interfaces\ArticleModelInterface;
+use Surfsail\interfaces\FavoriteModelInterface;
+use Surfsail\interfaces\ProductModelInterface;
 use Explt13\Nosmi\App;
 
 class FavoriteModel extends AppModel implements FavoriteModelInterface
@@ -16,28 +16,15 @@ class FavoriteModel extends AppModel implements FavoriteModelInterface
         parent::__construct();
         $this->product_model = $product_model;
         $this->article_model = $article_model;
-        if (!isset($_SESSION['favorite'])) $_SESSION['favorite'] = [];
-        if (!isset($_SESSION['favorite']['product'])) $_SESSION['favorite']['product'] = [];
-        if (!isset($_SESSION['favorite']['articles'])) $_SESSION['favorite']['article'] = [];
     }
 
-    public function getItemsQty(string $entity)
-    {
-        $favorite = $_SESSION['favorite'][$entity];
-        if (App::$registry->getProperty('loggedIn') === false) {
-            return 0;
-        }
-        return array_reduce($favorite, fn($a, $b) => $a + $b['qty'], 0);
-    }
-
-    public function getItemsIds(string $entity)
+    public function getItemsIds(string $entity): array
     {
         return array_keys($_SESSION['favorite'][$entity]);
     }
 
-    public function deleteItem(array $data, string $entity)
+    public function deleteItem(int $item_id, string $entity)
     {
-        $item_id = $data['item_id'];
         $bundle = &$_SESSION['favorite'][$entity];
         if (array_key_exists($item_id, $bundle)) {
             unset($bundle[$item_id]);
@@ -65,24 +52,23 @@ class FavoriteModel extends AppModel implements FavoriteModelInterface
         return false;
     }
     
-    public function addItem(array $data)
+    public function addItem(string $entity, int $item_id)
     {
-        $entity = $data['entity'];
-        $product = $this->product_model->getProducts(['id' => $data['item_id']], 1);
+        $product = $this->product_model->getProducts(['id' => $item_id], 1);
         if ($product === false) {
             return ["response_code" => 409, 'message' => 'No such product'];
         }
         
         $favorite = &$_SESSION['favorite'][$entity];
 
-        if (!array_key_exists($data['item_id'], $favorite)) {
-            $favorite[$data['item_id']] = [
-                "item_id" => $data['item_id'],
+        if (!array_key_exists($item_id, $favorite)) {
+            $favorite[$item_id] = [
+                "item_id" => $item_id,
                 "added_date" => time(),
             ];
             return ['response_code' => 200, 'message' => "$entity added successfully", 'action' => 'add'];
         } else {
-            unset($favorite[$data['item_id']]);
+            unset($favorite[$item_id]);
             return ['response_code' => 200, 'message' => "$entity removed successfully", 'action' => 'remove'];
         }
     }

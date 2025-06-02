@@ -1,29 +1,42 @@
 <?php
 namespace Surfsail\controllers;
 
-use Surfsail\models\interfaces\FilterModelInterface;
-use Surfsail\models\interfaces\ProductModelInterface;
-use Surfsail\widgets\pagination\Pagination;
+use Surfsail\interfaces\FilterModelInterface;
+use Surfsail\interfaces\ProductModelInterface;
 use Explt13\Nosmi\App;
 use Explt13\Nosmi\base\Controller;
+use Explt13\Nosmi\Interfaces\ConfigInterface;
+use Surfsail\services\CategoryService;
+use Surfsail\services\CurrencyService;
+use Surfsail\widgets\Pagination;
 
-class CatalogController extends Controller
+class CatalogController extends BaseController
 {
-    protected $product_model;
-    protected $filter_model;
-    
-    public function __construct(ProductModelInterface $product_model, FilterModelInterface $filter_model)
+    private $product_model;
+    private $filter_model;
+    private ConfigInterface $config;
+    private CurrencyService $currency_service;
+
+    public function __construct(
+        ProductModelInterface $product_model,
+        FilterModelInterface $filter_model,
+        ConfigInterface $config,
+        CurrencyService $currency_service,
+    )
     {
+        parent::__construct();
         $this->product_model = $product_model;
         $this->filter_model = $filter_model;
+        $this->config = $config;
+        $this->currency_service = $currency_service;
     }
     
     function indexAction()
     {
-        $page_number = $this->request->getQueryParam('page', 1);
-        $selected_filters = $this->request->getQueryParam('f');
+        $page_number = $this->request->getQueryParams()['page'] ?? 1;
+        $selected_filters = $this->request->getQueryParams()['f'] ?? [];
 
-        $per_page = App::$registry->getProperty("pagination");
+        $per_page = $this->config->get("APP_PAGINATION_PER_PAGE");
         $offset = ($page_number - 1) * $per_page;
 
         if (!empty($selected_filters)) {
@@ -35,17 +48,24 @@ class CatalogController extends Controller
             $products = $this->product_model->getProducts(['active' => 1], $per_page, $offset, 'added_at');
         }
 
+        $currency = $this->currency_service->getCurrencyByCookie();
         $pagination = new Pagination($total_products, $page_number, $per_page, 'catalog');
         $pagination = $pagination->setup();
 
-        if ($this->request->isAjax) {
-            $html = $this->getAjaxHtml(view: 'products_ajax', data: compact('products', 'pagination', 'selected_filters'));
-            http_response_code(200);
-            echo json_encode(['html' => $html, 'message' => 'Filters applied successfully']);
+        if ($this->request->isAjax()) {
+            $html = $this->getView()->withoutLayout()->render('products_ajax', compact('products', 'pagination', 'selected_filters', 'currency'));
+            $this->response = $this->response->withStatus(200)->withJson(['html' => $html, 'message' => 'Filters applied successfully']);
             return;
-        }
+        } 
+
         $filters = $this->filter_model->getFilters();
-        $this->setMeta('Catalog', 'Catalog page', 'Products, list, catalog, new products, add, cart');
-        $this->render(data: compact('products', 'pagination', 'filters', 'selected_filters'));
+        $html = $this->getView()->withMetaArray([
+            'title' => 'Catalog',
+            'description' => 'Catalog page',
+            'keywords' =>'Products, list, catalog, new products, add, cart'
+        ])->render('index', compact('products', 'pagination', 'filters', 'selected_filters', 'currency'));
+        
+        $this->response = $this->response->withStatus(200)->withHtml($html);
     }
+
 }

@@ -125,6 +125,23 @@
 .cart-item__quantity{
     flex: 0 0 auto;
 }
+.quantity__button{
+    border-radius: .1875rem;
+}
+.quantity__button{
+    transition: background-color 0.2s ease-in-out;
+}
+.quantity__button_minus:hover {
+    background-color: rgb(234, 93, 93);
+}
+.quantity__button_plus:hover {
+    background-color: rgb(16, 148, 15);
+}
+.quantity__button:disabled {
+    background-color: #b3b3b3;
+}
+
+
 button{
     font-size: inherit;
     cursor: pointer;

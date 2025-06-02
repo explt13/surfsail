@@ -1,7 +1,7 @@
 <?php
 namespace Surfsail\models;
 
-use Surfsail\models\interfaces\ArticleModelInterface;
+use Surfsail\interfaces\ArticleModelInterface;
 
 class ArticleModel extends AppModel implements ArticleModelInterface
 {

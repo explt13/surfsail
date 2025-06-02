@@ -1,0 +1,360 @@
+[E] [24-05-2025 01:57:42 PM] ERROR: SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected | File: /var/www/projects/surfsail/src/models/BrandModel.php | Line: 13
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 02:01:24 PM] ERROR: SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected | File: /var/www/projects/surfsail/src/models/BrandModel.php | Line: 13
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 02:05:56 PM] ERROR: SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected | File: /var/www/projects/surfsail/src/models/BrandModel.php | Line: 13
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 02:19:32 PM] ERROR: SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected | File: /var/www/projects/surfsail/src/models/BrandModel.php | Line: 13
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 02:29:33 PM] ERROR: SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected | File: /var/www/projects/surfsail/src/models/BrandModel.php | Line: 13
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 04:03:37 PM] ERROR: [code: 3D000] SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected | File: /var/www/projects/surfsail/src/models/BrandModel.php | Line: 13
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 05:17:56 PM] ERROR: [code: 0] Class "Explt13\Nosmi\App" not found | File: /var/www/projects/surfsail/src/controllers/MainController.php | Line: 37
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 05:25:55 PM] ERROR: [code: 500] Custom Error: compact(): Undefined variable $categories in /var/www/projects/surfsail/src/controllers/MainController.php on line 47 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/ErrorHandler.php | Line: 34
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 05:30:52 PM] ERROR: [code: 500] Custom Error: compact(): Undefined variable $categories in /var/www/projects/surfsail/src/controllers/MainController.php on line 47 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/ErrorHandler.php | Line: 34
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 05:31:40 PM] ERROR: [code: 500] Custom Error: Undefined variable $brands in /var/www/projects/surfsail/src/render/views/Main/index.php on line 118 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/ErrorHandler.php | Line: 34
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 05:34:50 PM] ERROR: [code: 500] Custom Error: Undefined array key "categories" in /var/www/projects/surfsail/src/render/views/Main/index.php on line 143 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/ErrorHandler.php | Line: 34
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 05:35:25 PM] ERROR: [code: 500] Custom Error: Undefined array key "categories" in /var/www/projects/surfsail/src/render/views/Main/index.php on line 143 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/ErrorHandler.php | Line: 34
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 05:35:26 PM] ERROR: [code: 500] Custom Error: Undefined array key "categories" in /var/www/projects/surfsail/src/render/views/Main/index.php on line 143 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/ErrorHandler.php | Line: 34
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 05:35:34 PM] ERROR: [code: 0] Class "Surfsail\views\helpers\ProductHelper" not found | File: /var/www/projects/surfsail/src/render/views/Main/index.php | Line: 176
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 05:35:51 PM] ERROR: [code: 500] Custom Error: Undefined array key "categories" in /var/www/projects/surfsail/src/render/views/Main/index.php on line 143 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/ErrorHandler.php | Line: 34
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 05:38:12 PM] ERROR: [code: 0] Class "Surfsail\views\helpers\ProductHelper" not found | File: /var/www/projects/surfsail/src/render/views/Main/index.php | Line: 176
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 05:38:16 PM] ERROR: [code: 500] Custom Error: Undefined array key "categories" in /var/www/projects/surfsail/src/render/views/Main/index.php on line 143 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/ErrorHandler.php | Line: 34
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 05:38:19 PM] ERROR: [code: 0] Class "Surfsail\views\helpers\ProductHelper" not found | File: /var/www/projects/surfsail/src/render/views/Main/index.php | Line: 176
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 06:30:40 PM] ERROR: [code: 0] Class "Surfsail\views\helpers\ProductHelper" not found | File: /var/www/projects/surfsail/src/render/views/Main/index.php | Line: 176
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 06:30:52 PM] ERROR: [code: 500] Custom Error: Undefined array key "categories" in /var/www/projects/surfsail/src/render/views/Main/index.php on line 143 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/ErrorHandler.php | Line: 37
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 06:30:56 PM] ERROR: [code: 0] Class "Surfsail\views\helpers\ProductHelper" not found | File: /var/www/projects/surfsail/src/render/views/Main/index.php | Line: 176
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 06:32:54 PM] ERROR: [code: 0] Class "Surfsail\views\helpers\ProductHelper" not found | File: /var/www/projects/surfsail/src/render/views/Main/index.php | Line: 176
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 06:32:55 PM] ERROR: [code: 0] Class "Surfsail\views\helpers\ProductHelper" not found | File: /var/www/projects/surfsail/src/render/views/Main/index.php | Line: 176
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 06:36:06 PM] ERROR: [code: 0] Class "Explt13\Nosmi\App" not found | File: /var/www/projects/surfsail/src/render/helpers/ProductHelper.php | Line: 17
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 06:40:11 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Controller::processRequest(): Return value must be of type Explt13\Nosmi\Interfaces\LightResponseInterface, null returned | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Controller.php | Line: 113
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 06:43:11 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Controller::processRequest(): Return value must be of type Explt13\Nosmi\Interfaces\LightResponseInterface, null returned | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Controller.php | Line: 113
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 06:45:10 PM] ERROR: [code: 0] Cannot access protected property Explt13\Nosmi\Routing\Route::$controller | File: /var/www/projects/surfsail/src/render/layouts/surfsail.php | Line: 24
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 06:45:20 PM] ERROR: [code: 1112] 500 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/View.php | Line: 147
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 06:46:08 PM] ERROR: [code: 0] Cannot access protected property Explt13\Nosmi\Routing\Route::$controller | File: /var/www/projects/surfsail/src/render/layouts/surfsail.php | Line: 24
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 06:46:13 PM] ERROR: [code: 1112] 500 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/View.php | Line: 147
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 06:46:16 PM] ERROR: [code: 0] Cannot access protected property Explt13\Nosmi\Routing\Route::$controller | File: /var/www/projects/surfsail/src/render/layouts/surfsail.php | Line: 24
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 06:46:53 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 06:46:57 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 06:47:50 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 06:49:31 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 06:49:43 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:00:07 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:00:17 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:00:18 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:00:25 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:00:27 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:00:30 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:00:32 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:00:41 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:00:48 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:01:05 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Controller::processRequest(): Return value must be of type Explt13\Nosmi\Interfaces\LightResponseInterface, null returned | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Controller.php | Line: 113
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:06:35 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:07:08 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:10:07 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:10:31 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:10:47 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:10:53 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:13:02 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:13:31 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:16:57 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:19:40 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:19:41 PM] ERROR: [code: 405] Method GET is not available for the route: /favorite/product/get-added-items | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Controller.php | Line: 170
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:30:25 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [24-05-2025 07:31:44 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [26-05-2025 12:33:25 PM] ERROR: [code: 0] Explt13\Nosmi\Base\Widget::__construct(): Argument #1 ($path_to_tpl) must be of type string, null given, called in /var/www/projects/surfsail/src/widgets/cart/Cart.php on line 14 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Widget.php | Line: 11
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [26-05-2025 04:16:02 PM] ERROR: [code: 0] array_slice(): Argument #1 ($array) must be of type array, null given | File: /var/www/projects/surfsail/src/render/views/Main/index.php | Line: 154
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [26-05-2025 04:17:10 PM] ERROR: [code: 0] array_slice(): Argument #1 ($array) must be of type array, null given | File: /var/www/projects/surfsail/src/render/views/Main/index.php | Line: 154
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [26-05-2025 04:17:43 PM] ERROR: [code: 0] array_slice(): Argument #1 ($array) must be of type array, null given | File: /var/www/projects/surfsail/src/render/views/Main/index.php | Line: 154
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [26-05-2025 04:19:54 PM] ERROR: [code: 0] array_slice(): Argument #1 ($array) must be of type array, null given | File: /var/www/projects/surfsail/src/render/views/Main/index.php | Line: 154
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [26-05-2025 04:20:24 PM] ERROR: [code: 0] array_slice(): Argument #1 ($array) must be of type array, null given | File: /var/www/projects/surfsail/src/render/views/Main/index.php | Line: 154
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [26-05-2025 04:21:56 PM] ERROR: [code: 0] array_slice(): Argument #1 ($array) must be of type array, null given | File: /var/www/projects/surfsail/src/render/views/Main/index.php | Line: 154
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [26-05-2025 04:22:39 PM] ERROR: [code: 0] array_slice(): Argument #1 ($array) must be of type array, null given | File: /var/www/projects/surfsail/src/render/views/Main/index.php | Line: 154
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [26-05-2025 05:50:24 PM] ERROR: [code: 0] Cannot call constructor | File: /var/www/projects/surfsail/src/widgets/cart/Cart.php | Line: 14
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [26-05-2025 05:50:39 PM] ERROR: [code: 0] Cannot call constructor | File: /var/www/projects/surfsail/src/widgets/cart/Cart.php | Line: 14
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [26-05-2025 05:50:45 PM] ERROR: [code: 1070] No binding found for `Surfsail\widgets\Menu` | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Dependencies/Container.php | Line: 57
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [26-05-2025 06:05:54 PM] ERROR: [code: 1070] No binding found for `Surfsail\widgets\Cart` | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Dependencies/Container.php | Line: 57
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [26-05-2025 06:07:26 PM] ERROR: [code: 1112] Cannot find template for widget: Surfsail\widgets\Cart | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Exceptions/BaseException.php | Line: 19
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 04:15:37 AM] ERROR: [code: 0] Route /cart does not have an action. If the route is not assumed to be an API only, provide an action in Route::add method. | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Controller.php | Line: 102
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 04:16:03 AM] ERROR: [code: 0] Route /cart does not have an action. If the route is not assumed to be an API only, provide an action in Route::add method. | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Controller.php | Line: 102
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 04:16:03 AM] ERROR: [code: 0] Route /cart does not have an action. If the route is not assumed to be an API only, provide an action in Route::add method. | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Controller.php | Line: 102
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 04:16:05 AM] ERROR: [code: 0] Route /cart does not have an action. If the route is not assumed to be an API only, provide an action in Route::add method. | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Controller.php | Line: 102
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 04:16:13 AM] ERROR: [code: 0] Class "Explt13\Nosmi\App" not found | File: /var/www/projects/surfsail/src/controllers/CartController.php | Line: 26
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 04:20:32 AM] ERROR: [code: 0] Route /cart does not have an action. If the route is not assumed to be an API only, provide an action in Route::add method. | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Controller.php | Line: 102
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 04:20:43 AM] ERROR: [code: 0] Typed property Surfsail\controllers\BaseController::$currency_service must not be accessed before initialization | File: /var/www/projects/surfsail/src/controllers/BaseController.php | Line: 31
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 04:21:37 AM] ERROR: [code: 0] Class "Explt13\Nosmi\App" not found | File: /var/www/projects/surfsail/src/models/CartModel.php | Line: 23
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 06:42:26 AM] ERROR: [code: 0] array_reduce(): Argument #1 ($array) must be of type array, false given | File: /var/www/projects/surfsail/src/render/views/Cart/index.php | Line: 65
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 06:47:20 AM] ERROR: [code: 0] array_reduce(): Argument #1 ($array) must be of type array, false given | File: /var/www/projects/surfsail/src/render/views/Cart/index.php | Line: 65
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 07:21:13 AM] ERROR: [code: 0] Route /cart does not have an action. If the route is not assumed to be an API only, provide an action in Route::add method. | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Controller.php | Line: 102
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 08:06:47 AM] ERROR: [code: 405] Method GET is not available for the route: /api/currency | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Controller.php | Line: 165
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 08:06:50 AM] ERROR: [code: 405] Method GET is not available for the route: /api/currency | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Controller.php | Line: 165
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 08:41:11 AM] ERROR: [code: 0] lcfirst() expects exactly 1 argument, 2 given | File: /var/www/projects/surfsail/src/render/layouts/surfsail.php | Line: 27
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 09:17:49 AM] ERROR: [code: 0] Cannot access protected property Explt13\Nosmi\Routing\Route::$controller | File: /var/www/projects/surfsail/src/render/layouts/clean.php | Line: 23
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 10:14:31 AM] ERROR: [code: 0] Expected controller Surfsail\controllers\ProductController to have addAction method. | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/Controller.php | Line: 110
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 10:20:22 AM] ERROR: [code: 0] Too few arguments to function Surfsail\render\helpers\ProductHelper::renderPrice(), 1 passed in /var/www/projects/surfsail/src/render/helpers/ProductHelper.php on line 73 and exactly 2 expected | File: /var/www/projects/surfsail/src/render/helpers/ProductHelper.php | Line: 12
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 10:20:39 AM] ERROR: [code: 0] Too few arguments to function Surfsail\render\helpers\ProductHelper::renderPrice(), 1 passed in /var/www/projects/surfsail/src/render/helpers/ProductHelper.php on line 73 and exactly 2 expected | File: /var/www/projects/surfsail/src/render/helpers/ProductHelper.php | Line: 12
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 10:23:15 AM] ERROR: [code: 0] Surfsail\render\helpers\ProductHelper::renderSliderCatalog(): Argument #3 ($currency) must be of type array, null given, called in /var/www/projects/surfsail/src/render/views/Main/index.php on line 176 | File: /var/www/projects/surfsail/src/render/helpers/ProductHelper.php | Line: 84
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 05:27:43 PM] ERROR: [code: 0] Surfsail\models\CartModel::deleteProduct(): Argument #1 ($product_id) must be of type int, null given, called in /var/www/projects/surfsail/src/controllers/CartController.php on line 76 | File: /var/www/projects/surfsail/src/models/CartModel.php | Line: 34
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 05:27:45 PM] ERROR: [code: 0] Surfsail\models\CartModel::deleteProduct(): Argument #1 ($product_id) must be of type int, null given, called in /var/www/projects/surfsail/src/controllers/CartController.php on line 76 | File: /var/www/projects/surfsail/src/models/CartModel.php | Line: 34
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 05:28:04 PM] ERROR: [code: 0] Surfsail\models\CartModel::deleteProduct(): Argument #1 ($product_id) must be of type int, null given, called in /var/www/projects/surfsail/src/controllers/CartController.php on line 76 | File: /var/www/projects/surfsail/src/models/CartModel.php | Line: 34
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 05:28:05 PM] ERROR: [code: 0] Surfsail\models\CartModel::deleteProduct(): Argument #1 ($product_id) must be of type int, null given, called in /var/www/projects/surfsail/src/controllers/CartController.php on line 76 | File: /var/www/projects/surfsail/src/models/CartModel.php | Line: 34
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 05:28:09 PM] ERROR: [code: 0] Surfsail\models\CartModel::deleteProduct(): Argument #1 ($product_id) must be of type int, null given, called in /var/www/projects/surfsail/src/controllers/CartController.php on line 76 | File: /var/www/projects/surfsail/src/models/CartModel.php | Line: 34
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [29-05-2025 05:28:13 PM] ERROR: [code: 0] Surfsail\models\CartModel::deleteProduct(): Argument #1 ($product_id) must be of type int, null given, called in /var/www/projects/surfsail/src/controllers/CartController.php on line 76 | File: /var/www/projects/surfsail/src/models/CartModel.php | Line: 34
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [30-05-2025 03:18:43 PM] ERROR: [code: 0] Surfsail\models\CartModel::addProduct(): Argument #1 ($data) must be of type array, string given, called in /var/www/projects/surfsail/src/controllers/CartController.php on line 47 | File: /var/www/projects/surfsail/src/models/CartModel.php | Line: 64
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [30-05-2025 06:13:29 PM] ERROR: [code: 0] array_key_exists(): Argument #2 ($array) must be of type array, null given | File: /var/www/projects/surfsail/src/models/FavoriteModel.php | Line: 69
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [30-05-2025 06:13:32 PM] ERROR: [code: 0] array_key_exists(): Argument #2 ($array) must be of type array, null given | File: /var/www/projects/surfsail/src/models/FavoriteModel.php | Line: 69
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [30-05-2025 06:39:16 PM] ERROR: [code: 0] View file is not specified for View class, provide view parameter or use View::withViewFile method to set one | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Base/View.php | Line: 90
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [30-05-2025 07:07:32 PM] ERROR: [code: 0] Surfsail\models\CartModel::deleteProduct(): Argument #1 ($product_id) must be of type int, null given, called in /var/www/projects/surfsail/src/controllers/CartController.php on line 77 | File: /var/www/projects/surfsail/src/models/CartModel.php | Line: 34
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [30-05-2025 07:09:32 PM] ERROR: [code: 0] Surfsail\models\CartModel::deleteProduct(): Argument #1 ($product_id) must be of type int, null given, called in /var/www/projects/surfsail/src/controllers/CartController.php on line 77 | File: /var/www/projects/surfsail/src/models/CartModel.php | Line: 34
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [31-05-2025 04:43:20 AM] ERROR: [code: 0] Explt13\Nosmi\Http\Response::withStatus(): Argument #1 ($code) must be of type int, null given, called in /var/www/projects/surfsail/src/controllers/CartController.php on line 51 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Http/Response.php | Line: 35
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [31-05-2025 04:45:07 AM] ERROR: [code: 0] Explt13\Nosmi\Http\Response::withStatus(): Argument #1 ($code) must be of type int, null given, called in /var/www/projects/surfsail/src/controllers/CartController.php on line 51 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Http/Response.php | Line: 35
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [31-05-2025 05:01:58 AM] ERROR: [code: 0] Call to undefined method Explt13\Nosmi\Http\ServerRequest::getPostData() | File: /var/www/projects/surfsail/src/controllers/CartController.php | Line: 57
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [31-05-2025 04:02:53 PM] ERROR: [code: 0] Class "Explt13\Nosmi\App" not found | File: /var/www/projects/surfsail/src/controllers/CatalogController.php | Line: 26
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [31-05-2025 06:06:24 PM] ERROR: [code: 0] Cannot call constructor | File: /var/www/projects/surfsail/src/widgets/Pagination.php | Line: 22
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [31-05-2025 07:15:07 PM] ERROR: [code: 42000] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY p.id HAVING COUNT(DISTINCT fg.alias) = 1 LIMIT ?' at line 4 | File: /var/www/projects/surfsail/src/models/ProductModel.php | Line: 133
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [31-05-2025 07:16:08 PM] ERROR: [code: 42000] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY p.id HAVING COUNT(DISTINCT fg.alias) = 1 LIMIT ?' at line 4 | File: /var/www/projects/surfsail/src/models/ProductModel.php | Line: 133
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [31-05-2025 07:16:13 PM] ERROR: [code: 42000] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY p.id HAVING COUNT(DISTINCT fg.alias) = 1 LIMIT ?' at line 4 | File: /var/www/projects/surfsail/src/models/ProductModel.php | Line: 133
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [31-05-2025 07:19:40 PM] ERROR: [code: 42000] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY p.id HAVING COUNT(DISTINCT fg.alias) = 1 LIMIT ?' at line 4 | File: /var/www/projects/surfsail/src/models/ProductModel.php | Line: 133
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [31-05-2025 07:19:47 PM] ERROR: [code: 42000] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY p.id HAVING COUNT(DISTINCT fg.alias) = 1 LIMIT ?' at line 4 | File: /var/www/projects/surfsail/src/models/ProductModel.php | Line: 133
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [01-06-2025 11:16:05 AM] ERROR: [code: 0] Call to undefined method Surfsail\controllers\MainController::getCurrency() | File: /var/www/projects/surfsail/src/controllers/MainController.php | Line: 34
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [01-06-2025 11:38:56 AM] ERROR: [code: 0] Call to undefined method Surfsail\controllers\MainController::getCurrency() | File: /var/www/projects/surfsail/src/controllers/MainController.php | Line: 34
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [01-06-2025 06:08:17 PM] ERROR: [code: 0] Call to undefined function Surfsail\models\redirect() | File: /var/www/projects/surfsail/src/models/UserModel.php | Line: 123
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [01-06-2025 06:08:21 PM] ERROR: [code: 0] Call to undefined function Surfsail\models\redirect() | File: /var/www/projects/surfsail/src/models/UserModel.php | Line: 123
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [02-06-2025 12:52:47 PM] ERROR: [code: 0] Explt13\Nosmi\Http\Response::withStatus(): Argument #1 ($code) must be of type int, null given, called in /var/www/projects/surfsail/src/controllers/CartController.php on line 51 | File: /var/www/projects/surfsail/vendor/explt13/nosmi/src/Http/Response.php | Line: 35
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [02-06-2025 06:49:53 PM] ERROR: [code: 0] Cannot use object of type Explt13\Nosmi\AppConfig\AppConfig as array | File: /var/www/projects/surfsail/src/models/OrderModel.php | Line: 111
+--------------------------------------------------------------------------------------------------------------------------------
+
+[E] [02-06-2025 06:54:57 PM] ERROR: [code: 0] Cannot use object of type Explt13\Nosmi\AppConfig\AppConfig as array | File: /var/www/projects/surfsail/src/models/OrderModel.php | Line: 111
+--------------------------------------------------------------------------------------------------------------------------------
+

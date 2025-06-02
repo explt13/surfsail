@@ -2,76 +2,88 @@
 
 namespace Surfsail\controllers;
 
-use Surfsail\models\interfaces\CartModelInterface;
-use Surfsail\models\interfaces\OrderModelInterface;
+use Surfsail\interfaces\CartModelInterface;
+use Surfsail\interfaces\OrderModelInterface;
 use Explt13\Nosmi\App;
 use Explt13\Nosmi\base\Controller;
+use Nyholm\Psr7\Factory\Psr17Factory;
+use Surfsail\services\CategoryService;
+use Surfsail\services\CurrencyService;
 
-class CartController extends Controller
+class CartController extends BaseController
 {   
     protected $order_model;
     protected $cart_model;
+    private CurrencyService $currency_service;
+
 
     public function __construct(
+        CurrencyService $currency_service,
         CartModelInterface $cart_model,
         OrderModelInterface $order_model,
     )
     {
+        parent::__construct();
         $this->order_model = $order_model; 
-        $this->cart_model = $cart_model; 
+        $this->cart_model = $cart_model;
+        $this->currency_service = $currency_service;
     }
 
     public function indexAction()
     {
-        $currency = App::$registry->getProperty('currency');
+        $currency = $this->currency_service->getCurrencyByCookie();
         $cart_items_qty = $this->cart_model->getProductsQty();
         $products = $this->cart_model->getProductsFromArray();
-        http_response_code(200);
-        $this->setMeta("Cart", "User's cart page", 'Cart, page, products, buy, order');
-        $this->render(data: compact('cart_items_qty', 'currency', 'products'));
+        $html = $this->getView()->withMetaArray([
+            "title" => "Cart",
+            "description" => "User's cart page",
+            "keywords" => "Cart, page, products, buy, order"
+        ])->render($this->getRoute()->getAction(), compact('cart_items_qty', 'currency', 'products'));
+        $this->response = $this->response->withStatus(200)->withHtml($html);
     }
 
-    public function addAction()
+    public function post()
     {
-        header('Content-Type: application/json');
-        $data = json_decode(file_get_contents('php://input'), true);
+        $data = $this->request->getParsedBody();
         $result = $this->cart_model->addProduct($data);
 
-        http_response_code($result['response_code']);
-        echo json_encode(['message' => $result['message'], 'action' => $result['action']]);
+        $this->response = $this->response
+                               ->withStatus($result['response_code'])
+                               ->withJson(['message' => $result['message']]);
     }
 
-    public function addMultipleAction()
+    public function patch()
     {
-        header('Content-Type: application/json');
-        $data = $this->request->getPostData();
-        $result = $this->cart_model->addMultipleProducts($data);
-        http_response_code($result['response_code']);
-        echo json_encode(['message' => $result['message']]);
+        $data = $this->request->getParsedBody();
+        $result = $this->cart_model->addProduct($data);
+
+        $this->response = $this->response
+                               ->withStatus($result['response_code'])
+                               ->withJson(['message' => $result['message']]);
     }
 
-    public function getAddedItemsAction()
+    public function get()
     {
-        header('Content-Type: application/json');
-        if (isset($_SESSION['user'])) {
+        if (isset($_SESSION['cart'])) {
             $products_ids = $this->cart_model->getAddedProductsIds();
         } else {
             $products_ids = [];
         }
-        http_response_code(200);
-        echo json_encode($products_ids);
+        $this->response = $this->response->withStatus(200)->withJson($products_ids);
     }
 
-    public function deleteAction()
+    public function delete()
     {
-        $data = json_decode(file_get_contents('php://input'), true);
-        $result = $this->cart_model->deleteProduct($data['item_id']);
-        http_response_code($result['response_code']);
-        echo json_encode(["message" => "Product has been removed"]);
+        $product_id = $this->getRoute()->getParam('product_id');
+        $result = $this->cart_model->deleteProduct($product_id);
+        $this->response = $this->response->withStatus($result['response_code'])->withJson(["message" => "Product has been removed"]);
     }
     
     public function buyAction()
     {
-        $this->order_model->saveOrder();
+        $user = $this->request->getSession('user');
+        $currency = $this->currency_service->getCurrencyByCookie();
+        $this->order_model->saveOrder($user, $currency);
+        $this->response = $this->response->withRedirect($this->request->getUri()->getPath(), 303);
     }
 }

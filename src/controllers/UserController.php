@@ -1,7 +1,7 @@
 <?php
 namespace Surfsail\controllers;
 
-use \Surfsail\models\interfaces\UserModelInterface;
+use \Surfsail\interfaces\UserModelInterface;
 use Explt13\Nosmi\base\Controller;
 
 class UserController extends Controller
@@ -15,22 +15,23 @@ class UserController extends Controller
 
     public function registerAction()
     {
-        header('Content-Type: application/json');
-        $data = $_POST['auth'];
+        $data = $this->request->getParsedBody()['auth'];
         $result = $this->user_model->register($data);
-        http_response_code($result['response_code']);
-        echo json_encode(['message' => $result['message']]);
+        $this->response = $this->response
+                               ->withStatus($result['response_code'])
+                               ->withJson(['message' => $result['message']]);
     }
     public function loginAction() 
     {
-        $data = $_POST['auth'];
-        $result = $this->user_model->login($data);
-        header('Content-Type: application/json');
-        http_response_code($result['response_code']);
-        echo json_encode(['message' => $result['message']]);
+        $data = $this->request->getParsedBody();
+        $result = $this->user_model->login($data['auth']);
+        $this->response = $this->response
+                            ->withStatus($result['response_code'])
+                            ->withJson(['message' => $result['message']]);
     }
     public function logoutAction()
     {
         $this->user_model->logout();
+        $this->response = $this->response->withRedirect('/', 303);
     }
 }
