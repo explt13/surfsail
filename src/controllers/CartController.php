@@ -84,6 +84,7 @@ class CartController extends BaseController
         $user = $this->request->getSession('user');
         $currency = $this->currency_service->getCurrencyByCookie();
         $this->order_model->saveOrder($user, $currency);
-        $this->response = $this->response->withRedirect($this->request->getUri()->getPath(), 303);
+        $this->request->getUri()->getPath();
+        $this->response = $this->response->withRedirect('/cart', 303);
     }
 }

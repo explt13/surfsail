@@ -40,7 +40,7 @@
             </tr>
             <tr>
                 <th>Address:</th>
-                <td><?= htmlspecialchars($user['address'])?></td>
+                <td><?= htmlspecialchars($user['address'] ?? 'Specified on website\'s order page')?></td>
             </tr>
         </table>
 
