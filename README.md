@@ -1,5 +1,5 @@
 ## An online shop
-Uses this [MVC toolkit](https://github.com/explt13/nosmi)
+This project is built on top of a lightweight [MVC framework](https://github.com/explt13/nosmi).
 
 ## License
 This project is licensed under the **PolyForm Strict License 1.0.0**.
