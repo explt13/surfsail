@@ -1,0 +1,41 @@
+{
+    "name": "explt13/nosmi",
+    "type": "project",
+    "description": "A lightweight MVC framework",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Explt13\\Nosmi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Unit\\": "tests/unit/",
+            "Tests\\Integration\\": "tests/integration/"
+        }
+    },
+    "authors": [
+        {
+            "name": "explt13",
+            "email": "az13rede4d@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.3.6",
+        "vlucas/phpdotenv": "^5.6",
+        "symfony/console": "^7.2",
+        "psr/http-message": "^2.0",
+        "nyholm/psr7": "^1.8",
+        "kriswallsmith/buzz": "^1.3",
+        "psr/http-server-middleware": "^1.0",
+        "phpmailer/phpmailer": "^6.10",
+        "predis/predis": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.0"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "keywords": ["php", "framework", "mvc", "web"],
+    "homepage": "https://github.com/explt13/nosmi"
+}

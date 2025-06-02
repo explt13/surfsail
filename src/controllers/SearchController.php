@@ -1,7 +1,7 @@
 <?php
 namespace Surfsail\controllers;
 
-use Surfsail\models\interfaces\ProductModelInterface;
+use Surfsail\interfaces\ProductModelInterface;
 use Explt13\Nosmi\base\Controller;
 
 class SearchController extends Controller
@@ -13,17 +13,17 @@ class SearchController extends Controller
         $this->product_model = $product_model;
     }
     
-    function getAction()
+    function get()
     {
         header('Content-Type: application/json');
-        $query = $_GET['query'] ?? null;
+        $query = $this->request->getQueryParams()['query'] ?? "";
         $query = trim($query);
-        if ($query !== ""){
-            $result = $this->product_model->getProducts(["LIKE_name" => $query], 5);
-            http_response_code(200);
-            echo json_encode($result);
+        if ($query === "") {
+            $this->response = $this->response->withStatus(400);
             return;
         }
-        http_response_code(400);
+        $result = $this->product_model->getProducts(["LIKE_name" => $query], 5);
+        $this->response = $this->response->withStatus(200)->withJson($result);
+        return;
     }
 }

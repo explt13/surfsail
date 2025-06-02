@@ -2,26 +2,28 @@
 
 namespace Surfsail\models;
 
-use Surfsail\models\interfaces\CartModelInterface;
-use Surfsail\models\interfaces\CurrencyModelInterface;
-use Surfsail\models\interfaces\OrderModelInterface;
-use Surfsail\models\interfaces\ProductModelInterface;
-use Surfsail\models\interfaces\UserModelInterface;
-use Explt13\Nosmi\App;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
+use Surfsail\interfaces\CartModelInterface;
+use Surfsail\interfaces\CurrencyModelInterface;
+use Surfsail\interfaces\OrderModelInterface;
+use Surfsail\interfaces\ProductModelInterface;
+use Surfsail\interfaces\UserModelInterface;
+use Explt13\Nosmi\Interfaces\ConfigInterface;
+use Explt13\Nosmi\Mail\Mail;
 use PHPMailer\PHPMailer\Exception;
 
 
 class OrderModel extends AppModel implements OrderModelInterface
 {
     protected int $order_id;
+    protected string $user_email;
     protected $product_model;
     protected $currency_model;
     protected $user_model;
     protected $cart_model;
+    private ConfigInterface $config;
     
     public function __construct(
+        ConfigInterface $config,
         ProductModelInterface $product_model,
         CurrencyModelInterface $currency_model,
         UserModelInterface $user_model,
@@ -33,28 +35,34 @@ class OrderModel extends AppModel implements OrderModelInterface
         $this->currency_model = $currency_model;
         $this->user_model = $user_model;
         $this->cart_model = $cart_model;
+        $this->config = $config;
     }
-    public function saveOrder()
+    public function saveOrder(array $user, array $currency)
     {
         try
         {
+            $mail = new Mail($this->config);
+            $this->user_email = $user['email'];
             $this->pdo->beginTransaction();
             $stmt = $this->pdo->prepare('INSERT INTO `order` (user_id, currency_id) VALUES (:user_id, :currency_id)');
-            $stmt->execute(['user_id' => $_SESSION['user']['id'], 'currency_id' => App::$registry->getProperty('currency')['id']]);
+            $stmt->execute(['user_id' => $user['id'], 'currency_id' => $currency['id']]);
             $this->order_id = (int) $this->pdo->lastInsertId();
             $this->saveOrderProduct($this->order_id);
-            $this->send();
+            $mail->withHtml($this->getHtml())
+                       ->withAlt($this->getPlain())
+                       ->withRecipient($this->user_email)
+                       ->withSubject('Thanks for the purchase')
+                       ->send();
+            
             $this->pdo->commit();
             unset($_SESSION['cart']);
-            redirect();
         } catch (\PDOException $e) {
             $this->pdo->rollBack();
-            redirect();
         } catch (\Exception $e) {
             $this->pdo->rollBack();
-            redirect();
         }
     }
+
     protected function saveOrderProduct(int $order_id)
     {
         $products = $this->product_model->getProducts(["id" => array_keys($_SESSION['cart'])]);
@@ -85,35 +93,6 @@ class OrderModel extends AppModel implements OrderModelInterface
         }
     }
 
-    protected function send()
-    {
-        $mail = new PHPMailer(true);
-
-        //Server settings
-        // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-        $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = $_ENV['SMTP_LOGIN'];                     //SMTP username
-        $mail->Password   = $_ENV['SMTP_PASSWORD'];                               //SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
-        $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-    
-        //Recipients
-        $mail->setFrom($_ENV['SMTP_LOGIN'], $_ENV['APP_NAME']);
-        $mail->addAddress('az13rede4d@gmail.com');     //Add a recipient
-        $mail->addReplyTo($_ENV['SMTP_LOGIN']);
-    
-    
-        //Content
-        $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = 'Thanks for the purchase';
-        $mail->Body    = $this->getHtml();
-        $mail->AltBody = $this->getPlain();
-    
-        $mail->send();
-    }
-
     public function getOrder(int $order_id)
     {
         $stmt = $this->pdo->prepare('SELECT * FROM `order` o WHERE o.id = :id');
@@ -126,10 +105,10 @@ class OrderModel extends AppModel implements OrderModelInterface
         $cart = $_SESSION['cart'];
         $products = $this->cart_model->getProductsFromArray($cart);
         $order = $this->getOrder($this->order_id);
-        $user = $this->user_model->getUserByEmail($_SESSION['user']['email']);
+        $user = $this->user_model->getUserByEmail($this->user_email);
         $currency = $this->currency_model->getCurrencyById($order['currency_id']);
         ob_start();
-        require_once APP . '/views/Order/order_mail.php';
+        require $this->config->get('APP_VIEWS') . '/Order/order_mail.php';
         return ob_get_clean();
     }
     

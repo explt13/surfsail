@@ -1,7 +1,8 @@
 <?php
 namespace Surfsail\models;
 
-use Surfsail\models\interfaces\UserModelInterface;
+use PDOException;
+use Surfsail\interfaces\UserModelInterface;
 use \Respect\Validation\Validator as v;
 
 class UserModel extends AppModel implements UserModelInterface
@@ -17,7 +18,7 @@ class UserModel extends AppModel implements UserModelInterface
     ];
 
 
-    public function register($data)
+    public function register($data): array
     {
         try{
             $this->setDefinedAttributes($data);
@@ -64,31 +65,8 @@ class UserModel extends AppModel implements UserModelInterface
         
     }
 
-    public function loginRemembered()
-    {
-        if (!isset($_COOKIE['rem_token'])) return;
-        
-        $token = $_COOKIE['rem_token'];
-        if (!$token) return;
 
-        $stmt = $this->pdo->prepare('SELECT user_id, token, expires FROM user_remember WHERE token = :token');
-        $stmt->bindParam(':token', $token, \PDO::PARAM_STR, 64);
-        $stmt->execute();
-        $rem_record = $stmt->fetch();
-        if (!$rem_record) return;
-       
-        $usr_fetch_stmt = $this->pdo->prepare('SELECT id, email, role FROM user WHERE id = :user_id');
-        $usr_fetch_stmt->execute(['user_id' => $rem_record['user_id']]);
-        $user = $usr_fetch_stmt->fetch();
-        $_SESSION['user'] = [
-            'id' => $user['id'],
-            'email' => $user['email'],
-            'role' => $user['role'],
-        ];
-        session_regenerate_id(true);
-    }
-
-    public function login($data)
+    public function login($data): array
     {
         $stmt = $this->pdo->prepare('SELECT u.* FROM user u WHERE u.email = :email');
         $stmt->execute(['email' => $data['email']]);
@@ -97,19 +75,12 @@ class UserModel extends AppModel implements UserModelInterface
         if (!$user || !password_verify($data['password'], $user['password'])) {
             return ['response_code' => 400, 'message' => 'Email/password is incorrect'];
         }
-
-        $_SESSION['user'] = [
-            'id' => $user['id'],
-            'email' => $user['email'],
-            'role' => $user['role'],
-        ];
-        session_regenerate_id(true);
-
+        $this->authenticate($user);
         $this->generateRememberToken($data, $user['id']);
         return ['response_code' => 200, 'message' => 'Login successfully'];
     }
 
-    public function logout()
+    public function logout(): void
     {
         session_unset();
         session_destroy();
@@ -120,17 +91,54 @@ class UserModel extends AppModel implements UserModelInterface
             $stmt->execute(['token' => $token]);
             setcookie('rem_token', "", time() - 60 * 60 * 24, '/');
         }
-        redirect();
     }
 
-    public function getUserByEmail(string $email)
+    
+    public function getUserByEmail(string $email): array
     {
         $stmt = $this->pdo->prepare('SELECT * FROM user u WHERE u.email = :email');
         $stmt->execute(['email' => $email]);
         return $stmt->fetch();
     }
+    
+    public function getUserById(int $user_id): array
+    {
+        $stmt = $this->pdo->prepare('SELECT * FROM user u WHERE u.id = :user_id');
+        $stmt->execute(['user_id' => $user_id]);
+        return $stmt->fetch();
+    }
+    public function authenticate(array $user): void
+    {
+        $_SESSION['user'] = [
+            'id' => $user['id'],
+            'email' => $user['email'],
+            'role' => $user['role'],
+        ];
+        session_regenerate_id(true);
+    }
 
-    public static function isAdmin()
+    public function isUserAuthenticated(): array|false
+    {
+        try {
+            $rem_token = $_COOKIE['rem_token'] ?? null;
+
+            if (is_null($rem_token)) {
+                return false;
+            }
+
+            $stmt = $this->pdo->prepare('SELECT * FROM user_remember ur WHERE ur.token = :token');
+            $stmt->execute(['token' => $rem_token]);
+            $result = $stmt->fetch();
+            if ($result === false) {
+                return false;
+            }
+            return $result;        
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public static function isAdmin(): bool
     {
         return (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin');
     }

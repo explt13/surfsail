@@ -4,27 +4,40 @@ namespace Surfsail\controllers;
 
 use Explt13\Nosmi\App;
 use Explt13\Nosmi\base\Controller;
+use Surfsail\services\CategoryService;
+use Surfsail\services\CurrencyService;
 
-class CurrencyController extends Controller
+class CurrencyController extends BaseController
 {
-    public function getAction()
+    private CurrencyService $currency_service;
+    public function __construct(
+        CurrencyService $currency_service,
+    )
     {
-        $currency = App::$registry->getProperty('currencies')[$_COOKIE['currency'] ?? 'USD'];
-        if ($currency) {
-            header('Content-Type: application/json');
-            setcookie('currency', $currency['code'], time() + 3600 * 24 * 7, '/');
-            http_response_code(200);
-            echo json_encode(['success' => true, 'currency' => $currency]);
-        } else {
-            throw new \Exception('No such currency exists', 400);
-        }
+        parent::__construct();
+        $this->currency_service = $currency_service;
     }
 
-    public function changeAction()
+    public function get()
     {
+        $currency = $this->currency_service->getCurrencyByCookie();
+        if (!$currency) {
+            throw new \Exception('No such currency exists', 400);
+
+        }
         header('Content-Type: application/json');
-        $data = json_decode(file_get_contents("php://input"), true);
-        $currency = App::$registry->getProperty('currencies')[$data['currency']] ?? null;
+        setcookie('currency', $currency['code'], time() + 3600 * 24 * 7, '/');
+        http_response_code(200);
+        echo json_encode(['success' => true, 'currency' => $currency]);
+
+    }
+
+    public function post()
+    {
+        $data = $this->request->getParsedBody();
+        $currencies = $this->currency_service->getCurrencies();
+
+        $currency = $currencies[$data['currency']] ?? null;
         if ($currency) {
             http_response_code(200);
             setcookie('currency', $currency['code'], time() + 3600 * 24 * 7, '/');

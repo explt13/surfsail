@@ -1,7 +1,7 @@
 <?php
 namespace Surfsail\models;
 
-use Surfsail\models\interfaces\ProductModelInterface;
+use Surfsail\interfaces\ProductModelInterface;
 
 class ProductModel extends AppModel implements ProductModelInterface
 {

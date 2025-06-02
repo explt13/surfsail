@@ -1,56 +1,72 @@
 <?php
 namespace Surfsail\controllers;
 
-use Surfsail\models\interfaces\FavoriteModelInterface;
+use Surfsail\interfaces\FavoriteModelInterface;
 use Explt13\Nosmi\App;
 use Explt13\Nosmi\base\Controller;
+use Surfsail\services\CategoryService;
+use Surfsail\services\CurrencyService;
 
-class FavoriteController extends Controller
+class FavoriteController extends BaseController
 {
     protected $favorite_model;
+    private CurrencyService $currency_service;
 
-    public function __construct(FavoriteModelInterface $favorite_model)
+    public function __construct(
+        CurrencyService $currency_service,
+        FavoriteModelInterface $favorite_model
+    )
     {
+        parent::__construct();
+        $this->currency_service = $currency_service;
         $this->favorite_model = $favorite_model;
     }
     
     public function indexAction()
     {
-        $currency = App::$registry->getProperty('currency');
+        $currency = $this->currency_service->getCurrencyByCookie();
         $products = $this->favorite_model->getItemsFromArray('product');
-        http_response_code(200);
-        $this->setMeta("Favorite", "User's favorite products page", 'Favorite page, products, like');
-        $this->render(data: compact('currency', 'products'));
+        $view = $this->getView()
+                     ->withDataArray(compact('currency', 'products'))
+                     ->withMetaArray([
+                        'title' => 'Favorite', 
+                        'description' => "User's favorite products page",
+                        'keywords' => 'Favorite page, products, like'
+                    ])
+                    ->render('index');
+        $this->response = $this->response->withStatus(200)->withHtml($view);
     }
 
-    public function addAction()
+    public function post()
     {
-        $data = json_decode(file_get_contents('php://input'), true);
-        $result = $this->favorite_model->addItem($data);
+        $entity = $this->getRoute()->getParam('entity');
+        $data = $this->request->getParsedBody();
+        $result = $this->favorite_model->addItem($entity, $data['item_id']);
         
-        header('Content-Type: application/json');
-        http_response_code($result['response_code']);
-        echo json_encode(['message' => $result['message'], 'action' => $result['action']]);
+        $this->response = $this->response
+                               ->withStatus($result['response_code'])
+                               ->withJson(['message' => $result['message'], 'action' => $result['action']]);
     }
 
-    public function getAddedItemsAction()
+    public function get()
     {
-        $entity = $this->route->entity;
-        if (isset($_SESSION['user'])) {
-            $products_ids = $this->favorite_model->getItemsIds($entity);
+        $entity = $this->getRoute()->getParam('entity');
+        if (isset($_SESSION['favorite'][$entity])) {
+            $items_ids = $this->favorite_model->getItemsIds($entity);
         } else {
-            $products_ids = [];
+            $items_ids = [];
         }
-        header('Content-Type: application/json');
-        http_response_code(200);
-        echo json_encode($products_ids);
+        $this->response = $this->response->withStatus(200)->withJson($items_ids);
     }
 
-    public function deleteAction()
+    public function delete()
     {
-        $data = json_decode(file_get_contents('php://input'), true);
-        $result = $this->favorite_model->deleteItem($data, $this->route->entity);
-        http_response_code($result['response_code']);
-        echo json_encode(["message" => "Product has been removed"]);
+        $entity = $this->getRoute()->getParam('entity');
+        $item_id = (int) $this->getRoute()->getParam('item_id');
+        
+        $result = $this->favorite_model->deleteItem($item_id, $entity);
+        $this->response = $this->response
+                               ->withStatus($result['response_code'])
+                               ->withJson(["message" => "Product has been removed"]);
     }
 }

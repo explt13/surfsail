@@ -1,7 +1,7 @@
 <?php
 namespace Surfsail\models;
 
-use Surfsail\models\interfaces\ReviewModelInterface;
+use Surfsail\interfaces\ReviewModelInterface;
 
 class ReviewModel extends AppModel implements ReviewModelInterface
 {

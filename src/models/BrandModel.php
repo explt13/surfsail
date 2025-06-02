@@ -1,7 +1,7 @@
 <?php
 namespace Surfsail\models;
 
-use Surfsail\models\interfaces\BrandModelInterface;
+use Surfsail\interfaces\BrandModelInterface;
 
 class BrandModel extends AppModel implements BrandModelInterface
 {

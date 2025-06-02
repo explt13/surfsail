@@ -8,7 +8,10 @@ class AuthController extends Controller
 {
     public function indexAction()
     {
-        $this->setMeta('Register', 'Register page');
-        $this->render();
+        $view = $this->getView()
+                     ->withLayout('clean')
+                     ->withMetaArray(["title" => "Register", "description" => "User registration page"])
+                     ->render($this->getRoute()->getAction());
+        $this->response = $this->response->withHtml($view);
     }
 }
